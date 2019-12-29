@@ -17,7 +17,7 @@ public class Journal {
     Main myDataManager;
 
     /*
-    Sorter and manager of Entries; has full access priveleges on Entries
+    Sorter and manager of Entries; has full access privileges on Entries
      */
 
     //used prepared statements in Java so that you dont have to recompile queries
@@ -26,7 +26,7 @@ public class Journal {
         myDataManager = new Main(userID);
         List<Map<String, Object>> entryMap = myDataManager.loadEntryMap(); //uses primary IDs and maps them to Entry
         List<Map<String, Object>> entryTopic = myDataManager.loadEntryTopics();
-        List<Map<String, Object>> topics = myDataManager.loadTopics();
+        List<Map<String, Object>> topics = myDataManager.loadTopicBank();
         myEntryMap = DataParser.parseEntryMap(entryMap, entryTopic);
         myEntries = DataParser.parseEntries(myEntryMap);
         myTopics = DataParser.parseTopics(topics);

@@ -97,12 +97,11 @@ public class Main {
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, TabelNames.getEntryInfo());
-        map.put(2, Integer.toString(myUserID));
-        map.put(3, entry.getmyTitleasString());
-        map.put(4, entry.getMyColorasString());
-        map.put(5, entry.getMyCreatedasString());
-        map.put(6, entry.getMyModfiedasString());
+        map.put(1, Integer.toString(myUserID));
+        map.put(2, entry.getmyTitleasString());
+        map.put(3, entry.getMyColorasString());
+        map.put(4, entry.getMyCreatedasString());
+        map.put(5, entry.getMyModfiedasString());
         DBUtils.userAction(map, SQLQuery.addEntry(), URL, USER, PASSWORD);
         List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), URL, USER, PASSWORD);
         return (int) ent.get(0).get(Labels.getEntryId());

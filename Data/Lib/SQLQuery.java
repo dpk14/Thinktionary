@@ -2,7 +2,13 @@ package Data.Lib;
 
 public class SQLQuery {
     private static final String GET_TABLE= "SELECT * FROM ? WHERE userID = '?'";
-    private static final String GET_ENTRY_ID = " ";
+    private static final String GET_ENTRY_ID = "SELECT * FROM " + TabelNames.getEntryInfo() + " " +
+                                                "WHERE userID = '?' " +
+                                                "WHERE Title = '?' " +
+                                                "WHERE Title = '?' " +
+                                                "WHERE Color = '?' " +
+                                                "WHERE Created = '?' " +
+                                                "WHERE Modified = '?'";
     private static final String ADD_ENTRY = " ";
     private static final String ADD_TOPIC = " ";
     private static final String REMOVE = " ";
