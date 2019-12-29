@@ -40,28 +40,24 @@ public class Journal {
     ----------------------------
      */
 
-    public void addEntry(Set<Topic> topics, String text, String title, Date date, String color){
-        myTopics.addAll(topics);
-        myDataManager.addTopics(topics);
+    public void createEntry(Set<Topic> topics, String text, String title, Date date, String color)
+    throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
-        Entry entry = date == null ? new Entry(title, topics, text, color) : new Entry(title, topics, text, color, date);
-        int id = myDataManager.createEntry(entry);
-
-        myEntryMap.put(id, entry);
-        myEntries.add(entry);
-        myDataManager.addEntry(entry);
+        updateTopics(topics);
+        updateEntries(text, topics, title, date, color);
     }
 
-    public void updateEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate){
+    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate){
         Entry e = myEntryMap.get(entryID);
         e.setMyTitle(title);
         e.updateModification();
         e.setText(text);
+        e.setMyTopics(topics);
+        myTopics.addAll(topics);
         if(!creationDate.equals(e.getMyCreated())){ // if creation date has been modified, adjust order
             e.setMyCreated(creationDate);
             reorder(e);
         }
-        updateTopics(e, topics);
         myDataManager.save(e, myTopics);
     }
 
@@ -94,14 +90,25 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateTopics(Entry e, Set<Topic> topics){
-        for(Topic topic : topics) {
-            if(!myTopics.contains(topic)){
-                topics.add(topic);
-            }
+    private void updateTopics(Set<Topic> topics) throws SQLException{
+        myTopics.addAll(topics);
+        Map<String, String> topicToColor = new HashMap<>();
+        for(String topic : topicToColor.keySet()){
+            topicToColor.put(topic, topicToColor.get(topic));
         }
-        e.setMyTopics(topics);
+        myDataManager.addTopics(topicToColor);
     }
+
+    private void updateEntries(String text, Set<Topic> topics, String title, Date date, String color)
+            throws SQLException, IndexOutOfBoundsException, ClassCastException{
+
+        Entry entry = date == null ? new Entry(title, topics, text, color) : new Entry(title, topics, text, color, date);
+        int id = myDataManager.createEntry(entry);
+
+        myEntryMap.put(id, entry);
+        myEntries.add(entry);
+    }
+
 
     private void reorder(Entry e){
         myEntries.remove(e);

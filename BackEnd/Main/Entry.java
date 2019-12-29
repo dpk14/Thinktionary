@@ -3,7 +3,9 @@ package BackEnd.Main;
 import BackEnd.Main.Components.Date;
 import BackEnd.Main.Components.Topic;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Entry {
@@ -40,36 +42,25 @@ public class Entry {
 
     /*
     ----------------------------
-    Public API:
+    Public Getters (Used by Data module. Do not actually give access to the objects
+                    just give access to Strings symbolizing objects):
     ----------------------------
      */
 
-    protected Date getMyCreated(){
-        return myCreated;
-    }
+    public String getMyColorasString() { return String.valueOf(myColor); }
 
-    public String getMyCreatedasString(){
-        return myCreated.toString();
-    }
+    public String getmyTitleasString() { return String.valueOf(myTitle); }
 
-    public String getMyText(){
-        return myText;
-    }
+    public String getMyModfiedasString() {return myModified.toString();}
 
-    public void setMyTitle(String myTitle) {
-        this.myTitle = myTitle;
-    }
+    public String getMyCreatedasString(){ return myCreated.toString();}
 
-    public String getMyColor() {
-        return myColor;
-    }
-
-    public Set<String> getMyTopicStrings(){
-        Set<String> topcs = new HashSet();
+    public Map<String, String> getMyTopicsAsMap(){
+        Map<String, String> topicToColor = new HashMap<>();
         for(Topic topic : myTopics){
-            topcs.add(topic.getMyTopic());
+            topicToColor.put(topic.getMyTopic(), topic.getMyColor());
         }
-        return topcs;
+        return topicToColor;
     }
 
     /*
@@ -82,8 +73,24 @@ public class Entry {
         return getMyCreated().compareTo(e2.getMyCreated()) < 0;
     }
 
+    protected void updateModification(){
+        myModified = new Date();
+    }
+
     protected Set<Topic> getMyTopics(){
         return myTopics;
+    }
+
+    protected Date getMyCreated(){ return myCreated; }
+
+    /*
+    ----------------------------
+    Protected Setters (Used by internal BackEnd methods):
+    ----------------------------
+     */
+
+    protected void setMyTitle(String myTitle) {
+        this.myTitle = myTitle;
     }
 
     protected void setMyTopics(Set<Topic> topics){
@@ -98,7 +105,5 @@ public class Entry {
         myCreated = date;
     }
 
-    protected void updateModification(){
-        myModified = new Date();
-    }
+
 }

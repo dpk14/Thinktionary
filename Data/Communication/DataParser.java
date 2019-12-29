@@ -18,7 +18,7 @@ public class DataParser {
         Map<String, Set<Topic>> topicSets = new HashMap<>();
         for (Map<String, Object> cols : entryTopic) {
             Topic topic = new Topic((String) cols.get(Labels.getTOPIC()), (String) cols.get(Labels.getCOLOR()));
-            String entryID = (String) cols.get(Labels.getEntryId();
+            String entryID = (String) cols.get(Labels.getEntryId());
             Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
             topics.add(topic);
             topicSets.put((String) cols.get(Labels.getEntryId()), topics);
