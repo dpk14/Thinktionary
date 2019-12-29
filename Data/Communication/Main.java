@@ -1,6 +1,5 @@
 package Data.Communication;
 
-import BackEnd.Main.Components.Topic;
 import BackEnd.Main.Entry;
 import Data.Communication.Utils.DBUtils;
 import Data.Lib.Labels;
@@ -41,24 +40,15 @@ public class Main {
     //Loading:
 
     public List<Map<String, Object>> loadEntryMap() throws SQLException {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, TabelNames.getEntryInfo());
-        map.put(2, Integer.toString(myUserID));
-        return DBUtils.userQuery(map, SQLQuery.getEntryMap(), URL, USER, PASSWORD);
+        return loadTable(TabelNames.getEntryInfo());
     }
 
     public List<Map<String, Object>> loadEntryTopics() throws SQLException{
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, TabelNames.getEntryToTopic());
-        map.put(2, Integer.toString(myUserID));
-        return DBUtils.userQuery(map, SQLQuery.getEntryToTopic(), URL, USER, PASSWORD);
+        return loadTable(TabelNames.getEntryToTopic());
     }
 
-    public List<Map<String, Object>> loadTopics() throws SQLException{
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, TabelNames.getUserTopic());
-        map.put(2, Integer.toString(myUserID));
-        return DBUtils.userQuery(map, SQLQuery.getTopics(), URL, USER, PASSWORD);
+    public List<Map<String, Object>> loadTopicBank() throws SQLException{
+        return loadTable(TabelNames.getUserTopic());
     }
 
     //Saving:
@@ -97,6 +87,13 @@ public class Main {
     Private Helpers:
     ----------------------------
      */
+
+    private List<Map<String, Object>> loadTable(String tableName) throws SQLException{
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, tableName);
+        map.put(2, Integer.toString(myUserID));
+        return DBUtils.userQuery(map, SQLQuery.loadTable(), URL, USER, PASSWORD);
+    }
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
         Map<Integer, String> map = new HashMap<>();
