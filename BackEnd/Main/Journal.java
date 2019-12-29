@@ -4,6 +4,7 @@ import BackEnd.DataBase.UserDataManager;
 import BackEnd.Main.Components.Date;
 import BackEnd.Main.Components.Topic;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Journal {
@@ -20,17 +21,20 @@ public class Journal {
     //used prepared statements in Java so that you dont have to recompile queries
 
     public Journal(int userID){
-        myDataManager = new UserDataManager(userID);
-        List<Map, Object> entryMap = myDataManager.loadEntryMap(); //uses primary IDs and maps them to Entry
-        List<Map, Object> entryTopic = myDataManager.loadEntryTopics();
-        Map<Integer, Entry> myEntryMap = DataParser.parseEntryMap(entryMap, entryTopic);
-        myEntries = new ArrayList<>();
-        for(Entry entry : myEntries){
-            myEntries.add(entry);
+        try {
+            myDataManager = new UserDataManager(userID);
+            List<Map<String, Object>> entryMap = myDataManager.loadEntryMap(); //uses primary IDs and maps them to Entry
+            List<Map<String, Object>> entryTopic = myDataManager.loadEntryTopics();
+            List<Map<String, Object>> topics = myDataManager.loadTopics();
+            myEntryMap = DataParser.parseEntryMap(entryMap, entryTopic);
+            myEntries = DataParser.parseEntries(myEntryMap);
+            myTopics = DataParser.parseTopics(topics);
+            myUserID = userID;
         }
-        Collections.sort(myEntries, new EntryComparator());
-        myTopics = myDataManager.loadTopics();
-        myUserID = userID;
+        catch(SQLException e){
+            e.printStackTrace();
+            //EXIT
+        }
     }
 
     /*
