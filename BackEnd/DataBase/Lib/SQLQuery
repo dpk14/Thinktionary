@@ -1,0 +1,2 @@
+GET_ENTRY_MAP = "SELECT Entries WITH userId = ?";
+GET_TOPICS = "SELECT"
