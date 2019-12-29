@@ -1,0 +1,3 @@
+String TOPIC = "Topic";
+String COLOR = "Color";
+String ENTRY_ID = "Entry ID";

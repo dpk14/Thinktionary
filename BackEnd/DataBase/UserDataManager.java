@@ -5,21 +5,18 @@ import BackEnd.Main.Entry;
 import BackEnd.Main.Journal;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class UserDataManager {
 
     /*
     UserID | UserName | Password      name: login
 
-    UserID | Topic           userTopic
+    UserID | Topic | Color           userTopic
 
     EntryID | UserID | Title | DateCreated | DateModified      EntryInfo
 
-    EntryID | Topic          entryTopic
+    EntryID | Topic | Color         entryTopic
 
      */
 
@@ -33,20 +30,29 @@ public class UserDataManager {
     }
 
     public List<Map<String, Object>> loadEntryMap() throws SQLException {
-        return userQuery(ENTRY_INFO, GET_ENTRY_MAP);
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, ENTRY_INFO);
+        map.put(2, GET_ENTRY_MAP);
+        return userQuery(map);
     }
 
-    public List<Map<String, Object>> loadEntryTopics(){
-        return userQuery(ENTRY_TOPIC, GET_ENTRY_TOPICS);
+    public List<Map<String, Object>> loadEntryTopics() throws SQLException{
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, ENTRY_TOPIC);
+        map.put(2, GET_ENTRY_TOPICS);
+        return userQuery(map);
     }
 
-    public Set<Topic> loadTopics() {
-        return userQuery(USER_TOPIC, GET_TOPICS);
+    public List<Map<String, Object>> loadTopics() throws SQLException{
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, USER_TOPIC);
+        map.put(2, GET_TOPICS);
+        return userQuery(map);
     }
 
     public static void addTopics(Set<Topic> topics) {
-    }
 
+    }
 
     public static int createEntry(Entry entry) {
     }
@@ -60,11 +66,12 @@ public class UserDataManager {
     public static void save(Entry e, Set<Topic> myTopics) {
     }
 
-    private Object userQuery(String table, String query) throws SQLException{
+    private List<Map<String, Object>> userQuery(Map<Integer, String> fillers) throws SQLException{
         Connection con = DBUtils.makeConnection(URL, USER, PASSWORD);
         PreparedStatement pst = con.prepareStatement(query);
-        pst.setString(1, table);
-        pst.setString(2, myUserName);
+        for(int i : fillers.keySet()){
+            pst.setString(i, fillers.get(i));
+        }
         ResultSet rs = pst.executeQuery();
         List<Map<String, Object>> ret = DBUtils.map(rs);
         DBUtils.close(pst);
