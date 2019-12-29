@@ -1,6 +1,9 @@
 package BackEnd.Main;
 
-import BackEnd.DataBase.UserDataManager;
+import BackEnd.Exceptions.DateExceptions.InvalidDateException;
+import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
+import Data.Communication.DataParser;
+import Data.Communication.Main;
 import BackEnd.Main.Components.Date;
 import BackEnd.Main.Components.Topic;
 
@@ -12,7 +15,7 @@ public class Journal {
     Map<Integer, Entry> myEntryMap;
     Set<Topic> myTopics;
     int myUserID;
-    UserDataManager myDataManager;
+    Main myDataManager;
 
     /*
     Sorter and manager of Entries; has full access priveleges on Entries
@@ -20,21 +23,15 @@ public class Journal {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public Journal(int userID){
-        try {
-            myDataManager = new UserDataManager(userID);
-            List<Map<String, Object>> entryMap = myDataManager.loadEntryMap(); //uses primary IDs and maps them to Entry
-            List<Map<String, Object>> entryTopic = myDataManager.loadEntryTopics();
-            List<Map<String, Object>> topics = myDataManager.loadTopics();
-            myEntryMap = DataParser.parseEntryMap(entryMap, entryTopic);
-            myEntries = DataParser.parseEntries(myEntryMap);
-            myTopics = DataParser.parseTopics(topics);
-            myUserID = userID;
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-            //EXIT
-        }
+    public Journal(int userID) throws SQLException, InvalidDateFormatException {
+        myDataManager = new Main(userID);
+        List<Map<String, Object>> entryMap = myDataManager.loadEntryMap(); //uses primary IDs and maps them to Entry
+        List<Map<String, Object>> entryTopic = myDataManager.loadEntryTopics();
+        List<Map<String, Object>> topics = myDataManager.loadTopics();
+        myEntryMap = DataParser.parseEntryMap(entryMap, entryTopic);
+        myEntries = DataParser.parseEntries(myEntryMap);
+        myTopics = DataParser.parseTopics(topics);
+        myUserID = userID;
     }
 
     /*

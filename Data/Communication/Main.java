@@ -1,13 +1,16 @@
-package BackEnd.DataBase;
+package Data.Communication;
 
 import BackEnd.Main.Components.Topic;
 import BackEnd.Main.Entry;
-import BackEnd.Main.Journal;
+import Data.Communication.Utils.DBUtils;
+import Data.Lib.Labels;
+import Data.Lib.SQLQuery;
+import Data.Lib.Tabels;
 
 import java.sql.*;
 import java.util.*;
 
-public class UserDataManager {
+public class Main {
 
     /*
     UserID | UserName | Password      name: login
@@ -24,15 +27,17 @@ public class UserDataManager {
     private final String USER = "testuser";
     private final String PASSWORD = "test623";
     int myUserID;
+    Map<String, String>
 
-    public UserDataManager(int userID){
+
+    public Main(int userID){
         myUserID = userID;
     }
 
     public List<Map<String, Object>> loadEntryMap() throws SQLException {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, ENTRY_INFO);
-        map.put(2, GET_ENTRY_MAP);
+        map.put(1, Tabels.getENTRY_INFO());
+        map.put(2, SQLQuery.getEntryMap());
         return userQuery(map);
     }
 

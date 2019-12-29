@@ -19,10 +19,11 @@ public class Date {
 
     public Date(){
         String current = getCurrentDate();
-        String[] splt = current.split("/");
-        String[] splt2 = current.substring(1).split(":");
-        trySetDate(Integer.parseInt(splt[1]), Integer.parseInt(splt[2]), Integer.parseInt(splt[0]),
-                    Integer.parseInt(splt2[0]), Integer.parseInt(splt2[1]), Integer.parseInt(splt2[2]));
+        parseDateString(current);
+    }
+
+    public Date(String date) throws InvalidDateFormatException{
+        parseDateString(date);
     }
 
     public Date(int month, int day, int year, int hour, int min, int second){
@@ -31,6 +32,13 @@ public class Date {
 
     public Date(int month, int day, int year){
         trySetDate(month, day, year, 0, 0, 0);
+    }
+
+    private void parseDateString(String str){
+        String[] splt = str.split("/");
+        String[] splt2 = str.substring(1).split(":");
+        trySetDate(Integer.parseInt(splt[1]), Integer.parseInt(splt[2]), Integer.parseInt(splt[0]),
+                Integer.parseInt(splt2[0]), Integer.parseInt(splt2[1]), Integer.parseInt(splt2[2]));
     }
 
     private void trySetDate(int month, int day, int year, int hour, int min, int second){
