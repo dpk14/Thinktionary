@@ -79,4 +79,27 @@ public class DBUtils {
         }
         return pst;
     }
+
+    public static void userAction(Map<Integer, String> fillers, String command, String url,
+                           String user, String password) throws SQLException{
+
+        Connection con = DBUtils.makeConnection(url, user, password);
+        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, command);
+        pst.executeQuery(command);
+        DBUtils.close(pst);
+        DBUtils.close(con);
+    }
+
+    public static List<Map<String, Object>> userQuery(Map<Integer, String> fillers, String query, String url,
+                                                String user, String password) throws SQLException{
+
+        Connection con = DBUtils.makeConnection(url, user, password);
+        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, query);
+        ResultSet rs = pst.executeQuery();
+        DBUtils.close(pst);
+        List<Map<String, Object>> ret = DBUtils.map(rs);
+        DBUtils.close(rs);
+        DBUtils.close(con);
+        return ret;
+    }
 }

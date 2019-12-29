@@ -44,21 +44,21 @@ public class Main {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TabelNames.getEntryInfo());
         map.put(2, Integer.toString(myUserID));
-        return userQuery(map, SQLQuery.getEntryMap());
+        return DBUtils.userQuery(map, SQLQuery.getEntryMap(), URL, USER, PASSWORD);
     }
 
     public List<Map<String, Object>> loadEntryTopics() throws SQLException{
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TabelNames.getEntryToTopic());
         map.put(2, Integer.toString(myUserID));
-        return userQuery(map, SQLQuery.getEntryToTopic());
+        return DBUtils.userQuery(map, SQLQuery.getEntryToTopic(), URL, USER, PASSWORD);
     }
 
     public List<Map<String, Object>> loadTopics() throws SQLException{
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TabelNames.getUserTopic());
         map.put(2, Integer.toString(myUserID));
-        return userQuery(map, SQLQuery.getTopics());
+        return DBUtils.userQuery(map, SQLQuery.getTopics(), URL, USER, PASSWORD);
     }
 
     //Saving:
@@ -89,7 +89,7 @@ public class Main {
         map.put(5, e.getMyColorasString());
         map.put(6, e.getMyCreatedasString());
         map.put(7, e.getMyModfiedasString());
-        userAction(map, SQLQuery.modifyEntry());
+        DBUtils.userAction(map, SQLQuery.modifyEntry(), URL, USER, PASSWORD);
     }
 
     /*
@@ -97,33 +97,6 @@ public class Main {
     Private Helpers:
     ----------------------------
      */
-
-    private void userAction(Map<Integer, String> fillers, String command) throws SQLException{
-        Connection con = DBUtils.makeConnection(URL, USER, PASSWORD);
-        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, command);
-        pst.executeQuery(command);
-        DBUtils.close(pst);
-        DBUtils.close(con);
-    }
-
-    private List<Map<String, Object>> userQuery(Map<Integer, String> fillers, String query) throws SQLException{
-        Connection con = DBUtils.makeConnection(URL, USER, PASSWORD);
-        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, query);
-        ResultSet rs = pst.executeQuery();
-        DBUtils.close(pst);
-        List<Map<String, Object>> ret = DBUtils.map(rs);
-        DBUtils.close(rs);
-        DBUtils.close(con);
-        return ret;
-    }
-
-    private void remove(int entryID, String tableName) throws SQLException{
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        map.put(2, Integer.toString(myUserID));
-        map.put(3, Integer.toString(entryID));
-        userAction(map, SQLQuery.remove());
-    }
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
         Map<Integer, String> map = new HashMap<>();
@@ -133,8 +106,8 @@ public class Main {
         map.put(4, entry.getMyColorasString());
         map.put(5, entry.getMyCreatedasString());
         map.put(6, entry.getMyModfiedasString());
-        userAction(map, SQLQuery.addEntry());
-        List<Map<String, Object>> ent = userQuery(map, SQLQuery.getEntryID());
+        DBUtils.userAction(map, SQLQuery.addEntry(), URL, USER, PASSWORD);
+        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), URL, USER, PASSWORD);
         return (int) ent.get(0).get(Labels.getEntryId());
     }
 
@@ -146,9 +119,18 @@ public class Main {
             map.put(2, Integer.toString(ID));
             map.put(3, topic);
             map.put(4, color);
-            userAction(map, SQLQuery.addTopic());
+            DBUtils.userAction(map, SQLQuery.addTopic(), URL, USER, PASSWORD);
         }
     }
+
+    private void remove(int entryID, String tableName) throws SQLException{
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, tableName);
+        map.put(2, Integer.toString(myUserID));
+        map.put(3, Integer.toString(entryID));
+        DBUtils.userAction(map, SQLQuery.remove(), URL, USER, PASSWORD);
+    }
+
 
 
 }
