@@ -1,6 +1,5 @@
 package BackEnd.Main;
 
-import BackEnd.Exceptions.DateExceptions.InvalidDateException;
 import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
 import Data.Communication.DataParser;
 import Data.Communication.Main;
@@ -43,25 +42,18 @@ public class Journal {
     public void createEntry(Set<Topic> topics, String text, String title, Date date, String color)
     throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
-        updateTopics(topics);
-        updateEntries(text, topics, title, date, color);
+        updateTopicBank(topics);
+        addEntry(text, topics, title, date, color);
     }
 
-    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate){
-        Entry e = myEntryMap.get(entryID);
-        e.setMyTitle(title);
-        e.updateModification();
-        e.setText(text);
-        e.setMyTopics(topics);
-        myTopics.addAll(topics);
-        if(!creationDate.equals(e.getMyCreated())){ // if creation date has been modified, adjust order
-            e.setMyCreated(creationDate);
-            reorder(e);
-        }
-        myDataManager.save(e, myTopics);
+    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate)
+    throws SQLException{
+
+        updateTopicBank(topics);
+        modifyEntry(entryID, topics, text, title, creationDate);
     }
 
-    public void removeEntry(int entryID) {
+    public void removeEntry(int entryID) throws SQLException{
         myDataManager.removeEntry(entryID);
         myEntries.remove(myEntryMap.get(entryID));
         myEntryMap.remove(entryID);
@@ -90,16 +82,18 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateTopics(Set<Topic> topics) throws SQLException{
-        myTopics.addAll(topics);
+    private void updateTopicBank(Set<Topic> topics) throws SQLException{
+        Set<Topic> topicsCpy = new HashSet<>(topics);
+        topicsCpy.removeAll(myTopics); //looks for new topics, makes map with which to update topic bank in DB
         Map<String, String> topicToColor = new HashMap<>();
-        for(String topic : topicToColor.keySet()){
-            topicToColor.put(topic, topicToColor.get(topic));
+        for(Topic topic : topicsCpy){
+            topicToColor.put(topic.getMyTopic(), topic.getMyColor());
         }
-        myDataManager.addTopics(topicToColor);
+        myDataManager.addToTopicBank(topicToColor); //updates DB topics
+        myTopics.addAll(topics); //updates topic bank datatype
     }
 
-    private void updateEntries(String text, Set<Topic> topics, String title, Date date, String color)
+    private void addEntry(String text, Set<Topic> topics, String title, Date date, String color)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
         Entry entry = date == null ? new Entry(title, topics, text, color) : new Entry(title, topics, text, color, date);
@@ -109,6 +103,20 @@ public class Journal {
         myEntries.add(entry);
     }
 
+    private void modifyEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate) throws SQLException{
+        Entry e = myEntryMap.get(entryID);
+        e.setMyTitle(title);
+        e.updateModification();
+        e.setText(text);
+        e.setMyTopics(topics);
+
+        if(!creationDate.equals(e.getMyCreated())){ // if creation date has been modified, adjust order
+            e.setMyCreated(creationDate);
+            reorder(e);
+        }
+
+        myDataManager.save(entryID, e);
+    }
 
     private void reorder(Entry e){
         myEntries.remove(e);

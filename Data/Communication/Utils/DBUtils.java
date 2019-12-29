@@ -69,4 +69,14 @@ public class DBUtils {
         }
         return result;
     }
+
+    public static PreparedStatement buildPreparedStatement(Map<Integer, String> fillers, Connection con, String statement)
+            throws SQLException{
+
+        PreparedStatement pst = con.prepareStatement(statement);
+        for(int i : fillers.keySet()){
+            pst.setString(i, fillers.get(i));
+        }
+        return pst;
+    }
 }
