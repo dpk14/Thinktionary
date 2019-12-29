@@ -44,9 +44,17 @@ public class DataParser {
     }
 
     public static Set<Topic> parseTopics(List<Map<String, Object>> topics) {
+        Map<String, String> topToCol = new HashMap<>();
         Set<Topic> ret = new HashSet<>();
-        for(Map<String, Object> map : topics){
-            ret.add()
+        for(Map<String, Object> cols : topics){
+            String topicName = cols.get(TOPIC);
+            if(!topToCol.containsKey(topicName)){
+                topToCol.put(topicName, cols.get(COLOR));
+            }
         }
+        for(String name : topToCol.keySet()){
+            ret.add(new Topic(name, topToCol.get(name)));
+        }
+        return ret;
     }
 }
