@@ -4,7 +4,7 @@ import BackEnd.Main.Entry;
 import Data.Communication.Utils.DBUtils;
 import Data.Lib.Labels;
 import Data.Lib.SQLQuery;
-import Data.Lib.TabelNames;
+import Data.Lib.TableNames;
 
 import java.sql.*;
 import java.util.*;
@@ -40,39 +40,39 @@ public class Main {
     //Loading:
 
     public List<Map<String, Object>> loadEntryMap() throws SQLException {
-        return loadTable(TabelNames.getEntryInfo());
+        return loadTable(TableNames.getEntryInfo());
     }
 
     public List<Map<String, Object>> loadEntryTopics() throws SQLException{
-        return loadTable(TabelNames.getEntryToTopic());
+        return loadTable(TableNames.getEntryToTopic());
     }
 
     public List<Map<String, Object>> loadTopicBank() throws SQLException{
-        return loadTable(TabelNames.getUserTopic());
+        return loadTable(TableNames.getUserTopic());
     }
 
     //Saving:
 
     public int createEntry(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
         int entryID = addToEntryInfo(entry);
-        addTopics(TabelNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
+        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
         return entryID;
     }
 
     public void addToTopicBank(Map<String, String> topicToColor) throws SQLException{
-        addTopics(TabelNames.getUserTopic(), myUserID, topicToColor);
+        addTopics(TableNames.getUserTopic(), myUserID, topicToColor);
     }
 
     public void removeEntry(int entryID) throws SQLException{
-        remove(entryID, TabelNames.getEntryToTopic());
-        remove(entryID, TabelNames.getEntryInfo());
+        remove(entryID, TableNames.getEntryToTopic());
+        remove(entryID, TableNames.getEntryInfo());
     }
 
     public void save(int entryID, Entry e) throws SQLException{
-        addTopics(TabelNames.getUserTopic(), entryID, e.getMyTopicsAsMap());
+        addTopics(TableNames.getUserTopic(), entryID, e.getMyTopicsAsMap());
 
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, TabelNames.getEntryInfo());
+        map.put(1, TableNames.getEntryInfo());
         map.put(2, Integer.toString(myUserID));
         map.put(3, Integer.toString(entryID));
         map.put(4, e.getmyTitleasString());

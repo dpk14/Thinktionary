@@ -2,16 +2,28 @@ package Data.Lib;
 
 public class SQLQuery {
     private static final String GET_TABLE= "SELECT * FROM ? WHERE userID = '?'";
-    private static final String GET_ENTRY_ID = "SELECT * FROM " + TabelNames.getEntryInfo() + " " +
-                                                "WHERE userID = '?' " +
-                                                "WHERE Title = '?' " +
-                                                "WHERE Title = '?' " +
-                                                "WHERE Color = '?' " +
-                                                "WHERE Created = '?' " +
-                                                "WHERE Modified = '?'";
-    private static final String ADD_ENTRY = " ";
-    private static final String ADD_TOPIC = " ";
-    private static final String REMOVE = " ";
+    private static final String GET_ENTRY_ID = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
+                                                "WHERE " + Labels.getUSERID() + " = ? " +
+                                                "AND " + Labels.getTITLE() + " = ? " +
+                                                "AND " + Labels.getTEXT() + " = ? " +
+                                                "AND " + Labels.getCOLOR() + " = ? " +
+                                                "AND " + Labels.getCREATED() + " = ? " +
+                                                "AND " + Labels.getMODIFIED()+ " = '?'";
+    private static final String ADD_ENTRY = "INSERT INTO " + TableNames.getEntryInfo() + " " +
+                                            "(" + Labels.getUSERID() + "," +
+                                            "(" + Labels.getTITLE() + "," +
+                                            "(" + Labels.getTEXT() + "," +
+                                            "(" + Labels.getCOLOR() + "," +
+                                            "(" + Labels.getCREATED() + ") " +
+                                            "VALUES (?,?,?,?,?)";
+    private static final String ADD_TOPIC = "INSERT INTO " + TableNames.getUserTopic() +
+                                            "(" + Labels.getUSERID() + "," +
+                                            "(" + Labels.getTOPIC() + "," +
+                                            "(" + Labels.getCOLOR() + ") " +
+                                            "VALUES (?,?,?)";
+    private static final String REMOVE_GIVEN_USERID_ENTRY_D = "DELETE FROM ? WHERE " + Labels.getUSERID() + " = ? " +
+                                                                             "AND " + Labels.getEntryId() + " = ?";
+
     private static final String MODIFY_ENTRY = " ";
 
 
@@ -22,7 +34,7 @@ public class SQLQuery {
 
     public static String getEntryID() { return GET_ENTRY_ID; }
 
-    public static String remove() { return REMOVE; }
+    public static String remove() { return REMOVE_GIVEN_USERID_ENTRY_D; }
 
     public static String modifyEntry() { return MODIFY_ENTRY; }
 
