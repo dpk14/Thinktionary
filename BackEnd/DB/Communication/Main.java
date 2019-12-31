@@ -24,7 +24,6 @@ public class Main {
 
      */
 
-    private final String URL = "jdbc:mysql://localhost:3306/testdb?useSSL=false";
     private final String USER = "testuser";
     private final String PASSWORD = "test623";
     int myUserID;
@@ -81,8 +80,7 @@ public class Main {
         map.put(5, e.getMyCreatedasString());
         map.put(6, e.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
-        String url = DBUrls.getURL(DBNames.getSQLITE(), TableNames.getEntryInfo());
-        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), url, USER, PASSWORD);
+        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
     }
 
     /*
@@ -95,8 +93,7 @@ public class Main {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
-        String url = DBUrls.getURL(DBNames.getSQLITE(), tableName);
-        return DBUtils.userQuery(map, SQLQuery.loadTable(), url, USER, PASSWORD);
+        return DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
     }
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
@@ -106,9 +103,7 @@ public class Main {
         map.put(3, entry.getMyColorasString());
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
-        String url = DBUrls.getURL(DBNames.getSQLITE(), TableNames.getEntryInfo());
-        DBUtils.userAction(map, SQLQuery.addEntry(), url, USER, PASSWORD);
-        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), url, USER, PASSWORD);
+        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
         return (int) ent.get(0).get(ColumnLabels.getEntryId());
     }
 
@@ -120,8 +115,7 @@ public class Main {
             map.put(2, Integer.toString(ID));
             map.put(3, topic);
             map.put(4, color);
-            String url = DBUrls.getURL(DBNames.getSQLITE(), tableName);
-            DBUtils.userAction(map, SQLQuery.addTopic(), tableName, USER, PASSWORD);
+            DBUtils.userAction(map, SQLQuery.addTopic(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
         }
     }
 
@@ -130,8 +124,7 @@ public class Main {
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
         map.put(3, Integer.toString(entryID));
-        String url = DBUrls.getURL(DBNames.getSQLITE(), tableName);
-        DBUtils.userAction(map, SQLQuery.remove(), url, USER, PASSWORD);
+        DBUtils.userAction(map, SQLQuery.remove(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
     }
 
 
