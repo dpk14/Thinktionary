@@ -3,8 +3,7 @@ package BackEnd.API;
 import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.API.EntryComponents.Date;
 import BackEnd.API.EntryComponents.Topic;
-import BackEnd.DB.Communication.DataParser;
-import BackEnd.DB.Communication.Main;
+import BackEnd.Data.API.UserAPI;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -14,7 +13,7 @@ public class Journal {
     Map<Integer, Entry> myEntryMap;
     Set<Topic> myTopics;
     int myUserID;
-    Main myDataManager;
+    UserAPI myDataManager;
 
     /*
     Sorter and manager of Entries; has full access privileges on Entries
@@ -23,14 +22,11 @@ public class Journal {
     //used prepared statements in Java so that you dont have to recompile queries
 
     public Journal(int userID) throws SQLException, InvalidDateFormatException {
-        myDataManager = new Main(userID);
-        List<Map<String, Object>> entryMap = myDataManager.loadEntryMap(); //uses primary IDs and maps them to Entry
+        myDataManager = new UserAPI(userID);
         List<Map<String, Object>> entryTopic = myDataManager.loadEntryTopics();
-        List<Map<String, Object>> topics = myDataManager.loadTopicBank();
-        myEntryMap = DataParser.parseEntryMap(entryMap, entryTopic);
-        myEntries = DataParser.parseEntries(myEntryMap);
-        Collections.sort(myEntries, new EntryComparator());
-        myTopics = DataParser.parseTopics(topics);
+        myEntryMap = myDataManager.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
+        myTopics = myDataManager.loadTopicBank();
+        myEntries = myDataManager.loadEntryList(myEntryMap);
         myUserID = userID;
     }
 
@@ -85,12 +81,12 @@ public class Journal {
 
     private void updateTopicBank(Set<Topic> topics) throws SQLException{
         Set<Topic> topicsCpy = new HashSet<>(topics);
-        topicsCpy.removeAll(myTopics); //looks for new topics, makes map with which to update topic bank in DB
+        topicsCpy.removeAll(myTopics); //looks for new topics, makes map with which to update topic bank in Data
         Map<String, String> topicToColor = new HashMap<>();
         for(Topic topic : topicsCpy){
             topicToColor.put(topic.getMyTopic(), topic.getMyColor());
         }
-        myDataManager.addToTopicBank(topicToColor); //updates DB topics
+        myDataManager.addToTopicBank(topicToColor); //updates Data topics
         myTopics.addAll(topics); //updates topic bank datatype
     }
 

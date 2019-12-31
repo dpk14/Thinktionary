@@ -1,4 +1,4 @@
-package BackEnd.DB.Lib.Paths;
+package BackEnd.Data.Lib.Paths;
 
 public class DBNames {
 

@@ -1,6 +1,6 @@
 package BackEnd.DataBases.SQLite.db;
 
-import BackEnd.DB.Lib.Paths.Drivers.DriverPaths;
+import BackEnd.Data.Lib.Paths.Drivers.DriverPaths;
 
 import java.io.File;
 

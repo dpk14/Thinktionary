@@ -1,4 +1,4 @@
-package BackEnd.DB.Lib.SQLStrings;
+package BackEnd.Data.Lib.SQLStrings;
 
 public class SQLQuery {
     private static final String GET_TABLE = "SELECT * FROM ? WHERE userID = '?'";
@@ -8,7 +8,8 @@ public class SQLQuery {
                                                 "AND " + ColumnLabels.getTEXT() + " = ? " +
                                                 "AND " + ColumnLabels.getCOLOR() + " = ? " +
                                                 "AND " + ColumnLabels.getCREATED() + " = ? " +
-                                                "AND " + ColumnLabels.getMODIFIED()+ " = '?'";
+                                                "AND " + ColumnLabels.getMODIFIED()+ " = ?";
+
     private static final String ADD_ENTRY = "INSERT INTO " + TableNames.getEntryInfo() + " " +
                                             "(" + ColumnLabels.getUSERID() + "," +
                                             "(" + ColumnLabels.getTITLE() + "," +
@@ -16,11 +17,13 @@ public class SQLQuery {
                                             "(" + ColumnLabels.getCOLOR() + "," +
                                             "(" + ColumnLabels.getCREATED() + ") " +
                                             "VALUES (?,?,?,?,?)";
+
     private static final String ADD_TOPIC = "INSERT INTO " + TableNames.getUserTopic() +
                                             "(" + ColumnLabels.getUSERID() + "," +
                                             "(" + ColumnLabels.getTOPIC() + "," +
                                             "(" + ColumnLabels.getCOLOR() + ") " +
                                             "VALUES (?,?,?)";
+
     private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM ? WHERE " + ColumnLabels.getUSERID() + " = ? " +
                                                                              "AND " + ColumnLabels.getEntryId() + " = ?";
 
@@ -33,6 +36,15 @@ public class SQLQuery {
                                                     ColumnLabels.getMODIFIED() + " = ? " +
                                                     "WHERE " + ColumnLabels.getEntryId() + " = ?";
 
+    private static final String LOAD_USER = "SELECT * FROM ? WHERE " +
+                                            ColumnLabels.getUSERNAME() + " = ? " +
+                                            ColumnLabels.getPASSWORD() + " = ?";
+
+    private static final String ADD_USER = "INSERT INTO " + TableNames.getUserTopic() +
+                                            "(" + ColumnLabels.getUSERNAME() + "," +
+                                            "(" + ColumnLabels.getPASSWORD() + ") " +
+                                            "VALUES (?,?)";
+
     public static String addEntry() { return ADD_ENTRY; }
 
     public static String addTopic() { return ADD_TOPIC; }
@@ -44,4 +56,8 @@ public class SQLQuery {
     public static String modifyEntryInfo() { return MODIFY_ENTRY_INFO; }
 
     public static String loadTable() { return GET_TABLE; }
+
+    public static String loadUser() { return LOAD_USER; }
+
+    public static String addUser() { return ADD_USER; }
 }

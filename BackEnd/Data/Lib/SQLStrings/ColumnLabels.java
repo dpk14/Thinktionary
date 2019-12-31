@@ -1,4 +1,4 @@
-package BackEnd.DB.Lib.SQLStrings;
+package BackEnd.Data.Lib.SQLStrings;
 
 public class ColumnLabels {
     private static final String TOPIC = "Topic";
@@ -9,6 +9,9 @@ public class ColumnLabels {
     private static final String TEXT = "Text";
     private static final String CREATED = "Created";
     private static final String MODIFIED = "Modified";
+    private static final String USERNAME = "Username";
+    private static final String PASSWORD = "Password";
+
 
     public static String getCOLOR() {
         return String.valueOf(COLOR);
@@ -38,4 +41,7 @@ public class ColumnLabels {
 
     public static String getUSERID() {return String.valueOf(USER_ID); }
 
+    public static String getUSERNAME() {return String.valueOf(USERNAME);}
+
+    public static String getPASSWORD() { return String.valueOf(PASSWORD);}
 }

@@ -17,7 +17,7 @@ public class Entry {
     String myColor;
 
     /*
-    Main, modular unit of information managed by Journal. Packages outside Main backend package cannot create Entries, but if they have received
+    UserAPI, modular unit of information managed by Journal. Packages outside UserAPI backend package cannot create Entries, but if they have received
     an Entry through Journal methods, they have access to Entry getter methods, which allow them to interpret the contents of the Entry.
     Modifications to Entries must be done through Journal.
      */
@@ -42,7 +42,7 @@ public class Entry {
 
     /*
     ----------------------------
-    Public API (Used by BackEnd.DB module. Do not actually give access to the objects
+    Public API (Used by BackEnd.Data module. Do not actually give access to the objects
                     just give access to Strings symbolizing objects):
     ----------------------------
      */

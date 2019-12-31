@@ -1,15 +1,15 @@
-package BackEnd.DB.Communication;
+package BackEnd.Data.Utils;
 
 import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.API.EntryComponents.Date;
 import BackEnd.API.EntryComponents.Topic;
 import BackEnd.API.Entry;
-import BackEnd.DB.Lib.SQLStrings.ColumnLabels;
+import BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 
 import java.util.*;
 
 
-public class DataParser {
+public class ParserUtils {
 
     public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic)
     throws NumberFormatException, ClassCastException, InvalidDateFormatException {
@@ -54,5 +54,13 @@ public class DataParser {
             ret.add(new Topic(name, topToCol.get(name)));
         }
         return ret;
+    }
+
+    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+        return (int) userInfo.get(0).get(ColumnLabels.getUSERID());
+    }
+
+    public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
+        return (int) ent.get(0).get(ColumnLabels.getEntryId());
     }
 }

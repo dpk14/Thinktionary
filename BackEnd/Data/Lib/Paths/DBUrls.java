@@ -1,6 +1,4 @@
-package BackEnd.DB.Lib.Paths;
-
-import BackEnd.DB.Lib.SQLStrings.TableNames;
+package BackEnd.Data.Lib.Paths;
 
 import java.util.HashMap;
 import java.util.Map;

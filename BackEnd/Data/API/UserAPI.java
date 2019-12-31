@@ -1,17 +1,21 @@
-package BackEnd.DB.Communication;
+package BackEnd.Data.API;
 
 import BackEnd.API.Entry;
-import BackEnd.DB.Communication.Utils.DBUtils;
-import BackEnd.DB.Lib.Paths.DBNames;
-import BackEnd.DB.Lib.Paths.DBUrls;
-import BackEnd.DB.Lib.SQLStrings.ColumnLabels;
-import BackEnd.DB.Lib.SQLStrings.SQLQuery;
-import BackEnd.DB.Lib.SQLStrings.TableNames;
+import BackEnd.API.EntryComponents.Topic;
+import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
+import BackEnd.API.Journal;
+import BackEnd.Data.Utils.DBUtils;
+import BackEnd.Data.Lib.Paths.DBNames;
+import BackEnd.Data.Lib.Paths.DBUrls;
+import BackEnd.Data.Lib.SQLStrings.ColumnLabels;
+import BackEnd.Data.Lib.SQLStrings.SQLQuery;
+import BackEnd.Data.Lib.SQLStrings.TableNames;
+import BackEnd.Data.Utils.ParserUtils;
 
 import java.sql.*;
 import java.util.*;
 
-public class Main {
+public class UserAPI {
 
     /*
     UserID | UserName | Password      name: login
@@ -28,7 +32,7 @@ public class Main {
     private final String PASSWORD = "test623";
     int myUserID;
 
-    public Main(int userID){
+    public UserAPI(int userID){
         myUserID = userID;
     }
 
@@ -40,16 +44,24 @@ public class Main {
 
     //Loading:
 
-    public List<Map<String, Object>> loadEntryMap() throws SQLException {
-        return loadTable(TableNames.getEntryInfo());
+    public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) throws SQLException, InvalidDateFormatException {
+        List<Map<String, Object>> table = loadTable(TableNames.getEntryInfo());
+        return ParserUtils.parseEntryMap(table, entryTopic);
     }
 
     public List<Map<String, Object>> loadEntryTopics() throws SQLException{
         return loadTable(TableNames.getEntryToTopic());
     }
 
-    public List<Map<String, Object>> loadTopicBank() throws SQLException{
-        return loadTable(TableNames.getUserTopic());
+    public Set<Topic> loadTopicBank() throws SQLException{
+        List<Map<String, Object>> topics = loadTable(TableNames.getUserTopic());
+        return ParserUtils.parseTopics(topics);
+    }
+
+    public List<Entry> loadEntryList(Map<Integer, Entry> myEntryMap) {
+        List<Entry> entries = ParserUtils.parseEntries(myEntryMap);
+        Collections.sort(entries, new Entry.EntryComparator());
+        return entries;
     }
 
     //Saving:
@@ -104,7 +116,7 @@ public class Main {
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
         List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
-        return (int) ent.get(0).get(ColumnLabels.getEntryId());
+        return ParserUtils.getEntryID(ent);
     }
 
     private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws SQLException{
@@ -126,7 +138,5 @@ public class Main {
         map.put(3, Integer.toString(entryID));
         DBUtils.userAction(map, SQLQuery.remove(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
     }
-
-
 
 }

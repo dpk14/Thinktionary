@@ -1,4 +1,4 @@
-package BackEnd.DB.Communication.Utils;
+package BackEnd.Data.Utils;
 
 import java.sql.*;
 import java.util.ArrayList;
