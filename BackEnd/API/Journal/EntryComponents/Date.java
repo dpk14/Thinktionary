@@ -17,7 +17,7 @@ public class Date {
     private int mySecond;
     private final String FORMAT = "yyyy/MM/dd HH:mm:ss";
 
-    public Date() throws InvalidDateFormatException, InvalidDateException {
+    public Date()  {
         String current = getCurrentDate();
         try {
             parseDateString(current);
