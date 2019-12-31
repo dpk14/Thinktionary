@@ -10,6 +10,10 @@ public class SQLQuery {
                                                 "AND " + ColumnLabels.getCREATED() + " = ? " +
                                                 "AND " + ColumnLabels.getMODIFIED()+ " = ?";
 
+    private static final String GET_BY_ENTRY_ID = "SELECT * FROM ? " +
+                                                    "WHERE " + ColumnLabels.getUSERID() + " = ? " +
+                                                    "AND " + ColumnLabels.getEntryId()+ " = ?";
+
     private static final String ADD_ENTRY = "INSERT INTO " + TableNames.getEntryInfo() + " " +
                                             "(" + ColumnLabels.getUSERID() + "," +
                                             "(" + ColumnLabels.getTITLE() + "," +
@@ -60,4 +64,6 @@ public class SQLQuery {
     public static String getUser() { return LOAD_USER; }
 
     public static String addUser() { return ADD_USER; }
+
+    public static String getByEntryID() { return GET_BY_ENTRY_ID; }
 }

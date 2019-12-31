@@ -32,17 +32,16 @@ public class LoginDBAPI {
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);
         map.put(3, passWord);
-        List<Map<String, Object>> userInfo = new ArrayList<>();
         try {
-            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            if(userInfo.size() != 1){
+                throw new InvalidLoginException();
+            }
+            return ParserUtils.getUserID(userInfo);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);
         }
-        if(userInfo.size() != 1){
-            throw new InvalidLoginException();
-        }
-        return ParserUtils.getUserID(userInfo);
     }
 
     public void createAccount(String userName, String passWord) throws AccountExistsException {
@@ -53,14 +52,9 @@ public class LoginDBAPI {
         List<Map<String, Object>> userInfo = new ArrayList<>();
         try {
             userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
-        }
-        catch(SQLException e){
-            throw new CorruptDBError(e);
-        }
-        if(userInfo.size() != 0) {
-            throw new AccountExistsException();
-        }
-        try {
+            if(userInfo.size() != 0) {
+                throw new AccountExistsException();
+            }
             DBUtils.userQuery(map, SQLQuery.addUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
         }
         catch(SQLException e){

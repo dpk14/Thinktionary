@@ -29,11 +29,11 @@ public class ParserUtils {
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
             }
+            return ret;
         }
         catch (Exception e){
             throw new CorruptDBError(e);
         }
-        return ret;
     }
 
     public static List<Entry> parseEntries(Map<Integer, Entry> entryMap) {

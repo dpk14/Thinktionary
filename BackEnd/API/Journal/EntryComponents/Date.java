@@ -16,38 +16,30 @@ public class Date {
     private int mySecond;
     private final String FORMAT = "yyyy/MM/dd HH:mm:ss";
 
-    public Date(){
+    public Date() throws InvalidDateFormatException, InvalidDateException {
         String current = getCurrentDate();
         parseDateString(current);
     }
 
-    public Date(String date) throws InvalidDateFormatException{
+    public Date(String date) throws InvalidDateFormatException, InvalidDateException {
         parseDateString(date);
     }
 
-    public Date(int month, int day, int year, int hour, int min, int second){
-        trySetDate(month, day, year, hour, min, second);
+    public Date(int month, int day, int year, int hour, int min, int second) throws InvalidDateException{
+        setDate(month, day, year, hour, min, second);
     }
 
-    public Date(int month, int day, int year){
-        trySetDate(month, day, year, 0, 0, 0);
+    public Date(int month, int day, int year) throws InvalidDateException{
+        setDate(month, day, year, 0, 0, 0);
     }
 
-    private void parseDateString(String str){
+    private void parseDateString(String str) throws InvalidDateException, InvalidDateFormatException{
         String[] splt = str.split("/");
         String[] splt2 = str.substring(1).split(":");
-        trySetDate(Integer.parseInt(splt[1]), Integer.parseInt(splt[2]), Integer.parseInt(splt[0]),
+        setDate(Integer.parseInt(splt[1]), Integer.parseInt(splt[2]), Integer.parseInt(splt[0]),
                 Integer.parseInt(splt2[0]), Integer.parseInt(splt2[1]), Integer.parseInt(splt2[2]));
     }
 
-    private void trySetDate(int month, int day, int year, int hour, int min, int second){
-        try{
-            setDate(month, day, year, hour, min, second);
-        }
-        catch(InvalidDateException e){
-            System.out.println(e); //TODO: change to display window
-        }
-    }
 
     private void setDate(int month, int day, int year, int hour, int min, int second) throws InvalidDateException {
         Map<Integer, Integer> monthToDays = makeMap();

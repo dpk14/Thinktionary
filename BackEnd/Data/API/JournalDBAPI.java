@@ -10,6 +10,7 @@ import BackEnd.Data.Lib.SQLStrings.TableNames;
 import BackEnd.Data.Utils.ParserUtils;
 import BackEnd.ErrorHandling.Errors.CorruptDBError;
 import BackEnd.ErrorHandling.Exceptions.DateExceptions.InvalidDateException;
+import BackEnd.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.sql.*;
 import java.util.*;
@@ -67,7 +68,7 @@ public class JournalDBAPI {
 
     //Saving:
 
-    public int createEntry(Entry entry) throws InvalidDateException {
+    public int createEntry(Entry entry) {
         int entryID = addToEntryInfo(entry);
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
         return entryID;
@@ -77,23 +78,28 @@ public class JournalDBAPI {
         addTopics(TableNames.getUserTopic(), myUserID, topicToColor);
     }
 
-    public void removeEntry(int entryID) throws NoSuchEntryException{
-        remove(entryID, TableNames.getEntryToTopic());
-        remove(entryID, TableNames.getEntryInfo());
+    public void removeEntry(int entryID) throws NoSuchEntryException {
+        removeEntry(entryID, TableNames.getEntryToTopic());
+        removeEntry(entryID, TableNames.getEntryInfo());
     }
 
-    public void save(int entryID, Entry e) throws InvalidDateException{
-        addTopics(TableNames.getUserTopic(), entryID, e.getMyTopicsAsMap());
+    public void save(int entryID, Entry entry){
+        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
 
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getEntryInfo());
         map.put(2, Integer.toString(myUserID));
-        map.put(3, e.getmyTitleasString());
-        map.put(4, e.getMyColorasString());
-        map.put(5, e.getMyCreatedasString());
-        map.put(6, e.getMyModfiedasString());
+        map.put(3, entry.getmyTitleasString());
+        map.put(4, entry.getMyColorasString());
+        map.put(5, entry.getMyCreatedasString());
+        map.put(6, entry.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        try {
+            DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        }
+        catch(SQLException e){
+            throw new CorruptDBError(e);
+        }
     }
 
     /*
@@ -108,44 +114,63 @@ public class JournalDBAPI {
         map.put(2, Integer.toString(myUserID));
         List<Map<String, Object>> ret = new ArrayList<>();
         try{
-            ret = DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            return DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
         }
         catch (SQLException e){
             throw new CorruptDBError(e);
         }
-        return ret;
     }
 
-    private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
+    private int addToEntryInfo(Entry entry) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, Integer.toString(myUserID));
         map.put(2, entry.getmyTitleasString());
         map.put(3, entry.getMyColorasString());
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
-        DBUtils.userQuery(map, SQLQuery.addEntry(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
-        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
-        return ParserUtils.getEntryID(ent);
-    }
-
-    private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws SQLException{
-        Map<Integer, String> map = new HashMap<>();
-        for(String topic : topicToColor.keySet()){
-            String color = topicToColor.get(topic);
-            map.put(1, tableName);
-            map.put(2, Integer.toString(ID));
-            map.put(3, topic);
-            map.put(4, color);
-            DBUtils.userAction(map, SQLQuery.addTopic(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        try {
+            DBUtils.userQuery(map, SQLQuery.addEntry(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            return ParserUtils.getEntryID(ent);
+        }
+        catch(Exception e){
+            throw new CorruptDBError(e);
         }
     }
 
-    private void remove(int entryID, String tableName) throws SQLException{
+    private void addTopics(String tableName, int ID, Map<String, String> topicToColor){
+        try {
+            Map<Integer, String> map = new HashMap<>();
+            for (String topic : topicToColor.keySet()) {
+                String color = topicToColor.get(topic);
+                map.put(1, tableName);
+                map.put(2, Integer.toString(ID));
+                map.put(3, topic);
+                map.put(4, color);
+                DBUtils.userAction(map, SQLQuery.addTopic(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+            System.out.println(e.getStackTrace());
+        }
+    }
+
+    private void removeEntry(int entryID, String tableName) throws NoSuchEntryException{
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
         map.put(3, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.remove(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        try {
+            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            if(toBeRemoved.size() == 0){
+                throw new NoSuchEntryException(entryID);
+            }
+            DBUtils.userAction(map, SQLQuery.remove(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        }
+        catch(SQLException e){
+            throw new CorruptDBError(e);
+        }
     }
 
 }

@@ -3,6 +3,7 @@ package BackEnd.API.Journal;
 import BackEnd.Data.API.JournalDBAPI;
 import BackEnd.API.Journal.EntryComponents.Date;
 import BackEnd.API.Journal.EntryComponents.Topic;
+import BackEnd.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -49,7 +50,7 @@ public class Journal {
         modifyEntry(entryID, topics, text, title, creationDate);
     }
 
-    public void removeEntry(int entryID) throws SQLException{
+    public void removeEntry(int entryID) throws NoSuchEntryException{
         myJournalDBAPI.removeEntry(entryID);
         myEntries.remove(myEntryMap.get(entryID));
         myEntryMap.remove(entryID);
