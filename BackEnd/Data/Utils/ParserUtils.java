@@ -1,9 +1,9 @@
 package BackEnd.Data.Utils;
 
-import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
-import BackEnd.API.EntryComponents.Date;
-import BackEnd.API.EntryComponents.Topic;
-import BackEnd.API.Entry;
+import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
+import BackEnd.API.Journal.EntryComponents.Date;
+import BackEnd.API.Journal.EntryComponents.Topic;
+import BackEnd.API.Journal.Entry;
 import BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 
 import java.util.*;

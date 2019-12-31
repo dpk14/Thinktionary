@@ -1,4 +1,4 @@
-package BackEnd.API.Exceptions.DateExceptions;
+package BackEnd.Exceptions.DateExceptions;
 
 public class InvalidHourException extends InvalidDateException{
     public InvalidHourException(){

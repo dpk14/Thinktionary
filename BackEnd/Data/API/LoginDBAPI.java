@@ -12,12 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoginAPI {
+public class LoginDBAPI {
 
     private String myDBUser;
     private String myDBPassword;
 
-    public LoginAPI(String dbUser, String dbPassword){
+    public LoginDBAPI(String dbUser, String dbPassword){
         myDBUser = dbUser;
         myDBPassword = dbPassword;
     }
@@ -31,7 +31,7 @@ public class LoginAPI {
         return ParserUtils.getUserID(userInfo);
     }
 
-    private void createAccount(String userName, String passWord) throws SQLException {
+    public void createAccount(String userName, String passWord) throws SQLException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);

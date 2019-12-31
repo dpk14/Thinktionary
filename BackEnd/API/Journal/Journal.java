@@ -1,9 +1,11 @@
-package BackEnd.API;
+package BackEnd.API.Journal;
 
-import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
-import BackEnd.API.EntryComponents.Date;
-import BackEnd.API.EntryComponents.Topic;
-import BackEnd.Data.API.UserAPI;
+import BackEnd.Data.API.JournalDBAPI;
+import BackEnd.Exceptions.DateExceptions.InvalidDateException;
+import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
+import BackEnd.API.Journal.EntryComponents.Date;
+import BackEnd.API.Journal.EntryComponents.Topic;
+import com.sun.java.swing.action.ExitAction;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -13,7 +15,7 @@ public class Journal {
     Map<Integer, Entry> myEntryMap;
     Set<Topic> myTopics;
     int myUserID;
-    UserAPI myDataManager;
+    JournalDBAPI myJournalDBAPI;
 
     /*
     Sorter and manager of Entries; has full access privileges on Entries
@@ -21,12 +23,18 @@ public class Journal {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public Journal(int userID) throws SQLException, InvalidDateFormatException {
-        myDataManager = new UserAPI(userID);
-        List<Map<String, Object>> entryTopic = myDataManager.loadEntryTopics();
-        myEntryMap = myDataManager.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
-        myTopics = myDataManager.loadTopicBank();
-        myEntries = myDataManager.loadEntryList(myEntryMap);
+    public Journal(int userID, String userName, String password) throws SQLException{
+        myJournalDBAPI = new JournalDBAPI(userID, userName, password);
+        List<Map<String, Object>> entryTopic = myJournalDBAPI.loadEntryTopics();
+        try {
+            myEntryMap = myJournalDBAPI.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
+        }
+        catch(InvalidDateException e){
+            System.out.println(e.toString(););e.getStackTrace();
+            System.exit(0);
+        }
+        myTopics = myJournalDBAPI.loadTopicBank();
+        myEntries = myJournalDBAPI.loadEntryList(myEntryMap);
         myUserID = userID;
     }
 
@@ -36,14 +44,14 @@ public class Journal {
     ----------------------------
      */
 
-    public void createEntry(Set<Topic> topics, String text, String title, BackEnd.API.EntryComponents.Date date, String color)
+    public void createEntry(Set<Topic> topics, String text, String title, BackEnd.API.Journal.EntryComponents.Date date, String color)
     throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
         updateTopicBank(topics);
         addEntry(text, topics, title, date, color);
     }
 
-    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, BackEnd.API.EntryComponents.Date creationDate)
+    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, BackEnd.API.Journal.EntryComponents.Date creationDate)
     throws SQLException{
 
         updateTopicBank(topics);
@@ -51,7 +59,7 @@ public class Journal {
     }
 
     public void removeEntry(int entryID) throws SQLException{
-        myDataManager.removeEntry(entryID);
+        myJournalDBAPI.removeEntry(entryID);
         myEntries.remove(myEntryMap.get(entryID));
         myEntryMap.remove(entryID);
     }
@@ -86,15 +94,15 @@ public class Journal {
         for(Topic topic : topicsCpy){
             topicToColor.put(topic.getMyTopic(), topic.getMyColor());
         }
-        myDataManager.addToTopicBank(topicToColor); //updates Data topics
+        myJournalDBAPI.addToTopicBank(topicToColor); //updates Data topics
         myTopics.addAll(topics); //updates topic bank datatype
     }
 
-    private void addEntry(String text, Set<Topic> topics, String title, BackEnd.API.EntryComponents.Date date, String color)
+    private void addEntry(String text, Set<Topic> topics, String title, BackEnd.API.Journal.EntryComponents.Date date, String color)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
         Entry entry = date == null ? new Entry(title, topics, text, color) : new Entry(title, topics, text, color, date);
-        int id = myDataManager.createEntry(entry);
+        int id = myJournalDBAPI.createEntry(entry);
 
         myEntryMap.put(id, entry);
         myEntries.add(entry);
@@ -112,7 +120,7 @@ public class Journal {
             reorder(e);
         }
 
-        myDataManager.save(entryID, e);
+        myJournalDBAPI.save(entryID, e);
     }
 
     private void reorder(Entry e){

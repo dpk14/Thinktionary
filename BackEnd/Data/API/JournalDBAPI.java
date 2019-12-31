@@ -1,13 +1,11 @@
 package BackEnd.Data.API;
 
-import BackEnd.API.Entry;
-import BackEnd.API.EntryComponents.Topic;
-import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
-import BackEnd.API.Journal;
+import BackEnd.API.Journal.Entry;
+import BackEnd.API.Journal.EntryComponents.Topic;
+import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.Data.Utils.DBUtils;
 import BackEnd.Data.Lib.Paths.DBNames;
 import BackEnd.Data.Lib.Paths.DBUrls;
-import BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import BackEnd.Data.Lib.SQLStrings.TableNames;
 import BackEnd.Data.Utils.ParserUtils;
@@ -15,7 +13,7 @@ import BackEnd.Data.Utils.ParserUtils;
 import java.sql.*;
 import java.util.*;
 
-public class UserAPI {
+public class JournalDBAPI {
 
     /*
     UserID | UserName | Password      name: login
@@ -32,7 +30,7 @@ public class UserAPI {
     private String myDBPassword;
     int myUserID;
 
-    public UserAPI(int userID, String dbUser, String dbPassword){
+    public JournalDBAPI(int userID, String dbUser, String dbPassword){
         myUserID = userID;
         myDBUser = dbUser;
         myDBPassword = dbPassword;

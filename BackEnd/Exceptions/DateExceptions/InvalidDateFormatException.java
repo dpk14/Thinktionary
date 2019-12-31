@@ -1,4 +1,4 @@
-package BackEnd.API.Exceptions.DateExceptions;
+package BackEnd.Exceptions.DateExceptions;
 
 public class InvalidDateFormatException extends Exception{
     private final String TEXT = "Date is not of the form yyyy/MM/dd HH:mm:ss in Database";

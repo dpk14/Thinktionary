@@ -1,7 +1,7 @@
-package BackEnd.API;
+package BackEnd.API.Journal;
 
-import BackEnd.API.EntryComponents.Date;
-import BackEnd.API.EntryComponents.Topic;
+import BackEnd.API.Journal.EntryComponents.Date;
+import BackEnd.API.Journal.EntryComponents.Topic;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class Entry {
     String myColor;
 
     /*
-    UserAPI, modular unit of information managed by Journal. Packages outside UserAPI backend package cannot create Entries, but if they have received
+    JournalDBAPI, modular unit of information managed by Journal. Packages outside JournalDBAPI backend package cannot create Entries, but if they have received
     an Entry through Journal methods, they have access to Entry getter methods, which allow them to interpret the contents of the Entry.
     Modifications to Entries must be done through Journal.
      */

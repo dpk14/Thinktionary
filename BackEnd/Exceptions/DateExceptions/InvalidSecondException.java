@@ -1,4 +1,4 @@
-package BackEnd.API.Exceptions.DateExceptions;
+package BackEnd.Exceptions.DateExceptions;
 
 public class InvalidSecondException extends InvalidDateException {
     public InvalidSecondException(){

@@ -1,4 +1,4 @@
-package BackEnd.API.Exceptions.DateExceptions;
+package BackEnd.Exceptions.DateExceptions;
 
 public abstract class InvalidDateException extends Exception {
     private final String EXCEPTION = "Choose a valid ";

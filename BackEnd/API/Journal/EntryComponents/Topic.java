@@ -1,4 +1,4 @@
-package BackEnd.API.EntryComponents;
+package BackEnd.API.Journal.EntryComponents;
 
 public class Topic {
     String myTopic;
