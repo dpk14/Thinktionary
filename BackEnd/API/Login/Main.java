@@ -15,13 +15,13 @@ public class Main {
         myLoginDBAPI = new LoginDBAPI(dbUsername, dbPassword);
     }
 
-    public Journal login(String username, String password) throws SQLException, InvalidLoginException{
+    public Journal login(String username, String password) throws InvalidLoginException{
         int userID = myLoginDBAPI.login(username, password);
         return new Journal(userID, username, password);
 
     }
 
-    public void makeAccount(String username, String password) throws SQLException, AccountExistsException{ //second exception has two inheritances, password exists and username exists
+    public void makeAccount(String username, String password) throws AccountExistsException{ //second exception has two inheritances, password exists and username exists
         myLoginDBAPI.createAccount(username, password);
     }
 }
