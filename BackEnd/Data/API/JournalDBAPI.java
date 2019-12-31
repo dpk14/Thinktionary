@@ -2,13 +2,13 @@ package BackEnd.Data.API;
 
 import BackEnd.API.Journal.Entry;
 import BackEnd.API.Journal.EntryComponents.Topic;
-import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.Data.Utils.DBUtils;
 import BackEnd.Data.Lib.Paths.DBNames;
 import BackEnd.Data.Lib.Paths.DBUrls;
 import BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import BackEnd.Data.Lib.SQLStrings.TableNames;
 import BackEnd.Data.Utils.ParserUtils;
+import BackEnd.ErrorHandling.Errors.CorruptDBError;
 
 import java.sql.*;
 import java.util.*;
@@ -44,16 +44,16 @@ public class JournalDBAPI {
 
     //Loading:
 
-    public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) throws SQLException, InvalidDateFormatException {
+    public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) {
         List<Map<String, Object>> table = loadTable(TableNames.getEntryInfo());
         return ParserUtils.parseEntryMap(table, entryTopic);
     }
 
-    public List<Map<String, Object>> loadEntryTopics() throws SQLException{
+    public List<Map<String, Object>> loadEntryTopics() {
         return loadTable(TableNames.getEntryToTopic());
     }
 
-    public Set<Topic> loadTopicBank() throws SQLException{
+    public Set<Topic> loadTopicBank() {
         List<Map<String, Object>> topics = loadTable(TableNames.getUserTopic());
         return ParserUtils.parseTopics(topics);
     }
@@ -101,11 +101,18 @@ public class JournalDBAPI {
     ----------------------------
      */
 
-    private List<Map<String, Object>> loadTable(String tableName) throws SQLException{
+    private List<Map<String, Object>> loadTable(String tableName) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
-        return DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        List<Map<String, Object>> ret = new ArrayList<>();
+        try{
+            ret = DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        }
+        catch (SQLException e){
+            throw new CorruptDBError(e);
+        }
+        return ret;
     }
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{

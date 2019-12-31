@@ -2,24 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Errors/CorruptDBError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/EntryComponents/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal/EntryComponents/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/EntryComponents/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal/EntryComponents/Topic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidDateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDateException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidDateFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDateFormatException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidDayException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDayException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidHourException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidHourException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidMinuteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidMinuteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidMonthException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidMonthException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/DateExceptions/InvalidSecondException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidSecondException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Exceptions/NoTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Exceptions/NoTopicException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal/Journal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Objects/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Login/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Objects/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/API/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/API/Journal/EntryComponents/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal/EntryComponents/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal/Journal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDateFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDayException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidHourException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidMinuteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidMonthException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidSecondException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Exceptions/NoTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/NoTopicException.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,7 +29,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal/Entry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="-1005">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -45,10 +41,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="141" selection-start-line="141" selection-end-line="141" />
+            <state relative-caret-position="1773">
+              <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1310#1311#0" expanded="true" />
+                <element signature="e#1372#1373#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,8 +67,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BackEnd/API/Login/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state relative-caret-position="204">
+              <caret line="17" column="87" lean-forward="true" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
               <folding>
                 <element signature="e#264#265#0" expanded="true" />
                 <element signature="e#318#319#0" expanded="true" />
@@ -80,31 +78,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/TableNames.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal/Journal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+            <state relative-caret-position="-57">
+              <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -121,11 +101,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="62" column="89" selection-start-line="62" selection-start-column="89" selection-end-line="62" selection-end-column="89" />
+            <state relative-caret-position="470">
+              <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BackEnd/Data/Utils/DBUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="93" column="97" selection-start-line="93" selection-start-column="97" selection-end-line="93" selection-end-column="97" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/NoTopicException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Errors/CorruptDBError.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -143,8 +153,8 @@
     <findStrings>
       <find>adden</find>
       <find>date</find>
-      <find>parse</find>
       <find>addEntry</find>
+      <find>parse</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,12 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BackEnd/DataBase/Lib/Labels" />
-        <option value="$PROJECT_DIR$/BackEnd/DataBase/UserDataManager.java" />
-        <option value="$PROJECT_DIR$/BackEnd/Main/DataParser.java" />
-        <option value="$PROJECT_DIR$/Data/Main/UserDataManager.java" />
-        <option value="$PROJECT_DIR$/Communicator/UserDataManager.java" />
-        <option value="$PROJECT_DIR$/Data/Communicator/UserDataManager.java" />
         <option value="$PROJECT_DIR$/Data/Communication/UserDataManager.java" />
         <option value="$PROJECT_DIR$/Data/Lib/Labels" />
         <option value="$PROJECT_DIR$/Data/Exceptions/CorruptDBException.java" />
@@ -192,7 +196,6 @@
         <option value="$PROJECT_DIR$/BackEnd/DB/API/UserAPI.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/TableNames.java" />
         <option value="$PROJECT_DIR$/BackEnd/API/Journal.java" />
-        <option value="$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/ColumnLabels.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" />
@@ -201,9 +204,16 @@
         <option value="$PROJECT_DIR$/BackEnd/Main/API/Journal/Journal.java" />
         <option value="$PROJECT_DIR$/BackEnd/API/API/Journal/Journal.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" />
-        <option value="$PROJECT_DIR$/BackEnd/API/Journal/Journal.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/API/LoginDBAPI.java" />
         <option value="$PROJECT_DIR$/BackEnd/API/Login/Main.java" />
+        <option value="$PROJECT_DIR$/BackEnd/ErrorHandling/NoTopicException.java" />
+        <option value="$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/NoTopicException.java" />
+        <option value="$PROJECT_DIR$/BackEnd/ErrorHandling/Errors/InvalidErrorData.java" />
+        <option value="$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java" />
+        <option value="$PROJECT_DIR$/BackEnd/ErrorHandling/Errors/CorruptDBError.java" />
+        <option value="$PROJECT_DIR$/BackEnd/API/Journal/Journal.java" />
+        <option value="$PROJECT_DIR$/BackEnd/Data/Utils/DBUtils.java" />
+        <option value="$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java" />
       </list>
     </option>
   </component>
@@ -276,6 +286,27 @@
               <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
               <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
               <item name="BackEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="Utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="BackEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="ErrorHandling" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="BackEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="ErrorHandling" type="462c0819:PsiDirectoryNode" />
+              <item name="Errors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="BackEnd" type="462c0819:PsiDirectoryNode" />
+              <item name="ErrorHandling" type="462c0819:PsiDirectoryNode" />
               <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -287,7 +318,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577772930609" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577774553777" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -332,12 +363,12 @@
       <workItem from="1577485741736" duration="41353000" />
       <workItem from="1577601613034" duration="25147000" />
       <workItem from="1577737680847" duration="6972000" />
-      <workItem from="1577749771652" duration="16655000" />
+      <workItem from="1577749771652" duration="18276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90127000" />
+    <option name="totallyTimeSpent" value="91748000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -386,7 +417,7 @@
     <entry file="file://$PROJECT_DIR$/Objects/Bank.java" />
     <entry file="file://$PROJECT_DIR$/Journal/Entry/NoTopicException.java" />
     <entry file="file://$PROJECT_DIR$/Journal/Entry/Components/Text.java" />
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidMinuteException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
@@ -397,7 +428,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidMonthException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
@@ -408,7 +439,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidSecondException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
@@ -420,16 +451,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Data/Lib/Labels" />
     <entry file="file://$PROJECT_DIR$/Data/Lib/SQLQuery" />
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/NoTopicException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/Exceptions/CorruptDBException.java" />
     <entry file="file://$PROJECT_DIR$/Data/Communication/Utils/ReflectionUtils.java" />
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDateFormatException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
@@ -439,21 +463,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDateException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="55" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidDayException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="11" selection-end-line="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Exceptions/DateExceptions/InvalidHourException.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
@@ -541,30 +565,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Data/Utils/DBUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/TableNames.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="62" column="89" selection-start-line="62" selection-start-column="89" selection-end-line="62" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -582,16 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BackEnd/API/Login/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -599,20 +593,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal/Journal.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal/Entry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="141" selection-start-line="141" selection-end-line="141" />
+        <state relative-caret-position="-1005">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -629,10 +613,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Errors/CorruptDBError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/ErrorHandling/Exceptions/NoTopicException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="33" column="40" lean-forward="true" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/Data/Utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="93" column="97" selection-start-line="93" selection-start-column="97" selection-end-line="93" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/JournalDBAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1773">
+          <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1310#1311#0" expanded="true" />
+            <element signature="e#1372#1373#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal/Journal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BackEnd/API/Login/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        <state relative-caret-position="204">
+          <caret line="17" column="87" lean-forward="true" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
           <folding>
             <element signature="e#264#265#0" expanded="true" />
             <element signature="e#318#319#0" expanded="true" />

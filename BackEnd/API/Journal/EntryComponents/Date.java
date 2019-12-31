@@ -1,6 +1,6 @@
 package BackEnd.API.Journal.EntryComponents;
 
-import BackEnd.Exceptions.DateExceptions.*;
+import BackEnd.ErrorHandling.Exceptions.DateExceptions.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

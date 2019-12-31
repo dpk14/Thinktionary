@@ -1,33 +1,37 @@
 package BackEnd.Data.Utils;
 
-import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.API.Journal.EntryComponents.Date;
 import BackEnd.API.Journal.EntryComponents.Topic;
 import BackEnd.API.Journal.Entry;
 import BackEnd.Data.Lib.SQLStrings.ColumnLabels;
+import BackEnd.ErrorHandling.Errors.CorruptDBError;
 
 import java.util.*;
 
-
 public class ParserUtils {
 
-    public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic)
-    throws NumberFormatException, ClassCastException, InvalidDateFormatException {
+    public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
-        for (Map<String, Object> cols : entryTopic) {
-            Topic topic = new Topic((String) cols.get(ColumnLabels.getTOPIC()), (String) cols.get(ColumnLabels.getCOLOR()));
-            String entryID = (String) cols.get(ColumnLabels.getEntryId());
-            Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
-            topics.add(topic);
-            topicSets.put((String) cols.get(ColumnLabels.getEntryId()), topics);
+        try {
+            for (Map<String, Object> cols : entryTopic) {
+                Topic topic = new Topic((String) cols.get(ColumnLabels.getTOPIC()), (String) cols.get(ColumnLabels.getCOLOR()));
+                String entryID = (String) cols.get(ColumnLabels.getEntryId());
+                Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
+                topics.add(topic);
+                topicSets.put((String) cols.get(ColumnLabels.getEntryId()), topics);
+            }
+            for (Map<String, Object> cols : entryMap) {
+                String id = (String) cols.get(ColumnLabels.getEntryId());
+                Set<Topic> topics = topicSets.get(id);
+                Date created = new Date((String) cols.get(ColumnLabels.getCREATED()));
+                Entry entry = new Entry((String) cols.get(ColumnLabels.getTITLE()), topics, (String) cols.get(ColumnLabels.getTEXT()), (String) cols.get(ColumnLabels.getCOLOR()), created);
+                int ID = Integer.parseInt(id);
+                ret.put(ID, entry);
+            }
         }
-        for (Map<String, Object> cols : entryMap) {
-            String id = (String) cols.get(ColumnLabels.getEntryId());
-            Set<Topic> topics = topicSets.get(id);
-            Entry entry = new Entry((String) cols.get(ColumnLabels.getTITLE()), topics, (String) cols.get(ColumnLabels.getTEXT()), (String) cols.get(ColumnLabels.getCOLOR()), new Date((String) cols.get(ColumnLabels.getCREATED())));
-            int ID = Integer.parseInt(id);
-            ret.put(ID, entry);
+        catch (Exception e){
+            throw new CorruptDBError(e);
         }
         return ret;
     }

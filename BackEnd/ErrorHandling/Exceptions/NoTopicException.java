@@ -1,4 +1,4 @@
-package BackEnd.Exceptions;
+package BackEnd.ErrorHandling.Exceptions;
 
 public class NoTopicException extends Exception{
     private final String EXCEPTION = "Topic does not exist";

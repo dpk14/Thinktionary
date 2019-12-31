@@ -1,11 +1,8 @@
 package BackEnd.API.Journal;
 
 import BackEnd.Data.API.JournalDBAPI;
-import BackEnd.Exceptions.DateExceptions.InvalidDateException;
-import BackEnd.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.API.Journal.EntryComponents.Date;
 import BackEnd.API.Journal.EntryComponents.Topic;
-import com.sun.java.swing.action.ExitAction;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -23,16 +20,10 @@ public class Journal {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public Journal(int userID, String userName, String password) throws SQLException{
+    public Journal(int userID, String userName, String password){
         myJournalDBAPI = new JournalDBAPI(userID, userName, password);
         List<Map<String, Object>> entryTopic = myJournalDBAPI.loadEntryTopics();
-        try {
-            myEntryMap = myJournalDBAPI.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
-        }
-        catch(InvalidDateException e){
-            System.out.println(e.toString(););e.getStackTrace();
-            System.exit(0);
-        }
+        myEntryMap = myJournalDBAPI.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
         myTopics = myJournalDBAPI.loadTopicBank();
         myEntries = myJournalDBAPI.loadEntryList(myEntryMap);
         myUserID = userID;
