@@ -2,6 +2,8 @@ package BackEnd.API.Login;
 
 import BackEnd.API.Journal.Journal;
 import BackEnd.Data.API.LoginDBAPI;
+import BackEnd.ErrorHandling.Exceptions.AccountExistsException;
+import BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
 import sun.rmi.runtime.Log;
 
 import java.sql.SQLException;
@@ -15,13 +17,13 @@ public class Main {
         myLoginDBAPI = new LoginDBAPI(dbUsername, dbPassword);
     }
 
-    public Journal login(String username, String password) throws InvalidLoginException{
+    public Journal login(String username, String password) throws InvalidLoginException {
         int userID = myLoginDBAPI.login(username, password);
         return new Journal(userID, username, password);
 
     }
 
-    public void makeAccount(String username, String password) throws AccountExistsException{ //second exception has two inheritances, password exists and username exists
+    public void makeAccount(String username, String password) throws AccountExistsException { //second exception has two inheritances, password exists and username exists
         myLoginDBAPI.createAccount(username, password);
     }
 }

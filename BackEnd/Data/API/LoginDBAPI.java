@@ -27,7 +27,7 @@ public class LoginDBAPI {
         myDBPassword = dbPassword;
     }
 
-    public int login(String userName, String passWord) throws SQLException, InvalidLoginException {
+    public int login(String userName, String passWord) throws InvalidLoginException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);
