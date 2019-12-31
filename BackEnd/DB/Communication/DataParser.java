@@ -4,7 +4,7 @@ import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.API.EntryComponents.Date;
 import BackEnd.API.EntryComponents.Topic;
 import BackEnd.API.Entry;
-import BackEnd.DB.Lib.Labels;
+import BackEnd.DB.Lib.SQLStrings.ColumnLabels;
 
 import java.util.*;
 
@@ -16,16 +16,16 @@ public class DataParser {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
         for (Map<String, Object> cols : entryTopic) {
-            Topic topic = new Topic((String) cols.get(Labels.getTOPIC()), (String) cols.get(Labels.getCOLOR()));
-            String entryID = (String) cols.get(Labels.getEntryId());
+            Topic topic = new Topic((String) cols.get(ColumnLabels.getTOPIC()), (String) cols.get(ColumnLabels.getCOLOR()));
+            String entryID = (String) cols.get(ColumnLabels.getEntryId());
             Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
             topics.add(topic);
-            topicSets.put((String) cols.get(Labels.getEntryId()), topics);
+            topicSets.put((String) cols.get(ColumnLabels.getEntryId()), topics);
         }
         for (Map<String, Object> cols : entryMap) {
-            String id = (String) cols.get(Labels.getEntryId());
+            String id = (String) cols.get(ColumnLabels.getEntryId());
             Set<Topic> topics = topicSets.get(id);
-            Entry entry = new Entry((String) cols.get(Labels.getTITLE()), topics, (String) cols.get(Labels.getTEXT()), (String) cols.get(Labels.getCOLOR()), new Date((String) cols.get(Labels.getCREATED())));
+            Entry entry = new Entry((String) cols.get(ColumnLabels.getTITLE()), topics, (String) cols.get(ColumnLabels.getTEXT()), (String) cols.get(ColumnLabels.getCOLOR()), new Date((String) cols.get(ColumnLabels.getCREATED())));
             int ID = Integer.parseInt(id);
             ret.put(ID, entry);
         }
@@ -45,9 +45,9 @@ public class DataParser {
         Map<String, String> topToCol = new HashMap<>();
         Set<Topic> ret = new HashSet<>();
         for(Map<String, Object> cols : topics){
-            String topicName = (String) cols.get(Labels.getTOPIC());
+            String topicName = (String) cols.get(ColumnLabels.getTOPIC());
             if(!topToCol.containsKey(topicName)){
-                topToCol.put(topicName, (String) cols.get(Labels.getCOLOR()));
+                topToCol.put(topicName, (String) cols.get(ColumnLabels.getCOLOR()));
             }
         }
         for(String name : topToCol.keySet()){

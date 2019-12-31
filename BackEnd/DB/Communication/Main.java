@@ -2,9 +2,11 @@ package BackEnd.DB.Communication;
 
 import BackEnd.API.Entry;
 import BackEnd.DB.Communication.Utils.DBUtils;
-import BackEnd.DB.Lib.Labels;
-import BackEnd.DB.Lib.SQLQuery;
-import BackEnd.DB.Lib.TableNames;
+import BackEnd.DB.Lib.Paths.DBNames;
+import BackEnd.DB.Lib.Paths.DBUrls;
+import BackEnd.DB.Lib.SQLStrings.ColumnLabels;
+import BackEnd.DB.Lib.SQLStrings.SQLQuery;
+import BackEnd.DB.Lib.SQLStrings.TableNames;
 
 import java.sql.*;
 import java.util.*;
@@ -79,7 +81,8 @@ public class Main {
         map.put(5, e.getMyCreatedasString());
         map.put(6, e.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.modifyEntry(), URL, USER, PASSWORD);
+        String url = DBUrls.getURL(DBNames.getSQLITE(), TableNames.getEntryInfo());
+        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), url, USER, PASSWORD);
     }
 
     /*
@@ -92,7 +95,8 @@ public class Main {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
-        return DBUtils.userQuery(map, SQLQuery.loadTable(), URL, USER, PASSWORD);
+        String url = DBUrls.getURL(DBNames.getSQLITE(), tableName);
+        return DBUtils.userQuery(map, SQLQuery.loadTable(), url, USER, PASSWORD);
     }
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
@@ -102,9 +106,10 @@ public class Main {
         map.put(3, entry.getMyColorasString());
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
-        DBUtils.userAction(map, SQLQuery.addEntry(), URL, USER, PASSWORD);
-        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), URL, USER, PASSWORD);
-        return (int) ent.get(0).get(Labels.getEntryId());
+        String url = DBUrls.getURL(DBNames.getSQLITE(), TableNames.getEntryInfo());
+        DBUtils.userAction(map, SQLQuery.addEntry(), url, USER, PASSWORD);
+        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), url, USER, PASSWORD);
+        return (int) ent.get(0).get(ColumnLabels.getEntryId());
     }
 
     private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws SQLException{
@@ -115,7 +120,8 @@ public class Main {
             map.put(2, Integer.toString(ID));
             map.put(3, topic);
             map.put(4, color);
-            DBUtils.userAction(map, SQLQuery.addTopic(), URL, USER, PASSWORD);
+            String url = DBUrls.getURL(DBNames.getSQLITE(), tableName);
+            DBUtils.userAction(map, SQLQuery.addTopic(), tableName, USER, PASSWORD);
         }
     }
 
@@ -124,7 +130,8 @@ public class Main {
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
         map.put(3, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.remove(), URL, USER, PASSWORD);
+        String url = DBUrls.getURL(DBNames.getSQLITE(), tableName);
+        DBUtils.userAction(map, SQLQuery.remove(), url, USER, PASSWORD);
     }
 
 

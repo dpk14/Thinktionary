@@ -1,4 +1,4 @@
-package BackEnd.DB.Lib;
+package BackEnd.DB.Lib.SQLStrings;
 
 public class TableNames {
     private static final String ENTRY_INFO = "Entry Info";

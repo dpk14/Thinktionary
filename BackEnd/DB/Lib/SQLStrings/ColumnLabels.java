@@ -1,6 +1,6 @@
-package BackEnd.DB.Lib;
+package BackEnd.DB.Lib.SQLStrings;
 
-public class Labels {
+public class ColumnLabels {
     private static final String TOPIC = "Topic";
     private static final String COLOR = "Color";
     private static final String ENTRY_ID = "Entry ID";
