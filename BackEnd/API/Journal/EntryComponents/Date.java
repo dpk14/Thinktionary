@@ -1,5 +1,6 @@
 package BackEnd.API.Journal.EntryComponents;
 
+import BackEnd.ErrorHandling.Errors.CorruptDBError;
 import BackEnd.ErrorHandling.Exceptions.DateExceptions.*;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,13 @@ public class Date {
 
     public Date() throws InvalidDateFormatException, InvalidDateException {
         String current = getCurrentDate();
-        parseDateString(current);
+        try {
+            parseDateString(current);
+        }
+        catch(Exception e){
+            System.out.println("parseDateString method is incorrect, or FORMAT needs to be altered");
+            System.out.println(e.getStackTrace());
+        }
     }
 
     public Date(String date) throws InvalidDateFormatException, InvalidDateException {
