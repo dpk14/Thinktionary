@@ -9,6 +9,7 @@ import BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import BackEnd.Data.Lib.SQLStrings.TableNames;
 import BackEnd.Data.Utils.ParserUtils;
 import BackEnd.ErrorHandling.Errors.CorruptDBError;
+import BackEnd.ErrorHandling.Exceptions.DateExceptions.InvalidDateException;
 
 import java.sql.*;
 import java.util.*;
@@ -66,22 +67,22 @@ public class JournalDBAPI {
 
     //Saving:
 
-    public int createEntry(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
+    public int createEntry(Entry entry) throws InvalidDateException {
         int entryID = addToEntryInfo(entry);
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
         return entryID;
     }
 
-    public void addToTopicBank(Map<String, String> topicToColor) throws SQLException{
+    public void addToTopicBank(Map<String, String> topicToColor){
         addTopics(TableNames.getUserTopic(), myUserID, topicToColor);
     }
 
-    public void removeEntry(int entryID) throws SQLException{
+    public void removeEntry(int entryID) throws NoSuchEntryException{
         remove(entryID, TableNames.getEntryToTopic());
         remove(entryID, TableNames.getEntryInfo());
     }
 
-    public void save(int entryID, Entry e) throws SQLException{
+    public void save(int entryID, Entry e) throws InvalidDateException{
         addTopics(TableNames.getUserTopic(), entryID, e.getMyTopicsAsMap());
 
         Map<Integer, String> map = new HashMap<>();
