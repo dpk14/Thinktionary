@@ -42,7 +42,7 @@ public class Entry {
 
     /*
     ----------------------------
-    Public API (Used by BackEnd.Data module. Do not actually give access to the objects
+    Public API (Used by BackEnd.DB module. Do not actually give access to the objects
                     just give access to Strings symbolizing objects):
     ----------------------------
      */

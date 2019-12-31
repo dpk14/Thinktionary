@@ -2,6 +2,8 @@ package BackEnd.API.Objects;
 
 import BackEnd.API.Journal;
 
+import java.sql.SQLException;
+
 public class User {
     private String myUsername;
     private String myPassword;
@@ -10,7 +12,12 @@ public class User {
     User(String username, String password){
         myUsername = username;
         myPassword = password;
-        myJournal = new Journal();
+        try {
+            myJournal = new Journal(myUsername);
+        }
+        catch(Exception e){
+
+        }
     }
 
 }

@@ -3,8 +3,8 @@ package BackEnd.API;
 import BackEnd.API.Exceptions.DateExceptions.InvalidDateFormatException;
 import BackEnd.API.EntryComponents.Date;
 import BackEnd.API.EntryComponents.Topic;
-import BackEnd.Data.Communication.DataParser;
-import BackEnd.Data.Communication.Main;
+import BackEnd.DB.Communication.DataParser;
+import BackEnd.DB.Communication.Main;
 
 import java.sql.SQLException;
 import java.util.*;
