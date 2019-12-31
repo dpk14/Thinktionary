@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/API/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/API/Journal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Communication/DataParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Communication/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Communication/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Utils/DBUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/Paths/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/Paths/DBNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/Paths/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/Paths/DBUrls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/Paths/Drivers/DriverPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/Paths/Drivers/DriverPaths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/SQLStrings/ColumnLabels.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/ColumnLabels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/SQLStrings/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DB/Lib/SQLStrings/TableNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/TableNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/DataBases/SQLite/db/PathInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/DataBases/SQLite/db/PathInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
-              <caret line="140" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="425">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+            <state relative-caret-position="573">
+              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="4" selection-start-column="4" selection-end-column="4" />
+            <state relative-caret-position="556">
+              <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -152,6 +140,7 @@
       <find>adden</find>
       <find>date</find>
       <find>parse</find>
+      <find>addEntry</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,11 +195,11 @@
         <option value="$PROJECT_DIR$/BackEnd/DB/API/UserAPI.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/TableNames.java" />
         <option value="$PROJECT_DIR$/BackEnd/API/Journal.java" />
-        <option value="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Utils/ParserUtils.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/ColumnLabels.java" />
-        <option value="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" />
         <option value="$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java" />
+        <option value="$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java" />
+        <option value="$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java" />
       </list>
     </option>
   </component>
@@ -338,7 +327,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577761230752" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577762779886" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -383,12 +372,12 @@
       <workItem from="1577485741736" duration="41353000" />
       <workItem from="1577601613034" duration="25147000" />
       <workItem from="1577737680847" duration="6972000" />
-      <workItem from="1577749771652" duration="11246000" />
+      <workItem from="1577749771652" duration="12806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84718000" />
+    <option name="totallyTimeSpent" value="86278000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -416,7 +405,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Multi-OS Engine" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.25033557" />
+      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.2543624" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
@@ -619,16 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/API/Objects/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BackEnd/API/Objects/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -656,16 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BackEnd/API/Journal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-547">
@@ -676,10 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java">
+    <entry file="file://$PROJECT_DIR$/BackEnd/API/Objects/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="46" lean-forward="true" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -688,8 +657,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BackEnd/Data/Lib/SQLStrings/SQLQuery.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        <state relative-caret-position="556">
+          <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/UserAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BackEnd/Data/API/LoginAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="573">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

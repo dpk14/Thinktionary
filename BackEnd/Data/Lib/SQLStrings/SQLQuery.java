@@ -2,7 +2,7 @@ package BackEnd.Data.Lib.SQLStrings;
 
 public class SQLQuery {
     private static final String GET_TABLE = "SELECT * FROM ? WHERE userID = '?'";
-    private static final String GET_ENTRY_ID = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
+    private static final String GET_ENTRY = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
                                                 "WHERE " + ColumnLabels.getUSERID() + " = ? " +
                                                 "AND " + ColumnLabels.getTITLE() + " = ? " +
                                                 "AND " + ColumnLabels.getTEXT() + " = ? " +
@@ -36,9 +36,9 @@ public class SQLQuery {
                                                     ColumnLabels.getMODIFIED() + " = ? " +
                                                     "WHERE " + ColumnLabels.getEntryId() + " = ?";
 
-    private static final String LOAD_USER = "SELECT * FROM ? WHERE " +
-                                            ColumnLabels.getUSERNAME() + " = ? " +
-                                            ColumnLabels.getPASSWORD() + " = ?";
+    private static final String LOAD_USER = "SELECT * FROM " + TableNames.getUserInfo() + " " +
+                                            "WHERE " + ColumnLabels.getUSERNAME() + " = ? " +
+                                            "AND " + ColumnLabels.getPASSWORD() + " = ?";
 
     private static final String ADD_USER = "INSERT INTO " + TableNames.getUserTopic() +
                                             "(" + ColumnLabels.getUSERNAME() + "," +
@@ -49,7 +49,7 @@ public class SQLQuery {
 
     public static String addTopic() { return ADD_TOPIC; }
 
-    public static String getEntryID() { return GET_ENTRY_ID; }
+    public static String getEntry() { return GET_ENTRY; }
 
     public static String remove() { return REMOVE_GIVEN_USERID_ENTRY_ID; }
 
@@ -57,7 +57,7 @@ public class SQLQuery {
 
     public static String loadTable() { return GET_TABLE; }
 
-    public static String loadUser() { return LOAD_USER; }
+    public static String getUser() { return LOAD_USER; }
 
     public static String addUser() { return ADD_USER; }
 }

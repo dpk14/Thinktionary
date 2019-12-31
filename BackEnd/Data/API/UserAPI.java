@@ -28,12 +28,14 @@ public class UserAPI {
 
      */
 
-    private final String USER = "testuser";
-    private final String PASSWORD = "test623";
+    private String myDBUser;
+    private String myDBPassword;
     int myUserID;
 
-    public UserAPI(int userID){
+    public UserAPI(int userID, String dbUser, String dbPassword){
         myUserID = userID;
+        myDBUser = dbUser;
+        myDBPassword = dbPassword;
     }
 
     /*
@@ -92,7 +94,7 @@ public class UserAPI {
         map.put(5, e.getMyCreatedasString());
         map.put(6, e.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
     }
 
     /*
@@ -105,7 +107,7 @@ public class UserAPI {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
-        return DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+        return DBUtils.userQuery(map, SQLQuery.loadTable(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
     }
 
     private int addToEntryInfo(Entry entry) throws SQLException, IndexOutOfBoundsException, ClassCastException{
@@ -115,7 +117,8 @@ public class UserAPI {
         map.put(3, entry.getMyColorasString());
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
-        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntryID(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+        DBUtils.userQuery(map, SQLQuery.addEntry(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+        List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
         return ParserUtils.getEntryID(ent);
     }
 
@@ -127,7 +130,7 @@ public class UserAPI {
             map.put(2, Integer.toString(ID));
             map.put(3, topic);
             map.put(4, color);
-            DBUtils.userAction(map, SQLQuery.addTopic(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+            DBUtils.userAction(map, SQLQuery.addTopic(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
         }
     }
 
@@ -136,7 +139,7 @@ public class UserAPI {
         map.put(1, tableName);
         map.put(2, Integer.toString(myUserID));
         map.put(3, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.remove(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+        DBUtils.userAction(map, SQLQuery.remove(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
     }
 
 }

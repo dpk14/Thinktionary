@@ -13,22 +13,30 @@ import java.util.List;
 import java.util.Map;
 
 public class LoginAPI {
-    public int login(String userName, String passWord){
+
+    private String myDBUser;
+    private String myDBPassword;
+
+    public LoginAPI(String dbUser, String dbPassword){
+        myDBUser = dbUser;
+        myDBPassword = dbPassword;
+    }
+
+    public int login(String userName, String passWord) throws SQLException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);
         map.put(3, passWord);
-        List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.loadUser(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+        List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
         return ParserUtils.getUserID(userInfo);
     }
 
-    private void createAccount(String userName, String passWord){
+    private void createAccount(String userName, String passWord) throws SQLException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);
         map.put(3, passWord);
-        DBUtils.userQuery(map, SQLQuery.addUser(), DBUrls.getURL(DBNames.getSQLITE()), USER, PASSWORD);
+        DBUtils.userQuery(map, SQLQuery.addUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
     }
-
 
 }
