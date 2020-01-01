@@ -1,25 +1,21 @@
-package BackEnd.API.Login;
+package BackEnd.API;
 
-import BackEnd.API.Journal.Journal;
+import BackEnd.API.Journal.JournalAPI;
 import BackEnd.Data.API.LoginDBAPI;
 import BackEnd.ErrorHandling.Exceptions.AccountExistsException;
 import BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
-import sun.rmi.runtime.Log;
 
-import java.sql.SQLException;
-import java.util.HashMap;
-
-public class Main {
+public class LoginAPI {
 
     LoginDBAPI myLoginDBAPI;
 
-    public Main(String dbUsername, String dbPassword){
+    public LoginAPI(String dbUsername, String dbPassword){
         myLoginDBAPI = new LoginDBAPI(dbUsername, dbPassword);
     }
 
-    public Journal login(String username, String password) throws InvalidLoginException {
+    public JournalAPI login(String username, String password) throws InvalidLoginException {
         int userID = myLoginDBAPI.login(username, password);
-        return new Journal(userID, username, password);
+        return new JournalAPI(userID, username, password);
 
     }
 

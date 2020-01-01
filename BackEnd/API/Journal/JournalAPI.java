@@ -8,7 +8,7 @@ import BackEnd.ErrorHandling.Exceptions.NoSuchEntryException;
 import java.sql.SQLException;
 import java.util.*;
 
-public class Journal {
+public class JournalAPI {
     List<Entry> myEntries;
     Map<Integer, Entry> myEntryMap;
     Set<Topic> myTopics;
@@ -21,7 +21,7 @@ public class Journal {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public Journal(int userID, String userName, String password){
+    public JournalAPI(int userID, String userName, String password){
         myJournalDBAPI = new JournalDBAPI(userID, userName, password);
         List<Map<String, Object>> entryTopic = myJournalDBAPI.loadEntryTopics();
         myEntryMap = myJournalDBAPI.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry

@@ -90,6 +90,16 @@ public class DBUtils {
         DBUtils.close(con);
     }
 
+    public static void userAction(String command, String url,
+                                  String user, String password) throws SQLException{
+
+        Connection con = DBUtils.makeConnection(url, user, password);
+        Statement st = con.createStatement();
+        st.execute(command);
+        DBUtils.close(st);
+        DBUtils.close(con);
+    }
+
     public static List<Map<String, Object>> userQuery(Map<Integer, String> fillers, String query, String url,
                                                 String user, String password) throws SQLException{
 
@@ -97,6 +107,19 @@ public class DBUtils {
         PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, query);
         ResultSet rs = pst.executeQuery();
         DBUtils.close(pst);
+        List<Map<String, Object>> ret = DBUtils.map(rs);
+        DBUtils.close(rs);
+        DBUtils.close(con);
+        return ret;
+    }
+
+    public static List<Map<String, Object>> userQuery(String query, String url,
+                                                      String user, String password) throws SQLException{
+
+        Connection con = DBUtils.makeConnection(url, user, password);
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(query);
+        DBUtils.close(st);
         List<Map<String, Object>> ret = DBUtils.map(rs);
         DBUtils.close(rs);
         DBUtils.close(con);

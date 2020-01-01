@@ -1,5 +1,8 @@
 package BackEnd.Data.Lib.SQLStrings;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ColumnLabels {
     private static final String TOPIC = "Topic";
     private static final String COLOR = "Color";
@@ -44,4 +47,39 @@ public class ColumnLabels {
     public static String getUSERNAME() {return String.valueOf(USERNAME);}
 
     public static String getPASSWORD() { return String.valueOf(PASSWORD);}
+
+    public static List<String> getEntryTopicColumnNames(){
+        List<String> columnNames = new ArrayList();
+        columnNames.add(ColumnLabels.getEntryId());
+        columnNames.add(ColumnLabels.getTOPIC());
+        columnNames.add(ColumnLabels.getCOLOR());
+        return columnNames;
+    }
+
+    public static List<String> getUserTopicColumnNames(){
+        List<String> columnNames = new ArrayList();
+        columnNames.add(ColumnLabels.getUSERID());
+        columnNames.add(ColumnLabels.getTOPIC());
+        columnNames.add(ColumnLabels.getCOLOR());
+        return columnNames;
+    }
+
+    public static List<String> getEntryInfoColumnNames(){
+        List<String> columnNames = new ArrayList();
+        columnNames.add(ColumnLabels.getEntryId());
+        columnNames.add(ColumnLabels.getUSERID());
+        columnNames.add(ColumnLabels.getTITLE());
+        columnNames.add(ColumnLabels.getTEXT());
+        columnNames.add(ColumnLabels.getCREATED());
+        columnNames.add(ColumnLabels.getMODIFIED());
+        return columnNames;
+    }
+
+    public static List<String> getUserInfoColumnNames(){
+        List<String> columnNames = new ArrayList();
+        columnNames.add(ColumnLabels.getUSERID());
+        columnNames.add(ColumnLabels.getUSERNAME());
+        columnNames.add(ColumnLabels.getPASSWORD());
+        return columnNames;
+    }
 }

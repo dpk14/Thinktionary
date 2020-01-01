@@ -6,6 +6,7 @@ import java.util.Map;
 public class DBUrls {
     private static final String SQLITE = "jbdc:sqlite:";
     private static final String MAIN_DB_PATH = "myDB.db";
+    private static final String TEST_DB_PATH = "testDB.db";
 
     private static String getConnectKey(String dbName){
         Map<String, String> nameToConnectKey = new HashMap<>();

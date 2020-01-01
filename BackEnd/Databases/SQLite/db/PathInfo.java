@@ -1,4 +1,4 @@
-package BackEnd.DataBases.SQLite.db;
+package BackEnd.Databases.SQLite.db;
 
 import BackEnd.Data.Lib.Paths.Drivers.DriverPaths;
 
