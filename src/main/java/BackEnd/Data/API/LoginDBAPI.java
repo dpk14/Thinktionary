@@ -1,5 +1,6 @@
 package src.main.java.BackEnd.Data.API;
 
+import src.main.java.BackEnd.API.Journal.Entry;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
@@ -17,19 +18,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoginDBAPI {
+public class LoginDBAPI extends DBAPI{
 
-    private String myDBUser;
-    private String myDBPassword;
-    private String myDBUrl;
-
-    public LoginDBAPI(String dbUser, String dbPassword, String dbUrl){
-        myDBUser = dbUser;
-        myDBPassword = dbPassword;
-        if(dbUrl == null){
-            myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
-        }
-        else myDBUrl = dbUrl;
+    public LoginDBAPI(String dbUsername, String dbPassword, String dbUrl){
+        super(dbUsername, dbPassword, dbUrl);
     }
 
     public int login(String userName, String passWord) throws InvalidLoginException {
@@ -38,7 +30,7 @@ public class LoginDBAPI {
         map.put(2, userName);
         map.put(3, passWord);
         try {
-            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUser, myDBPassword);
+            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 1){
                 throw new InvalidLoginException();
             }
@@ -56,15 +48,21 @@ public class LoginDBAPI {
         map.put(3, passWord);
         List<Map<String, Object>> userInfo = new ArrayList<>();
         try {
-            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUser, myDBPassword);
+            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 0) {
                 throw new AccountExistsException();
             }
-            DBUtils.userQuery(map, SQLQuery.addUser(), myDBUrl, myDBUser, myDBPassword);
+            DBUtils.userQuery(map, SQLQuery.addUser(), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);
         }
     }
+
+    public Map<Integer, Entry> loadUserInfoMap(List<Map<String, Object>> entryTopic) {
+        List<Map<String, Object>> table = loadTable(TableNames.getEntryInfo());
+        return ParserUtils.parseEntryMap(table, entryTopic);
+    }
+
 
 }

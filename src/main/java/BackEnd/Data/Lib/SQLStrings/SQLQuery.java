@@ -3,7 +3,8 @@ package src.main.java.BackEnd.Data.Lib.SQLStrings;
 import java.util.List;
 
 public class SQLQuery {
-    private static final String GET_TABLE = "SELECT * FROM ? WHERE userID = '?'";
+    private static final String LOAD_TABLE = "SELECT * FROM ?";
+    private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM ? WHERE ? = ?";
     private static final String GET_ENTRY = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
             "WHERE " + ColumnLabels.getUSERID() + " = ? " +
             "AND " + ColumnLabels.getTITLE() + " = ? " +
@@ -74,7 +75,11 @@ public class SQLQuery {
     }
 
     public static String loadTable() {
-        return GET_TABLE;
+        return LOAD_TABLE;
+    }
+
+    public static String getLoadTableByParameter() {
+        return LOAD_TABLE_BY_PARAMETER;
     }
 
     public static String getUser() {

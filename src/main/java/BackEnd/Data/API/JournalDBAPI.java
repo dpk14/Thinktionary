@@ -3,6 +3,7 @@ package src.main.java.BackEnd.Data.API;
 import src.main.java.BackEnd.API.Journal.Entry;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Topic;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
+import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
@@ -15,7 +16,7 @@ import src.main.java.BackEnd.ErrorHandling.Exceptions.NoSuchEntryException;
 import java.sql.*;
 import java.util.*;
 
-public class JournalDBAPI {
+public class JournalDBAPI extends DBAPI{
 
     /*
     UserID | UserName | Password      name: login
@@ -28,19 +29,11 @@ public class JournalDBAPI {
 
      */
 
-    private String myDBUser;
-    private String myDBPassword;
-    private String myDBUrl;
     int myUserID;
 
-    public JournalDBAPI(int userID, String dbUser, String dbPassword, String dbUrl){
+    public JournalDBAPI(int userID, String dbUsername, String dbPassword, String dbUrl){
+        super(dbUsername, dbPassword, dbUrl);
         myUserID = userID;
-        myDBUser = dbUser;
-        myDBPassword = dbPassword;
-        if(dbUrl == null) {
-            myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
-        }
-        else myDBUrl = dbUrl;
     }
 
     /*
@@ -52,16 +45,16 @@ public class JournalDBAPI {
     //Loading:
 
     public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) {
-        List<Map<String, Object>> table = loadTable(TableNames.getEntryInfo());
+        List<Map<String, Object>> table = loadTableByParamater(TableNames.getEntryInfo(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
         return ParserUtils.parseEntryMap(table, entryTopic);
     }
 
     public List<Map<String, Object>> loadEntryTopics() {
-        return loadTable(TableNames.getEntryToTopic());
+        return loadTableByParamater(TableNames.getEntryToTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
     }
 
     public Set<Topic> loadTopicBank() {
-        List<Map<String, Object>> topics = loadTable(TableNames.getUserTopic());
+        List<Map<String, Object>> topics = loadTableByParamater(TableNames.getUserTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
         return ParserUtils.parseTopics(topics);
     }
 
@@ -100,7 +93,7 @@ public class JournalDBAPI {
         map.put(6, entry.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
         try {
-            DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUser, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);
@@ -113,19 +106,6 @@ public class JournalDBAPI {
     ----------------------------
      */
 
-    private List<Map<String, Object>> loadTable(String tableName) {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        map.put(2, Integer.toString(myUserID));
-        List<Map<String, Object>> ret = new ArrayList<>();
-        try{
-            return DBUtils.userQuery(map, SQLQuery.loadTable(), myDBUrl, myDBUser, myDBPassword);
-        }
-        catch (SQLException e){
-            throw new CorruptDBError(e);
-        }
-    }
-
     private int addToEntryInfo(Entry entry) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, Integer.toString(myUserID));
@@ -134,8 +114,8 @@ public class JournalDBAPI {
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
         try {
-            DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUser, myDBPassword);
-            List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), myDBUrl, myDBUser, myDBPassword);
+            DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), myDBUrl, myDBUsername, myDBPassword);
             return ParserUtils.getEntryID(ent);
         }
         catch(Exception e){
@@ -152,7 +132,7 @@ public class JournalDBAPI {
                 map.put(2, Integer.toString(ID));
                 map.put(3, topic);
                 map.put(4, color);
-                DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUser, myDBPassword);
+                DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
             }
         }
         catch (Exception e){
@@ -167,11 +147,11 @@ public class JournalDBAPI {
         map.put(2, Integer.toString(myUserID));
         map.put(3, Integer.toString(entryID));
         try {
-            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(), myDBUrl, myDBUser, myDBPassword);
+            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(), myDBUrl, myDBUsername, myDBPassword);
             if(toBeRemoved.size() == 0){
                 throw new NoSuchEntryException(entryID);
             }
-            DBUtils.userAction(map, SQLQuery.remove(), myDBUrl, myDBUser, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.remove(), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);

@@ -1,14 +1,9 @@
 package src.main.test.java;
 
 import org.junit.jupiter.api.Test;
-import src.main.java.BackEnd.API.LoginAPI;
-import src.main.java.BackEnd.Data.API.GeneralDBAPI;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
-import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
-
-import java.util.Map;
 
 
 public class Main {
