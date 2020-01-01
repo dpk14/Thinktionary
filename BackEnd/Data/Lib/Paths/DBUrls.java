@@ -14,8 +14,8 @@ public class DBUrls {
         return String.valueOf(nameToConnectKey.get(dbName));
     }
 
-    public static String getURL(String dbName) {
+    public static String getURL(String dbName, String fileName) {
         String connectKey = getConnectKey(dbName);
-        return connectKey + MAIN_DB_PATH;
+        return connectKey + fileName;
     }
 }

@@ -1,5 +1,6 @@
 package BackEnd.Data.API;
 
+import BackEnd.Data.Lib.Paths.DBFileNames;
 import BackEnd.Data.Lib.Paths.DBNames;
 import BackEnd.Data.Lib.Paths.DBUrls;
 import BackEnd.Data.Lib.SQLStrings.SQLQuery;
@@ -21,10 +22,15 @@ public class LoginDBAPI {
 
     private String myDBUser;
     private String myDBPassword;
+    private String myDBUrl;
 
-    public LoginDBAPI(String dbUser, String dbPassword){
+    public LoginDBAPI(String dbUser, String dbPassword, String dbUrl){
         myDBUser = dbUser;
         myDBPassword = dbPassword;
+        if(dbUrl == null){
+            myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
+        }
+        else myDBUrl = dbUrl;
     }
 
     public int login(String userName, String passWord) throws InvalidLoginException {
@@ -33,7 +39,7 @@ public class LoginDBAPI {
         map.put(2, userName);
         map.put(3, passWord);
         try {
-            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUser, myDBPassword);
             if(userInfo.size() != 1){
                 throw new InvalidLoginException();
             }
@@ -51,11 +57,11 @@ public class LoginDBAPI {
         map.put(3, passWord);
         List<Map<String, Object>> userInfo = new ArrayList<>();
         try {
-            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUser, myDBPassword);
             if(userInfo.size() != 0) {
                 throw new AccountExistsException();
             }
-            DBUtils.userQuery(map, SQLQuery.addUser(), DBUrls.getURL(DBNames.getSQLITE()), myDBUser, myDBPassword);
+            DBUtils.userQuery(map, SQLQuery.addUser(), myDBUrl, myDBUser, myDBPassword);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);

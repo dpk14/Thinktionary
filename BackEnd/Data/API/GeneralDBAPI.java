@@ -1,5 +1,8 @@
 package BackEnd.Data.API;
 
+import BackEnd.Data.Lib.Paths.DBFileNames;
+import BackEnd.Data.Lib.Paths.DBNames;
+import BackEnd.Data.Lib.Paths.DBUrls;
 import BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import BackEnd.Data.Lib.SQLStrings.TableNames;
@@ -18,10 +21,13 @@ public class GeneralDBAPI {
     String myDBUsername;
     String myDBPassword;
 
-    public GeneralDBAPI(String dbUrl, String dbUsername, String dbPassword){
-        myDBUrl = dbUrl;
+    public GeneralDBAPI(String dbUsername, String dbPassword, String dbUrl){
         myDBUsername = dbUsername;
         myDBPassword = dbPassword;
+        if(dbUrl == null) {
+            myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
+        }
+        else myDBUrl = dbUrl;
     }
 
     public void createTable(String tableName, List<String> columnNames){

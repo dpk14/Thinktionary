@@ -9,8 +9,8 @@ public class LoginAPI {
 
     LoginDBAPI myLoginDBAPI;
 
-    public LoginAPI(String dbUsername, String dbPassword){
-        myLoginDBAPI = new LoginDBAPI(dbUsername, dbPassword);
+    public LoginAPI(String dbUsername, String dbPassword, String dbUrl){
+        myLoginDBAPI = new LoginDBAPI(dbUsername, dbPassword, dbUrl);
     }
 
     public JournalAPI login(String username, String password) throws InvalidLoginException {
