@@ -30,6 +30,21 @@ public class GeneralDBAPI {
         else myDBUrl = dbUrl;
     }
 
+    public void createAllTables(){
+        List<String> tableNames = TableNames.getTableNames();
+        for(String table : tableNames){
+            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
+            createTable(table, columnNames);
+        }
+    }
+
+    public void clearAllTables(){
+        List<String> tableNames = TableNames.getTableNames();
+        for(String table : tableNames){
+            removeTable(table);
+        }
+    }
+
     public void createTable(String tableName, List<String> columnNames){
         String action = SQLQuery.createTable(tableName, columnNames);
         tryCatchUserAction(action);

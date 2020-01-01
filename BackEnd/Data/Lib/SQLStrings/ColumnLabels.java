@@ -1,7 +1,9 @@
 package BackEnd.Data.Lib.SQLStrings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ColumnLabels {
     private static final String TOPIC = "Topic";
@@ -81,5 +83,14 @@ public class ColumnLabels {
         columnNames.add(ColumnLabels.getUSERNAME());
         columnNames.add(ColumnLabels.getPASSWORD());
         return columnNames;
+    }
+
+    public static List<String> getTableColumnNames(String tableName){
+        Map<String, List<String>> tableToColumns = new HashMap();
+        tableToColumns.put(TableNames.getEntryInfo(), ColumnLabels.getEntryInfoColumnNames());
+        tableToColumns.put(TableNames.getUserTopic(), ColumnLabels.getUserTopicColumnNames());
+        tableToColumns.put(TableNames.getEntryToTopic(), ColumnLabels.getEntryTopicColumnNames());
+        tableToColumns.put(TableNames.getUserInfo(), ColumnLabels.getUserInfoColumnNames());
+        return tableToColumns.get(tableName);
     }
 }

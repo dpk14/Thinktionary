@@ -13,7 +13,8 @@ public class Main {
         String dbUsername = (String) args[0];
         String dbPassword = (String) args[1];
 
-        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath()));
+        String testUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
+        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testUrl);
         String username = "dpk14";
         String password = "10gg40w716";
         //do this twice to see if exception is thrown
