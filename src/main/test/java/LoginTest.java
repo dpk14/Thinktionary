@@ -1,7 +1,6 @@
 package src.main.test.java;
 
-import src.main.java.BackEnd.API.LoginAPI;
-import src.main.java.BackEnd.Data.API.LoginDBAPI;
+import src.main.java.BackEnd.API.Login.LoginAPI;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -35,7 +34,7 @@ public class LoginTest {
         }
 
         try{
-            loginDBAPI.
+            loginAPI.getMyLoginDBAPI().loadUserInfoMap();
         }
     }
 }

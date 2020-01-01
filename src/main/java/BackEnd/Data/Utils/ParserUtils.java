@@ -1,8 +1,10 @@
 package src.main.java.BackEnd.Data.Utils;
 
+import com.sun.media.sound.InvalidFormatException;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Date;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Topic;
 import src.main.java.BackEnd.API.Journal.Entry;
+import src.main.java.BackEnd.API.Login.User;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import src.main.java.BackEnd.ErrorHandling.Errors.CorruptDBError;
 
@@ -60,6 +62,18 @@ public class ParserUtils {
         return ret;
     }
 
+    public static Map<Integer, User> parseUserInfoMap(List<Map<String, Object>> table) throws ClassCastException, RuntimeException, InvalidFormatException {
+        Map<Integer, User> ret = new HashMap();
+        for(Map<String, Object> row : table){
+            int id = Integer.parseInt((String) row.get(ColumnLabels.getUSERID()));
+            String userName = (String) row.get(ColumnLabels.getUSERNAME());
+            String password = (String) row.get(ColumnLabels.getPASSWORD());
+            User user = new User(id, userName, password);
+            ret.put(id, user);
+        }
+        return ret;
+    }
+
     public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
         return (int) userInfo.get(0).get(ColumnLabels.getUSERID());
     }
@@ -67,4 +81,6 @@ public class ParserUtils {
     public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
         return (int) ent.get(0).get(ColumnLabels.getEntryId());
     }
+
+
 }

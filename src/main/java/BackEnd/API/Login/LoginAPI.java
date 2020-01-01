@@ -1,4 +1,4 @@
-package src.main.java.BackEnd.API;
+package src.main.java.BackEnd.API.Login;
 
 import src.main.java.BackEnd.API.Journal.JournalAPI;
 import src.main.java.BackEnd.Data.API.LoginDBAPI;

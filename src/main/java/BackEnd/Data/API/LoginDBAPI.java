@@ -1,6 +1,7 @@
 package src.main.java.BackEnd.Data.API;
 
 import src.main.java.BackEnd.API.Journal.Entry;
+import src.main.java.BackEnd.API.Login.User;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
@@ -60,9 +61,14 @@ public class LoginDBAPI extends DBAPI{
         }
     }
 
-    public Map<Integer, Entry> loadUserInfoMap(List<Map<String, Object>> entryTopic) {
-        List<Map<String, Object>> table = loadTable(TableNames.getEntryInfo());
-        return ParserUtils.parseEntryMap(table, entryTopic);
+    public Map<Integer, User> loadUserInfoMap() {
+        List<Map<String, Object>> table = loadTable(TableNames.getUserInfo());
+        try {
+            return ParserUtils.parseUserInfoMap(table);
+        }
+        catch(Exception e){
+            throw new CorruptDBError(e);
+        }
     }
 
     @Override
