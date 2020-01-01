@@ -46,15 +46,14 @@ public class JournalDBAPI extends DBAPI{
 
     @Override
     public void createTables() {
-        List<String> tableNames = new ArrayList();
-        tableNames.add(TableNames.getEntryInfo());
-        tableNames.add(TableNames.getEntryToTopic());
-        tableNames.add(TableNames.getUserTopic());
-        for (String table : tableNames) {
-            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
-            createTable(table, columnNames);
-        }
+        createTablesHelper(TableNames.getLoginTableNames());
     }
+
+    @Override
+    public void clearTables() {
+        clearTablesHelper(TableNames.getLoginTableNames());
+    }
+
 
     //Loading:
 

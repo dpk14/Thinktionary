@@ -31,4 +31,18 @@ public class TableNames {
         ret.add(getUserTopic());
         return ret;
     }
+
+    public static List<String> getJournalTableNames() {
+        List<String> tableNames = new ArrayList();
+        tableNames.add(TableNames.getEntryInfo());
+        tableNames.add(TableNames.getEntryToTopic());
+        tableNames.add(TableNames.getUserTopic());
+        return tableNames;
+    }
+
+    public static List<String> getLoginTableNames() {
+        List<String> tableNames = new ArrayList();
+        tableNames.add(TableNames.getUserInfo());
+        return tableNames;
+    }
 }

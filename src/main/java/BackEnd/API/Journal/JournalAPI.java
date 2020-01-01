@@ -21,8 +21,8 @@ public class JournalAPI {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public JournalAPI(int userID, String userName, String password){
-        myJournalDBAPI = new JournalDBAPI(userID, userName, password);
+    public JournalAPI(int userID, String userName, String password, String dbUrl){
+        myJournalDBAPI = new JournalDBAPI(userID, userName, password, dbUrl);
         List<Map<String, Object>> entryTopic = myJournalDBAPI.loadEntryTopics();
         myEntryMap = myJournalDBAPI.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
         myTopics = myJournalDBAPI.loadTopicBank();

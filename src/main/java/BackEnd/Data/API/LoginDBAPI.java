@@ -73,9 +73,12 @@ public class LoginDBAPI extends DBAPI{
 
     @Override
     public void createTables() {
-        String tableName = TableNames.getUserInfo();
-        List<String> columnNames = ColumnLabels.getTableColumnNames(tableName);
-        createTable(tableName, columnNames);
+        createTablesHelper(TableNames.getJournalTableNames());
+    }
+
+    @Override
+    public void clearTables() {
+        clearTablesHelper(TableNames.getJournalTableNames());
     }
 
 }

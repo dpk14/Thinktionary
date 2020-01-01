@@ -5,6 +5,8 @@ import src.main.java.BackEnd.API.Login.LoginAPI;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
+import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
+import src.main.java.BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
 
 
 public class Main {
@@ -17,11 +19,8 @@ public class Main {
         String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
         LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
         loginAPI.getMyLoginDBAPI().createTables();
-
         LoginTest.test(loginAPI);
-
-        generalDBAPI.clearAllTables();
-
+        loginAPI.getMyLoginDBAPI().clearTables();
     }
 
     @Test
@@ -30,12 +29,24 @@ public class Main {
         String dbPassword = (String) args[1];
 
         String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
-        GeneralDBAPI generalDBAPI = new GeneralDBAPI(dbUsername, dbPassword, testDBUrl);
-        generalDBAPI.createAllTables();
+        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
+        loginAPI.getMyLoginDBAPI().createTables();
 
-        performTests(dbUsername, dbPassword, testDBUrl);
+        try {
+            loginAPI.makeAccount("username", "password");
+            int userID = loginAPI.login(dbUsername, dbPassword);
 
-        generalDBAPI.clearAllTables();
+        }
+        catch(Exception e){
+            System.out.println("Error in login; run TestLoginAPI test for particulars.");
+            System.exit(0);
+        }
+
+        loginAPI.getMyLoginDBAPI().clearTables();
+
+    }
+
+    private void setUpTables(){
 
     }
 

@@ -56,14 +56,22 @@ public abstract class DBAPI {
         }
     }
 
-    public abstract void createTables();
+    protected void createTablesHelper(List<String> tableNames) {
+        for (String table : tableNames) {
+            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
+            createTable(table, columnNames);
+        }
+    }
 
-    public void clearTables(){
-        List<String> tableNames = TableNames.getTableNames();
-        for(String table : tableNames){
+    protected void clearTablesHelper(List<String> tableNames) {
+        for (String table : tableNames) {
             removeTable(table);
         }
     }
+
+    public abstract void createTables();
+
+    public abstract void clearTables();
 
     public void createTable(String tableName, List<String> columnNames){
         String action = SQLQuery.createTable(tableName, columnNames);

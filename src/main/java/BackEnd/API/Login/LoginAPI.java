@@ -13,9 +13,9 @@ public class LoginAPI {
         myLoginDBAPI = new LoginDBAPI(dbUsername, dbPassword, dbUrl);
     }
 
-    public JournalAPI login(String username, String password) throws InvalidLoginException {
+    public int login(String username, String password) throws InvalidLoginException {
         int userID = myLoginDBAPI.login(username, password);
-        return new JournalAPI(userID, username, password);
+        return userID;
 
     }
 
