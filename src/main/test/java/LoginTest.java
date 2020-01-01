@@ -9,8 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginTest {
 
-    public static void test(String dbUsername, String dbPassword, String testDBUrl){
-        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
+    public static void test(LoginAPI loginAPI){
         String username = "dpk14";
         String password = "10gg40w716";
         //do this twice to see if exception is thrown
@@ -35,7 +34,6 @@ public class LoginTest {
             assertFalse(e instanceof AccountExistsException, "AccountExistsException incorrectly thrown");
         }
 
-        LoginDBAPI loginDBAPI = loginAPI.getMyLoginDBAPI();
         try{
             loginDBAPI.
         }

@@ -4,6 +4,7 @@ import src.main.java.BackEnd.API.Journal.Entry;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
+import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.TableNames;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
@@ -64,5 +65,11 @@ public class LoginDBAPI extends DBAPI{
         return ParserUtils.parseEntryMap(table, entryTopic);
     }
 
+    @Override
+    public void createTables() {
+        String tableName = TableNames.getUserInfo();
+        List<String> columnNames = ColumnLabels.getTableColumnNames(tableName);
+        createTable(tableName, columnNames);
+    }
 
 }

@@ -42,6 +42,20 @@ public class JournalDBAPI extends DBAPI{
     ----------------------------
      */
 
+    //General:
+
+    @Override
+    public void createTables() {
+        List<String> tableNames = new ArrayList();
+        tableNames.add(TableNames.getEntryInfo());
+        tableNames.add(TableNames.getEntryToTopic());
+        tableNames.add(TableNames.getUserTopic());
+        for (String table : tableNames) {
+            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
+            createTable(table, columnNames);
+        }
+    }
+
     //Loading:
 
     public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) {

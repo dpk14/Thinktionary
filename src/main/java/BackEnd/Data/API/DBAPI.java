@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DBAPI {
+public abstract class DBAPI {
 
     String myDBUrl;
     String myDBUsername;
@@ -56,15 +56,9 @@ public class DBAPI {
         }
     }
 
-    public void createAllTables(){
-        List<String> tableNames = TableNames.getTableNames();
-        for(String table : tableNames){
-            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
-            createTable(table, columnNames);
-        }
-    }
+    public abstract void createTables();
 
-    public void clearAllTables(){
+    public void clearTables(){
         List<String> tableNames = TableNames.getTableNames();
         for(String table : tableNames){
             removeTable(table);

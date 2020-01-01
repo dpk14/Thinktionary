@@ -1,6 +1,8 @@
 package src.main.test.java;
 
 import org.junit.jupiter.api.Test;
+import src.main.java.BackEnd.API.LoginAPI;
+import src.main.java.BackEnd.Data.API.LoginDBAPI;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
@@ -14,10 +16,10 @@ public class Main {
         String dbPassword = (String) args[1];
 
         String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
-        GeneralDBAPI generalDBAPI = new GeneralDBAPI(dbUsername, dbPassword, testDBUrl);
-        generalDBAPI.createAllTables();
+        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
+        loginAPI.getMyLoginDBAPI().createTables();
 
-        LoginTest.test(dbUsername, dbPassword, testDBUrl);
+        LoginTest.test(dbUsername, dbPassword, testDBUrl, loginAPI);
 
         generalDBAPI.clearAllTables();
 
