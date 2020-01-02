@@ -31,6 +31,6 @@ public class LoginAPI {
 
     public Map<Integer, User> loadUserInfoMap(){
         List<Map<String, Object>> userInfoTable = myLoginDBAPI.loadUserInfoTable();
-        LoginDBParser.parseUserInfoMap(userInfoTable);
+        return LoginDBParser.parseUserInfoMap(userInfoTable);
     }
 }

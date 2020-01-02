@@ -62,7 +62,11 @@ public class JournalDBParser {
         return ret;
     }
 
-    protected static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
+    protected static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+        return (int) userInfo.get(0).get(ColumnLabels.getUSERID());
+    }
+
+    public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
         return (int) ent.get(0).get(ColumnLabels.getEntryId());
     }
 

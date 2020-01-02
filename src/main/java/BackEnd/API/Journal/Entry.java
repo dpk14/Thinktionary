@@ -14,7 +14,6 @@ public class Entry {
     Date myModified;
     String myText;
     String myTitle;
-    String myColor;
 
     /*
     JournalDBAPI, modular unit of information managed by JournalAPI. Packages outside JournalDBAPI backend package cannot create Entries, but if they have received
@@ -22,22 +21,21 @@ public class Entry {
     Modifications to Entries must be done through JournalAPI.
      */
 
-    protected Entry(String title, Set<Topic> topics, String text, String color){ //protected so only journals can instance entries
+    protected Entry(Set<Topic> topics, String title, String text){ //protected so only journals can instance entries
         myCreated = new Date();
-        initialize(title, topics, text, color);
+        initialize(topics, title, text);
     }
 
-    protected Entry(String title, Set<Topic> topics, String text, String color, Date date){ //protected so only journals can instance entries
+    protected Entry(Set<Topic> topics, String title, String text, Date date){ //protected so only journals can instance entries
         myCreated = date;
-        initialize(title, topics, text, color);
+        initialize(topics, title, text);
     }
 
-    private void initialize(String title, Set<Topic> topics, String text, String color){
+    private void initialize(Set<Topic> topics, String title, String text){
         myTopics = topics;
         myModified = myCreated;
         myText = text;
         myTitle = title;
-        myColor = color;
     }
 
     /*
@@ -46,8 +44,6 @@ public class Entry {
                     just give access to Strings symbolizing objects):
     ----------------------------
      */
-
-    public String getMyColorasString() { return String.valueOf(myColor); }
 
     public String getmyTitleasString() { return String.valueOf(myTitle); }
 

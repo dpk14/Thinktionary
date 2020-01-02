@@ -38,14 +38,14 @@ public class JournalAPI {
     ----------------------------
      */
 
-    public void createEntry(Set<Topic> topics, String text, String title, src.main.java.BackEnd.API.Journal.EntryComponents.Date date, String color)
+    public void createEntry(Set<Topic> topics, String text, String title, Date date)
     throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
         updateTopicBank(topics);
-        addEntry(text, topics, title, date, color);
+        addEntry(text, topics, title, date);
     }
 
-    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, src.main.java.BackEnd.API.Journal.EntryComponents.Date creationDate)
+    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate)
     throws SQLException{
 
         updateTopicBank(topics);
@@ -95,10 +95,10 @@ public class JournalAPI {
         myJournalDBAPI.addToTopicBank(topicToColor); //updates Data topics
     }
 
-    private void addEntry(String text, Set<Topic> topics, String title, src.main.java.BackEnd.API.Journal.EntryComponents.Date date, String color)
+    private void addEntry(String text, Set<Topic> topics, String title, src.main.java.BackEnd.API.Journal.EntryComponents.Date date)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
-        Entry entry = date == null ? new Entry(title, topics, text, color) : new Entry(title, topics, text, color, date);
+        Entry entry = date == null ? new Entry(topics, title, text) : new Entry(topics, title, text, date);
         int id = myJournalDBAPI.createEntry(entry);
 
         myEntryMap.put(id, entry);
