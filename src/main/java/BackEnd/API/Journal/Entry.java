@@ -27,7 +27,7 @@ public class Entry {
         initialize(title, topics, text, color);
     }
 
-    public Entry(String title, Set<Topic> topics, String text, String color, Date date){ //protected so only journals can instance entries
+    protected Entry(String title, Set<Topic> topics, String text, String color, Date date){ //protected so only journals can instance entries
         myCreated = date;
         initialize(title, topics, text, color);
     }

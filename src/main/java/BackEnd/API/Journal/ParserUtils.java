@@ -1,4 +1,4 @@
-package src.main.java.BackEnd.Data.Utils;
+package src.main.java.BackEnd.API.Journal;
 
 import com.sun.media.sound.InvalidFormatException;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Date;
@@ -12,7 +12,7 @@ import java.util.*;
 
 public class ParserUtils {
 
-    public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
+    protected static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
         try {
@@ -38,7 +38,7 @@ public class ParserUtils {
         }
     }
 
-    public static List<Entry> parseEntries(Map<Integer, Entry> entryMap) {
+    protected static List<Entry> parseEntries(Map<Integer, Entry> entryMap) {
         List<Entry> ret = new ArrayList<>();
         for (int id : entryMap.keySet()) {
             ret.add(entryMap.get(id));
@@ -47,7 +47,7 @@ public class ParserUtils {
         return ret;
     }
 
-    public static Set<Topic> parseTopics(List<Map<String, Object>> topics) throws ClassCastException{
+    protected static Set<Topic> parseTopics(List<Map<String, Object>> topics) throws ClassCastException{
         Map<String, String> topToCol = new HashMap<>();
         Set<Topic> ret = new HashSet<>();
         for(Map<String, Object> cols : topics){
@@ -62,7 +62,7 @@ public class ParserUtils {
         return ret;
     }
 
-    public static Map<Integer, User> parseUserInfoMap(List<Map<String, Object>> table) throws ClassCastException, RuntimeException, InvalidFormatException {
+    protected static Map<Integer, User> parseUserInfoMap(List<Map<String, Object>> table) throws ClassCastException, RuntimeException, InvalidFormatException {
         Map<Integer, User> ret = new HashMap();
         for(Map<String, Object> row : table){
             int id = Integer.parseInt((String) row.get(ColumnLabels.getUSERID()));
@@ -74,11 +74,11 @@ public class ParserUtils {
         return ret;
     }
 
-    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+    protected static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
         return (int) userInfo.get(0).get(ColumnLabels.getUSERID());
     }
 
-    public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
+    protected static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
         return (int) ent.get(0).get(ColumnLabels.getEntryId());
     }
 

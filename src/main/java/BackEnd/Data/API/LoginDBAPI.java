@@ -1,15 +1,10 @@
 package src.main.java.BackEnd.Data.API;
 
-import src.main.java.BackEnd.API.Journal.Entry;
 import src.main.java.BackEnd.API.Login.User;
-import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
-import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
-import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
-import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.TableNames;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
-import src.main.java.BackEnd.Data.Utils.ParserUtils;
+import src.main.java.BackEnd.API.Journal.ParserUtils;
 import src.main.java.BackEnd.ErrorHandling.Errors.CorruptDBError;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
