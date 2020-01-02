@@ -21,23 +21,21 @@ public abstract class DBAPI {
     String myDBUsername;
     String myDBPassword;
 
-    public DBAPI(String dbUsername, String dbPassword, String dbUrl){
+    public DBAPI(String dbUsername, String dbPassword, String dbUrl) {
         myDBUsername = dbUsername;
         myDBPassword = dbPassword;
-        if(dbUrl == null) {
+        if (dbUrl == null) {
             myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
-        }
-        else myDBUrl = dbUrl;
+        } else myDBUrl = dbUrl;
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
         List<Map<String, Object>> ret = new ArrayList<>();
-        try{
+        try {
             return DBUtils.userQuery(map, SQLQuery.loadTable(), myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             throw new CorruptDBError(e);
         }
     }
@@ -48,50 +46,10 @@ public abstract class DBAPI {
         map.put(2, parameterType);
         map.put(3, parameter);
         List<Map<String, Object>> ret = new ArrayList<>();
-        try{
-            return DBUtils.userQuery(map, SQLQuery.loadTable(), myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch (SQLException e){
-            throw new CorruptDBError(e);
-        }
-    }
-
-    protected void createTablesHelper(List<String> tableNames) {
-        for (String table : tableNames) {
-            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
-            createTable(table, columnNames);
-        }
-    }
-
-    protected void clearTablesHelper(List<String> tableNames) {
-        for (String table : tableNames) {
-            removeTable(table);
-        }
-    }
-
-    public abstract void createTables();
-
-    public abstract void clearTables();
-
-    public void createTable(String tableName, List<String> columnNames){
-        String action = SQLQuery.createTable(tableName, columnNames);
-        tryCatchUserAction(action);
-    }
-
-    public void removeTable(String tableName){
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        String action = SQLQuery.clearTable();
-        tryCatchUserAction(action);
-    }
-
-    private void tryCatchUserAction(String action){
         try {
-            DBUtils.userAction(action, myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch(SQLException e){
-            System.out.println(e.toString());
-            System.out.println(e.getStackTrace());
+            return DBUtils.userQuery(map, SQLQuery.loadTable(), myDBUrl, myDBUsername, myDBPassword);
+        } catch (SQLException e) {
+            throw new CorruptDBError(e);
         }
     }
 }

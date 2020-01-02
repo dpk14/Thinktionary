@@ -70,15 +70,4 @@ public class LoginDBAPI extends DBAPI{
             throw new CorruptDBError(e);
         }
     }
-
-    @Override
-    public void createTables() {
-        createTablesHelper(TableNames.getJournalTableNames());
-    }
-
-    @Override
-    public void clearTables() {
-        clearTablesHelper(TableNames.getJournalTableNames());
-    }
-
 }

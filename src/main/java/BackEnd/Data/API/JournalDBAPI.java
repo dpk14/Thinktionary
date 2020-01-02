@@ -42,19 +42,6 @@ public class JournalDBAPI extends DBAPI{
     ----------------------------
      */
 
-    //General:
-
-    @Override
-    public void createTables() {
-        createTablesHelper(TableNames.getLoginTableNames());
-    }
-
-    @Override
-    public void clearTables() {
-        clearTablesHelper(TableNames.getLoginTableNames());
-    }
-
-
     //Loading:
 
     public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) {
