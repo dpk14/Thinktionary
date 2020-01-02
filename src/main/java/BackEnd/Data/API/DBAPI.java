@@ -78,29 +78,6 @@ public abstract class DBAPI {
         tryCatchUserAction(action);
     }
 
-    public void createEntryTopicTable(){
-        List<String> columnNames = ColumnLabels.getEntryTopicColumnNames();
-        String action = SQLQuery.createTable(TableNames.getEntryToTopic(), columnNames);
-        tryCatchUserAction(action);
-    }
-
-    public void createUserTopicTable(){
-        List<String> columnNames = ColumnLabels.getUserTopicColumnNames();
-        String action = SQLQuery.createTable(TableNames.getUserTopic(), columnNames);
-    }
-
-    public void createEntryInfoTable(){
-        List<String> columnNames = ColumnLabels.getEntryInfoColumnNames();
-        String action = SQLQuery.createTable(TableNames.getEntryInfo(), columnNames);
-        tryCatchUserAction(action);
-    }
-
-    public void createUserInfoTable(){
-        List<String> columnNames = ColumnLabels.getUserInfoColumnNames();
-        String action = SQLQuery.createTable(TableNames.getUserInfo(), columnNames);
-        tryCatchUserAction(action);
-    }
-
     public void removeTable(String tableName){
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);

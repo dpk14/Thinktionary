@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/LoginAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/java/JournalTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/java/LoginTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,10 +16,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/test/java/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/Entry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="624">
+              <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,11 +27,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/test/java/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="505">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/test/java/JournalTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="24" column="75" selection-start-line="24" selection-start-column="75" selection-end-line="24" selection-end-column="75" />
+            <state relative-caret-position="170">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/test/java/LoginTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="32" column="104" lean-forward="true" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="104" />
+            <state relative-caret-position="267">
+              <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,38 +89,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="80" column="47" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
+            <state relative-caret-position="573">
+              <caret line="79" column="10" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#938#939#0" expanded="true" />
                 <element signature="e#958#959#0" expanded="true" />
-                <element signature="e#2816#2817#0" expanded="true" />
-                <element signature="e#2883#2884#0" expanded="true" />
-                <element signature="e#2930#2931#0" expanded="true" />
+                <element signature="e#2823#2824#0" expanded="true" />
+                <element signature="e#2892#2893#0" expanded="true" />
                 <element signature="e#2996#2997#0" expanded="true" />
+                <element signature="e#3064#3065#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/Utils/ParserUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="71" column="11" lean-forward="true" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="65" column="63" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
+            <state relative-caret-position="233">
+              <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="46" selection-start-line="46" selection-end-line="54" selection-end-column="5" />
+            <state relative-caret-position="51">
+              <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1409#1410#0" expanded="true" />
@@ -135,15 +140,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Login/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -173,7 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BackEnd/DB/Utils/DataParser.java" />
         <option value="$PROJECT_DIR$/BackEnd/DB/Utils/ParserUtils.java" />
         <option value="$PROJECT_DIR$/BackEnd/DB/API/UserAPI.java" />
         <option value="$PROJECT_DIR$/BackEnd/API/Journal.java" />
@@ -216,14 +211,15 @@
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/LoginAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/Utils/ParserUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/test/java/LoginTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.java" />
-        <option value="$PROJECT_DIR$/src/main/test/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/LoginAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/LoginTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/JournalTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java" />
       </list>
     </option>
   </component>
@@ -366,7 +362,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577921511645" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577924342864" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -418,12 +414,12 @@
       <workItem from="1577601613034" duration="25147000" />
       <workItem from="1577737680847" duration="6972000" />
       <workItem from="1577749771652" duration="25373000" />
-      <workItem from="1577898914426" duration="19275000" />
+      <workItem from="1577898914426" duration="22094000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118120000" />
+    <option name="totallyTimeSpent" value="120939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -483,7 +479,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Data/Lib/SQLQuery" />
     <entry file="file://$PROJECT_DIR$/Data/Exceptions/CorruptDBException.java" />
     <entry file="file://$PROJECT_DIR$/Data/Communication/Utils/ReflectionUtils.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.java">
@@ -558,16 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,46 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="65" column="63" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="46" selection-start-line="46" selection-end-line="54" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1409#1410#0" expanded="true" />
-            <element signature="e#1476#1477#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1588#1589#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="607">
-          <caret line="80" column="47" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#938#939#0" expanded="true" />
-            <element signature="e#958#959#0" expanded="true" />
-            <element signature="e#2816#2817#0" expanded="true" />
-            <element signature="e#2883#2884#0" expanded="true" />
-            <element signature="e#2930#2931#0" expanded="true" />
-            <element signature="e#2996#2997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="624">
@@ -783,10 +728,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/java/JournalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/java/LoginTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="32" column="104" lean-forward="true" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="104" />
+        <state relative-caret-position="267">
+          <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="36" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -796,7 +748,27 @@
     <entry file="file://$PROJECT_DIR$/src/main/test/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/Entry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -815,10 +787,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="75" selection-start-line="24" selection-start-column="75" selection-end-line="24" selection-end-column="75" />
+        <state relative-caret-position="573">
+          <caret line="79" column="10" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+            <element signature="e#958#959#0" expanded="true" />
+            <element signature="e#2823#2824#0" expanded="true" />
+            <element signature="e#2892#2893#0" expanded="true" />
+            <element signature="e#2996#2997#0" expanded="true" />
+            <element signature="e#3064#3065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="46" column="13" lean-forward="true" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1409#1410#0" expanded="true" />
+            <element signature="e#1476#1477#0" expanded="true" />
+            <element signature="e#1523#1524#0" expanded="true" />
+            <element signature="e#1588#1589#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -16,8 +16,6 @@ public class LoginTest {
     protected static void test(LoginAPI loginAPI){
         String username = "dpk14";
         String password = "10gg40w716";
-        //do this twice to see if exception is thrown
-
         CreateAccountTest(username, password, loginAPI);
         IncorrectLoginTest(loginAPI);
         CorrectLoginTest(username, password, loginAPI);
