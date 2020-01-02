@@ -92,6 +92,11 @@ public class Date {
         return -1;
     }
 
+    @Override
+    public String toString() {
+        return myYear + "/" + myMonth + "/" + myDay + " " + myHour + ":" + myMinute + ":" + mySecond;
+    }
+
     private int[] makeOrders(Date d){
         return new int[]{d.getMyYear(), d.getMyMonth(), d.getMyMinute(), d.getMyHour(), d.getMyMinute(), d.getMySecond()};
     }

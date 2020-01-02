@@ -12,7 +12,7 @@ import java.util.*;
 
 public class JournalDBParser {
 
-    protected static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
+    public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
         try {
@@ -27,7 +27,7 @@ public class JournalDBParser {
                 String id = (String) cols.get(ColumnLabels.getEntryId());
                 Set<Topic> topics = topicSets.get(id);
                 Date created = new Date((String) cols.get(ColumnLabels.getCREATED()));
-                Entry entry = new Entry((String) cols.get(ColumnLabels.getTITLE()), topics, (String) cols.get(ColumnLabels.getTEXT()), (String) cols.get(ColumnLabels.getCOLOR()), created);
+                Entry entry = new Entry(topics, (String) cols.get(ColumnLabels.getTITLE()), (String) cols.get(ColumnLabels.getTEXT()), created);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
             }

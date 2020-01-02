@@ -9,7 +9,6 @@ public class SQLQuery {
             "WHERE " + ColumnLabels.getUSERID() + " = ? " +
             "AND " + ColumnLabels.getTITLE() + " = ? " +
             "AND " + ColumnLabels.getTEXT() + " = ? " +
-            "AND " + ColumnLabels.getCOLOR() + " = ? " +
             "AND " + ColumnLabels.getCREATED() + " = ? " +
             "AND " + ColumnLabels.getMODIFIED() + " = ?";
 
@@ -21,8 +20,8 @@ public class SQLQuery {
             "(" + ColumnLabels.getUSERID() + "," +
             "(" + ColumnLabels.getTITLE() + "," +
             "(" + ColumnLabels.getTEXT() + "," +
-            "(" + ColumnLabels.getCOLOR() + "," +
-            "(" + ColumnLabels.getCREATED() + ") " +
+            "(" + ColumnLabels.getCREATED() + "," +
+            "(" + ColumnLabels.getMODIFIED() + ") " +
             "VALUES (?,?,?,?,?)";
 
     private static final String ADD_TOPIC = "INSERT INTO " + TableNames.getUserTopic() +
@@ -38,7 +37,6 @@ public class SQLQuery {
             ColumnLabels.getUSERID() + " = ?, " +
             ColumnLabels.getTITLE() + " = ?, " +
             ColumnLabels.getTEXT() + " = ?, " +
-            ColumnLabels.getCOLOR() + " = ?, " +
             ColumnLabels.getCREATED() + " = ?, " +
             ColumnLabels.getMODIFIED() + " = ? " +
             "WHERE " + ColumnLabels.getEntryId() + " = ?";

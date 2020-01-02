@@ -75,8 +75,8 @@ public class JournalDBAPI extends DBAPI{
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getEntryInfo());
         map.put(2, Integer.toString(myUserID));
-        map.put(3, entry.getmyTitleasString());
-        map.put(4, entry.getMyColorasString());
+        map.put(3, entry.getmyTitle());
+        map.put(4, entry.getmyText());
         map.put(5, entry.getMyCreatedasString());
         map.put(6, entry.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
@@ -97,8 +97,8 @@ public class JournalDBAPI extends DBAPI{
     private int addToEntryInfo(Entry entry) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, Integer.toString(myUserID));
-        map.put(2, entry.getmyTitleasString());
-        map.put(3, entry.getMyColorasString());
+        map.put(2, entry.getmyTitle());
+        map.put(3, entry.getmyText());
         map.put(4, entry.getMyCreatedasString());
         map.put(5, entry.getMyModfiedasString());
         try {

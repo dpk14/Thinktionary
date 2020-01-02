@@ -45,11 +45,14 @@ public class Entry {
     ----------------------------
      */
 
-    public String getmyTitleasString() { return String.valueOf(myTitle); }
+    public String getmyTitle() { return String.valueOf(myTitle); }
 
     public String getMyModfiedasString() {return myModified.toString();}
 
     public String getMyCreatedasString(){ return myCreated.toString();}
+
+    public String getmyText() { return myText.toString(); }
+
 
     public Map<String, String> getMyTopicsAsMap(){
         Map<String, String> topicToColor = new HashMap<>();

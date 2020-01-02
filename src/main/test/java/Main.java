@@ -55,7 +55,7 @@ public class Main {
         journalDBInit.createTables();
 
         JournalAPI journalAPI = new JournalAPI(dbUsername, dbPassword, testDBUrl, userID);
-        JournalTest.test(journalAPI);
+        JournalTest.test(journalAPI, userID);
 
         journalDBInit.clearTables();
     }
@@ -73,6 +73,7 @@ public class Main {
             System.out.println("Error in login; run TestLoginAPI test for particulars.");
             System.exit(0);
         }
+        return Integer.MIN_VALUE;
     }
 
 }

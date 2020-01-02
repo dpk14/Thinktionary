@@ -3,6 +3,7 @@ package src.main.java.BackEnd.API.Journal;
 import src.main.java.BackEnd.Data.API.JournalDBAPI;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Date;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Topic;
+import src.main.java.BackEnd.ErrorHandling.Errors.CorruptDBError;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.sql.SQLException;
@@ -39,17 +40,24 @@ public class JournalAPI {
      */
 
     public void createEntry(Set<Topic> topics, String text, String title, Date date)
-    throws SQLException, IndexOutOfBoundsException, ClassCastException{
-
-        updateTopicBank(topics);
-        addEntry(text, topics, title, date);
+    {
+        try {
+            updateTopicBank(topics);
+            addEntry(text, topics, title, date);
+        }
+        catch(Exception e){
+            throw new CorruptDBError(e);
+        }
     }
 
-    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate)
-    throws SQLException{
-
-        updateTopicBank(topics);
-        modifyEntry(entryID, topics, text, title, creationDate);
+    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate) {
+        try {
+            updateTopicBank(topics);
+            modifyEntry(entryID, topics, text, title, creationDate);
+        }
+        catch(Exception e){
+            throw new CorruptDBError(e);
+        }
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException{
@@ -74,6 +82,15 @@ public class JournalAPI {
         }
         return topicalEntries;
     }
+
+    public JournalDBAPI getMyJournalDBAPI(){
+        return myJournalDBAPI;
+    }
+
+    public int getUserID() {
+        return myUserID;
+    }
+
 
     /*
     ----------------------------
