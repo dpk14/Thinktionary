@@ -1,0 +1,3 @@
+Classes used to compartmentalize Entry information. Are public so that the Front End can group together different bodies
+of user inputs, then feed these into the JournalAPI's creator methods so the JournalAPI can use its priveleged access
+to the Entry class to create protected Entries.

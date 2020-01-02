@@ -1,10 +1,8 @@
 package src.main.java.BackEnd.Data.API;
 
-import src.main.java.BackEnd.API.Login.User;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.TableNames;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
-import src.main.java.BackEnd.API.Journal.ParserUtils;
 import src.main.java.BackEnd.ErrorHandling.Errors.CorruptDBError;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
@@ -21,7 +19,7 @@ public class LoginDBAPI extends DBAPI{
         super(dbUsername, dbPassword, dbUrl);
     }
 
-    public int login(String userName, String passWord) throws InvalidLoginException {
+    public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);
@@ -31,7 +29,7 @@ public class LoginDBAPI extends DBAPI{
             if(userInfo.size() != 1){
                 throw new InvalidLoginException();
             }
-            return ParserUtils.getUserID(userInfo);
+            return userInfo;
         }
         catch(SQLException e){
             throw new CorruptDBError(e);
@@ -56,10 +54,10 @@ public class LoginDBAPI extends DBAPI{
         }
     }
 
-    public Map<Integer, User> loadUserInfoMap() {
+    public List<Map<String, Object>> loadUserInfoTable() {
         List<Map<String, Object>> table = loadTable(TableNames.getUserInfo());
         try {
-            return ParserUtils.parseUserInfoMap(table);
+            return table;
         }
         catch(Exception e){
             throw new CorruptDBError(e);

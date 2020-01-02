@@ -31,7 +31,7 @@ public class LoginTest {
             assertFalse(e instanceof AccountExistsException, "AccountExistsException incorrectly thrown");
         }
 
-        Map<Integer, User> users = loginAPI.getMyLoginDBAPI().loadUserInfoMap();
+        Map<Integer, User> users = loginAPI.loadUserInfoMap();
         assertFalse(users.size()== 0 , "Account not getting saved after creation");
         assertFalse(users.size()> 1 , "DB has too many account after just one account is added");
     }

@@ -1,12 +1,11 @@
 package src.main.java.BackEnd.Data.API;
 
 import src.main.java.BackEnd.API.Journal.Entry;
-import src.main.java.BackEnd.API.Journal.EntryComponents.Topic;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.TableNames;
-import src.main.java.BackEnd.API.Journal.ParserUtils;
+import src.main.java.BackEnd.API.Journal.JournalDBParser;
 import src.main.java.BackEnd.ErrorHandling.Errors.CorruptDBError;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.NoSuchEntryException;
 
@@ -41,24 +40,16 @@ public class JournalDBAPI extends DBAPI{
 
     //Loading:
 
-    public Map<Integer, Entry> loadEntryMap(List<Map<String, Object>> entryTopic) {
-        List<Map<String, Object>> table = loadTableByParamater(TableNames.getEntryInfo(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
-        return ParserUtils.parseEntryMap(table, entryTopic);
+    public List<Map<String, Object>> loadEntryTable() {
+        return loadTableByParamater(TableNames.getEntryInfo(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
     }
 
-    public List<Map<String, Object>> loadEntryTopics() {
+    public List<Map<String, Object>> loadEntryTopicsTable() {
         return loadTableByParamater(TableNames.getEntryToTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
     }
 
-    public Set<Topic> loadTopicBank() {
-        List<Map<String, Object>> topics = loadTableByParamater(TableNames.getUserTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
-        return ParserUtils.parseTopics(topics);
-    }
-
-    public List<Entry> loadEntryList(Map<Integer, Entry> myEntryMap) {
-        List<Entry> entries = ParserUtils.parseEntries(myEntryMap);
-        Collections.sort(entries, new Entry.EntryComparator());
-        return entries;
+    public List<Map<String, Object>> loadTopicBankTable() {
+        return loadTableByParamater(TableNames.getUserTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
     }
 
     //Saving:
@@ -113,7 +104,7 @@ public class JournalDBAPI extends DBAPI{
         try {
             DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
             List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), myDBUrl, myDBUsername, myDBPassword);
-            return ParserUtils.getEntryID(ent);
+            return JournalDBParser.getEntryID(ent);
         }
         catch(Exception e){
             throw new CorruptDBError(e);

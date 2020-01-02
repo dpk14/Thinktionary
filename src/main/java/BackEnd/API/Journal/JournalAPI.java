@@ -11,7 +11,7 @@ import java.util.*;
 public class JournalAPI {
     List<Entry> myEntries;
     Map<Integer, Entry> myEntryMap;
-    Set<Topic> myTopics;
+    Map<String, Topic> myTopics;
     int myUserID;
     JournalDBAPI myJournalDBAPI;
 
@@ -23,10 +23,12 @@ public class JournalAPI {
 
     public JournalAPI(String userName, String password, String dbUrl, int userID){
         myJournalDBAPI = new JournalDBAPI(userID, userName, password, dbUrl);
-        List<Map<String, Object>> entryTopic = myJournalDBAPI.loadEntryTopics();
-        myEntryMap = myJournalDBAPI.loadEntryMap(entryTopic); //uses primary IDs and maps them to Entry
-        myTopics = myJournalDBAPI.loadTopicBank();
-        myEntries = myJournalDBAPI.loadEntryList(myEntryMap);
+        List<Map<String, Object>> entryTopic = myJournalDBAPI.loadEntryTopicsTable();
+        List<Map<String, Object>> entryTable = myJournalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry
+        JournalDBParser.parseEntryMap(entryTable, entryTopic);
+        List<Map<String, Object>> topicTable = myJournalDBAPI.loadTopicBankTable();
+        myTopics = JournalDBParser.parseTopics(topicTable);
+        myEntries = JournalDBParser.parseEntries(myEntryMap);
         myUserID = userID;
     }
 
@@ -80,14 +82,17 @@ public class JournalAPI {
      */
 
     private void updateTopicBank(Set<Topic> topics) throws SQLException{
-        Set<Topic> topicsCpy = new HashSet<>(topics);
-        topicsCpy.removeAll(myTopics); //looks for new topics, makes map with which to update topic bank in Data
-        Map<String, String> topicToColor = new HashMap<>();
-        for(Topic topic : topicsCpy){
-            topicToColor.put(topic.getMyTopic(), topic.getMyColor());
+        Map<String, Topic> topicsMap = new HashMap();
+        for(Topic topic : topics){
+            topicsMap.put(topic.getMyTopic(), topic);
+        }
+        topicsMap.keySet().removeAll(myTopics.keySet()); //looks for new topics, makes map with which to update topic bank in Data
+        Map<String, String> topicToColor = new HashMap();
+        for(String key : topicsMap.keySet()){
+            myTopics.put(key, topicsMap.get(key));
+            topicToColor.put(key, topicsMap.get(key).getMyColor());
         }
         myJournalDBAPI.addToTopicBank(topicToColor); //updates Data topics
-        myTopics.addAll(topics); //updates topic bank datatype
     }
 
     private void addEntry(String text, Set<Topic> topics, String title, src.main.java.BackEnd.API.Journal.EntryComponents.Date date, String color)

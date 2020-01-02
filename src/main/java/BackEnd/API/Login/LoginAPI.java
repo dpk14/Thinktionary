@@ -5,6 +5,9 @@ import src.main.java.BackEnd.Data.API.LoginDBAPI;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
 
+import java.util.Map;
+import java.util.List;
+
 public class LoginAPI {
 
     LoginDBAPI myLoginDBAPI;
@@ -14,9 +17,8 @@ public class LoginAPI {
     }
 
     public int login(String username, String password) throws InvalidLoginException {
-        int userID = myLoginDBAPI.login(username, password);
-        return userID;
-
+        List<Map<String, Object>> userInfo = myLoginDBAPI.login(username, password);
+        return LoginDBParser.getUserID(userInfo);
     }
 
     public void makeAccount(String username, String password) throws AccountExistsException { //second exception has two inheritances, password exists and username exists
@@ -25,5 +27,10 @@ public class LoginAPI {
 
     public LoginDBAPI getMyLoginDBAPI(){
         return myLoginDBAPI;
+    }
+
+    public Map<Integer, User> loadUserInfoMap(){
+        List<Map<String, Object>> userInfoTable = myLoginDBAPI.loadUserInfoTable();
+        LoginDBParser.parseUserInfoMap(userInfoTable);
     }
 }
