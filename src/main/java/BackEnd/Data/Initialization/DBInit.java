@@ -3,7 +3,7 @@ package src.main.java.BackEnd.Data.Initialization;
 import src.main.java.BackEnd.Data.Lib.Paths.DBFileNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
-import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
+import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnInfo;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
 
@@ -32,8 +32,8 @@ public abstract class DBInit {
 
     protected void createTablesHelper(List<String> tableNames) {
         for (String table : tableNames) {
-            List<String> columnNames = ColumnLabels.getTableColumnNames(table);
-            createTable(table, columnNames);
+            Map<String, String> colNamesToType = ColumnInfo.getColumnMap(table);
+            createTable(table, colNamesToType);
         }
     }
 
@@ -43,8 +43,8 @@ public abstract class DBInit {
         }
     }
 
-    private void createTable(String tableName, List<String> columnNames){
-        String action = SQLQuery.createTable(tableName, columnNames);
+    private void createTable(String tableName, Map<String, String> columnMap){
+        String action = SQLQuery.createTable(tableName, columnMap);
         tryCatchUserAction(action);
     }
 

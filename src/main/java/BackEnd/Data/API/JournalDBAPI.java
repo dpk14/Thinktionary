@@ -1,7 +1,7 @@
 package src.main.java.BackEnd.Data.API;
 
 import src.main.java.BackEnd.API.Journal.Entry;
-import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
+import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnInfo;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.TableNames;
@@ -41,15 +41,15 @@ public class JournalDBAPI extends DBAPI{
     //Loading:
 
     public List<Map<String, Object>> loadEntryTable() {
-        return loadTableByParamater(TableNames.getEntryInfo(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
+        return loadTableByParamater(TableNames.getEntryInfo(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
     }
 
     public List<Map<String, Object>> loadEntryTopicsTable() {
-        return loadTableByParamater(TableNames.getEntryToTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
+        return loadTableByParamater(TableNames.getEntryToTopic(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
     }
 
     public List<Map<String, Object>> loadTopicBankTable() {
-        return loadTableByParamater(TableNames.getUserTopic(), ColumnLabels.getUSERID(), Integer.toString(myUserID));
+        return loadTableByParamater(TableNames.getUserTopic(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
     }
 
     //Saving:

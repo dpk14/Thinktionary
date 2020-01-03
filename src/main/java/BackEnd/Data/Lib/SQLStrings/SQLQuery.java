@@ -6,48 +6,48 @@ public class SQLQuery {
     private static final String LOAD_TABLE = "SELECT * FROM ?";
     private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM ? WHERE ? = ?";
     private static final String GET_ENTRY = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
-            "WHERE " + ColumnLabels.getUSERID() + " = ? " +
-            "AND " + ColumnLabels.getTITLE() + " = ? " +
-            "AND " + ColumnLabels.getTEXT() + " = ? " +
-            "AND " + ColumnLabels.getCREATED() + " = ? " +
-            "AND " + ColumnLabels.getMODIFIED() + " = ?";
+            "WHERE " + ColumnInfo.getUSERID() + " = ? " +
+            "AND " + ColumnInfo.getTITLE() + " = ? " +
+            "AND " + ColumnInfo.getTEXT() + " = ? " +
+            "AND " + ColumnInfo.getCREATED() + " = ? " +
+            "AND " + ColumnInfo.getMODIFIED() + " = ?";
 
     private static final String GET_BY_ENTRY_ID = "SELECT * FROM ? " +
-            "WHERE " + ColumnLabels.getUSERID() + " = ? " +
-            "AND " + ColumnLabels.getEntryId() + " = ?";
+            "WHERE " + ColumnInfo.getUSERID() + " = ? " +
+            "AND " + ColumnInfo.getEntryId() + " = ?";
 
     private static final String ADD_ENTRY = "INSERT INTO " + TableNames.getEntryInfo() + " " +
-            "(" + ColumnLabels.getUSERID() + "," +
-            "(" + ColumnLabels.getTITLE() + "," +
-            "(" + ColumnLabels.getTEXT() + "," +
-            "(" + ColumnLabels.getCREATED() + "," +
-            "(" + ColumnLabels.getMODIFIED() + ") " +
+            "(" + ColumnInfo.getUSERID() + "," +
+            "(" + ColumnInfo.getTITLE() + "," +
+            "(" + ColumnInfo.getTEXT() + "," +
+            "(" + ColumnInfo.getCREATED() + "," +
+            "(" + ColumnInfo.getMODIFIED() + ") " +
             "VALUES (?,?,?,?,?)";
 
     private static final String ADD_TOPIC = "INSERT INTO " + TableNames.getUserTopic() +
-            "(" + ColumnLabels.getUSERID() + "," +
-            "(" + ColumnLabels.getTOPIC() + "," +
-            "(" + ColumnLabels.getCOLOR() + ") " +
+            "(" + ColumnInfo.getUSERID() + "," +
+            "(" + ColumnInfo.getTOPIC() + "," +
+            "(" + ColumnInfo.getCOLOR() + ") " +
             "VALUES (?,?,?)";
 
-    private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM ? WHERE " + ColumnLabels.getUSERID() + " = ? " +
-            "AND " + ColumnLabels.getEntryId() + " = ?";
+    private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM ? WHERE " + ColumnInfo.getUSERID() + " = ? " +
+            "AND " + ColumnInfo.getEntryId() + " = ?";
 
     private static final String MODIFY_ENTRY_INFO = "UPDATE " + TableNames.getEntryInfo() + " SET " +
-            ColumnLabels.getUSERID() + " = ?, " +
-            ColumnLabels.getTITLE() + " = ?, " +
-            ColumnLabels.getTEXT() + " = ?, " +
-            ColumnLabels.getCREATED() + " = ?, " +
-            ColumnLabels.getMODIFIED() + " = ? " +
-            "WHERE " + ColumnLabels.getEntryId() + " = ?";
+            ColumnInfo.getUSERID() + " = ?, " +
+            ColumnInfo.getTITLE() + " = ?, " +
+            ColumnInfo.getTEXT() + " = ?, " +
+            ColumnInfo.getCREATED() + " = ?, " +
+            ColumnInfo.getMODIFIED() + " = ? " +
+            "WHERE " + ColumnInfo.getEntryId() + " = ?";
 
     private static final String LOAD_USER = "SELECT * FROM " + TableNames.getUserInfo() + " " +
-            "WHERE " + ColumnLabels.getUSERNAME() + " = ? " +
-            "AND " + ColumnLabels.getPASSWORD() + " = ?";
+            "WHERE " + ColumnInfo.getUSERNAME() + " = ? " +
+            "AND " + ColumnInfo.getPASSWORD() + " = ?";
 
     private static final String ADD_USER = "INSERT INTO " + TableNames.getUserTopic() +
-            "(" + ColumnLabels.getUSERNAME() + "," +
-            "(" + ColumnLabels.getPASSWORD() + ") " +
+            "(" + ColumnInfo.getUSERNAME() + "," +
+            "(" + ColumnInfo.getPASSWORD() + ") " +
             "VALUES (?,?)";
 
     private static final String CLEAR_TABLE = "DELETE FROM ? *";
@@ -96,14 +96,18 @@ public class SQLQuery {
         return CLEAR_TABLE;
     }
 
-    public static final String createTable(String tableName, List<String> columnNames) {
-        String command = "CREATE TABLE " + tableName + " AS SELECT ";
-        for (String columnName : columnNames) {
-            command += columnName;
+    public static final String createTable(String tableName, List<String> columnNames, boolean withAutoKey) {
+        String command = "CREATE TABLE " + tableName + " ( " + columnNames.get(0);
+        command += withAutoKey ? " BIGINT PRIMARY KEY, " : "int, ";
+        for (int i = 1; i<columnNames.size(); i++) {
+            String columnName = columnNames.get(i);
+            command += columnName + "text ";
             if (!columnName.equals(columnNames.get(columnNames.size() - 1))) {
-                command += " , ";
+                command += ", ";
             }
         }
+        command+=")";
         return command;
     }
+
 }

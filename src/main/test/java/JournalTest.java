@@ -6,9 +6,6 @@ import src.main.java.BackEnd.API.Journal.EntryComponents.Date;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Topic;
 import src.main.java.BackEnd.API.Journal.JournalAPI;
 import src.main.java.BackEnd.API.Journal.JournalDBParser;
-import src.main.java.BackEnd.API.Login.LoginAPI;
-import src.main.java.BackEnd.Data.API.JournalDBAPI;
-import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -16,7 +13,6 @@ import java.util.Set;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static src.main.java.BackEnd.API.Journal.JournalDBParser.parseEntryMap;
 
 public class JournalTest {
 
@@ -56,7 +52,7 @@ public class JournalTest {
         assertTrue(e.getMyCreatedasString().equals(date.toString()), "Created Date not properly stored when Entry created");
         assertTrue(e.getMyModfiedasString().equals(date.toString()), "Modified Date not properly stored when Entry created");
 
-        List<Map<String, Object>> entryTopicTable = journalAPI.getMyJournalDBAPI().loadEntryTopicsTable();
+        //TODO: test other two tables
 
     }
 

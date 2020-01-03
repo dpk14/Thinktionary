@@ -1,11 +1,8 @@
 package src.main.java.BackEnd.API.Journal;
 
-import com.sun.media.sound.InvalidFormatException;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Date;
 import src.main.java.BackEnd.API.Journal.EntryComponents.Topic;
-import src.main.java.BackEnd.API.Journal.Entry;
-import src.main.java.BackEnd.API.Login.User;
-import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnLabels;
+import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnInfo;
 import src.main.java.BackEnd.ErrorHandling.Errors.CorruptDBError;
 
 import java.util.*;
@@ -17,17 +14,17 @@ public class JournalDBParser {
         Map<String, Set<Topic>> topicSets = new HashMap<>();
         try {
             for (Map<String, Object> cols : entryTopic) {
-                Topic topic = new Topic((String) cols.get(ColumnLabels.getTOPIC()), (String) cols.get(ColumnLabels.getCOLOR()));
-                String entryID = (String) cols.get(ColumnLabels.getEntryId());
+                Topic topic = new Topic((String) cols.get(ColumnInfo.getTOPIC()), (String) cols.get(ColumnInfo.getCOLOR()));
+                String entryID = (String) cols.get(ColumnInfo.getEntryId());
                 Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
                 topics.add(topic);
-                topicSets.put((String) cols.get(ColumnLabels.getEntryId()), topics);
+                topicSets.put((String) cols.get(ColumnInfo.getEntryId()), topics);
             }
             for (Map<String, Object> cols : entryMap) {
-                String id = (String) cols.get(ColumnLabels.getEntryId());
+                String id = (String) cols.get(ColumnInfo.getEntryId());
                 Set<Topic> topics = topicSets.get(id);
-                Date created = new Date((String) cols.get(ColumnLabels.getCREATED()));
-                Entry entry = new Entry(topics, (String) cols.get(ColumnLabels.getTITLE()), (String) cols.get(ColumnLabels.getTEXT()), created);
+                Date created = new Date((String) cols.get(ColumnInfo.getCREATED()));
+                Entry entry = new Entry(topics, (String) cols.get(ColumnInfo.getTITLE()), (String) cols.get(ColumnInfo.getTEXT()), created);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
             }
@@ -51,9 +48,9 @@ public class JournalDBParser {
         Map<String, String> topToCol = new HashMap();
         Map<String, Topic> ret = new HashMap();
         for(Map<String, Object> cols : topics){
-            String topicName = (String) cols.get(ColumnLabels.getTOPIC());
+            String topicName = (String) cols.get(ColumnInfo.getTOPIC());
             if(!topToCol.containsKey(topicName)){
-                topToCol.put(topicName, (String) cols.get(ColumnLabels.getCOLOR()));
+                topToCol.put(topicName, (String) cols.get(ColumnInfo.getCOLOR()));
             }
         }
         for(String name : topToCol.keySet()){
@@ -63,11 +60,11 @@ public class JournalDBParser {
     }
 
     protected static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
-        return (int) userInfo.get(0).get(ColumnLabels.getUSERID());
+        return (int) userInfo.get(0).get(ColumnInfo.getUSERID());
     }
 
     public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
-        return (int) ent.get(0).get(ColumnLabels.getEntryId());
+        return (int) ent.get(0).get(ColumnInfo.getEntryId());
     }
 
 
