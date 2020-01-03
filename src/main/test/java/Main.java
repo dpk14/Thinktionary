@@ -11,15 +11,14 @@ import src.main.java.BackEnd.Data.Lib.Paths.DBNames;
 import src.main.java.BackEnd.Data.Lib.Paths.DBUrls;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.AccountExistsException;
 import src.main.java.BackEnd.ErrorHandling.Exceptions.InvalidLoginException;
-import sun.rmi.runtime.Log;
 
 
 public class Main {
 
     @Test
-    public static void TestLoginAPI(String[] args){
-        String dbUsername = (String) args[0];
-        String dbPassword = (String) args[1];
+    public static void TestLoginAPI(){
+        String dbUsername = null;
+        String dbPassword = null;
 
         String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
 

@@ -7,6 +7,8 @@ import src.main.java.BackEnd.Data.Lib.SQLStrings.ColumnInfo;
 import src.main.java.BackEnd.Data.Lib.SQLStrings.SQLQuery;
 import src.main.java.BackEnd.Data.Utils.DBUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +26,26 @@ public abstract class DBInit {
         if (dbUrl == null) {
             myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
         } else myDBUrl = dbUrl;
+
+        if(!DBexists(dbUrl)){
+            createDatabase(dbUrl);
+            createTables();
+        }
+    }
+
+    private boolean DBexists(String dbUrl){
+        File file = new File(dbUrl);
+        return file.exists();
+    }
+
+    private void createDatabase(String url){
+        File file = new File(url);
+        try {
+            file.createNewFile();
+        }
+        catch(IOException e){
+            System.out.println(e.getStackTrace());
+        }
     }
 
     public abstract void createTables();
