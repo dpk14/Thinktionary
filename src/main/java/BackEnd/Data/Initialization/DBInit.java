@@ -51,7 +51,7 @@ public abstract class DBInit {
     private void removeTable(String tableName){
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
-        String action = SQLQuery.clearTable();
+        String action = SQLQuery.removeTable();
         tryCatchUserAction(action);
     }
 

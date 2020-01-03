@@ -1,20 +1,21 @@
 package src.main.java.BackEnd.Data.Lib.SQLStrings;
 
 import java.util.List;
+import java.util.Map;
 
 public class SQLQuery {
-    private static final String LOAD_TABLE = "SELECT * FROM ?";
-    private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM ? WHERE ? = ?";
+    private static final String LOAD_TABLE = "SELECT * FROM ?;";
+    private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM ? WHERE ? = ?;";
     private static final String GET_ENTRY = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getTITLE() + " = ? " +
             "AND " + ColumnInfo.getTEXT() + " = ? " +
             "AND " + ColumnInfo.getCREATED() + " = ? " +
-            "AND " + ColumnInfo.getMODIFIED() + " = ?";
+            "AND " + ColumnInfo.getMODIFIED() + " = ?;";
 
     private static final String GET_BY_ENTRY_ID = "SELECT * FROM ? " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
-            "AND " + ColumnInfo.getEntryId() + " = ?";
+            "AND " + ColumnInfo.getEntryId() + " = ?;";
 
     private static final String ADD_ENTRY = "INSERT INTO " + TableNames.getEntryInfo() + " " +
             "(" + ColumnInfo.getUSERID() + "," +
@@ -22,16 +23,16 @@ public class SQLQuery {
             "(" + ColumnInfo.getTEXT() + "," +
             "(" + ColumnInfo.getCREATED() + "," +
             "(" + ColumnInfo.getMODIFIED() + ") " +
-            "VALUES (?,?,?,?,?)";
+            "VALUES (?,?,?,?,?);";
 
     private static final String ADD_TOPIC = "INSERT INTO " + TableNames.getUserTopic() +
             "(" + ColumnInfo.getUSERID() + "," +
             "(" + ColumnInfo.getTOPIC() + "," +
             "(" + ColumnInfo.getCOLOR() + ") " +
-            "VALUES (?,?,?)";
+            "VALUES (?,?,?);";
 
     private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM ? WHERE " + ColumnInfo.getUSERID() + " = ? " +
-            "AND " + ColumnInfo.getEntryId() + " = ?";
+            "AND " + ColumnInfo.getEntryId() + " = ?;";
 
     private static final String MODIFY_ENTRY_INFO = "UPDATE " + TableNames.getEntryInfo() + " SET " +
             ColumnInfo.getUSERID() + " = ?, " +
@@ -39,18 +40,18 @@ public class SQLQuery {
             ColumnInfo.getTEXT() + " = ?, " +
             ColumnInfo.getCREATED() + " = ?, " +
             ColumnInfo.getMODIFIED() + " = ? " +
-            "WHERE " + ColumnInfo.getEntryId() + " = ?";
+            "WHERE " + ColumnInfo.getEntryId() + " = ?;";
 
     private static final String LOAD_USER = "SELECT * FROM " + TableNames.getUserInfo() + " " +
             "WHERE " + ColumnInfo.getUSERNAME() + " = ? " +
-            "AND " + ColumnInfo.getPASSWORD() + " = ?";
+            "AND " + ColumnInfo.getPASSWORD() + " = ?;";
 
     private static final String ADD_USER = "INSERT INTO " + TableNames.getUserTopic() +
             "(" + ColumnInfo.getUSERNAME() + "," +
             "(" + ColumnInfo.getPASSWORD() + ") " +
-            "VALUES (?,?)";
+            "VALUES (?,?);";
 
-    private static final String CLEAR_TABLE = "DELETE FROM ? *";
+    private static final String REMOVE_TABLE = "DROP TABLE ?;";
 
     public static String addEntry() {
         return ADD_ENTRY;
@@ -92,17 +93,18 @@ public class SQLQuery {
         return GET_BY_ENTRY_ID;
     }
 
-    public static final String clearTable() {
-        return CLEAR_TABLE;
+    public static final String removeTable() {
+        return REMOVE_TABLE;
     }
 
-    public static final String createTable(String tableName, List<String> columnNames, boolean withAutoKey) {
-        String command = "CREATE TABLE " + tableName + " ( " + columnNames.get(0);
-        command += withAutoKey ? " BIGINT PRIMARY KEY, " : "int, ";
-        for (int i = 1; i<columnNames.size(); i++) {
-            String columnName = columnNames.get(i);
-            command += columnName + "text ";
-            if (!columnName.equals(columnNames.get(columnNames.size() - 1))) {
+    public static final String createTable(String tableName, Map<String, String> columnToType) {
+        String command = "CREATE TABLE " + tableName + " ( ";
+        int count = 0;
+        for (String columnName : columnToType.keySet()) {
+            String type = columnToType.get(columnName);
+            command += columnName + " " + type + " ";
+            count++;
+            if (count!=columnToType.keySet().size()) {
                 command += ", ";
             }
         }
