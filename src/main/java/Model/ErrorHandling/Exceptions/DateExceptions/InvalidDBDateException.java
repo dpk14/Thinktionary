@@ -1,6 +1,6 @@
 package Model.ErrorHandling.Exceptions.DateExceptions;
 
-public class InvalidDBDateException {
+public class InvalidDBDateException extends Exception{
     String myDate;
     String myRightFormat;
     public InvalidDBDateException(String date, String rightFormat){

@@ -21,26 +21,19 @@ public class Date {
     private static final String FORMAT = "yyyy/MM/dd HH:mm:ss";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(FORMAT);
 
-    public Date()  {
-        String current = getCurrentDate();
-        try {
-            parseDateString(current);
-        }
-        catch(Exception e){
-            System.out.println("parseDateString method is incorrect, or FORMAT needs to be altered");
-            System.out.println(e.getStackTrace());
-        }
+
+    public static String getFormat() {
+        return String.valueOf(FORMAT);
     }
 
+    public static LocalDateTime makeDate(String createdDate) throws InvalidDBDateException{
+        if(!Date.isValidFormat(createdDate)) throw new InvalidDBDateException(createdDate, Date.getFormat());
+        return LocalDateTime.parse(createdDate, FORMATTER);
 
-    public static LocalDateTime getCurrentDate(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(FORMAT);
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
     }
 
-    public int compareTo(Date d2){
-        int[] order1 = makeOrders(this);
+    public static int compare(LocalDateTime d1, LocalDateTime d2){
+        int[] order1 = makeOrders(d1);
         int[] order2 = makeOrders(d2);
         for(int i = 0; i<6; i++){
             int dif = order1[i] - order2[i];
@@ -51,28 +44,26 @@ public class Date {
         return -1;
     }
 
-    private int[] makeOrders(Date d){
-        return new int[]{d.getMyYear(), d.getMyMonth(), d.getMyMinute(), d.getMyHour(), d.getMyMinute(), d.getMySecond()};
+    private static int[] makeOrders(LocalDateTime d){
+        return new int[]{d.getYear(), d.getMonth().getValue(), d.getDayOfMonth(), d.getHour(), d.getMinute(), d.getSecond()};
     }
 
-
-    public static boolean isValidFormat(String value) {
+    private static boolean isValidFormat(String value) {
         LocalDateTime ldt = null;
-        DateTimeFormatter fomatter = DateTimeFormatter.ofPattern(FORMAT);
 
         try {
-            ldt = LocalDateTime.parse(value, fomatter);
-            String result = ldt.format(fomatter);
+            ldt = LocalDateTime.parse(value, FORMATTER);
+            String result = ldt.format(FORMATTER);
             return result.equals(value);
         } catch (DateTimeParseException e) {
             try {
-                LocalDate ld = LocalDate.parse(value, fomatter);
-                String result = ld.format(fomatter);
+                LocalDate ld = LocalDate.parse(value, FORMATTER);
+                String result = ld.format(FORMATTER);
                 return result.equals(value);
             } catch (DateTimeParseException exp) {
                 try {
-                    LocalTime lt = LocalTime.parse(value, fomatter);
-                    String result = lt.format(fomatter);
+                    LocalTime lt = LocalTime.parse(value, FORMATTER);
+                    String result = lt.format(FORMATTER);
                     return result.equals(value);
                 } catch (DateTimeParseException e2) {
                     // Debugging purposes

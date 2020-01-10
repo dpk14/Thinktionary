@@ -157,7 +157,7 @@ public class JournalAPI {
     private class EntryComparator implements Comparator<Entry> {
         @Override
         public int compare(Entry e1, Entry e2) {
-            return e1.getMyCreated().compareTo(e2.getMyCreated());
+            return Date.compare(e1.getMyCreated(), e2.getMyCreated());
         }
 
     }

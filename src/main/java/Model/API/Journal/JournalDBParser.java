@@ -4,6 +4,7 @@ import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.Data.Lib.SQLStrings.ColumnInfo;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.DateExceptions.InvalidDBDateException;
 import Model.ErrorHandling.Exceptions.DateExceptions.InvalidDateException;
 
 import java.time.LocalDateTime;
@@ -26,8 +27,7 @@ public class JournalDBParser {
                 String id = (String) cols.get(ColumnInfo.getEntryId());
                 Set<Topic> topics = topicSets.get(id);
                 String createdDate = (String) cols.get(ColumnInfo.getCREATED());
-                if(!Date.isValidFormat(createdDate)) throws new InvalidDBDateException(createdDate);
-                LocalDateTime created = Date.makeDate((String) cols.get(ColumnInfo.getCREATED()));
+                LocalDateTime created = Date.makeDate(createdDate);
                 Entry entry = new Entry(topics, (String) cols.get(ColumnInfo.getTITLE()), (String) cols.get(ColumnInfo.getTEXT()), created);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
