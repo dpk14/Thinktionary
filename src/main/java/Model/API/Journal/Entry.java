@@ -2,7 +2,9 @@ package Model.API.Journal;
 
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
+import org.apache.tomcat.jni.Local;
 
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +12,8 @@ import java.util.Set;
 
 public class Entry {
     Set<Topic> myTopics;
-    Date myCreated;
-    Date myModified;
+    LocalDateTime myCreated;
+    LocalDateTime myModified;
     String myText;
     String myTitle;
 
@@ -22,11 +24,11 @@ public class Entry {
      */
 
     protected Entry(Set<Topic> topics, String title, String text){ //protected so only journals can instance entries
-        myCreated = new Date();
+        myCreated = LocalDateTime.now();
         initialize(topics, title, text);
     }
 
-    protected Entry(Set<Topic> topics, String title, String text, Date date){ //protected so only journals can instance entries
+    protected Entry(Set<Topic> topics, String title, String text, LocalDateTime date){ //protected so only journals can instance entries
         myCreated = date;
         initialize(topics, title, text);
     }
@@ -81,14 +83,14 @@ public class Entry {
     }
 
     protected void updateModification(){
-        myModified = new Date();
+        myModified = LocalDateTime.now();
     }
 
     protected Set<Topic> getMyTopics(){
         return myTopics;
     }
 
-    protected Date getMyCreated(){ return myCreated; }
+    protected LocalDateTime getMyCreated(){ return myCreated; }
 
     /*
     ----------------------------
@@ -108,7 +110,7 @@ public class Entry {
         myText = text;
     }
 
-    protected void setMyCreated(Date date) {
+    protected void setMyCreated(LocalDateTime date) {
         myCreated = date;
     }
 

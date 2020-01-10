@@ -2,9 +2,11 @@ package Model.API.Journal;
 
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
-import src.main.java.Model.Data.Lib.SQLStrings.ColumnInfo;
+import Model.Data.Lib.SQLStrings.ColumnInfo;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.DateExceptions.InvalidDateException;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class JournalDBParser {
@@ -23,7 +25,9 @@ public class JournalDBParser {
             for (Map<String, Object> cols : entryMap) {
                 String id = (String) cols.get(ColumnInfo.getEntryId());
                 Set<Topic> topics = topicSets.get(id);
-                Date created = new Date((String) cols.get(ColumnInfo.getCREATED()));
+                String createdDate = (String) cols.get(ColumnInfo.getCREATED());
+                if(!Date.isValidFormat(createdDate)) throws new InvalidDBDateException(createdDate);
+                LocalDateTime created = Date.makeDate((String) cols.get(ColumnInfo.getCREATED()));
                 Entry entry = new Entry(topics, (String) cols.get(ColumnInfo.getTITLE()), (String) cols.get(ColumnInfo.getTEXT()), created);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);

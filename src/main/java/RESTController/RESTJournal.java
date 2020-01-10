@@ -13,16 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-public class RESTLogin {
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
+public class RESTJournal {
+
     private final String myDBUsername = "dbUsername";
     private final String myDBPassword = "dbPassword";
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
     @RequestMapping("/login")
     public UserInfo login(@RequestParam(value = "username", defaultValue = "") String username,
-                             @RequestParam(value = "password", defaultValue = "") String password) {
+                          @RequestParam(value = "password", defaultValue = "") String password) {
         LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
         try {
             int userId = loginAPI.login(username, password);
@@ -35,7 +34,7 @@ public class RESTLogin {
 
     @RequestMapping("/makeAccount")
     public ErrorMessage makeAccount(@RequestParam(value = "username", defaultValue = "") String username,
-                                 @RequestParam(value = "password", defaultValue = "") String password) {
+                                    @RequestParam(value = "password", defaultValue = "") String password) {
         LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
         try {
             loginAPI.makeAccount(username, password);

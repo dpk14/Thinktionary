@@ -7,6 +7,7 @@ import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class JournalAPI {
@@ -39,7 +40,7 @@ public class JournalAPI {
     ----------------------------
      */
 
-    public void createEntry(Set<Topic> topics, String text, String title, Date date)
+    public void createEntry(Set<Topic> topics, String text, String title, LocalDateTime date)
     {
         try {
             updateTopicBank(topics);
@@ -50,7 +51,7 @@ public class JournalAPI {
         }
     }
 
-    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate) {
+    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, LocalDateTime creationDate) {
         try {
             updateTopicBank(topics);
             modifyEntry(entryID, topics, text, title, creationDate);
@@ -112,7 +113,7 @@ public class JournalAPI {
         myJournalDBAPI.addToTopicBank(topicToColor); //updates Data topics
     }
 
-    private void addEntry(String text, Set<Topic> topics, String title, Date date)
+    private void addEntry(String text, Set<Topic> topics, String title, LocalDateTime date)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
         Entry entry = date == null ? new Entry(topics, title, text) : new Entry(topics, title, text, date);
@@ -122,7 +123,7 @@ public class JournalAPI {
         myEntries.add(entry);
     }
 
-    private void modifyEntry(int entryID, Set<Topic> topics, String text, String title, Date creationDate) throws SQLException{
+    private void modifyEntry(int entryID, Set<Topic> topics, String text, String title, LocalDateTime creationDate) throws SQLException{
         Entry e = myEntryMap.get(entryID);
         e.setMyTitle(title);
         e.updateModification();

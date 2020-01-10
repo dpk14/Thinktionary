@@ -24,6 +24,8 @@ public class LoginAPI {
         myLoginDBAPI.createAccount(username, password);
     }
 
+    //Testing:
+
     public LoginDBAPI getMyLoginDBAPI(){
         return myLoginDBAPI;
     }
