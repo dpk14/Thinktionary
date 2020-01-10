@@ -1,4 +1,4 @@
-package src.main.java.Model.Data.Lib.Paths;
+package Model.Data.Lib.Paths;
 
 public class DBFileNames {
     private static final String MAIN_DB_PATH = "myDB.db";

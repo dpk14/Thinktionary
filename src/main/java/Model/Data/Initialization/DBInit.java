@@ -1,11 +1,11 @@
-package src.main.java.Model.Data.Initialization;
+package Model.Data.Initialization;
 
-import src.main.java.Model.Data.Lib.Paths.DBFileNames;
-import src.main.java.Model.Data.Lib.Paths.DBNames;
-import src.main.java.Model.Data.Lib.Paths.DBUrls;
-import src.main.java.Model.Data.Lib.SQLStrings.ColumnInfo;
-import src.main.java.Model.Data.Lib.SQLStrings.SQLQuery;
-import src.main.java.Model.Data.Utils.DBUtils;
+import Model.Data.Lib.Paths.DBFileNames;
+import Model.Data.Lib.Paths.DBNames;
+import Model.Data.Lib.Paths.DBUrls;
+import Model.Data.Lib.SQLStrings.ColumnInfo;
+import Model.Data.Lib.SQLStrings.SQLQuery;
+import Model.Data.Utils.DBUtils;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package src.main.java.Model.Data.Initialization;
+package Model.Data.Initialization;
 
-import src.main.java.Model.Data.Lib.SQLStrings.TableNames;
+import Model.Data.Lib.SQLStrings.TableNames;
 
 public class JournalDBInit extends DBInit{
 

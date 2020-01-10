@@ -1,4 +1,4 @@
-package src.main.java.Model.Databases.SQLite.db;
+package Model.Databases.SQLite.db;
 
 import src.main.java.Model.Data.Lib.Paths.Drivers.DriverPaths;
 

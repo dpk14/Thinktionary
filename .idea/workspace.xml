@@ -2,121 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinktionary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Thinktionary.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Thinktionary.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/BackEnd/API/Journal/EntryComponents/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/BackEnd/Data/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/BackEnd/Databases/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/BackEnd/Databases/SQLite/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/BackEnd/Databases/SQLite/db/myDB.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/BackEnd/Databases/SQLite/db/testDB.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/java/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/main/test/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/Entry$EntryComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/Entry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/EntryComponents/Date.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/EntryComponents/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/EntryComponents/Topic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/JournalAPI$EntryComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/JournalAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Journal/JournalDBParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Login/LoginAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Login/LoginDBParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/API/Login/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/API/DBAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/API/JournalDBAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/API/LoginDBAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Initialization/DBInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Initialization/JournalDBInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Initialization/LoginDBInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/Paths/DBFileNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/Paths/DBNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/Paths/DBUrls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/Paths/Drivers/DriverPaths.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/SQLStrings/ColumnInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/SQLStrings/SQLQuery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Data/Utils/DBUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Databases/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Databases/SQLite/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Databases/SQLite/db/PathInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Databases/SQLite/db/myDB.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/Databases/SQLite/db/testDB.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Errors/CorruptDBError.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/AccountExistsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/InvalidLoginException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/NoSuchEntryException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/BackEnd/ErrorHandling/Exceptions/NoTopicException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/test/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/test/java/JournalTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/test/java/LoginTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/test/java/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/EntryComponents/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/EntryComponents/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/EntryComponents/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Topic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/LoginDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Initialization/DBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Initialization/JournalDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Initialization/LoginDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/Paths/DBFileNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/Paths/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/Paths/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/Paths/Drivers/DriverPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/Drivers/DriverPaths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Data/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Databases/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Databases/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Databases/SQLite/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Databases/SQLite/db/PathInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Databases/SQLite/db/myDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/myDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/Databases/SQLite/db/testDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/testDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Errors/CorruptDBError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Errors/CorruptDBError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/AccountExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/AccountExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/InvalidLoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/InvalidLoginException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/NoSuchEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/NoSuchEntryException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BackEnd/ErrorHandling/Exceptions/NoTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/NoTopicException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/JournalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JournalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -147,10 +46,70 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/NoTopicException.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="8" selection-start-column="8" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="8" selection-start-column="8" selection-end-column="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,26 +117,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Errors/CorruptDBError.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="8" selection-start-column="8" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,58 +136,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Topic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="37" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+            <state relative-caret-position="85">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -269,18 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/Utils/ParserUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/Lib/SQLStrings/TableNames.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/Initialization/LoginDBInit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/EntryComponents/README" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/ParserUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/test/java/LoginTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/LoginDBAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Login/LoginDBParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/Entry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/Data/API/JournalDBAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/JournalDBParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/BackEnd/API/Journal/EntryComponents/Date.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/JournalTest.java" />
@@ -298,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/RESTController/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.java" />
@@ -312,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/NoSuchEntryException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/NoTopicException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Errors/CorruptDBError.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Topic.java" />
@@ -320,6 +211,20 @@
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java" />
+        <option value="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java" />
       </list>
     </option>
   </component>
@@ -393,18 +298,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
               <item name="API" type="462c0819:PsiDirectoryNode" />
-              <item name="Journal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="API" type="462c0819:PsiDirectoryNode" />
-              <item name="Journal" type="462c0819:PsiDirectoryNode" />
-              <item name="EntryComponents" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
@@ -422,7 +316,80 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="Initialization" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="Paths" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="SQLStrings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
+              <item name="Utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
               <item name="Databases" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Databases" type="462c0819:PsiDirectoryNode" />
+              <item name="SQLite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="Databases" type="462c0819:PsiDirectoryNode" />
+              <item name="SQLite" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
@@ -449,20 +416,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="ErrorHandling" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-              <item name="ErrorHandling" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-              <item name="DateExceptions" type="462c0819:PsiDirectoryNode" />
+              <item name="RESTController" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
@@ -490,7 +444,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578692458613" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578693541389" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Documents/moe-samples-java/ThinkBank" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -600,7 +554,7 @@
       <workItem from="1577898914426" duration="50382000" />
       <workItem from="1578039422491" duration="604000" />
       <workItem from="1578681793650" duration="626000" />
-      <workItem from="1578686317975" duration="4685000" />
+      <workItem from="1578686317975" duration="5779000" />
     </task>
     <servers />
   </component>
@@ -628,13 +582,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155142000" />
+    <option name="totallyTimeSpent" value="156236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2624161" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2624161" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -655,7 +609,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3286119" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Multi-OS Engine" order="12" />
-      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.2181303" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.2181303" />
       <window_info anchor="right" id="Bean Validation" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Database" order="1" weight="0.3295302" />
@@ -680,16 +634,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/testDB.db">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/README">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -701,118 +645,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/java/LoginTests.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/BackEnd/Data/API/GeneralDBAPI.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="5" selection-start-line="4" selection-start-column="3" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/README">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1434#1435#0" expanded="true" />
-            <element signature="e#1521#1522#0" expanded="true" />
-            <element signature="e#2273#2274#0" expanded="true" />
-            <element signature="e#2306#2307#0" expanded="true" />
-            <element signature="e#2351#2352#0" expanded="true" />
-            <element signature="e#2386#2387#0" expanded="true" />
-            <element signature="e#2513#2514#0" expanded="true" />
-            <element signature="e#2549#2550#0" expanded="true" />
-            <element signature="e#2595#2596#0" expanded="true" />
-            <element signature="e#2631#2632#0" expanded="true" />
-            <element signature="e#2673#2674#0" expanded="true" />
-            <element signature="e#2705#2706#0" expanded="true" />
-            <element signature="e#2748#2749#0" expanded="true" />
-            <element signature="e#2781#2782#0" expanded="true" />
-            <element signature="e#2824#2825#0" expanded="true" />
-            <element signature="e#2857#2858#0" expanded="true" />
-            <element signature="e#2903#2904#0" expanded="true" />
-            <element signature="e#2939#2940#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="113" selection-start-line="113" selection-end-line="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3254#3255#0" expanded="true" />
-            <element signature="e#3285#3286#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -861,40 +697,6 @@
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/README">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RESTController/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.java">
@@ -974,20 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Errors/CorruptDBError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1026,6 +814,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="163" column="1" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1033,13 +831,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/README">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="97" selection-start-line="19" selection-start-column="97" selection-end-line="19" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Errors/CorruptDBError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>

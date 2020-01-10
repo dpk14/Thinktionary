@@ -1,4 +1,4 @@
-package src.main.java.Model.Data.Utils;
+package Model.Data.Utils;
 
 import java.sql.*;
 import java.util.ArrayList;

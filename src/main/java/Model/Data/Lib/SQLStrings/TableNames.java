@@ -1,4 +1,4 @@
-package src.main.java.Model.Data.Lib.SQLStrings;
+package Model.Data.Lib.SQLStrings;
 
 import java.util.ArrayList;
 import java.util.List;
