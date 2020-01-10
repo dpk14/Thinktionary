@@ -1,8 +1,8 @@
 package Model.Data.API;
 
-import src.main.java.Model.Data.Lib.SQLStrings.SQLQuery;
-import src.main.java.Model.Data.Lib.SQLStrings.TableNames;
-import src.main.java.Model.Data.Utils.DBUtils;
+import Model.Data.Lib.SQLStrings.SQLQuery;
+import Model.Data.Lib.SQLStrings.TableNames;
+import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;

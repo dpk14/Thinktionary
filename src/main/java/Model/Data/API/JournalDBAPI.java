@@ -1,10 +1,10 @@
 package Model.Data.API;
 
 import Model.API.Journal.Entry;
-import src.main.java.Model.Data.Lib.SQLStrings.ColumnInfo;
-import src.main.java.Model.Data.Utils.DBUtils;
-import src.main.java.Model.Data.Lib.SQLStrings.SQLQuery;
-import src.main.java.Model.Data.Lib.SQLStrings.TableNames;
+import Model.Data.Lib.SQLStrings.ColumnInfo;
+import Model.Data.Utils.DBUtils;
+import Model.Data.Lib.SQLStrings.SQLQuery;
+import Model.Data.Lib.SQLStrings.TableNames;
 import Model.API.Journal.JournalDBParser;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
