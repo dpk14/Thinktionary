@@ -3,8 +3,8 @@ package Model.Data.API;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
-import src.main.java.Model.Data.Lib.SQLStrings.SQLQuery;
-import src.main.java.Model.Data.Utils.DBUtils;
+import Model.Data.Lib.SQLStrings.SQLQuery;
+import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 
 import java.sql.SQLException;
