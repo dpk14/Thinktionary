@@ -18,23 +18,26 @@ public class RESTJournal {
     private final String myDBPassword = "dbPassword";
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
-    @PostMapping("/{id}/createEntry")
-    public UserInfo createEntry(@PathVariable int userId, @RequestBody Entry entry) {
+    @PostMapping("/{userName}/{password}/{userID}/Journal")
+    public UserInfo createEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userId,
+                                @RequestBody Entry entry) {
         JournalAPI journalAPI = new JournalAPI(myDBUsername, myDBPassword, myDBURL, userId);
         try {
-            int userId = journalAPI.;
+            int id = journalAPI.createEntry(entry);
             return new UserInfo(userId, null);
         }
         catch(InvalidLoginException e){
             return new UserInfo(-1, new ErrorMessage(e.toString(), e.getStackTrace()));
         }
+        //add entryId when you get it
     }
 
-    @PutMapping("/{id}/modifyEntry")
-    public UserInfo modifyEntry(@PathVariable int userID, @RequestBody Entry entry) {
+    @PutMapping("/{userName}/{password}/{userID}/Journal/{entryID}")
+    public UserInfo modifyEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userID,
+                                @PathVariable int entryID, @RequestBody Entry entry) {
         JournalAPI journalAPI = new JournalAPI(myDBUsername, myDBPassword, myDBURL, userID);
         try {
-            int userId = loginAPI.login(username, password);
+            journalAPI.saveEntry(entryID, entry);
             return new UserInfo(userId, null);
         }
         catch(InvalidLoginException e){
