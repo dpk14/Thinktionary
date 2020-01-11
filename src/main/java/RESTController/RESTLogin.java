@@ -6,6 +6,7 @@ import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
+import RESTController.SerializableModels.ErrorMessage;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping("/login")
 public class RESTLogin {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();

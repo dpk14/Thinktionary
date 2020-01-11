@@ -23,12 +23,12 @@ public class Entry {
     Modifications to Entries must be done through JournalAPI.
      */
 
-    protected Entry(Set<Topic> topics, String title, String text){ //protected so only journals can instance entries
+    public Entry(Set<Topic> topics, String title, String text){ //protected so only journals can instance entries
         myCreated = LocalDateTime.now();
         initialize(topics, title, text);
     }
 
-    protected Entry(Set<Topic> topics, String title, String text, LocalDateTime date){ //protected so only journals can instance entries
+    public Entry(Set<Topic> topics, String title, String text, LocalDateTime date){ //protected so only journals can instance entries
         myCreated = date;
         initialize(topics, title, text);
     }
@@ -113,6 +113,5 @@ public class Entry {
     protected void setMyCreated(LocalDateTime date) {
         myCreated = date;
     }
-
 
 }
