@@ -40,21 +40,21 @@ public class JournalAPI {
     ----------------------------
      */
 
-    public void createEntry(Set<Topic> topics, String text, String title, LocalDateTime date)
+    public void createEntry(Entry entry)
     {
         try {
-            updateTopicBank(topics);
-            addEntry(text, topics, title, date);
+            updateTopicBank(entry.getMyTopics());
+            addEntry(entry);
         }
         catch(Exception e){
             throw new CorruptDBError(e);
         }
     }
 
-    public void saveEntry(int entryID, Set<Topic> topics, String text, String title, LocalDateTime creationDate) {
+    public void saveEntry(int entryID, Entry entry) {
         try {
-            updateTopicBank(topics);
-            modifyEntry(entryID, topics, text, title, creationDate);
+            updateTopicBank(entry.getMyTopics());
+            modifyEntry(entryID, entry);
         }
         catch(Exception e){
             throw new CorruptDBError(e);
@@ -113,29 +113,25 @@ public class JournalAPI {
         myJournalDBAPI.addToTopicBank(topicToColor); //updates Data topics
     }
 
-    private void addEntry(String text, Set<Topic> topics, String title, LocalDateTime date)
+    private void addEntry(Entry entry)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
-        Entry entry = date == null ? new Entry(topics, title, text) : new Entry(topics, title, text, date);
         int id = myJournalDBAPI.createEntry(entry);
 
         myEntryMap.put(id, entry);
         myEntries.add(entry);
     }
 
-    private void modifyEntry(int entryID, Set<Topic> topics, String text, String title, LocalDateTime creationDate) throws SQLException{
-        Entry e = myEntryMap.get(entryID);
-        e.setMyTitle(title);
-        e.updateModification();
-        e.setText(text);
-        e.setMyTopics(topics);
+    private void modifyEntry(int entryID, Entry entry) throws SQLException{
+        entry.updateModification();
+        String oldCreation = myEntryMap.get(entryID).getMyCreatedasString();
+        myEntryMap.put(entryID, entry);
 
-        if(!creationDate.equals(e.getMyCreated())){ // if creation date has been modified, adjust order
-            e.setMyCreated(creationDate);
-            reorder(e);
+        if(!entry.getMyCreatedasString().equals(oldCreation)){ // if creation date has been modified, adjust order
+            reorder(entry);
         }
 
-        myJournalDBAPI.save(entryID, e);
+        myJournalDBAPI.save(entryID, entry);
     }
 
     private void reorder(Entry e){

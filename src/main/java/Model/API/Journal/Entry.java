@@ -11,11 +11,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class Entry {
-    Set<Topic> myTopics;
-    LocalDateTime myCreated;
-    LocalDateTime myModified;
-    String myText;
-    String myTitle;
+    private Set<Topic> myTopics;
+    private LocalDateTime myCreated;
+    private LocalDateTime myModified;
+    private String myText;
+    private String myTitle;
 
     /*
     JournalDBAPI, modular unit of information managed by JournalAPI. Packages outside JournalDBAPI backend package cannot create Entries, but if they have received
