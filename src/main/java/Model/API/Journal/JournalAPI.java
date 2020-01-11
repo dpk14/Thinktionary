@@ -40,11 +40,11 @@ public class JournalAPI {
     ----------------------------
      */
 
-    public void createEntry(Entry entry)
+    public int createEntry(Entry entry)
     {
         try {
             updateTopicBank(entry.getMyTopics());
-            addEntry(entry);
+            return addEntry(entry);
         }
         catch(Exception e){
             throw new CorruptDBError(e);
@@ -113,13 +113,14 @@ public class JournalAPI {
         myJournalDBAPI.addToTopicBank(topicToColor); //updates Data topics
     }
 
-    private void addEntry(Entry entry)
+    private int addEntry(Entry entry)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
         int id = myJournalDBAPI.createEntry(entry);
 
         myEntryMap.put(id, entry);
         myEntries.add(entry);
+        return id;
     }
 
     private void modifyEntry(int entryID, Entry entry) throws SQLException{

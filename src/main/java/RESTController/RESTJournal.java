@@ -9,6 +9,8 @@ import Model.Data.Lib.Paths.DBUrls;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 import RESTController.SerializableModels.ErrorMessage;
+import RESTController.SerializableModels.ResponsePair;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,17 +20,18 @@ public class RESTJournal {
     private final String myDBPassword = "dbPassword";
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
-    @PostMapping("/{userName}/{password}/{userID}/Journal")
-    public UserInfo createEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userId,
-                                @RequestBody Entry entry) {
+    @PostMapping("/{userName}/{password}/{userID}/journal")
+    public ResponsePair createEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userId,
+                                    @RequestBody Entry entry) {
         JournalAPI journalAPI = new JournalAPI(myDBUsername, myDBPassword, myDBURL, userId);
         try {
             int id = journalAPI.createEntry(entry);
-            return new UserInfo(userId, null);
+            return new ResponsePair(ResponseEntity., null);
         }
         catch(InvalidLoginException e){
-            return new UserInfo(-1, new ErrorMessage(e.toString(), e.getStackTrace()));
+            return new (-1, new ErrorMessage(e.toString(), e.getStackTrace()));
         }
+
         //add entryId when you get it
     }
 
