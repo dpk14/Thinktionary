@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ResponsePair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinktionary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Thinktionary.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ErrorMessage.java" afterDir="false" />
-    </list>
+    <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -508,7 +500,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578783593572" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578785240123" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Documents/moe-samples-java/ThinkBank" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -620,7 +612,7 @@
       <workItem from="1578039422491" duration="604000" />
       <workItem from="1578681793650" duration="626000" />
       <workItem from="1578686317975" duration="17822000" />
-      <workItem from="1578778921274" duration="4322000" />
+      <workItem from="1578778921274" duration="4665000" />
     </task>
     <servers />
   </component>
@@ -648,7 +640,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172601000" />
+    <option name="totallyTimeSpent" value="172944000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
