@@ -1,5 +1,6 @@
 package Model.Data.API;
 
+import Model.API.Login.LoginDBParser;
 import Model.Data.Lib.SQLStrings.SQLQuery;
 import Model.Data.Lib.SQLStrings.TableNames;
 import Model.Data.Utils.DBUtils;
@@ -38,7 +39,7 @@ public class LoginDBAPI extends DBAPI{
         }
     }
 
-    public void createAccount(String userName, String passWord) throws AccountExistsException {
+    public List<Map<String, Object>> createAccount(String userName, String passWord) throws AccountExistsException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());
         map.put(2, userName);
@@ -50,6 +51,8 @@ public class LoginDBAPI extends DBAPI{
                 throw new AccountExistsException();
             }
             DBUtils.userQuery(map, SQLQuery.addUser(), myDBUrl, myDBUsername, myDBPassword);
+            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
+            return userInfo;
         }
         catch(SQLException e){
             throw new CorruptDBError(e);

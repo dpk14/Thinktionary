@@ -37,9 +37,8 @@ public class RESTLogin {
 
     @PostMapping("/users")
     public ResponsePair makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
-        LoginAPI loginAPI = new LoginAPI();
         try {
-            int userId = loginAPI.makeAccount(username, password);
+            int userId = new LoginAPI().makeAccount(username, password);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{username}/{password}/{userID}")
                     .buildAndExpand(username, password, userId)
