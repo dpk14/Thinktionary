@@ -22,8 +22,8 @@ public class RESTLogin {
     private final String myDBPassword = "dbPassword";
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
-    @GetMapping("/{username}/{password}/login")
-    public ResponsePair login(@PathVariable String username, @PathVariable String password) {
+    @GetMapping("/")
+    public ResponseEntity<Integer> login(@RequestParam String username, @RequestParam String password) {
         LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
         try {
             int userId = loginAPI.login(username, password);
@@ -32,23 +32,20 @@ public class RESTLogin {
                     .buildAndExpand(userId)
                     .toUri();
 
-            return new ResponsePair(ResponseEntity.created(uri).body(userId),
-                                    null);
+            return ResponseEntity.created(uri).body(userId);
         }
         catch(InvalidLoginException e){
-            return new ResponsePair(ResponseEntity.notFound().build(),
-                    new ErrorMessage(e.toString(), e.getStackTrace().toString()));
+            System.out.print(e.toString());
+            return ResponseEntity.notFound().build();
         }
 
-        //need to return uri of new resource
     }
 
-    @PostMapping("/{username}/{password}/makeAccount")
-    public ResponsePair makeAccount(@RequestParam(value = "username", defaultValue = "") String username,
-                                 @RequestParam(value = "password", defaultValue = "") String password) {
+    @PostMapping("/makeAccount")
+    public ResponsePair makeAccount(@RequestParam String username, @RequestParam String password) {
         LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
         try {
-            int loginAPI.makeAccount(username, password);
+            loginAPI.makeAccount(username, password);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{userId}")
                     .buildAndExpand(userId)

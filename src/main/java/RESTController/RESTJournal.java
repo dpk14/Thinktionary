@@ -14,13 +14,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping()
 public class RESTJournal {
 
     private final String myDBUsername = "dbUsername";
     private final String myDBPassword = "dbPassword";
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
-    @PostMapping("/{userName}/{password}/{userID}/journal")
+    @PostMapping("/{userID}/")
     public ResponsePair createEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userId,
                                     @RequestBody Entry entry) {
         JournalAPI journalAPI = new JournalAPI(myDBUsername, myDBPassword, myDBURL, userId);

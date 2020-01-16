@@ -2,20 +2,20 @@ package RESTController.SerializableModels;
 
 import org.springframework.http.ResponseEntity;
 
-public class ResponsePair {
-    ResponseEntity myResponseEntity;
+public class ResponsePair<T> {
+    T myReturnObject;
     ErrorMessage myErrorMesage;
 
-    public ResponsePair(ResponseEntity re, ErrorMessage em){
-        myResponseEntity = re;
+    public ResponsePair(ErrorMessage em, T returnObject){
         myErrorMesage = em;
+        myReturnObject = returnObject;
     }
 
     public ErrorMessage getMyErrorMesage() {
         return myErrorMesage;
     }
 
-    public ResponseEntity getMyResponseEntity() {
-        return myResponseEntity;
+    public T getMyReturnObject() {
+        return myReturnObject;
     }
 }
