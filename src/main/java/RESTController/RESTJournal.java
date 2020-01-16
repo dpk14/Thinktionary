@@ -3,12 +3,6 @@ package RESTController;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
-import Model.API.Login.LoginAPI;
-import Model.ErrorHandling.Exceptions.AccountExistsException;
-import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
-import Model.ErrorHandling.Exceptions.InvalidLoginException;
-import RESTController.SerializableModels.ErrorMessage;
-import RESTController.SerializableModels.ResponsePair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +10,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.Set;
 import java.util.List;
 
