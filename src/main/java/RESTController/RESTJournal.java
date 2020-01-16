@@ -7,30 +7,41 @@ import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 import RESTController.SerializableModels.ErrorMessage;
 import RESTController.SerializableModels.ResponsePair;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 
 @RestController
 @RequestMapping("/users")
 public class RESTJournal {
 
-    private static final String PROTECTED_PATH = "/{username}/{password}/{userID}";
+    private static final String PROTECTED_PATH = "/{userID}";
 
     @PostMapping(PROTECTED_PATH + "/")
-    public ResponsePair createEntry(HttpServletRequest httpServletRequest,
-                                    @PathVariable String userName, @PathVariable String password, @PathVariable int userId,
-                                    @RequestBody Entry entry) {
-        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+    public ResponseEntity createEntry(HttpServletRequest httpServletRequest,
+                                              @PathVariable String userName, @PathVariable String password, @PathVariable int userId,
+                                              @RequestBody Entry entry) {
         try {
-            int id = journal.createEntry(entry);
-            return new ResponsePair(ResponseEntity., null);
+            Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+            try {
+                int entryID = journal.createEntry(entry);
+                URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                        .path("/{entryID}")
+                        .buildAndExpand(entryID)
+                        .toUri();
+                return ResponseEntity.created(uri).body(entry);
+            }
+            catch(InvalidLoginException e){
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            }
         }
-        catch(InvalidLoginException e){
-            return new (-1, new ErrorMessage(e.toString(), e.getStackTrace()));
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RESTStrings.getNoSessionException());
         }
-
         //add entryId when you get it
     }
 

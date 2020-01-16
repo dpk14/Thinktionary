@@ -40,8 +40,8 @@ public class RESTLogin {
         try {
             int userId = new LoginAPI().makeAccount(username, password);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{username}/{password}/{userID}")
-                    .buildAndExpand(username, password, userId)
+                    .path("/{userID}")
+                    .buildAndExpand(userId)
                     .toUri();
 
             return ResponseEntity.created(uri).body(userId);
