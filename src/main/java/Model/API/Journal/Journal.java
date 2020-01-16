@@ -56,9 +56,9 @@ public class Journal {
         myEntryMap.remove(entryID);
     }
 
-    public Entry getRandomEntry(Set<Topic> topics){
+    public Entry getRandomEntry(Set<Topic> topics) throws IndexOutOfBoundsException{
         List<Entry> topicalEntries = getTopicalEntries(topics);
-        int index = (int) Math.round(Math.random()*topicalEntries.size());
+        int index = (int) Math.round(Math.random()*(topicalEntries.size()-1));
         return topicalEntries.get(index);
     }
 
