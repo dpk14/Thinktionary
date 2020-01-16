@@ -15,21 +15,14 @@ public class JournalAPI {
     Map<Integer, Entry> myEntryMap;
     Map<String, Topic> myTopics;
     int myUserID;
-    String myDBUserName;
-    String myDBPassword;
-    String myDBUrl;
-
     /*
     Sorter and manager of Entries; has full access privileges on Entries
      */
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public JournalAPI(String dbUserName, String dbPassword, String dbUrl, int userID){
-        myDBUserName = dbUserName;
-        myDBPassword = dbPassword;
-        myDBUrl = dbUrl;
-        JournalDBAPI journalDBAPI = new JournalDBAPI(userID, dbUserName, dbPassword, dbUrl);
+    public JournalAPI(int userID){
+        JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry
         JournalDBParser.parseEntryMap(entryTable, entryTopic);
@@ -67,7 +60,7 @@ public class JournalAPI {
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException{
-        new JournalDBAPI(myUserID, myDBUserName, myDBPassword, myDBUrl).removeEntry(entryID);
+        new JournalDBAPI(myUserID).removeEntry(entryID);
         myEntries.remove(myEntryMap.get(entryID));
         myEntryMap.remove(entryID);
     }
@@ -90,7 +83,7 @@ public class JournalAPI {
     }
 
     public JournalDBAPI getMyJournalDBAPI(){
-        return new JournalDBAPI(myUserID, myDBUserName, myDBPassword, myDBUrl);
+        return new JournalDBAPI(myUserID);
     }
 
     public int getUserID() {
@@ -115,13 +108,13 @@ public class JournalAPI {
             myTopics.put(key, topicsMap.get(key));
             topicToColor.put(key, topicsMap.get(key).getMyColor());
         }
-        new JournalDBAPI(myUserID, myDBUserName, myDBPassword, myDBUrl).addToTopicBank(topicToColor); //updates Data topics
+        new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 
     private int addEntry(Entry entry)
             throws SQLException, IndexOutOfBoundsException, ClassCastException{
 
-        int id = new JournalDBAPI(myUserID, myDBUserName, myDBPassword, myDBUrl).createEntry(entry);
+        int id = new JournalDBAPI(myUserID).createEntry(entry);
 
         myEntryMap.put(id, entry);
         myEntries.add(entry);
@@ -137,7 +130,7 @@ public class JournalAPI {
             reorder(entry);
         }
 
-        new JournalDBAPI(myUserID, myDBUserName, myDBPassword, myDBUrl).save(entryID, entry);
+        new JournalDBAPI(myUserID).save(entryID, entry);
     }
 
     private void reorder(Entry e){
