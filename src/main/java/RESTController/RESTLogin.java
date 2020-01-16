@@ -9,6 +9,7 @@ import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 import RESTController.SerializableModels.ErrorMessage;
 import RESTController.SerializableModels.ResponsePair;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -23,20 +24,19 @@ public class RESTLogin {
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
     @GetMapping("/")
-    public ResponseEntity<Journal> login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
             Journal journal = new LoginAPI().login(username, password);
             return ResponseEntity.ok(journal);
         }
         catch(InvalidLoginException e){
-            System.out.print(e.toString());
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
 
     }
 
     @PostMapping("/users")
-    public ResponsePair makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
             int userId = new LoginAPI().makeAccount(username, password);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -44,15 +44,12 @@ public class RESTLogin {
                     .buildAndExpand(username, password, userId)
                     .toUri();
 
-            return new ResponsePair(ResponseEntity.created(uri).body(userId),
-                    null);
-            return null;
+            return ResponseEntity.created(uri).body(userId);
         }
         catch(AccountExistsException e){
-            return new ErrorMessage(e.toString(), e.getStackTrace());
+            System.out.print(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
-
-        Resp
     }
 
     //makeaccount needs to add /id, the id is another layer validating data
