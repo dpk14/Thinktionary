@@ -7,6 +7,7 @@ import Model.Data.Lib.SQLStrings.SQLQuery;
 import Model.Data.Lib.SQLStrings.TableNames;
 import Model.API.Journal.JournalDBParser;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 
@@ -64,7 +65,7 @@ public class JournalDBAPI extends DBAPI {
         removeEntry(entryID, TableNames.getEntryInfo());
     }
 
-    public void save(int entryID, Entry entry) throws TopicBankAddException, SQLException {
+    public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
 
         Map<Integer, String> map = new HashMap<>();
@@ -75,7 +76,12 @@ public class JournalDBAPI extends DBAPI {
         map.put(5, entry.getMyCreatedasString());
         map.put(6, entry.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
-        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
+        try {
+            DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
+        }
+        catch(SQLException e){
+            throw new ModifyEntryException(e.toString());
+        }
     }
 
     /*

@@ -59,9 +59,9 @@ public class RESTJournal {
     }
 
     @RequestMapping("/makeAccount")
-    public ErrorMessage makeAccount(@RequestParam(value = "username", defaultValue = "") String username,
+    public ErrorMessage makeAccount(HttpServletRequest httpServletRequest, @ String username,
                                     @RequestParam(value = "password", defaultValue = "") String password) {
-        LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
+        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
         try {
             loginAPI.makeAccount(username, password);
             return null;

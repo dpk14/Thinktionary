@@ -4,6 +4,8 @@ import Model.Data.API.JournalDBAPI;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
+import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.sql.SQLException;
@@ -38,25 +40,14 @@ public class Journal {
     ----------------------------
      */
 
-    public int createEntry(Entry entry)
-    {
-        try {
-            updateTopicBank(entry.getMyTopics());
-            return addEntry(entry);
-        }
-        catch(Exception e){
-            throw new CorruptDBError(e);
-        }
+    public int createEntry(Entry entry) throws TopicBankAddException {
+        updateTopicBank(entry.getMyTopics());
+        return addEntry(entry);
     }
 
-    public void saveEntry(int entryID, Entry entry) {
-        try {
-            updateTopicBank(entry.getMyTopics());
-            modifyEntry(entryID, entry);
-        }
-        catch(Exception e){
-            throw new CorruptDBError(e);
-        }
+    public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
+        updateTopicBank(entry.getMyTopics());
+        modifyEntry(entryID, entry);
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException{
@@ -97,7 +88,7 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateTopicBank(Set<Topic> topics) throws SQLException{
+    private void updateTopicBank(Set<Topic> topics) throws TopicBankAddException {
         Map<String, Topic> topicsMap = new HashMap();
         for(Topic topic : topics){
             topicsMap.put(topic.getMyTopic(), topic);
@@ -108,12 +99,10 @@ public class Journal {
             myTopics.put(key, topicsMap.get(key));
             topicToColor.put(key, topicsMap.get(key).getMyColor());
         }
-
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 
-    private int addEntry(Entry entry)
-            throws SQLException, IndexOutOfBoundsException, ClassCastException{
+    private int addEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException {
 
         int id = new JournalDBAPI(myUserID).createEntry(entry);
 
@@ -122,7 +111,7 @@ public class Journal {
         return id;
     }
 
-    private void modifyEntry(int entryID, Entry entry) throws SQLException{
+    private void modifyEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         entry.updateModification();
         String oldCreation = myEntryMap.get(entryID).getMyCreatedasString();
         myEntryMap.put(entryID, entry);
