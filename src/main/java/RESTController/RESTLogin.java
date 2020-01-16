@@ -14,19 +14,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class RESTLogin {
-    private final String myDBUsername = "dbUsername";
-    private final String myDBPassword = "dbPassword";
-    private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
     @GetMapping("/")
-    public ResponseEntity login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity login(HttpServletRequest httpServletRequest,
+                                @RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
             Journal journal = new LoginAPI().login(username, password);
+            httpServletRequest.getSession().setAttribute(RESTStrings.getJournalAttribute(), journal);
             return ResponseEntity.ok(journal);
         }
         catch(InvalidLoginException e){

@@ -3,9 +3,6 @@ package RESTController;
 import Model.API.Journal.Entry;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.Data.Lib.Paths.DBFileNames;
-import Model.Data.Lib.Paths.DBNames;
-import Model.Data.Lib.Paths.DBUrls;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 import RESTController.SerializableModels.ErrorMessage;
@@ -13,20 +10,21 @@ import RESTController.SerializableModels.ResponsePair;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
-@RequestMapping()
+@RequestMapping("/users")
 public class RESTJournal {
 
-    private final String myDBUsername = "dbUsername";
-    private final String myDBPassword = "dbPassword";
-    private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
+    private static final String PROTECTED_PATH = "/{username}/{password}/{userID}";
 
-    @PostMapping("/{userID}/")
-    public ResponsePair createEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userId,
+    @PostMapping(PROTECTED_PATH + "/")
+    public ResponsePair createEntry(HttpServletRequest httpServletRequest,
+                                    @PathVariable String userName, @PathVariable String password, @PathVariable int userId,
                                     @RequestBody Entry entry) {
-        Journal journalAPI = new Journal(myDBUsername, myDBPassword, myDBURL, userId);
+        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
         try {
-            int id = journalAPI.createEntry(entry);
+            int id = journal.createEntry(entry);
             return new ResponsePair(ResponseEntity., null);
         }
         catch(InvalidLoginException e){

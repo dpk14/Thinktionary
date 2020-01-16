@@ -43,7 +43,7 @@ public class Entry {
     /*
     ----------------------------
     Public API (Used by src.main.java.Model.Data module. Do not actually give access to the objects
-                    just give access to Strings symbolizing objects):
+                    just give access to RESTStrings symbolizing objects):
     ----------------------------
      */
 
