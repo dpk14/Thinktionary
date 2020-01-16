@@ -2,49 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/Entry$EntryComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/Entry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/EntryComponents/Date.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/EntryComponents/Topic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/JournalAPI$EntryComparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/JournalAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Journal/JournalDBParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Login/LoginAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Login/LoginDBParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/API/Login/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/API/DBAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/API/JournalDBAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/API/LoginDBAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/Initialization/DBInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/Initialization/JournalDBInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/Initialization/LoginDBInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/Lib/Paths/DBFileNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/Lib/Paths/DBNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/Data/Lib/Paths/DBUrls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Errors/CorruptDBError.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/AccountExistsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/InvalidLoginException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/NoSuchEntryException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/Model/ErrorHandling/Exceptions/NoTopicException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/RESTController/RESTLogin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/Model/Data/Lib/Paths/Drivers/DriverPaths.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/Model/Data/Lib/SQLStrings/TableNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/Model/Data/Utils/DBUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Thinktionary/src/main/java/Model/Databases/SQLite/db/PathInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ResponsePair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ResponsePair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,11 +56,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="139" column="71" selection-start-line="139" selection-start-column="71" selection-end-line="139" selection-end-column="71" />
+            <state relative-caret-position="216">
+              <caret line="19" column="19" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="19" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,8 +83,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="82" column="7" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+            <state relative-caret-position="567">
+              <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,32 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+            <state relative-caret-position="355">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -167,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+            <state relative-caret-position="425">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -253,14 +214,10 @@
         <option value="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/DBInit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Data/Initialization/LoginDBInit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/OldDate" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDBDateException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" />
         <option value="$PROJECT_DIR$/src/main/java/RESTController/ErrorMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" />
         <option value="$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ErrorMessage.java" />
@@ -268,6 +225,10 @@
         <option value="$PROJECT_DIR$/src/main/java/RESTController/RESTLogin.java" />
         <option value="$PROJECT_DIR$/src/main/java/RESTController/RESTJournal.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" />
       </list>
     </option>
   </component>
@@ -342,6 +303,16 @@
               <item name="Model" type="462c0819:PsiDirectoryNode" />
               <item name="API" type="462c0819:PsiDirectoryNode" />
               <item name="Journal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Thinktionary" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Thinktionary" type="b2602c69:ProjectViewProjectNode" />
@@ -549,7 +520,7 @@
       <workItem from="1578686317975" duration="17822000" />
       <workItem from="1578778921274" duration="5849000" />
       <workItem from="1578864290988" duration="18000" />
-      <workItem from="1579130117587" duration="4315000" />
+      <workItem from="1579130117587" duration="6129000" />
     </task>
     <servers />
   </component>
@@ -577,7 +548,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178461000" />
+    <option name="totallyTimeSpent" value="180275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -606,8 +577,8 @@
       <window_info anchor="bottom" id="Messages" order="13" weight="0.2181303" />
       <window_info anchor="bottom" id="Spring" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Database" order="1" weight="0.3295302" />
-      <window_info anchor="right" id="Ant Build" order="2" sideWeight="0.49917898" visible="true" weight="0.2671141" />
+      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.49917898" weight="0.2671141" />
+      <window_info anchor="right" id="Database" order="2" weight="0.3295302" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -881,16 +852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="34" column="40" lean-forward="true" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/Initialization/JournalDBInit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -902,16 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -945,16 +896,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/RESTController/SerializableModels/ResponsePair.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -966,6 +907,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -991,8 +952,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        <state relative-caret-position="355">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1001,18 +962,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/JournalDBAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="7" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+        <state relative-caret-position="567">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Data/API/LoginDBAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="139" column="71" selection-start-line="139" selection-start-column="71" selection-end-line="139" selection-end-column="71" />
+        <state relative-caret-position="340">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

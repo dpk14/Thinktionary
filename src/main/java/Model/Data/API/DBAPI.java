@@ -15,16 +15,23 @@ import java.util.Map;
 
 public abstract class DBAPI {
 
-    String myDBUrl;
-    String myDBUsername;
-    String myDBPassword;
+    private static final String DB_URL_DEFAULT = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
+    private static final String DB_USERNAME_DEFAULT = "kingsbda";
+    private static final String DB_PASSWORD_DEFAULT = "1qazxsw2";
+    protected String myDBUrl;
+    protected String myDBUsername;
+    protected String myDBPassword;
 
     public DBAPI(String dbUsername, String dbPassword, String dbUrl) {
-        myDBUsername = dbUsername;
-        myDBPassword = dbPassword;
-        if (dbUrl == null) {
-            myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
-        } else myDBUrl = dbUrl;
+        myDBUsername = dbUsername == null? DB_USERNAME_DEFAULT : dbUsername;
+        myDBPassword = dbPassword == null? DB_PASSWORD_DEFAULT : dbPassword;
+        myDBUrl = dbUrl == null? DB_URL_DEFAULT : dbUrl;
+    }
+
+    public DBAPI(){
+        myDBUsername = DB_USERNAME_DEFAULT;
+        myDBPassword = DB_PASSWORD_DEFAULT;
+        myDBUrl = DB_URL_DEFAULT;
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {

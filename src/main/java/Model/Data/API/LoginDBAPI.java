@@ -19,6 +19,8 @@ public class LoginDBAPI extends DBAPI{
         super(dbUsername, dbPassword, dbUrl);
     }
 
+    public LoginDBAPI(){super();}
+
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getUserInfo());

@@ -32,6 +32,11 @@ public class JournalDBAPI extends DBAPI {
         myUserID = userID;
     }
 
+    public JournalDBAPI(int userID){
+        super();
+        myUserID = userID;
+    }
+
     /*
     ----------------------------
     Public API:
