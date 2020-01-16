@@ -7,6 +7,7 @@ import Model.Data.Lib.SQLStrings.SQLQuery;
 import Model.Data.Lib.SQLStrings.TableNames;
 import Model.API.Journal.JournalDBParser;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.sql.*;
@@ -48,13 +49,13 @@ public class JournalDBAPI extends DBAPI {
 
     //Saving:
 
-    public int createEntry(Entry entry) throws SQLException {
+    public int createEntry(Entry entry) throws TopicBankAddException {
         int entryID = addToEntryInfo(entry);
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
         return entryID;
     }
 
-    public void addToTopicBank(Map<String, String> topicToColor) throws SQLException {
+    public void addToTopicBank(Map<String, String> topicToColor) throws TopicBankAddException {
         addTopics(TableNames.getUserTopic(), myUserID, topicToColor);
     }
 
@@ -63,7 +64,7 @@ public class JournalDBAPI extends DBAPI {
         removeEntry(entryID, TableNames.getEntryInfo());
     }
 
-    public void save(int entryID, Entry entry) throws SQLException {
+    public void save(int entryID, Entry entry) throws TopicBankAddException, SQLException {
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
 
         Map<Integer, String> map = new HashMap<>();
@@ -100,7 +101,7 @@ public class JournalDBAPI extends DBAPI {
         }
     }
 
-    private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws SQLException {
+    private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws TopicBankAddException {
         Map<Integer, String> map = new HashMap<>();
         for (String topic : topicToColor.keySet()) {
             String color = topicToColor.get(topic);
@@ -108,8 +109,13 @@ public class JournalDBAPI extends DBAPI {
             map.put(2, Integer.toString(ID));
             map.put(3, topic);
             map.put(4, color);
-            DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
-        }
+            try {
+                DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
+            }
+            catch(SQLException e){
+                throw new TopicBankAddException(e.toString());
+            }
+            }
     }
 
     private void removeEntry(int entryID, String tableName) throws NoSuchEntryException{

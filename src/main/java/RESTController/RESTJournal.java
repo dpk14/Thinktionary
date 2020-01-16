@@ -23,9 +23,8 @@ public class RESTJournal {
 
     private static final String PROTECTED_PATH = "/{userID}";
 
-    @PostMapping(PROTECTED_PATH + "/")
+    @PostMapping(PROTECTED_PATH + "/entries")
     public ResponseEntity createEntry(HttpServletRequest httpServletRequest,
-                                              @PathVariable String userName, @PathVariable String password, @PathVariable int userId,
                                               @RequestBody Entry entry) {
         try {
             Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
@@ -38,8 +37,7 @@ public class RESTJournal {
                 return ResponseEntity.created(uri).body(entry);
             }
             catch(Exception e){
-                TopicBankAddException exc = new TopicBankAddException(e.toString());
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exc.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
             }
         }
         catch(Exception e){
