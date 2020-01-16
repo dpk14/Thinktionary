@@ -1,5 +1,6 @@
 package Model.API.Login;
 
+import Model.API.Journal.Journal;
 import Model.Data.API.LoginDBAPI;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
@@ -9,9 +10,10 @@ import java.util.List;
 
 public class LoginAPI {
 
-    public static int login(String username, String password) throws InvalidLoginException {
+    public Journal login(String username, String password) throws InvalidLoginException {
         List<Map<String, Object>> userInfo = new LoginDBAPI().login(username, password);
-        return LoginDBParser.getUserID(userInfo);
+        int userID = LoginDBParser.getUserID(userInfo);
+        return new Journal(userID);
     }
 
     public static void makeAccount(String username, String password) throws AccountExistsException { //second exception has two inheritances, password exists and username exists

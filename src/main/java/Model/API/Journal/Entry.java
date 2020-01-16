@@ -18,9 +18,9 @@ public class Entry {
     private String myTitle;
 
     /*
-    JournalDBAPI, modular unit of information managed by JournalAPI. Packages outside JournalDBAPI backend package cannot create Entries, but if they have received
-    an Entry through JournalAPI methods, they have access to Entry getter methods, which allow them to interpret the contents of the Entry.
-    Modifications to Entries must be done through JournalAPI.
+    JournalDBAPI, modular unit of information managed by Journal. Packages outside JournalDBAPI backend package cannot create Entries, but if they have received
+    an Entry through Journal methods, they have access to Entry getter methods, which allow them to interpret the contents of the Entry.
+    Modifications to Entries must be done through Journal.
      */
 
     public Entry(Set<Topic> topics, String title, String text){ //protected so only journals can instance entries

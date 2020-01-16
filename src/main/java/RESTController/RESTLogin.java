@@ -1,5 +1,6 @@
 package RESTController;
 
+import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
@@ -16,23 +17,16 @@ import java.net.URI;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-@RequestMapping("/login")
 public class RESTLogin {
     private final String myDBUsername = "dbUsername";
     private final String myDBPassword = "dbPassword";
     private final String myDBURL = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
 
     @GetMapping("/")
-    public ResponseEntity<Integer> login(@RequestParam String username, @RequestParam String password) {
-        LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
+    public ResponseEntity<Journal> login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
-            int userId = loginAPI.login(username, password);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{userId}")
-                    .buildAndExpand(userId)
-                    .toUri();
-
-            return ResponseEntity.created(uri).body(userId);
+            Journal journal = new LoginAPI().login(username, password);
+            return ResponseEntity.ok(journal);
         }
         catch(InvalidLoginException e){
             System.out.print(e.toString());
@@ -41,14 +35,14 @@ public class RESTLogin {
 
     }
 
-    @PostMapping("/makeAccount")
-    public ResponsePair makeAccount(@RequestParam String username, @RequestParam String password) {
-        LoginAPI loginAPI = new LoginAPI(myDBUsername, myDBPassword, myDBURL);
+    @PostMapping("/users")
+    public ResponsePair makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+        LoginAPI loginAPI = new LoginAPI();
         try {
-            loginAPI.makeAccount(username, password);
+            int userId = loginAPI.makeAccount(username, password);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{userId}")
-                    .buildAndExpand(userId)
+                    .path("/{username}/{password}/{userID}")
+                    .buildAndExpand(username, password, userId)
                     .toUri();
 
             return new ResponsePair(ResponseEntity.created(uri).body(userId),

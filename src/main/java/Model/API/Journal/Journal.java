@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class JournalAPI {
+public class Journal {
     List<Entry> myEntries;
     Map<Integer, Entry> myEntryMap;
     Map<String, Topic> myTopics;
@@ -21,7 +21,7 @@ public class JournalAPI {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
-    public JournalAPI(int userID){
+    public Journal(int userID){
         JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry

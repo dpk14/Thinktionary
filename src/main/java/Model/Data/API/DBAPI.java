@@ -15,6 +15,17 @@ import java.util.Map;
 
 public abstract class DBAPI {
 
+    /*
+    UserID | UserName | Password      name: login
+
+    UserID | Topic | Color           userTopic
+
+    EntryID | UserID | Title | DateCreated | DateModified      EntryInfo
+
+    EntryID | Topic | Color         entryTopic
+
+     */
+
     private static final String DB_URL_DEFAULT = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
     private static final String DB_USERNAME_DEFAULT = "kingsbda";
     private static final String DB_PASSWORD_DEFAULT = "1qazxsw2";

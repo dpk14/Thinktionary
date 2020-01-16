@@ -1,7 +1,7 @@
 package RESTController;
 
 import Model.API.Journal.Entry;
-import Model.API.Journal.JournalAPI;
+import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
@@ -24,7 +24,7 @@ public class RESTJournal {
     @PostMapping("/{userID}/")
     public ResponsePair createEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userId,
                                     @RequestBody Entry entry) {
-        JournalAPI journalAPI = new JournalAPI(myDBUsername, myDBPassword, myDBURL, userId);
+        Journal journalAPI = new Journal(myDBUsername, myDBPassword, myDBURL, userId);
         try {
             int id = journalAPI.createEntry(entry);
             return new ResponsePair(ResponseEntity., null);
@@ -39,7 +39,7 @@ public class RESTJournal {
     @PutMapping("/{userName}/{password}/{userID}/Journal/{entryID}")
     public UserInfo modifyEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userID,
                                 @PathVariable int entryID, @RequestBody Entry entry) {
-        JournalAPI journalAPI = new JournalAPI(myDBUsername, myDBPassword, myDBURL, userID);
+        Journal journalAPI = new Journal(myDBUsername, myDBPassword, myDBURL, userID);
         try {
             journalAPI.saveEntry(entryID, entry);
             return new UserInfo(userId, null);

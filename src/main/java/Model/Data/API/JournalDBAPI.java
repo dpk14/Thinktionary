@@ -14,17 +14,6 @@ import java.util.*;
 
 public class JournalDBAPI extends DBAPI {
 
-    /*
-    UserID | UserName | Password      name: login
-
-    UserID | Topic | Color           userTopic
-
-    EntryID | UserID | Title | DateCreated | DateModified      EntryInfo
-
-    EntryID | Topic | Color         entryTopic
-
-     */
-
     int myUserID;
 
     public JournalDBAPI(int userID, String dbUsername, String dbPassword, String dbUrl){
