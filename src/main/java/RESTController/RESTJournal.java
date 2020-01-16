@@ -58,16 +58,15 @@ public class RESTJournal {
         }
     }
 
-    @RequestMapping("/makeAccount")
-    public ErrorMessage makeAccount(HttpServletRequest httpServletRequest, @ String username,
-                                    @RequestParam(value = "password", defaultValue = "") String password) {
+    @DeleteMapping ("/entries/{entryID}")
+    public ResponseEntity makeAccount(HttpServletRequest httpServletRequest, @PathVariable int entryID) {
         Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
         try {
-            loginAPI.makeAccount(username, password);
-            return null;
+            journal.removeEntry(entryID);
+            return ResponseEntity.noContent().build();
         }
-        catch(AccountExistsException e){
-            return new ErrorMessage(e.toString(), e.getStackTrace());
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
         }
     }
 
