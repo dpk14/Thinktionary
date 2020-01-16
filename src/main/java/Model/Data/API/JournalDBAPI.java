@@ -48,13 +48,13 @@ public class JournalDBAPI extends DBAPI {
 
     //Saving:
 
-    public int createEntry(Entry entry) {
+    public int createEntry(Entry entry) throws SQLException {
         int entryID = addToEntryInfo(entry);
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
         return entryID;
     }
 
-    public void addToTopicBank(Map<String, String> topicToColor){
+    public void addToTopicBank(Map<String, String> topicToColor) throws SQLException {
         addTopics(TableNames.getUserTopic(), myUserID, topicToColor);
     }
 
@@ -63,7 +63,7 @@ public class JournalDBAPI extends DBAPI {
         removeEntry(entryID, TableNames.getEntryInfo());
     }
 
-    public void save(int entryID, Entry entry){
+    public void save(int entryID, Entry entry) throws SQLException {
         addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
 
         Map<Integer, String> map = new HashMap<>();
@@ -74,12 +74,7 @@ public class JournalDBAPI extends DBAPI {
         map.put(5, entry.getMyCreatedasString());
         map.put(6, entry.getMyModfiedasString());
         map.put(7, Integer.toString(entryID));
-        try {
-            DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch(SQLException e){
-            throw new CorruptDBError(e);
-        }
+        DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
     }
 
     /*
@@ -105,21 +100,15 @@ public class JournalDBAPI extends DBAPI {
         }
     }
 
-    private void addTopics(String tableName, int ID, Map<String, String> topicToColor){
-        try {
-            Map<Integer, String> map = new HashMap<>();
-            for (String topic : topicToColor.keySet()) {
-                String color = topicToColor.get(topic);
-                map.put(1, tableName);
-                map.put(2, Integer.toString(ID));
-                map.put(3, topic);
-                map.put(4, color);
-                DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
-            }
-        }
-        catch (Exception e){
-            System.out.println(e.toString());
-            System.out.println(e.getStackTrace());
+    private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws SQLException {
+        Map<Integer, String> map = new HashMap<>();
+        for (String topic : topicToColor.keySet()) {
+            String color = topicToColor.get(topic);
+            map.put(1, tableName);
+            map.put(2, Integer.toString(ID));
+            map.put(3, topic);
+            map.put(4, color);
+            DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
         }
     }
 

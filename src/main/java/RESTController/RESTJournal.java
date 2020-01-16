@@ -4,6 +4,7 @@ import Model.API.Journal.Entry;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
+import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 import RESTController.SerializableModels.ErrorMessage;
 import RESTController.SerializableModels.ResponsePair;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/users")
@@ -35,8 +37,9 @@ public class RESTJournal {
                         .toUri();
                 return ResponseEntity.created(uri).body(entry);
             }
-            catch(InvalidLoginException e){
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            catch(Exception e){
+                TopicBankAddException exc = new TopicBankAddException(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exc.toString());
             }
         }
         catch(Exception e){

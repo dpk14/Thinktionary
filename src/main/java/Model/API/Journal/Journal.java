@@ -108,6 +108,7 @@ public class Journal {
             myTopics.put(key, topicsMap.get(key));
             topicToColor.put(key, topicsMap.get(key).getMyColor());
         }
+
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 
