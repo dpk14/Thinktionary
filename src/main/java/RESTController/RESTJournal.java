@@ -46,16 +46,15 @@ public class RESTJournal {
         //add entryId when you get it
     }
 
-    @PutMapping("/{userName}/{password}/{userID}/Journal/{entryID}")
-    public UserInfo modifyEntry(@PathVariable String userName, @PathVariable String password, @PathVariable int userID,
-                                @PathVariable int entryID, @RequestBody Entry entry) {
-        Journal journalAPI = new Journal(myDBUsername, myDBPassword, myDBURL, userID);
+    @PutMapping(PROTECTED_PATH + "/entries/{entryID}")
+    public ResponseEntity modifyEntry(HttpServletRequest httpServletRequest, @PathVariable int entryID, @RequestBody Entry entry) {
+        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
         try {
-            journalAPI.saveEntry(entryID, entry);
-            return new UserInfo(userId, null);
+            journal.saveEntry(entryID, entry);
+            return ResponseEntity.ok().build();
         }
-        catch(InvalidLoginException e){
-            return new UserInfo(-1, new ErrorMessage(e.toString(), e.getStackTrace()));
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
         }
     }
 
