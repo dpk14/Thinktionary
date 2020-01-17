@@ -1,4 +1,7 @@
+import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
+import Model.Data.API.Initialization.InitDBAPI;
+import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
@@ -19,7 +22,7 @@ public class Tests {
         loginDBInit.clearTables();
     }
 
-    @Test
+    //@Test
     public static void TestJournalAPI(String[] args){
         String dbUsername = (String) args[0];
         String dbPassword = (String) args[1];
@@ -35,32 +38,31 @@ public class Tests {
     }
 
     private static void makeAndTestJournal(String dbUsername, String dbPassword, String testDBUrl){
-        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
-        int userID = generateJournal(loginAPI);
+        LoginAPI loginAPI = new LoginAPI();
+        Journal journal = generateJournal(loginAPI);
 
         JournalDBInit journalDBInit = new JournalDBInit(dbUsername, dbPassword, testDBUrl);
         journalDBInit.createTables();
 
-        JournalAPI journalAPI = new JournalAPI(dbUsername, dbPassword, testDBUrl, userID);
-        JournalTest.test(journalAPI, userID);
+        JournalTest.test(journal, journal.getUserID());
 
         journalDBInit.clearTables();
     }
 
-    private static int generateJournal(LoginAPI loginAPI){
+    private static Journal generateJournal(LoginAPI loginAPI){
         String randUsername = "username";
         String randPassword = "password";
 
         try {
             loginAPI.makeAccount(randUsername, randPassword);
-            int userID = loginAPI.login(randUsername, randPassword);
-            return userID;
+            Journal journal = loginAPI.login(randUsername, randPassword);
+            return journal;
         }
         catch(Exception e){
             System.out.println("Error in login; run TestLoginAPI test for particulars.");
             System.exit(0);
         }
-        return Integer.MIN_VALUE;
+        return null;
     }
 
 }

@@ -1,12 +1,11 @@
-package src.main.test.java;
 
+import Model.API.Journal.Entry;
+import Model.API.Journal.EntryComponents.Topic;
+import Model.API.Journal.Journal;
+import Model.API.Journal.JournalDBParser;
 import org.junit.jupiter.api.Test;
-import src.main.java.Model.API.Journal.Entry;
-import src.main.java.Model.API.Journal.EntryComponents.Date;
-import src.main.java.Model.API.Journal.EntryComponents.Topic;
-import src.main.java.Model.API.Journal.JournalAPI;
-import src.main.java.Model.API.Journal.JournalDBParser;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -16,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JournalTest {
 
-    protected static void test(JournalAPI journalAPI, int userID){
-        CreateEntryTest(journalAPI, userID);
+    protected static void test(Journal journal, int userID){
+        CreateEntryTest(journal, userID);
         /*TODO:
         journalAPI.getRandomEntry();
         journalAPI.getTopicalEntries();
@@ -28,19 +27,19 @@ public class JournalTest {
     }
 
     @Test
-    private static void CreateEntryTest(JournalAPI journalAPI, int userID){
+    private static void CreateEntryTest(Journal journalAPI, int userID){
         Set<Topic> set = new HashSet();
         set.add(new Topic("Confidence", "Blue"));
         set.add(new Topic("Motivation", "Green"));
         String text = "I must believe in myself!";
         String title = "Believing";
-        Date date = new Date();
+        LocalDateTime now = LocalDateTime.now();
         try {
-            date = new Date(1, 14, 2018);
+            journalAPI.createEntry(new Entry(set, text, title, now));
         }
-        catch (Exception e){}
-
-        journalAPI.createEntry(set, text, title, date);
+        catch (Exception e){
+            System.out.print(e.toString() + e.getStackTrace().toString());
+        }
         List<Map<String, Object>> entryTable = journalAPI.getMyJournalDBAPI().loadEntryTable();
         List<Map<String, Object>> entryTopic = journalAPI.getMyJournalDBAPI().loadEntryTopicsTable();
         Map<Integer, Entry> map = JournalDBParser.parseEntryMap(entryTable, entryTopic);
@@ -49,8 +48,8 @@ public class JournalTest {
 
         assertTrue(e.getmyTitle().equals(title), "Title not properly stored when Entry created");
         assertTrue(e.getmyText().equals(text), "Text not properly stored when Entry created");
-        assertTrue(e.getMyCreatedasString().equals(date.toString()), "Created Date not properly stored when Entry created");
-        assertTrue(e.getMyModfiedasString().equals(date.toString()), "Modified Date not properly stored when Entry created");
+        assertTrue(e.getMyCreatedasString().equals(now.toString()), "Created Date not properly stored when Entry created");
+        assertTrue(e.getMyModfiedasString().equals(now.toString()), "Modified Date not properly stored when Entry created");
 
         //TODO: test other two tables
 

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Thinktionary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Thinktionary.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Databases/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/README" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/PathInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/db/PathInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/myDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/db/myDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Databases/SQLite/db/testDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/db/testDB.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/JournalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/JournalTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
     </list>
@@ -98,10 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Controller/RESTLogin.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="365">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Tests.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/JournalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="700">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,7 +141,6 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/LoginTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="7" selection-start-column="7" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -183,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/AccountExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/InvalidLoginException.java" />
@@ -232,6 +225,7 @@
         <option value="$PROJECT_DIR$/src/main/java/RESTController/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/Controller/RESTLogin.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" />
+        <option value="$PROJECT_DIR$/src/test/java/JournalTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/LoginTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/Tests.java" />
       </list>
@@ -244,8 +238,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="width" value="1938" />
+    <option name="x" value="-8" />
+    <option name="width" value="1097" />
     <option name="height" value="1014" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -295,7 +289,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579288968609" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579294666421" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -414,7 +408,7 @@
       <workItem from="1578778921274" duration="5849000" />
       <workItem from="1578864290988" duration="18000" />
       <workItem from="1579130117587" duration="17342000" />
-      <workItem from="1579283933237" duration="4839000" />
+      <workItem from="1579283933237" duration="5956000" />
     </task>
     <servers />
   </component>
@@ -442,7 +436,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196327000" />
+    <option name="totallyTimeSpent" value="197444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -790,13 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/JournalTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Controller/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -881,10 +868,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/JournalTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/LoginTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -894,7 +890,7 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
