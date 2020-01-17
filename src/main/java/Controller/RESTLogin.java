@@ -1,14 +1,9 @@
-package RESTController;
+package Controller;
 
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.Data.Lib.Paths.DBFileNames;
-import Model.Data.Lib.Paths.DBNames;
-import Model.Data.Lib.Paths.DBUrls;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
-import RESTController.SerializableModels.ErrorMessage;
-import RESTController.SerializableModels.ResponsePair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package RESTController;
+package Controller;
 
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;

@@ -1,13 +1,10 @@
 package src.main.test.java;
 
-import org.junit.jupiter.api.Test;
-import src.main.java.Model.API.Journal.JournalAPI;
-import src.main.java.Model.API.Login.LoginAPI;
-import src.main.java.Model.Data.Initialization.JournalDBInit;
-import src.main.java.Model.Data.Initialization.LoginDBInit;
-import src.main.java.Model.Data.Lib.Paths.DBFileNames;
-import src.main.java.Model.Data.Lib.Paths.DBNames;
-import src.main.java.Model.Data.Lib.Paths.DBUrls;
+import Model.API.Login.LoginAPI;
+import Model.Data.API.Initialization.LoginDBInit;
+import Model.Data.Lib.Paths.DBFileNames;
+import Model.Data.Lib.Paths.DBNames;
+import Model.Data.Lib.Paths.DBUrls;
 
 public class Tests {
 
@@ -22,7 +19,7 @@ public class Tests {
         loginDBInit.createTables();
 
         LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
-        LoginTest.test(loginAPI);
+        src.main.test.java.LoginTest.test(loginAPI);
 
         loginDBInit.clearTables();
     }

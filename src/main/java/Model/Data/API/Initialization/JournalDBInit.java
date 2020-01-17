@@ -8,6 +8,8 @@ public class JournalDBInit extends InitDBAPI {
         super(dbUsername, dbPassword, dbUrl);
     }
 
+    public JournalDBInit(){super();}
+
     @Override
     public void createTables() {
         createTablesHelper(TableNames.getLoginTableNames());

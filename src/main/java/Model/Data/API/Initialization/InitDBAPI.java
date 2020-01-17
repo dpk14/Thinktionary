@@ -1,9 +1,6 @@
 package Model.Data.API.Initialization;
 
 import Model.Data.API.DBAPI;
-import Model.Data.Lib.Paths.DBFileNames;
-import Model.Data.Lib.Paths.DBNames;
-import Model.Data.Lib.Paths.DBUrls;
 import Model.Data.Lib.SQLStrings.ColumnInfo;
 import Model.Data.Lib.SQLStrings.SQLQuery;
 import Model.Data.Utils.DBUtils;
@@ -23,19 +20,18 @@ public abstract class InitDBAPI extends DBAPI {
 
     public InitDBAPI(String dbUsername, String dbPassword, String dbUrl) {
         super(dbUsername, dbPassword, dbUrl);
-        initDBIfEmpty(dbUrl);
     }
 
     public InitDBAPI(){
         super();
-        initDBIfEmpty(myDBUrl);
     }
 
-    private void initDBIfEmpty(String dbUrl){
-        if(!DBexists(dbUrl)){
-            createDatabase(dbUrl);
+    public String initialize(){
+        if(!DBexists(myDBUrl)){
+            createDatabase(myDBUrl);
             createTables();
         }
+        return myDBUrl.toString();
     }
 
     private boolean DBexists(String dbUrl){

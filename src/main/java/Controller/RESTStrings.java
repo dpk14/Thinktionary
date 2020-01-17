@@ -1,4 +1,4 @@
-package RESTController;
+package Controller;
 
 public class RESTStrings {
    private static final String JOURNAL_ATTRIBUTE = "journal";
