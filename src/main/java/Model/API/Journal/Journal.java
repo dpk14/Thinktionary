@@ -1,15 +1,12 @@
 package Model.API.Journal;
 
-import Model.Data.API.JournalDBAPI;
+import Model.Data.API.Run.JournalDBAPI;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
-import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 
-import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Journal {
@@ -36,7 +33,7 @@ public class Journal {
 
     /*
     ----------------------------
-    Public API:
+    Public Run:
     ----------------------------
      */
 

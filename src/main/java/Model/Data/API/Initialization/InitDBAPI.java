@@ -1,5 +1,6 @@
-package Model.Data.Initialization;
+package Model.Data.API.Initialization;
 
+import Model.Data.API.DBAPI;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
@@ -14,19 +15,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class DBInit {
+public abstract class InitDBAPI extends DBAPI {
 
     String myDBUrl;
     String myDBUsername;
     String myDBPassword;
 
-    public DBInit(String dbUsername, String dbPassword, String dbUrl) {
-        myDBUsername = dbUsername;
-        myDBPassword = dbPassword;
-        if (dbUrl == null) {
-            myDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getMainDbPath());
-        } else myDBUrl = dbUrl;
+    public InitDBAPI(String dbUsername, String dbPassword, String dbUrl) {
+        super(dbUsername, dbPassword, dbUrl);
+        initDBIfEmpty(dbUrl);
+    }
 
+    public InitDBAPI(){
+        super();
+        initDBIfEmpty(myDBUrl);
+    }
+
+    private void initDBIfEmpty(String dbUrl){
         if(!DBexists(dbUrl)){
             createDatabase(dbUrl);
             createTables();

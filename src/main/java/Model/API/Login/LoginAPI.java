@@ -1,7 +1,7 @@
 package Model.API.Login;
 
 import Model.API.Journal.Journal;
-import Model.Data.API.LoginDBAPI;
+import Model.Data.API.Run.LoginDBAPI;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 

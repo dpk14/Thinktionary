@@ -42,7 +42,7 @@ public class Entry {
 
     /*
     ----------------------------
-    Public API (Used by src.main.java.Model.Data module. Do not actually give access to the objects
+    Public Run (Used by src.main.java.Model.Data module. Do not actually give access to the objects
                     just give access to RESTStrings symbolizing objects):
     ----------------------------
      */
@@ -74,7 +74,7 @@ public class Entry {
 
     /*
     ----------------------------
-    Protected API (Used by internal src.main.java.Model methods):
+    Protected Run (Used by internal src.main.java.Model methods):
     ----------------------------
      */
 

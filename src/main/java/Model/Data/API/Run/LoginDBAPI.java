@@ -1,6 +1,5 @@
-package Model.Data.API;
+package Model.Data.API.Run;
 
-import Model.API.Login.LoginDBParser;
 import Model.Data.Lib.SQLStrings.SQLQuery;
 import Model.Data.Lib.SQLStrings.TableNames;
 import Model.Data.Utils.DBUtils;
@@ -14,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoginDBAPI extends DBAPI{
+public class LoginDBAPI extends RunDBAPI {
 
     public LoginDBAPI(String dbUsername, String dbPassword, String dbUrl){
         super(dbUsername, dbPassword, dbUrl);

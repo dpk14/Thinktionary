@@ -1,8 +1,8 @@
-package Model.Data.Initialization;
+package Model.Data.API.Initialization;
 
 import Model.Data.Lib.SQLStrings.TableNames;
 
-public class JournalDBInit extends DBInit{
+public class JournalDBInit extends InitDBAPI {
 
     public JournalDBInit(String dbUsername, String dbPassword, String dbUrl){
         super(dbUsername, dbPassword, dbUrl);

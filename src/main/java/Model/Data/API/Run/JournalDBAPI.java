@@ -1,4 +1,4 @@
-package Model.Data.API;
+package Model.Data.API.Run;
 
 import Model.API.Journal.Entry;
 import Model.Data.Lib.SQLStrings.ColumnInfo;
@@ -14,7 +14,7 @@ import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 import java.sql.*;
 import java.util.*;
 
-public class JournalDBAPI extends DBAPI {
+public class JournalDBAPI extends RunDBAPI {
 
     int myUserID;
 
@@ -30,7 +30,7 @@ public class JournalDBAPI extends DBAPI {
 
     /*
     ----------------------------
-    Public API:
+    Public Run:
     ----------------------------
      */
 

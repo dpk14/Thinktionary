@@ -1,8 +1,8 @@
-package Model.Data.Initialization;
+package Model.Data.API.Initialization;
 
 import Model.Data.Lib.SQLStrings.TableNames;
 
-public class LoginDBInit extends DBInit{
+public class LoginDBInit extends InitDBAPI {
 
     public LoginDBInit(String dbUsername, String dbPassword, String dbUrl){
         super(dbUsername, dbPassword, dbUrl);
