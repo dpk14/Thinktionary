@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LoginDBParser {
-    protected static Map<Integer, User> parseUserInfoMap(List<Map<String, Object>> table) throws ClassCastException, RuntimeException {
+    public static Map<Integer, User> parseUserInfoMap(List<Map<String, Object>> table) throws ClassCastException, RuntimeException {
         Map<Integer, User> ret = new HashMap();
         for(Map<String, Object> row : table){
             int id = Integer.parseInt((String) row.get(ColumnInfo.getUSERID()));
@@ -18,7 +18,7 @@ public class LoginDBParser {
         return ret;
     }
 
-    protected static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
         return (int) userInfo.get(0).get(ColumnInfo.getUSERID());
     }
 }

@@ -39,7 +39,7 @@ public class JournalDBParser {
         }
     }
 
-    protected static List<Entry> parseEntries(Map<Integer, Entry> entryMap) {
+    public static List<Entry> parseEntries(Map<Integer, Entry> entryMap) {
         List<Entry> ret = new ArrayList<>();
         for (int id : entryMap.keySet()) {
             ret.add(entryMap.get(id));
@@ -48,7 +48,7 @@ public class JournalDBParser {
         return ret;
     }
 
-    protected static Map<String, Topic> parseTopics(List<Map<String, Object>> topics) throws ClassCastException{
+    public static Map<String, Topic> parseTopics(List<Map<String, Object>> topics) throws ClassCastException{
         Map<String, String> topToCol = new HashMap();
         Map<String, Topic> ret = new HashMap();
         for(Map<String, Object> cols : topics){
@@ -63,7 +63,7 @@ public class JournalDBParser {
         return ret;
     }
 
-    protected static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
         return (int) userInfo.get(0).get(ColumnInfo.getUSERID());
     }
 

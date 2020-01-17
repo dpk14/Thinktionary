@@ -1,10 +1,13 @@
 import Model.API.Login.LoginAPI;
+import Model.API.Login.LoginDBParser;
 import Model.API.Login.User;
+import Model.Data.API.Run.LoginDBAPI;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 import org.junit.jupiter.api.*;
 
 import java.util.Map;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,6 +22,16 @@ public class LoginTest {
         CorrectLoginTest(username, password, loginAPI);
 
     }
+
+    protected static void test(LoginDBAPI loginDBAPI) {
+        String username = "dpk14";
+        String password = "10gg40w716";
+        CreateAccountTest(username, password, loginDBAPI);
+        IncorrectLoginTest(loginDBAPI);
+        CorrectLoginTest(username, password, loginDBAPI);
+    }
+
+    //API Tests
 
     @Test
     private static void CreateAccountTest(String username, String password, LoginAPI loginAPI){
@@ -44,6 +57,36 @@ public class LoginTest {
     @Test
     private static void CorrectLoginTest(String username, String password, LoginAPI loginAPI) {
         assertDoesNotThrow(() -> loginAPI.login(username, password), "Correct username and password are throwing IncorrectLoginException");
+    }
+
+
+    //DB API Tests
+
+    @Test
+    private static void CreateAccountTest(String username, String password, LoginDBAPI loginDBAPI){
+        try {
+            loginDBAPI.createAccount(username, password);
+        }
+        catch(Exception e){
+            assertFalse(e instanceof AccountExistsException, "AccountExistsException incorrectly thrown");
+        }
+
+        List<Map<String, Object>> usersUnparsed = loginDBAPI.loadUserInfoTable();
+        Map<Integer, User> users = LoginDBParser.parseUserInfoMap(usersUnparsed);
+        assertFalse(users.size()== 0 , "Account not getting saved after creation");
+        assertFalse(users.size()> 1 , "DB has too many account after just one account is added");
+    }
+
+    @Test
+    private static void IncorrectLoginTest(LoginDBAPI loginDBAPI) {
+        String username = "username";
+        String password = "password";
+        assertThrows(InvalidLoginException.class, () -> loginDBAPI.login(username, password), "Incorrect login info does not throw exception");
+    }
+
+    @Test
+    private static void CorrectLoginTest(String username, String password, LoginDBAPI loginDBAPI) {
+        assertDoesNotThrow(() -> loginDBAPI.login(username, password), "Correct username and password are throwing IncorrectLoginException");
     }
 
 

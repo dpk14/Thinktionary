@@ -3,12 +3,25 @@ import Model.API.Login.LoginAPI;
 import Model.Data.API.Initialization.InitDBAPI;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
+import Model.Data.API.Run.LoginDBAPI;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
 import org.junit.jupiter.api.Test;
 
 public class Tests {
+
+    @Test
+    public static void TestLoginDBAPI(){
+
+        LoginDBInit loginDBInit = new LoginDBInit(null, null, DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath()));
+        loginDBInit.initialize();
+
+        LoginDBAPI loginDBAPI = new LoginDBAPI();
+        LoginTest.test(loginDBAPI);
+
+        loginDBInit.clearTables();
+    }
 
     @Test
     public static void TestLoginAPI(){
