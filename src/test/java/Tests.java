@@ -1,25 +1,20 @@
-package src.main.test.java;
-
 import Model.API.Login.LoginAPI;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.Data.Lib.Paths.DBFileNames;
 import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
+import org.junit.jupiter.api.Test;
 
 public class Tests {
 
     @Test
     public static void TestLoginAPI(){
-        String dbUsername = null;
-        String dbPassword = null;
 
-        String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
+        LoginDBInit loginDBInit = new LoginDBInit(null, null, DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath()));
+        loginDBInit.initialize();
 
-        LoginDBInit loginDBInit = new LoginDBInit(dbUsername, dbPassword, testDBUrl);
-        loginDBInit.createTables();
-
-        LoginAPI loginAPI = new LoginAPI(dbUsername, dbPassword, testDBUrl);
-        src.main.test.java.LoginTest.test(loginAPI);
+        LoginAPI loginAPI = new LoginAPI();
+        LoginTest.test(loginAPI);
 
         loginDBInit.clearTables();
     }

@@ -1,10 +1,6 @@
-package src.main.test.java;
+package
 
-import org.junit.jupiter.api.Test;
-import src.main.java.Model.API.Login.LoginAPI;
-import src.main.java.Model.API.Login.User;
-import src.main.java.Model.ErrorHandling.Exceptions.AccountExistsException;
-import src.main.java.Model.ErrorHandling.Exceptions.InvalidLoginException;
+import org.junit.jupiter.api.*;
 
 import java.util.Map;
 
