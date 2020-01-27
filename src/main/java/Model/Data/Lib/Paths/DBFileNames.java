@@ -4,10 +4,10 @@ public class DBFileNames {
     private static final String MAIN_DB_PATH = "myDB.db";
     private static final String TEST_DB_PATH = "testDB.db";
 
-    public static String getMainDbPath() {
+    public static String getMainDbName() {
         return String.valueOf(MAIN_DB_PATH);
     }
-    public static String getTestDbPath() {
+    public static String getTestDbName() {
         return String.valueOf(TEST_DB_PATH);
     }
 }
