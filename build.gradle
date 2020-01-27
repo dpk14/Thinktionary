@@ -4,6 +4,9 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
+        //classpath("com.fasterxml.jackson.core:jackson-core")
+        //classpath("com.fasterxml.jackson.core:jackson-databind")
+        //classpath("com.fasterxml.jackson.core:jackson-annotations")
     }
 }
 
@@ -14,8 +17,8 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
+    archiveBaseName = 'gs-rest-service'
+    archiveVersion =  '0.1.0'
 }
 
 repositories {
@@ -26,8 +29,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    implementation 'org.testng:testng:6.9.6'
-    implementation 'org.testng:testng:6.9.6'
+    implementation( [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.4.1'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.4.1'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.4.1'],
+            "org.springframework.boot:spring-boot-starter-web")
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

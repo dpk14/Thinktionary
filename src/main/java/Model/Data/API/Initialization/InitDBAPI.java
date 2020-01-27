@@ -17,6 +17,7 @@ public abstract class InitDBAPI extends DBAPI {
     String myDBUrl;
     String myDBUsername;
     String myDBPassword;
+    String myDBFilename;
 
     public InitDBAPI(String dbUsername, String dbPassword, String dbUrl) {
         super(dbUsername, dbPassword, dbUrl);
@@ -27,11 +28,11 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     public String initialize(){
-        if(!DBexists(myDBUrl)){
-            createDatabase(myDBUrl);
+        if(!DBexists(myDBFilename)){
+            createDatabase(myDBFilename);
             createTables();
         }
-        return myDBUrl.toString();
+        return myDBFilename.toString();
     }
 
     private boolean DBexists(String dbUrl){

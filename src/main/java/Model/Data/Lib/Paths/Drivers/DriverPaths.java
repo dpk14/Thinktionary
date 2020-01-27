@@ -1,4 +1,4 @@
-package src.main.java.Model.Data.Lib.Paths.Drivers;
+package Model.Data.Lib.Paths.Drivers;
 
 import java.io.File;
 

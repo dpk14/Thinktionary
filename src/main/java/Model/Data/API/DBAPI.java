@@ -20,6 +20,7 @@ public abstract class DBAPI {
     }
 
     public DBAPI(){
+        System.out.println(DB_URL_DEFAULT);
         myDBUsername = DB_USERNAME_DEFAULT;
         myDBPassword = DB_PASSWORD_DEFAULT;
         myDBUrl = DB_URL_DEFAULT;

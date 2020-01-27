@@ -4,8 +4,8 @@ import Model.Data.Lib.SQLStrings.TableNames;
 
 public class JournalDBInit extends InitDBAPI {
 
-    public JournalDBInit(String dbUsername, String dbPassword, String dbUrl){
-        super(dbUsername, dbPassword, dbUrl);
+    public JournalDBInit(String dbUsername, String dbPassword, String dbUrl, String dbFilename){
+        super(dbUsername, dbPassword, dbUrl, dbFilename);
     }
 
     public JournalDBInit(){super();}

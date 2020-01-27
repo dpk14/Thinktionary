@@ -35,7 +35,7 @@ public class Tests {
         loginDBInit.clearTables();
     }
 
-    //@Test
+    @Test
     public static void TestJournalAPI(String[] args){
         String dbUsername = (String) args[0];
         String dbPassword = (String) args[1];
