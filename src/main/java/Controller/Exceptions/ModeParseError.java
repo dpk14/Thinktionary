@@ -1,6 +1,6 @@
 package Controller.Exceptions;
 
-public class BooleanParseException extends Exception{
+public class ModeParseError extends Error{
     final String MESSAGE = "Testmode parameter format must be 'true' or 'false'";
 
     @Override

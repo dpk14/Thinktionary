@@ -18,13 +18,13 @@ public class JournalDBAPI extends RunDBAPI {
 
     int myUserID;
 
-    public JournalDBAPI(int userID, String dbUsername, String dbPassword, String dbUrl){
-        super(dbUsername, dbPassword, dbUrl);
+    public JournalDBAPI(int userID, String dbUsername, String dbPassword, String dbUrl, String dbFilename, boolean testMode){
+        super(dbUsername, dbPassword, dbUrl, dbFilename, testMode);
         myUserID = userID;
     }
 
-    public JournalDBAPI(int userID){
-        super();
+    public JournalDBAPI(int userID, boolean testMode){
+        super(testMode);
         myUserID = userID;
     }
 

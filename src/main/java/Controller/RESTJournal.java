@@ -3,6 +3,8 @@ package Controller;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,11 @@ import java.util.List;
 @RequestMapping("/users")
 public class RESTJournal {
 
+    @Autowired
     private static final String PROTECTED_PATH = "/{userID}";
+
+    @Value("${testmode}")
+    private boolean TESTMODE;
 
     @PostMapping(PROTECTED_PATH + "/entries")
     public ResponseEntity createEntry(HttpServletRequest httpServletRequest,

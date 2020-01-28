@@ -35,3 +35,16 @@ dependencies {
             "org.springframework.boot:spring-boot-starter-web")
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
+
+bootRun {
+    doFirst {
+        bootRun.systemProperties = localBootRunProperties()
+    }
+}
+
+def Properties localBootRunProperties() {
+    Properties p = new Properties();
+    p.load(new FileInputStream(
+            file(project.projectDir).absolutePath + "/local.application.properties"))
+    return p;
+}

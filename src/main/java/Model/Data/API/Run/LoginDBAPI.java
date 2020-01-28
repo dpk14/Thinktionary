@@ -15,11 +15,11 @@ import java.util.Map;
 
 public class LoginDBAPI extends RunDBAPI {
 
-    public LoginDBAPI(String dbUsername, String dbPassword, String dbUrl){
-        super(dbUsername, dbPassword, dbUrl);
+    public LoginDBAPI(String dbUsername, String dbPassword, String dbUrl, String filename, boolean testmode){
+        super(dbUsername, dbPassword, dbUrl, filename, testmode);
     }
 
-    public LoginDBAPI(){super();}
+    public LoginDBAPI(boolean testmode){super(testmode);}
 
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
         Map<Integer, String> map = new HashMap<>();
