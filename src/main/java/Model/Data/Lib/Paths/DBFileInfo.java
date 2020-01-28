@@ -17,16 +17,16 @@ public class DBFileInfo {
         return String.valueOf(TEST_DB_NAME);
     }
 
-    public String getTestDbPath(String dbType) {
+    public static String getTestDbPath(String dbType) {
         return getDBPath(dbType, TEST_DB_NAME);
     }
 
-    public String getMainDbPath(String dbType) {
+    public static String getMainDbPath(String dbType) {
         return getDBPath(dbType, MAIN_DB_NAME);
     }
 
-    private String getDBPath(String dbType, String name){
-        URL res = getClass().getClassLoader().getResource(DATABASES_ROOT + "/" + dbType + "/" + name);
+    private static String getDBPath(String dbType, String name){
+        URL res = DBFileInfo.class.getClassLoader().getClass().getResource(DATABASES_ROOT + "/" + dbType + "/" + name);
         File file = null;
         try {
             file = Paths.get(res.toURI()).toFile();

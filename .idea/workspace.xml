@@ -4,13 +4,7 @@
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/db/PathInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/db/myDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/myDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/db/testDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Databases/SQLite/testDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,7 +249,7 @@
       <workItem from="1580149350451" duration="1308000" />
       <workItem from="1580150774262" duration="1172000" />
       <workItem from="1580152399379" duration="2822000" />
-      <workItem from="1580233435795" duration="1084000" />
+      <workItem from="1580233435795" duration="1485000" />
     </task>
     <servers />
   </component>
