@@ -4,11 +4,7 @@ import Model.Data.Lib.SQLStrings.TableNames;
 
 public class LoginDBInit extends InitDBAPI {
 
-    public LoginDBInit(String dbUsername, String dbPassword, String dbUrl, String dbFilename, boolean testMode){
-        super(dbUsername, dbPassword, dbUrl, dbFilename, testMode);
-    }
-
-    public LoginDBInit(boolean testMode){super(testMode);}
+    public LoginDBInit(){super();}
 
     @Override
     public void createTables() {
