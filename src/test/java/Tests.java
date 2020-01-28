@@ -1,10 +1,9 @@
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.Data.API.Initialization.InitDBAPI;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.Data.API.Run.LoginDBAPI;
-import Model.Data.Lib.Paths.DBFileNames;
+import Model.Data.Lib.Paths.DBFileInfo;
 import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,7 @@ public class Tests {
     @Test
     public static void TestLoginDBAPI(){
 
-        LoginDBInit loginDBInit = new LoginDBInit(null, null, DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath()));
+        LoginDBInit loginDBInit = new LoginDBInit(null, null, DBUrls.getURL(DBNames.getSQLITE(), DBFileInfo.getTestDbPath()));
         loginDBInit.initialize();
 
         LoginDBAPI loginDBAPI = new LoginDBAPI();
@@ -26,7 +25,7 @@ public class Tests {
     @Test
     public static void TestLoginAPI(){
 
-        LoginDBInit loginDBInit = new LoginDBInit(null, null, DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath()));
+        LoginDBInit loginDBInit = new LoginDBInit(null, null, DBUrls.getURL(DBNames.getSQLITE(), DBFileInfo.getTestDbPath()));
         loginDBInit.initialize();
 
         LoginAPI loginAPI = new LoginAPI();
@@ -40,7 +39,7 @@ public class Tests {
         String dbUsername = (String) args[0];
         String dbPassword = (String) args[1];
 
-        String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileNames.getTestDbPath());
+        String testDBUrl = DBUrls.getURL(DBNames.getSQLITE(), DBFileInfo.getTestDbPath());
 
         LoginDBInit loginDBInit = new LoginDBInit(dbUsername, dbPassword, testDBUrl);
         loginDBInit.createTables();
