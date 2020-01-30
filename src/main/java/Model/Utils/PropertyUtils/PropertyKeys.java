@@ -5,7 +5,8 @@ public class PropertyKeys {
     private static final String PWD_PROP = "db.pwd";
     private static final String DB_PROPERTIES_NAME = "db.properties";
     private static final String TESTMODE_PROP = "db.testmode";
-    private static final String FILENAME_PROP = "db.filename";
+    private static final String REL_FILENAME_PROP = "db.file.rel";
+    private static final String ABS_FILENAME_PROP = "db.file.abs";
 
     public static String getDbPropertiesName() {
         return DB_PROPERTIES_NAME;
@@ -23,7 +24,11 @@ public class PropertyKeys {
         return TESTMODE_PROP;
     }
 
-    public static String getFilenameProp() {
-        return FILENAME_PROP;
+    public static String getRelFilenameProp() {
+        return REL_FILENAME_PROP;
+    }
+
+    public static String getAbsFilenameProp() {
+        return ABS_FILENAME_PROP;
     }
 }

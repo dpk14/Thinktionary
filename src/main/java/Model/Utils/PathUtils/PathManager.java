@@ -18,8 +18,12 @@ public class PathManager {
         return TEST_DB_NAME_DEFAULT;
     }
 
-    public static String getDBPath(String dbType, String name){
+    public static String getDBRelPath(String dbType, String name){
         return DATABASES_ROOT + "/" + dbType + "/" + name;
+    }
+
+    public static String getDBAbsPath(String dbType, String name){
+        return getResourcePath() + "/" + DATABASES_ROOT + "/" + dbType + "/" + name;
     }
 
     public static String getDBUrl(String dbType, String name){
@@ -27,15 +31,15 @@ public class PathManager {
     }
 
     public static String getDefaultTestDbPath(String dbType) {
-        return getDBPath(dbType, TEST_DB_NAME_DEFAULT);
+        return getDBAbsPath(dbType, TEST_DB_NAME_DEFAULT);
     }
 
     public static String getDefaultMainDbPath(String dbType) {
-        return getDBPath(dbType, MAIN_DB_NAME_DEFAULT);
+        return getDBAbsPath(dbType, MAIN_DB_NAME_DEFAULT);
     }
 
     private static String checkDBPath(String dbType, String name){
-        URL res = PathManager.class.getClassLoader().getClass().getResource(getDBPath(dbType, name));
+        URL res = PathManager.class.getClassLoader().getClass().getResource(getDBRelPath(dbType, name));
         File file = null;
         try {
             file = Paths.get(res.toURI()).toFile();
@@ -44,5 +48,17 @@ public class PathManager {
             e.printStackTrace();
         }
         return file.getAbsolutePath();
+    }
+
+    private static String getResourcePath() {
+        URL url = PathManager.class.getClassLoader().getResource("EMPTY.txt");
+        File file = null;
+        try {
+            file = new File(url.toURI());
+        } catch (URISyntaxException e) {
+            file = new File(url.getPath());
+        } finally {
+            return file.getAbsolutePath();
+        }
     }
 }

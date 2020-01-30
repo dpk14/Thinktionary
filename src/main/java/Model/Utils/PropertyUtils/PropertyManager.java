@@ -23,8 +23,10 @@ public class PropertyManager {
     }
 
     public static void setDBFilename(String value) {
-        String fullPath = PathManager.getDBPath(DBNames.getSQLITE(), value);
-        setProperty(PropertyKeys.getFilenameProp(), fullPath);
+        String relPath = PathManager.getDBRelPath(DBNames.getSQLITE(), value);
+        String absPath = PathManager.getDBAbsPath(DBNames.getSQLITE(), value);
+        setProperty(PropertyKeys.getRelFilenameProp(), relPath);
+        setProperty(PropertyKeys.getAbsFilenameProp(), absPath);
     }
 
     public static void setURL() {
@@ -50,7 +52,7 @@ public class PropertyManager {
 
     public static String getFilename() throws LoadPropertiesException {
         Properties prop = loadProperties();
-        return prop.getProperty(PropertyKeys.getFilenameProp());
+        return prop.getProperty(PropertyKeys.getAbsFilenameProp());
     }
 
     private static Properties loadProperties() throws LoadPropertiesException {
