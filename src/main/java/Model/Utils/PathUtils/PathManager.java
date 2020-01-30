@@ -60,13 +60,12 @@ public class PathManager {
 
     private static String getResourcePath() {
         URL url = PathManager.class.getClassLoader().getResource("EMPTY.txt");
-        File file = null;
         try {
-            file = new File(url.toURI());
+            return new File(url.toURI()).getAbsolutePath();
         } catch (URISyntaxException e) {
-            file = new File(url.getPath());
-        } finally {
-            return file.getAbsolutePath();
+            System.out.println("Sample resource filepath is incorrect");
+            System.exit(1);
         }
+        return null;
     }
 }

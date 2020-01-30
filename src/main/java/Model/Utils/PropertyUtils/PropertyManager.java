@@ -85,7 +85,7 @@ public class PropertyManager {
     }
 
     public static void setProperty(String key, String value) {
-        String path = Application.class.getResource(PropertyKeys.getDbPropertiesName()).getPath();
+        String path = PropertyManager.class.getResource(PropertyKeys.getDbPropertiesName()).getPath();
         try {
             OutputStream output = new FileOutputStream(path);
             try{

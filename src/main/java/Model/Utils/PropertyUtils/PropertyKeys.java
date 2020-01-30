@@ -1,7 +1,7 @@
 package Model.Utils.PropertyUtils;
 
 public class PropertyKeys {
-    private static final String DB_PROPERTIES_NAME = "db.properties";
+    private static final String DB_PROPERTIES_NAME = "/db.properties";
     private static final String USER_PROP = "db.user";
     private static final String PWD_PROP = "db.pwd";
     private static final String URL_PROP = "db.url";
