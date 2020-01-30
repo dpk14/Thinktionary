@@ -46,8 +46,8 @@ public class PathManager {
 
     //Helpers
 
-    private static String checkDBPath(String dbType, String name){
-        URL res = PathManager.class.getClassLoader().getClass().getResource(getDBRelPath(dbType, name));
+    private static String checkDBPath(String name){
+        URL res = PathManager.class.getClassLoader().getClass().getResource(getDBRelPath(name));
         File file = null;
         try {
             file = Paths.get(res.toURI()).toFile();

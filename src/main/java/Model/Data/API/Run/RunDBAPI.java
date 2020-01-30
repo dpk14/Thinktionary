@@ -24,12 +24,8 @@ public abstract class RunDBAPI extends DBAPI {
 
      */
 
-    public RunDBAPI(String dbUsername, String dbPassword, String dbUrl, String dbFilename, boolean testMode) {
-        super(dbUsername, dbPassword, dbUrl, dbFilename, testMode);
-    }
-
-    public RunDBAPI(boolean testMode){
-        super(testMode);
+    public RunDBAPI(){
+        super();
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {
