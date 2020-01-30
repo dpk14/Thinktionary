@@ -1,7 +1,7 @@
 package Model.Data.API.Run;
 
-import Model.Data.Lib.SQLStrings.SQLQuery;
-import Model.Data.Lib.SQLStrings.TableNames;
+import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.AccountExistsException;

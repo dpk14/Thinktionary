@@ -1,4 +1,4 @@
-package Model.Data.Lib.Paths;
+package Model.Utils.PathManager;
 
 import java.io.File;
 import java.net.URISyntaxException;
@@ -11,10 +11,10 @@ public class DBFileInfo {
     private static final String DATABASES_ROOT = "Databases";
 
     public static String getMainDbName() {
-        return String.valueOf(MAIN_DB_NAME);
+        return MAIN_DB_NAME;
     }
     public static String getTestDbName() {
-        return String.valueOf(TEST_DB_NAME);
+        return TEST_DB_NAME;
     }
 
     public static String getTestDbPath(String dbType) {

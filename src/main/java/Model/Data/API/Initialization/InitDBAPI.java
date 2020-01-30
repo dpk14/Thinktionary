@@ -1,8 +1,8 @@
 package Model.Data.API.Initialization;
 
 import Model.Data.API.DBAPI;
-import Model.Data.Lib.SQLStrings.ColumnInfo;
-import Model.Data.Lib.SQLStrings.SQLQuery;
+import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.SQLQuery;
 import Model.Data.Utils.DBUtils;
 
 import java.io.File;

@@ -1,7 +1,7 @@
 package Model.Data.API.Run;
 
 import Model.Data.API.DBAPI;
-import Model.Data.Lib.SQLStrings.SQLQuery;
+import Model.Data.SQL.SQLQuery;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 

@@ -1,6 +1,6 @@
 package Model.API.Login;
 
-import Model.Data.Lib.SQLStrings.ColumnInfo;
+import Model.Data.SQL.ColumnInfo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

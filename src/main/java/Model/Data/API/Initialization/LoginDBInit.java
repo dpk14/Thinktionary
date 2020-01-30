@@ -1,6 +1,6 @@
 package Model.Data.API.Initialization;
 
-import Model.Data.Lib.SQLStrings.TableNames;
+import Model.Data.SQL.TableNames;
 
 public class LoginDBInit extends InitDBAPI {
 

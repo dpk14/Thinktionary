@@ -1,10 +1,10 @@
 package Model.Data.API.Run;
 
 import Model.API.Journal.Entry;
-import Model.Data.Lib.SQLStrings.ColumnInfo;
+import Model.Data.SQL.ColumnInfo;
 import Model.Data.Utils.DBUtils;
-import Model.Data.Lib.SQLStrings.SQLQuery;
-import Model.Data.Lib.SQLStrings.TableNames;
+import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.TableNames;
 import Model.API.Journal.JournalDBParser;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;

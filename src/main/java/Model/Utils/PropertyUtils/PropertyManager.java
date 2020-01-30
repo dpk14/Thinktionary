@@ -1,7 +1,6 @@
-package Model.Utils;
+package Model.Utils.PropertyUtils;
 
 import Controller.Application;
-import Controller.Exceptions.ModeParseError;
 import Model.Data.Exceptions.LoadPropertiesException;
 
 import java.io.*;
@@ -21,6 +20,10 @@ public class PropertyManager {
         setProperty(PropertyKeys.getPwdProp(), value);
     }
 
+    public static void setDBFilename(String value) {
+        setProperty(PropertyKeys.getPwdProp(), value);
+    }
+
     //Getters
 
     public static String getDBUsername() throws LoadPropertiesException {
@@ -36,6 +39,11 @@ public class PropertyManager {
     public static String getTestmode() throws LoadPropertiesException {
         Properties prop = loadProperties();
         return prop.getProperty(PropertyKeys.getTestmodeProp());
+    }
+
+    public static String getFilename() throws LoadPropertiesException {
+        Properties prop = loadProperties();
+        return prop.getProperty(PropertyKeys.getFilenameProp());
     }
 
     private static Properties loadProperties() throws LoadPropertiesException {

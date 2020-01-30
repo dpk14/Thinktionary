@@ -1,4 +1,4 @@
-package Model.Data.Lib.Paths;
+package Model.Utils.PathManager;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,10 +2,8 @@ package Model.API.Journal;
 
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
-import Model.Data.Lib.SQLStrings.ColumnInfo;
+import Model.Data.SQL.ColumnInfo;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.DateExceptions.InvalidDBDateException;
-import Model.ErrorHandling.Exceptions.DateExceptions.InvalidDateException;
 
 import java.time.LocalDateTime;
 import java.util.*;

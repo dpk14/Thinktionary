@@ -1,4 +1,4 @@
-package Model.Data.Lib.SQLStrings;
+package Model.Data.SQL;
 
 import java.util.Map;
 

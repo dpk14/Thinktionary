@@ -1,4 +1,4 @@
-package Model.Data.Lib.Paths;
+package Model.Utils.PathManager;
 
 public class DBNames {
 
