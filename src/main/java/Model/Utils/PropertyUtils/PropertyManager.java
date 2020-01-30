@@ -2,6 +2,8 @@ package Model.Utils.PropertyUtils;
 
 import Controller.Application;
 import Model.Data.Exceptions.LoadPropertiesException;
+import Model.Utils.PathUtils.DBNames;
+import Model.Utils.PathUtils.PathManager;
 
 import java.io.*;
 import java.util.Properties;
@@ -21,7 +23,12 @@ public class PropertyManager {
     }
 
     public static void setDBFilename(String value) {
-        setProperty(PropertyKeys.getPwdProp(), value);
+        String fullPath = PathManager.getDBPath(DBNames.getSQLITE(), value);
+        setProperty(PropertyKeys.getFilenameProp(), fullPath);
+    }
+
+    public static void setURL() {
+
     }
 
     //Getters

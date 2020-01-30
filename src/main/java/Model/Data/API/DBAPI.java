@@ -1,17 +1,17 @@
 package Model.Data.API;
 
 import Model.Data.Exceptions.LoadPropertiesException;
-import Model.Utils.PathManager.DBFileInfo;
-import Model.Utils.PathManager.DBNames;
-import Model.Utils.PathManager.DBUrls;
+import Model.Utils.PathUtils.PathManager;
+import Model.Utils.PathUtils.DBNames;
+import Model.Utils.PathUtils.DBUrls;
 import Model.Utils.PropertyUtils.PropertyManager;
 
 public abstract class DBAPI {
 
-    private static final String DB_URL_TEST_DEFAULT = DBUrls.getURL(DBNames.getSQLITE(), DBFileInfo.getTestDbName());
-    private static final String DB_URL_MAIN_DEFAULT = DBUrls.getURL(DBNames.getSQLITE(), DBFileInfo.getMainDbName());
-    private static final String DB_TEST_FILEPATH_DEFAULT = DBFileInfo.getTestDbPath(DBNames.getSQLITE());
-    private static final String DB_MAIN_FILEPATH_DEFAULT = DBFileInfo.getMainDbPath(DBNames.getSQLITE());
+    private static final String DB_URL_TEST_DEFAULT = DBUrls.getURL(DBNames.getSQLITE(), PathManager.getTestDbName());
+    private static final String DB_URL_MAIN_DEFAULT = DBUrls.getURL(DBNames.getSQLITE(), PathManager.getMainDbName());
+    private static final String DB_TEST_FILEPATH_DEFAULT = PathManager.getTestDbPath(DBNames.getSQLITE());
+    private static final String DB_MAIN_FILEPATH_DEFAULT = PathManager.getMainDbPath(DBNames.getSQLITE());
     private static final String DB_USERNAME_DEFAULT = "kingsbda";
     private static final String DB_PASSWORD_DEFAULT = "1qazxsw2";
     protected String myDBUrl;

@@ -2,28 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyKeys.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/JournalDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/JournalDBInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/LoginDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/LoginDBInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBFileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/DBFileInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/DBNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/DBUrls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/Paths/Drivers/DriverPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/Drivers/DriverPaths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Lib/SQLStrings/TableNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/TableNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyKeys.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/DBFileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBUrls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/Drivers/DriverFiles/sqlite-jdbc-3.30.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathManager/Drivers/DriverPaths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/Drivers/DriverPaths.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,6 +53,9 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Thinktionary" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -270,7 +260,7 @@
       <workItem from="1580150774262" duration="1172000" />
       <workItem from="1580152399379" duration="2822000" />
       <workItem from="1580233435795" duration="6863000" />
-      <workItem from="1580349565068" duration="7442000" />
+      <workItem from="1580349565068" duration="9080000" />
     </task>
     <servers />
   </component>
@@ -290,6 +280,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="464" y="339" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1580356733400" />
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580358005596">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1580358005596" />
     <state width="745" height="290" key="GridCell.Tab.0.bottom" timestamp="1580153194122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

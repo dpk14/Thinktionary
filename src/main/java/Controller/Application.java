@@ -11,10 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) {
-        PropertyManager.setUserMode(args[0]);
-        PropertyManager.setUsername(args[1]);
-        PropertyManager.setPassword(args[2]);
-        PropertyManager.completeProperties();
+        PropertyManager.setTestMode(args[0]);
+        PropertyManager.setDBUsername(args[1]);
+        PropertyManager.setDBPassword(args[2]);
+        PropertyManager.setDBFilename(args[3]);
+        PropertyManager.setURL();
         new LoginDBInit().initialize();
         new JournalDBInit().initialize();
         SpringApplication.run(Application.class, args);

@@ -1,4 +1,4 @@
-package Model.Utils.PathManager;
+package Model.Utils.PathUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,8 +12,8 @@ public class DBUrls {
         return String.valueOf(nameToConnectKey.get(dbName));
     }
 
-    public static String getURL(String dbName, String fileName) {
+    public static String getURL(String dbName, String absolutePath) {
         String connectKey = getConnectKey(dbName);
-        return connectKey + fileName;
+        return connectKey + absolutePath;
     }
 }
