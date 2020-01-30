@@ -22,9 +22,6 @@ public class RESTJournal {
     @Autowired
     private static final String PROTECTED_PATH = "/{userID}";
 
-    @Value("${testmode}")
-    private boolean TESTMODE;
-
     @PostMapping(PROTECTED_PATH + "/entries")
     public ResponseEntity createEntry(HttpServletRequest httpServletRequest,
                                               @PathVariable int userID, @RequestBody Entry entry) {

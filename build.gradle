@@ -37,8 +37,8 @@ dependencies {
 }
 
 bootRun {
-    doFirst {
-        bootRun.systemProperties = localBootRunProperties()
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
     }
 }
 

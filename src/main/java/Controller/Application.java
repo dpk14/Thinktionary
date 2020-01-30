@@ -25,10 +25,9 @@ public class Application {
     }
 
     private static void setProperties(String[] args) throws LoadPropertiesException {
-        PropertyManager.setTestMode(args[0]);
-        PropertyManager.setDBUsername(args[1]);
-        PropertyManager.setDBPassword(args[2]);
-        PropertyManager.setDBFilename(args[3]);
+        PropertyManager.setDBUsername(args[0]);
+        PropertyManager.setDBPassword(args[1]);
+        PropertyManager.setDBFilename(args[2]);
         PropertyManager.setURL();
     }
 
