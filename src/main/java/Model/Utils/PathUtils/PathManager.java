@@ -18,25 +18,33 @@ public class PathManager {
         return TEST_DB_NAME_DEFAULT;
     }
 
-    public static String getDBRelPath(String dbType, String name){
-        return DATABASES_ROOT + "/" + dbType + "/" + name;
+    public static String getDBRelPath(String name){
+        return DATABASES_ROOT + "/" + DBNames.getSQLITE() + "/" + name;
     }
 
-    public static String getDBAbsPath(String dbType, String name){
-        return getResourcePath() + "/" + DATABASES_ROOT + "/" + dbType + "/" + name;
+    public static String getDBAbsPath(String name){
+        return getResourcePath() + "/" + DATABASES_ROOT + "/" + DBNames.getSQLITE() + "/" + name;
     }
 
-    public static String getDBUrl(String dbType, String name){
-        return DBUrls.getURL(DBNames.getSQLITE(), name);
+    public static String getDBAbsPathFromRel(String relPath){
+        return getResourcePath() + "/" + relPath;
     }
 
-    public static String getDefaultTestDbPath(String dbType) {
-        return getDBAbsPath(dbType, TEST_DB_NAME_DEFAULT);
+    public static String getDBUrl(String path){
+        return DBUrls.getURL(DBNames.getSQLITE(), path);
     }
 
-    public static String getDefaultMainDbPath(String dbType) {
-        return getDBAbsPath(dbType, MAIN_DB_NAME_DEFAULT);
+    //Default getters
+
+    public static String getDefaultTestName() {
+        return MAIN_DB_NAME_DEFAULT;
     }
+
+    public static String getDefaultMainName(){
+        return TEST_DB_NAME_DEFAULT;
+    }
+
+    //Helpers
 
     private static String checkDBPath(String dbType, String name){
         URL res = PathManager.class.getClassLoader().getClass().getResource(getDBRelPath(dbType, name));

@@ -11,24 +11,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) {
-        PropertyManager.setTestMode(args[0]);
-        PropertyManager.setDBUsername(args[1]);
-        PropertyManager.setDBPassword(args[2]);
-        PropertyManager.setDBFilename(args[3]);
-        PropertyManager.setURL();
+        setProperties(args);
         new LoginDBInit().initialize();
         new JournalDBInit().initialize();
         SpringApplication.run(Application.class, args);
     }
 
-    private static boolean testModeParser(String mode) throws ModeParseError {
-        String modeLower = mode.toLowerCase();
-        if(modeLower.equals("true")) return true;
-        else if (modeLower.equals("false")) return false;
-        else{
-            throw new ModeParseError();
+    private static void setProperties(String[] args) {
+        PropertyManager.setTestMode(args[0]);
+        PropertyManager.setDBUsername(args[1]);
+        PropertyManager.setDBPassword(args[2]);
+        PropertyManager.setDBFilename(args[3]);
+        try {
+            PropertyManager.setURL();
         }
     }
+
+}
 
 
 

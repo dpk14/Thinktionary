@@ -1,6 +1,7 @@
 package Model.Utils.PropertyUtils;
 
 import Controller.Application;
+import Controller.Exceptions.ModeParseError;
 import Model.Data.Exceptions.LoadPropertiesException;
 import Model.Utils.PathUtils.DBNames;
 import Model.Utils.PathUtils.PathManager;
@@ -9,6 +10,8 @@ import java.io.*;
 import java.util.Properties;
 
 public class PropertyManager {
+
+    //Setters
 
     public static void setTestMode(String value) {
         setProperty(PropertyKeys.getTestmodeProp(), value);
@@ -23,14 +26,15 @@ public class PropertyManager {
     }
 
     public static void setDBFilename(String value) {
-        String relPath = PathManager.getDBRelPath(DBNames.getSQLITE(), value);
-        String absPath = PathManager.getDBAbsPath(DBNames.getSQLITE(), value);
+        String relPath = PathManager.getDBRelPath(value);
+        String absPath = PathManager.getDBAbsPath(value);
         setProperty(PropertyKeys.getRelFilenameProp(), relPath);
         setProperty(PropertyKeys.getAbsFilenameProp(), absPath);
     }
 
-    public static void setURL() {
-
+    public static void setURL() throws LoadPropertiesException {
+        String absPath = getAbsFilename();
+        setProperty(PropertyKeys.getURLProp(), PathManager.getDBUrl(absPath));
     }
 
     //Getters
@@ -45,15 +49,28 @@ public class PropertyManager {
         return prop.getProperty(PropertyKeys.getPwdProp());
     }
 
-    public static String getTestmode() throws LoadPropertiesException {
+    public static boolean getTestmode() throws LoadPropertiesException {
         Properties prop = loadProperties();
-        return prop.getProperty(PropertyKeys.getTestmodeProp());
+        String mode = prop.getProperty(PropertyKeys.getTestmodeProp());
+        return testModeParser(mode);
     }
 
-    public static String getFilename() throws LoadPropertiesException {
+    public static String getAbsFilename() throws LoadPropertiesException {
         Properties prop = loadProperties();
         return prop.getProperty(PropertyKeys.getAbsFilenameProp());
     }
+
+    public static String getRelFilename() throws LoadPropertiesException {
+        Properties prop = loadProperties();
+        return prop.getProperty(PropertyKeys.getRelFilenameProp());
+    }
+
+    public static String getDBUrl() throws LoadPropertiesException {
+        Properties prop = loadProperties();
+        return prop.getProperty(PropertyKeys.getURLProp());
+    }
+
+    //Helpers
 
     private static Properties loadProperties() throws LoadPropertiesException {
         InputStream stream = Application.class.getResourceAsStream(PropertyKeys.getDbPropertiesName());
@@ -84,6 +101,15 @@ public class PropertyManager {
         catch(FileNotFoundException e){
             System.out.println("Properties filepath incorrect");
             e.printStackTrace();
+        }
+    }
+
+    private static boolean testModeParser(String mode) throws ModeParseError {
+        String modeLower = mode.toLowerCase();
+        if(modeLower.equals("true")) return true;
+        else if (modeLower.equals("false")) return false;
+        else{
+            throw new ModeParseError();
         }
     }
 

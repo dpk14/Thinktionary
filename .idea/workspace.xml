@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EMPTY" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyKeys.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" afterDir="false" />
@@ -255,7 +256,7 @@
       <workItem from="1580150774262" duration="1172000" />
       <workItem from="1580152399379" duration="2822000" />
       <workItem from="1580233435795" duration="6863000" />
-      <workItem from="1580349565068" duration="9807000" />
+      <workItem from="1580349565068" duration="11755000" />
     </task>
     <servers />
   </component>
