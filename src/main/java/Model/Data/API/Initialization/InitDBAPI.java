@@ -19,12 +19,8 @@ public abstract class InitDBAPI extends DBAPI {
     String myDBPassword;
     String myDBFilename;
 
-    public InitDBAPI(String dbUsername, String dbPassword, String dbUrl, String dbFilename, boolean testMode) {
-        super(dbUsername, dbPassword, dbUrl, dbFilename, testMode);
-    }
-
-    public InitDBAPI(boolean testMode){
-        super(testMode);
+    public InitDBAPI(){
+        super();
     }
 
     public String initialize(){

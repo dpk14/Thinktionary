@@ -1,4 +1,4 @@
-package Model.Data.Lib.PropertiesManager;
+package Model.Utils;
 
 public class PropertyKeys {
     private static String USER_PROP = "db.user";

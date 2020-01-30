@@ -1,8 +1,16 @@
 package Model.Data.API;
 
+import Controller.Application;
+import Model.Data.Exceptions.LoadPropertiesException;
 import Model.Data.Lib.Paths.DBFileInfo;
 import Model.Data.Lib.Paths.DBNames;
 import Model.Data.Lib.Paths.DBUrls;
+import Model.Utils.PropertyKeys;
+import Model.Utils.PropertyManager;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public abstract class DBAPI {
 
@@ -17,9 +25,13 @@ public abstract class DBAPI {
     protected String myDBPassword;
     protected String myDBFilename;
 
-    public DBAPI(String dbUsername, String dbPassword, String dbUrl, String dbFilename, boolean testMode) {
+    public DBAPI() throws LoadPropertiesException {
+
+        String dbUsername = PropertyManager.getDBUsername();
         myDBUsername = dbUsername == null? DB_USERNAME_DEFAULT : dbUsername;
+        String dbPassword = PropertyManager.getDBPwd();
         myDBPassword = dbPassword == null? DB_PASSWORD_DEFAULT : dbPassword;
+        String testMode = PropertyManager.getTestmode();
         myDBFilename = dbFilename == null? (testMode ? DB_TEST_FILEPATH_DEFAULT : DB_MAIN_FILEPATH_DEFAULT) : dbFilename;
         myDBUrl = dbUrl == null? (testMode ? DB_URL_TEST_DEFAULT : DB_URL_MAIN_DEFAULT) : dbUrl;
     }

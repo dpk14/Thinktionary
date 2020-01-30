@@ -4,11 +4,7 @@ import Model.Data.Lib.SQLStrings.TableNames;
 
 public class JournalDBInit extends InitDBAPI {
 
-    public JournalDBInit(String dbUsername, String dbPassword, String dbUrl, String dbFilename, boolean testMode){
-        super(dbUsername, dbPassword, dbUrl, dbFilename, testMode);
-    }
-
-    public JournalDBInit(boolean testMode){super(testMode);}
+    public JournalDBInit(){super();}
 
     @Override
     public void createTables() {

@@ -5,7 +5,7 @@ public class ModeParseError extends Error{
 
     @Override
     public String toString() {
-        return "BooleanParseException{" +
+        return "ModeParseError{" +
                 "MESSAGE='" + MESSAGE + '\'' +
                 '}';
     }
