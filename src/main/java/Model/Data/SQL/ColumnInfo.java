@@ -6,8 +6,8 @@ import java.util.Map;
 public class ColumnInfo {
     private static final String TOPIC = "Topic";
     private static final String COLOR = "Color";
-    private static final String ENTRY_ID = "Entry ID";
-    private static final String USER_ID = "User ID";
+    private static final String ENTRY_ID = "EntryID";
+    private static final String USER_ID = "UserID";
     private static final String TITLE = "Title";
     private static final String TEXT = "Text";
     private static final String CREATED = "Created";

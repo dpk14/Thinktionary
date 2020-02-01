@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TableNames {
-    private static final String ENTRY_INFO = "Entry Info";
-    private static final String ENTRY_TOPIC = "Entry-Topic";
-    private static final String USER_TOPIC = "User-Topic";
-    private static final String USER_INFO = "User Info";
+    private static final String ENTRY_INFO = "EntryInfo";
+    private static final String ENTRY_TOPIC = "EntryTopic";
+    private static final String USER_TOPIC = "UserTopic";
+    private static final String USER_INFO = "UserInfo";
 
     public static String getUserTopic() {
         return String.valueOf(USER_TOPIC);
