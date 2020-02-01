@@ -4,19 +4,26 @@
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTLogin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/PathManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/PathManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PropertyUtils/PropertyManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PropertyUtils/PropertyManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/Drivers/DriverPaths.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/Databases/SQLite/test1.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/README" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/README" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBUrls.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,15 +124,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
+      <recent name="C:\Users\dpk14\Thinktionary\src" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="src.main.java.BackEnd.API.Journal" />
       <recent name="src.main.java.BackEnd.API.Login" />
       <recent name="src.main.test.java" />
       <recent name="src.main.javaa" />
       <recent name="src.main.java" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Controller" />
@@ -134,12 +145,8 @@
       <recent name="RESTController" />
       <recent name="src.main.test.java" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
-      <recent name="C:\Users\dpk14\Thinktionary\src" />
-      <recent name="C:\Users\dpk14\Thinktionary\Data\Lib\Drivers\DriverFiles" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Tests">
@@ -264,7 +271,7 @@
       <workItem from="1580152399379" duration="2822000" />
       <workItem from="1580233435795" duration="6863000" />
       <workItem from="1580349565068" duration="15347000" />
-      <workItem from="1580580611997" duration="4053000" />
+      <workItem from="1580580611997" duration="10699000" />
     </task>
     <servers />
   </component>

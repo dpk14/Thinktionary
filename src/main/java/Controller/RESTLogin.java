@@ -28,24 +28,5 @@ public class RESTLogin {
         }
 
     }
-
-    @PostMapping("/users")
-    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
-        try {
-            int userId = new LoginAPI().makeAccount(username, password);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{userID}")
-                    .buildAndExpand(userId)
-                    .toUri();
-
-            return ResponseEntity.created(uri).body(userId);
-        }
-        catch(AccountExistsException e){
-            System.out.print(e.toString());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
-        }
-    }
-
-    //makeaccount needs to add /id, the id is another layer validating data
-
+    
 }

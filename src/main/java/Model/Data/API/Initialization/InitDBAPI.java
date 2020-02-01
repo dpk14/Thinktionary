@@ -59,7 +59,14 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     private void createTable(String tableName, Map<String, String> columnMap){
+        try {
+            Class.forName("org.sqlite.JDBC");
+        }
+        catch(ClassNotFoundException e){
+            System.out.println("NO CLASS");
+        }
         String action = SQLQuery.createTable(tableName, columnMap);
+        System.out.println(action);
         tryCatchUserAction(action);
     }
 

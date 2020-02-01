@@ -3,6 +3,8 @@ package Controller;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
+import Model.API.Login.LoginAPI;
+import Model.ErrorHandling.Exceptions.AccountExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -19,8 +21,24 @@ import java.util.List;
 @RequestMapping("/users")
 public class RESTJournal {
 
-    @Autowired
     private static final String PROTECTED_PATH = "/{userID}";
+
+    @PutMapping(value="/")
+    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+        try {
+            int userId = new LoginAPI().makeAccount(username, password);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{userID}")
+                    .buildAndExpand(userId)
+                    .toUri();
+
+            return ResponseEntity.created(uri).body(userId);
+        }
+        catch(AccountExistsException e){
+            System.out.print(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        }
+    }
 
     @PostMapping(PROTECTED_PATH + "/entries")
     public ResponseEntity createEntry(HttpServletRequest httpServletRequest,
