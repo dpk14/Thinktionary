@@ -7,14 +7,16 @@ public class JournalDBInit extends InitDBAPI {
     public JournalDBInit(){super();}
 
     @Override
-    public void createTables() {
-        createTablesHelper(TableNames.getLoginTableNames());
+    public void createTablesIfNull() {
+        createTablesHelper(TableNames.getJournalTableNames());
     }
 
     @Override
     public void clearTables() {
-        clearTablesHelper(TableNames.getLoginTableNames());
+        clearTablesHelper(TableNames.getJournalTableNames());
     }
+
+
 
 
 }

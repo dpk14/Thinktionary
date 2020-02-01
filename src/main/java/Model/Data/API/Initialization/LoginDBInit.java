@@ -7,13 +7,13 @@ public class LoginDBInit extends InitDBAPI {
     public LoginDBInit(){super();}
 
     @Override
-    public void createTables() {
-        createTablesHelper(TableNames.getJournalTableNames());
+    public void createTablesIfNull() {
+        createTablesHelper(TableNames.getLoginTableNames());
     }
 
     @Override
     public void clearTables() {
-        clearTablesHelper(TableNames.getJournalTableNames());
+        clearTablesHelper(TableNames.getLoginTableNames());
     }
 
 }

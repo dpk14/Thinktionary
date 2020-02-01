@@ -85,7 +85,7 @@ public class DBUtils {
 
         Connection con = DBUtils.makeConnection(url, user, password);
         PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, command);
-        pst.executeQuery(command);
+        pst.execute();
         DBUtils.close(pst);
         DBUtils.close(con);
     }

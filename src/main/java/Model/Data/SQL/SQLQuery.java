@@ -45,12 +45,14 @@ public class SQLQuery {
             "WHERE " + ColumnInfo.getUSERNAME() + " = ? " +
             "AND " + ColumnInfo.getPASSWORD() + " = ?;";
 
-    private static final String ADD_USER = "INSERT INTO " + TableNames.getUserTopic() +
-            "(" + ColumnInfo.getUSERNAME() + "," +
-            "(" + ColumnInfo.getPASSWORD() + ") " +
+    private static final String ADD_USER = "INSERT INTO " + TableNames.getUserInfo() +
+            " (" + ColumnInfo.getUSERNAME() + ", " +
+            ColumnInfo.getPASSWORD() + ") " +
             "VALUES (?,?);";
 
     private static final String REMOVE_TABLE = "DROP TABLE ?;";
+
+    private static final String TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name=?;";
 
     public static String addEntry() {
         return ADD_ENTRY;
@@ -95,6 +97,8 @@ public class SQLQuery {
     public static final String removeTable() {
         return REMOVE_TABLE;
     }
+
+    public static final String tableExists() {return TABLE_EXISTS;}
 
     public static final String createTable(String tableName, Map<String, String> columnToType) {
         String command = "CREATE TABLE " + tableName + " ( ";

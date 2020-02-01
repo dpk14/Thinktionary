@@ -7,6 +7,7 @@ import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 
+import javax.management.Query;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,16 +37,16 @@ public class LoginDBAPI extends RunDBAPI {
 
     public List<Map<String, Object>> createAccount(String userName, String passWord) throws AccountExistsException {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, TableNames.getUserInfo());
-        map.put(2, userName);
-        map.put(3, passWord);
+        map.put(1, userName);
+        map.put(2, passWord);
         List<Map<String, Object>> userInfo = new ArrayList<>();
         try {
             userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 0) {
                 throw new AccountExistsException();
             }
-            DBUtils.userQuery(map, SQLQuery.addUser(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.addUser(), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(SQLQuery.getUser());
             userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             return userInfo;
         }

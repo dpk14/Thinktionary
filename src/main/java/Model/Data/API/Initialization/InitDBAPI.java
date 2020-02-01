@@ -4,10 +4,12 @@ import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQuery;
 import Model.Data.Utils.DBUtils;
+import Model.ErrorHandling.Errors.CorruptDBError;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +23,8 @@ public abstract class InitDBAPI extends DBAPI {
     public String initialize(){
         if(!DBexists(myDBAbsFilename)){
             createDatabase(myDBAbsFilename);
-            createTables();
         }
+        createTablesIfNull();
         return myDBAbsFilename.toString();
     }
 
@@ -41,14 +43,16 @@ public abstract class InitDBAPI extends DBAPI {
         }
     }
 
-    public abstract void createTables();
+    public abstract void createTablesIfNull();
 
     public abstract void clearTables();
 
     protected void createTablesHelper(List<String> tableNames) {
         for (String table : tableNames) {
-            Map<String, String> colNamesToType = ColumnInfo.getColumnMap(table);
-            createTable(table, colNamesToType);
+            if(!tableExists(table)) {
+                Map<String, String> colNamesToType = ColumnInfo.getColumnMap(table);
+                createTable(table, colNamesToType);
+            }
         }
     }
 
@@ -59,12 +63,6 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     private void createTable(String tableName, Map<String, String> columnMap){
-        try {
-            Class.forName("org.sqlite.JDBC");
-        }
-        catch(ClassNotFoundException e){
-            System.out.println("NO CLASS");
-        }
         String action = SQLQuery.createTable(tableName, columnMap);
         System.out.println(action);
         tryCatchUserAction(action);
@@ -86,5 +84,18 @@ public abstract class InitDBAPI extends DBAPI {
             System.out.println(e.getStackTrace());
         }
     }
+
+    protected boolean tableExists(String tableName){
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, tableName);
+        List<Map<String, Object>> ret = new ArrayList<>();
+        try {
+            ret = DBUtils.userQuery(map, SQLQuery.tableExists(), myDBUrl, myDBUsername, myDBPassword);
+            return ret.size() != 0;
+        } catch (SQLException e) {
+            throw new CorruptDBError(e);
+        }
+    }
+
 }
 
