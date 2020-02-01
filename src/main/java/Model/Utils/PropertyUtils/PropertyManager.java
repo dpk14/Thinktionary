@@ -80,10 +80,8 @@ public class PropertyManager {
         try {
             File dp_properties = new File(path);
             OutputStream output = new FileOutputStream(dp_properties, true);
-            InputStream input = new FileInputStream(dp_properties);
             try{
                 Properties prop = new Properties();
-                //prop.load(input);
                 for(Object existingKey: prop.keySet()){
                     System.out.println(existingKey);
                     prop.setProperty((String) existingKey, prop.getProperty((String) existingKey));

@@ -14,21 +14,16 @@ import java.util.Map;
 
 public abstract class InitDBAPI extends DBAPI {
 
-    String myDBUrl;
-    String myDBUsername;
-    String myDBPassword;
-    String myDBFilename;
-
     public InitDBAPI(){
         super();
     }
 
     public String initialize(){
-        if(!DBexists(myDBFilename)){
-            createDatabase(myDBFilename);
+        if(!DBexists(myDBAbsFilename)){
+            createDatabase(myDBAbsFilename);
             createTables();
         }
-        return myDBFilename.toString();
+        return myDBAbsFilename.toString();
     }
 
     private boolean DBexists(String dBFilename){

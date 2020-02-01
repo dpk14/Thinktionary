@@ -19,15 +19,15 @@ public class PathManager {
     }
 
     public static String getDBRelPath(String name){
-        return DATABASES_ROOT + "/" + DBNames.getSQLITE() + "/" + name;
+        return DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
     }
 
     public static String getDBAbsPath(String name){
-        return getResourcePath() + "/" + DATABASES_ROOT + "/" + DBNames.getSQLITE() + "/" + name;
+        return getResourcePath() + DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
     }
 
     public static String getDBAbsPathFromRel(String relPath){
-        return getResourcePath() + "/" + relPath;
+        return getResourcePath() + "\\" + relPath;
     }
 
     public static String getDBUrl(String path){
@@ -61,7 +61,7 @@ public class PathManager {
     private static String getResourcePath() {
         URL url = PathManager.class.getClassLoader().getResource("EMPTY.txt");
         try {
-            return new File(url.toURI()).getAbsolutePath();
+            return new File(url.toURI()).getAbsolutePath().split("EMPTY.txt")[0];
         } catch (URISyntaxException e) {
             System.out.println("Sample resource filepath is incorrect");
             System.exit(1);
