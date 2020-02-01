@@ -1,1 +1,2 @@
-./gradlew bootRun -Pargs=-Dserver.port=8090,dpk14,12345,test1.db
+./gradlew bootRun -Pargs=dpk14,12345,test1.db,-Dserver.port=8090
+gradle bootRun -Pargs=dpk14,12345,test1.db,-Dserver.port=8090

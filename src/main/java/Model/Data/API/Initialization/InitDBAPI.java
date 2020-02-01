@@ -31,8 +31,8 @@ public abstract class InitDBAPI extends DBAPI {
         return myDBFilename.toString();
     }
 
-    private boolean DBexists(String dbUrl){
-        File file = new File(dbUrl);
+    private boolean DBexists(String dBFilename){
+        File file = new File(dBFilename);
         return file.exists();
     }
 

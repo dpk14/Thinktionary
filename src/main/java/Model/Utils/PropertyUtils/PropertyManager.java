@@ -3,19 +3,15 @@ package Model.Utils.PropertyUtils;
 import Controller.Application;
 import Controller.Exceptions.ModeParseError;
 import Model.Data.Exceptions.LoadPropertiesException;
-import Model.Utils.PathUtils.DBNames;
 import Model.Utils.PathUtils.PathManager;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.Set;
 
 public class PropertyManager {
 
     //Setters
-
-    public static void setTestMode(String value) {
-        setProperty(PropertyKeys.getTestmodeProp(), value);
-    }
 
     public static void setDBUsername(String value) {
         setProperty(PropertyKeys.getUserProp(), value);
@@ -49,12 +45,6 @@ public class PropertyManager {
         return prop.getProperty(PropertyKeys.getPwdProp());
     }
 
-    public static boolean getTestmode() throws LoadPropertiesException {
-        Properties prop = loadProperties();
-        String mode = prop.getProperty(PropertyKeys.getTestmodeProp());
-        return testModeParser(mode);
-    }
-
     public static String getAbsFilename() throws LoadPropertiesException {
         Properties prop = loadProperties();
         return prop.getProperty(PropertyKeys.getAbsFilenameProp());
@@ -86,10 +76,18 @@ public class PropertyManager {
 
     public static void setProperty(String key, String value) {
         String path = PropertyManager.class.getResource(PropertyKeys.getDbPropertiesName()).getPath();
+        System.out.println(path);
         try {
-            OutputStream output = new FileOutputStream(path);
+            File dp_properties = new File(path);
+            OutputStream output = new FileOutputStream(dp_properties, true);
+            InputStream input = new FileInputStream(dp_properties);
             try{
                 Properties prop = new Properties();
+                //prop.load(input);
+                for(Object existingKey: prop.keySet()){
+                    System.out.println(existingKey);
+                    prop.setProperty((String) existingKey, prop.getProperty((String) existingKey));
+                }
                 prop.setProperty(key, value);
                 prop.store(output, null);
             }
