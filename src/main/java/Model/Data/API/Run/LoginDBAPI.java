@@ -20,9 +20,8 @@ public class LoginDBAPI extends RunDBAPI {
 
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, TableNames.getUserInfo());
-        map.put(2, userName);
-        map.put(3, passWord);
+        map.put(1, userName);
+        map.put(2, passWord);
         try {
             List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 1){
@@ -35,7 +34,7 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
-    public List<Map<String, Object>> createAccount(String userName, String passWord) throws AccountExistsException {
+    public List<Map<String, Object>> createUser(String userName, String passWord) throws AccountExistsException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, userName);
         map.put(2, passWord);
@@ -64,4 +63,5 @@ public class LoginDBAPI extends RunDBAPI {
             throw new CorruptDBError(e);
         }
     }
+
 }

@@ -17,7 +17,7 @@ public class LoginAPI {
     }
 
     public static int makeAccount(String username, String password) throws AccountExistsException { //second exception has two inheritances, password exists and username exists
-        List<Map<String, Object>> userInfo = new LoginDBAPI().createAccount(username, password);
+        List<Map<String, Object>> userInfo = new LoginDBAPI().createUser(username, password);
         return LoginDBParser.getUserID(userInfo);
     }
 

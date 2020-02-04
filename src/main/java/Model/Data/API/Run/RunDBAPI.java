@@ -41,12 +41,12 @@ public abstract class RunDBAPI extends DBAPI {
 
     protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, String parameter) {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        map.put(2, parameterType);
-        map.put(3, parameter);
+        map.put(1, parameterType);
+        map.put(2, parameter);
         List<Map<String, Object>> ret = new ArrayList<>();
         try {
-            return DBUtils.userQuery(map, SQLQuery.loadTable(), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(tableName + " " +  parameterType + " " +  parameter);
+            return DBUtils.userQuery(map, SQLQuery.getLoadTableByParameter(tableName), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new CorruptDBError(e);
         }

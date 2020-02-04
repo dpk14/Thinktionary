@@ -20,11 +20,22 @@ public class Journal {
 
     //used prepared statements in Java so that you dont have to recompile queries
 
+    public Journal(){
+
+    }
+
+    public Journal(List<Entry> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID){
+        myEntries = entries;
+        myEntryMap = entryMap;
+        myTopics = topics;
+        myUserID = userID;
+    }
+
     public Journal(int userID){
         JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry
-        JournalDBParser.parseEntryMap(entryTable, entryTopic);
+        myEntryMap = JournalDBParser.parseEntryMap(entryTable, entryTopic);
         List<Map<String, Object>> topicTable = journalDBAPI.loadTopicBankTable();
         myTopics = JournalDBParser.parseTopics(topicTable);
         myEntries = JournalDBParser.parseEntries(myEntryMap);
