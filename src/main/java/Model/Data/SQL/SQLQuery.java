@@ -101,7 +101,7 @@ public class SQLQuery {
     public static final String tableExists() {return TABLE_EXISTS;}
 
     public static final String createTable(String tableName, Map<String, String> columnToType) {
-        String command = "CREATE TABLE " + tableName + " ( ";
+        String command = "CREATE TABLE " + tableName + " (";
         int count = 0;
         for (String columnName : columnToType.keySet()) {
             String type = columnToType.get(columnName);
@@ -115,4 +115,11 @@ public class SQLQuery {
         return command;
     }
 
+    public static String getUser2() {
+        return "SELECT * FROM UserInfo WHERE Username='dpk14' AND Password='1234';";
+    }
+
+    public static String addUser2() {
+        return "INSERT INTO UserInfo(Username, Password) VALUES ('dpk14', '1234');";
+    }
 }

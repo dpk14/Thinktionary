@@ -1,5 +1,6 @@
 package Model.Data.Utils;
 
+import javax.sound.midi.SysexMessage;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,6 +59,7 @@ public class DBUtils {
                 while(rs.next()){
                     Map<String, Object> row = new HashMap<>();
                     for(int col = 1; col <= rsmd.getColumnCount(); col++){
+                        System.out.println((String) rs.getObject(col));
                         row.put(rsmd.getColumnName(col), rs.getObject(col));
                     }
                     result.add(row);
@@ -106,8 +108,8 @@ public class DBUtils {
         Connection con = DBUtils.makeConnection(url, user, password);
         PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, query);
         ResultSet rs = pst.executeQuery();
-        DBUtils.close(pst);
         List<Map<String, Object>> ret = DBUtils.map(rs);
+        DBUtils.close(pst);
         DBUtils.close(rs);
         DBUtils.close(con);
         return ret;

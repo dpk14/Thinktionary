@@ -37,16 +37,16 @@ public class LoginDBAPI extends RunDBAPI {
 
     public List<Map<String, Object>> createAccount(String userName, String passWord) throws AccountExistsException {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, userName);
-        map.put(2, passWord);
+        map.put(1, "'"+userName+"'");
+        map.put(2, "'"+passWord+"'");
         List<Map<String, Object>> userInfo = new ArrayList<>();
         try {
+            System.out.println(SQLQuery.getUser());
             userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 0) {
                 throw new AccountExistsException();
             }
             DBUtils.userAction(map, SQLQuery.addUser(), myDBUrl, myDBUsername, myDBPassword);
-            System.out.println(SQLQuery.getUser());
             userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
             return userInfo;
         }
