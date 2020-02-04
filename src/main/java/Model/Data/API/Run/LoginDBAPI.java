@@ -37,9 +37,9 @@ public class LoginDBAPI extends RunDBAPI {
 
     public List<Map<String, Object>> createAccount(String userName, String passWord) throws AccountExistsException {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, "'"+userName+"'");
-        map.put(2, "'"+passWord+"'");
-        List<Map<String, Object>> userInfo = new ArrayList<>();
+        map.put(1, userName);
+        map.put(2, passWord);
+        List<Map<String, Object>> userInfo;
         try {
             System.out.println(SQLQuery.getUser());
             userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);

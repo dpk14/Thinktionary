@@ -59,7 +59,6 @@ public class DBUtils {
                 while(rs.next()){
                     Map<String, Object> row = new HashMap<>();
                     for(int col = 1; col <= rsmd.getColumnCount(); col++){
-                        System.out.println((String) rs.getObject(col));
                         row.put(rsmd.getColumnName(col), rs.getObject(col));
                     }
                     result.add(row);
@@ -121,8 +120,8 @@ public class DBUtils {
         Connection con = DBUtils.makeConnection(url, user, password);
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(query);
-        DBUtils.close(st);
         List<Map<String, Object>> ret = DBUtils.map(rs);
+        DBUtils.close(st);
         DBUtils.close(rs);
         DBUtils.close(con);
         return ret;

@@ -11,13 +11,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginDBParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginDBParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/LoginDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/LoginDBAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQuery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/ColumnInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/ColumnInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/Utils/DBUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/Utils/DBUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Databases/SQLite/test1.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,7 +267,7 @@
       <workItem from="1580233435795" duration="6863000" />
       <workItem from="1580349565068" duration="15347000" />
       <workItem from="1580580611997" duration="20182000" />
-      <workItem from="1580688157199" duration="13215000" />
+      <workItem from="1580688157199" duration="15668000" />
     </task>
     <servers />
   </component>
@@ -299,6 +299,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1580358005596" />
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1580838396783">
+      <screen x="0" y="0" width="1536" height="813" />
+    </state>
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.813@0.0.1536.813" timestamp="1580838396783" />
     <state width="1493" height="285" key="GridCell.Tab.0.bottom" timestamp="1580691196606">
       <screen x="0" y="0" width="1536" height="813" />
     </state>
@@ -339,6 +343,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1580580620149" />
+    <state x="425" y="184" key="run.anything.popup" timestamp="1580838515216">
+      <screen x="0" y="0" width="1536" height="813" />
+    </state>
+    <state x="425" y="184" key="run.anything.popup/0.0.1536.813@0.0.1536.813" timestamp="1580838515216" />
     <state x="431" y="143" width="672" height="669" key="search.everywhere.popup" timestamp="1580691300444">
       <screen x="0" y="0" width="1536" height="813" />
     </state>

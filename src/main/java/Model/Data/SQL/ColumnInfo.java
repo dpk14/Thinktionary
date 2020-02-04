@@ -17,8 +17,8 @@ public class ColumnInfo {
 
     private static final String TOPIC_TYPE = "text";
     private static final String COLOR_TYPE = "text";
-    private static final String ENTRY_ID_TYPE = "int";
-    private static final String USER_ID_TYPE = "int";
+    private static final String ENTRY_ID_TYPE = "INTEGER";
+    private static final String USER_ID_TYPE = "INTEGER";
     private static final String TITLE_TYPE = "text";
     private static final String TEXT_TYPE = "text";
     private static final String CREATED_TYPE = "text";
