@@ -169,5 +169,4 @@ public class Journal {
         return myUserID;
     }
 
-
 }

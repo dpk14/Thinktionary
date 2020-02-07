@@ -11,11 +11,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class Entry {
-    private Set<Topic> myTopics;
+    private String myTitle;
+    private String myText;
     private LocalDateTime myCreated;
     private LocalDateTime myModified;
-    private String myText;
-    private String myTitle;
+    private Set<Topic> myTopics;
 
     /*
     JournalDBAPI, modular unit of information managed by Journal. Packages outside JournalDBAPI backend package cannot create Entries, but if they have received
@@ -23,12 +23,12 @@ public class Entry {
     Modifications to Entries must be done through Journal.
      */
 
-    public Entry(Set<Topic> topics, String title, String text){ //protected so only journals can instance entries
+    public Entry(String title, String text, Set<Topic> topics){ //protected so only journals can instance entries
         myCreated = LocalDateTime.now();
         initialize(topics, title, text);
     }
 
-    public Entry(Set<Topic> topics, String title, String text, LocalDateTime date){ //protected so only journals can instance entries
+    public Entry(String title, String text, LocalDateTime date, Set<Topic> topics){ //protected so only journals can instance entries
         myCreated = date;
         initialize(topics, title, text);
     }
@@ -46,23 +46,6 @@ public class Entry {
                     just give access to RESTStrings symbolizing objects):
     ----------------------------
      */
-
-    public String getmyTitle() { return String.valueOf(myTitle); }
-
-    public String getMyModfiedasString() {return myModified.toString();}
-
-    public String getMyCreatedasString(){ return myCreated.toString();}
-
-    public String getmyText() { return myText.toString(); }
-
-
-    public Map<String, String> getMyTopicsAsMap(){
-        Map<String, String> topicToColor = new HashMap<>();
-        for(Topic topic : myTopics){
-            topicToColor.put(topic.getMyTopic(), topic.getMyColor());
-        }
-        return topicToColor;
-    }
 
     public static class EntryComparator implements Comparator<Entry> {
         @Override
@@ -112,6 +95,24 @@ public class Entry {
 
     protected void setMyCreated(LocalDateTime date) {
         myCreated = date;
+    }
+
+    //Getters:
+
+    public String getmyTitle() { return String.valueOf(myTitle); }
+
+    public String getmyText() { return myText.toString(); }
+
+    public String getMyCreatedasString(){ return myCreated.toString();}
+
+    public String getMyModfiedasString() {return myModified.toString();}
+
+    public Map<String, String> getMyTopicsAsMap(){
+        Map<String, String> topicToColor = new HashMap<>();
+        for(Topic topic : myTopics){
+            topicToColor.put(topic.getMyTopic(), topic.getMyColor());
+        }
+        return topicToColor;
     }
 
 }
