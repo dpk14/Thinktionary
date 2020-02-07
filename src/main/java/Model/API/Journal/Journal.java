@@ -81,10 +81,6 @@ public class Journal {
         return topicalEntries;
     }
 
-    public JournalDBAPI getMyJournalDBAPI(){
-        return new JournalDBAPI(myUserID);
-    }
-
     public int getUserID() {
         return myUserID;
     }
@@ -154,5 +150,24 @@ public class Journal {
         }
 
     }
+
+    //Getters:
+
+    public List<Entry> getMyEntries() {
+        return myEntries;
+    }
+
+    public Map<Integer, Entry> getMyEntryMap() {
+        return myEntryMap;
+    }
+
+    public Map<String, Topic> getMyTopics() {
+        return myTopics;
+    }
+
+    public int getMyUserID() {
+        return myUserID;
+    }
+
 
 }

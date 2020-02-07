@@ -18,6 +18,10 @@ public class JournalDBAPI extends RunDBAPI {
 
     int myUserID;
 
+    public JournalDBAPI(){
+
+    }
+
     public JournalDBAPI(int userID){
         super();
         myUserID = userID;
@@ -136,4 +140,8 @@ public class JournalDBAPI extends RunDBAPI {
         }
     }
 
+
+    public int getMyUserID() {
+        return myUserID;
+    }
 }
