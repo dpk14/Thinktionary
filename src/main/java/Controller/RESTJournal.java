@@ -12,6 +12,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 
@@ -97,6 +99,7 @@ public class RESTJournal {
         }
     }
 
+
     @RequestMapping (PROTECTED_PATH + "/entries/getrand")
     public ResponseEntity getRandom(HttpServletRequest httpServletRequest, @PathVariable int userID, @RequestBody Set<Topic> topics) {
         Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
@@ -109,7 +112,22 @@ public class RESTJournal {
         }
     }
 
+    //testing:
 
+    @RequestMapping (PROTECTED_PATH + "/entries/getEntry")
+    public ResponseEntity getEntry(HttpServletRequest httpServletRequest) {
+        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+        try {
+            Set<Topic> topics = new HashSet<>();
+            topics.add(new Topic("yorie", "blue"));
+            topics.add(new Topic("horie", "red"));
+            Entry entry = new Entry("yeet", "oh yeet that daddy", LocalDateTime.now(), topics);
+            return ResponseEntity.ok(entry);
+        }
+        catch(Exception e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+        }
+    }
 
 
 }

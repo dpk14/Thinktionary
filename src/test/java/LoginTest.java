@@ -26,7 +26,7 @@ public class LoginTest {
     protected static void test(LoginDBAPI loginDBAPI) {
         String username = "dpk14";
         String password = "10gg40w716";
-        CreateAccountTest(username, password, loginDBAPI);
+        CreateAccountTest(username, password);
         IncorrectLoginTest(loginDBAPI);
         CorrectLoginTest(username, password, loginDBAPI);
     }
@@ -63,15 +63,15 @@ public class LoginTest {
     //DB API Tests
 
     @Test
-    private static void CreateAccountTest(String username, String password, LoginDBAPI loginDBAPI){
+    private static void CreateAccountTest(String username, String password){
         try {
-            loginDBAPI.createAccount(username, password);
+            new LoginDBAPI().createUser(username, password);
         }
         catch(Exception e){
             assertFalse(e instanceof AccountExistsException, "AccountExistsException incorrectly thrown");
         }
 
-        List<Map<String, Object>> usersUnparsed = loginDBAPI.loadUserInfoTable();
+        List<Map<String, Object>> usersUnparsed = new LoginDBAPI().loadUserInfoTable();
         Map<Integer, User> users = LoginDBParser.parseUserInfoMap(usersUnparsed);
         assertFalse(users.size()== 0 , "Account not getting saved after creation");
         assertFalse(users.size()> 1 , "DB has too many account after just one account is added");

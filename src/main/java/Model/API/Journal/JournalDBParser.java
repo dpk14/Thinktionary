@@ -26,7 +26,7 @@ public class JournalDBParser {
                 Set<Topic> topics = topicSets.get(id);
                 String createdDate = (String) cols.get(ColumnInfo.getCREATED());
                 LocalDateTime created = Date.makeDate(createdDate);
-                Entry entry = new Entry(topics, (String) cols.get(ColumnInfo.getTITLE()), (String) cols.get(ColumnInfo.getTEXT()), created);
+                Entry entry = new Entry((String) cols.get(ColumnInfo.getTITLE()), (String) cols.get(ColumnInfo.getTEXT()), created, topics);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
             }

@@ -3,6 +3,7 @@ import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
 import Model.API.Journal.JournalDBParser;
+import Model.Data.API.Run.JournalDBAPI;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -35,13 +36,13 @@ public class JournalTest {
         String title = "Believing";
         LocalDateTime now = LocalDateTime.now();
         try {
-            journalAPI.createEntry(new Entry(set, text, title, now));
+            journalAPI.createEntry(new Entry(title, text, now, set));
         }
         catch (Exception e){
             System.out.print(e.toString() + e.getStackTrace().toString());
         }
-        List<Map<String, Object>> entryTable = journalAPI.getMyJournalDBAPI().loadEntryTable();
-        List<Map<String, Object>> entryTopic = journalAPI.getMyJournalDBAPI().loadEntryTopicsTable();
+        List<Map<String, Object>> entryTable = new JournalDBAPI(userID).loadEntryTable();
+        List<Map<String, Object>> entryTopic = new JournalDBAPI(userID).loadEntryTopicsTable();
         Map<Integer, Entry> map = JournalDBParser.parseEntryMap(entryTable, entryTopic);
         int entryID = JournalDBParser.getEntryID(entryTable);
         Entry e = map.get(entryID);
