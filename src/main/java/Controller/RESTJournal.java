@@ -26,7 +26,6 @@ import java.util.List;
 public class RESTJournal {
 
     private static final String PROTECTED_PATH = "/{userID}";
-
     @Autowired
     SessionManager mySessionManager;
 
@@ -37,6 +36,7 @@ public class RESTJournal {
             mySessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
         } catch (InvalidLoginException e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
     }
@@ -111,13 +111,13 @@ public class RESTJournal {
         }
     }
 
-    @DeleteMapping (PROTECTED_PATH + "/entries/{entryID}")
+    @DeleteMapping (PROTECTED_PATH + "/entries/{entryID}/remove")
     public ResponseEntity delete(@PathVariable int userID, @PathVariable int entryID) {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
             try {
                 journal.removeEntry(entryID);
-                return ResponseEntity.noContent().build();
+                return ResponseEntity.ok(entryID);
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
             }

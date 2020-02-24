@@ -125,7 +125,7 @@ JournalDBAPI extends RunDBAPI {
         map.put(1, Integer.toString(myUserID));
         map.put(2, Integer.toString(entryID));
         try {
-            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(TableNames.getEntryInfo()), myDBUrl, myDBUsername, myDBPassword);
             if(toBeRemoved.size() == 0){
                 throw new NoSuchEntryException(entryID);
             }

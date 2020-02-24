@@ -73,7 +73,7 @@ public class Entry {
         myModified = LocalDateTime.now();
     }
 
-    protected Set<Topic> getMyTopicsObj(){
+    protected Set<Topic> getMyTopics(){
         return myTopics;
     }
 
@@ -111,7 +111,7 @@ public class Entry {
 
     public String getMyModfied() {return Date.LocalDateTimetoString(myModified);}
 
-    public Map<String, String> getMyTopics(){
+    public Map<String, String> myTopicsAsMap(){
         Map<String, String> topicToColor = new HashMap<>();
         for(Topic topic : myTopics){
             topicToColor.put(topic.getMyTopic(), topic.getMyColor());

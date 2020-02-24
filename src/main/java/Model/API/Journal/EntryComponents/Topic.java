@@ -4,6 +4,8 @@ public class Topic {
     String myTopic;
     String myColor;
 
+    public Topic(){}
+
     public Topic(String topic, String color){
         myTopic = topic;
         myColor = color;

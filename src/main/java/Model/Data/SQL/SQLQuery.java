@@ -12,7 +12,7 @@ public class SQLQuery {
             "AND " + ColumnInfo.getCREATED() + " = ? " +
             "AND " + ColumnInfo.getMODIFIED() + " = ?;";
 
-    private static final String GET_BY_ENTRY_ID = "SELECT * FROM ? " +
+    private static final String GET_BY_ENTRY_ID = "SELECT * FROM %s " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getEntryId() + " = ?;";
 
@@ -31,7 +31,7 @@ public class SQLQuery {
             "VALUES (?,?,?);";
 
     private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM %s WHERE " + ColumnInfo.getUSERID() + " = ? " +
-            "AND " + ColumnInfo.getEntryId() + " = ?;";
+            "AND " + ColumnInfo.getEntryId() + " = ? ;";
 
     private static final String MODIFY_ENTRY_INFO = "UPDATE " + TableNames.getEntryInfo() + " SET " +
             ColumnInfo.getUSERID() + " = ?, " +
@@ -74,7 +74,9 @@ public class SQLQuery {
     }
 
     public static String remove(String tableName) {
-        return String.format(REMOVE_GIVEN_USERID_ENTRY_ID, tableName);
+        String str = String.format(REMOVE_GIVEN_USERID_ENTRY_ID, tableName);
+        System.out.println(str);
+        return str;
     }
 
     public static String modifyEntryInfo() {
@@ -99,8 +101,8 @@ public class SQLQuery {
         return ADD_USER;
     }
 
-    public static String getByEntryID() {
-        return GET_BY_ENTRY_ID;
+    public static String getByEntryID(String tableName) {
+        return String.format(GET_BY_ENTRY_ID, tableName);
     }
 
     public static final String removeTable() {

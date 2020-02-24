@@ -34,13 +34,13 @@ public class Journal {
     public Journal(int userID){
         JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
-        List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry
+        List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry'
         myEntryMap = JournalDBParser.parseEntryMap(entryTable, entryTopic);
         List<Map<String, Object>> topicTable = journalDBAPI.loadTopicBankTable();
-        System.out.println("IAHE&DE&GD " + topicTable.size());
         myTopics = JournalDBParser.parseTopics(topicTable);
         myEntries = JournalDBParser.parseEntries(myEntryMap);
         myUserID = userID;
+
     }
 
     /*
@@ -50,13 +50,13 @@ public class Journal {
      */
 
     public int createEntry(Entry entry) throws TopicBankAddException {
-        updateTopicBank(entry.getMyTopicsObj());
+        updateTopicBank(entry.getMyTopics());
         int entryID = addEntry(entry);
         return entryID;
     }
 
     public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        updateTopicBank(entry.getMyTopicsObj());
+        updateTopicBank(entry.getMyTopics());
         modifyEntry(entryID, entry);
     }
 
@@ -76,7 +76,7 @@ public class Journal {
         List<Entry> topicalEntries = new ArrayList<>();
         for(Entry entry : myEntries){
             Set<Topic> topicsCpy = new HashSet<>(topics);
-            if(containsAll(topicsCpy, entry.getMyTopicsObj())) {
+            if(containsAll(topicsCpy, entry.getMyTopics())) {
                 topicalEntries.add(entry);
             }
         }
@@ -96,7 +96,7 @@ public class Journal {
 
     private void updateEntryTopic(Set<Topic> topics, int entryID) throws TopicBankAddException {
         Entry entry = myEntryMap.get(entryID);
-        Map<String, String> entryTopics = entry == null? new HashMap<>() : entry.getMyTopics();
+        Map<String, String> entryTopics = entry == null? new HashMap<>() : entry.myTopicsAsMap();
         for(Topic topic : topics){
             if(!entryTopics.containsKey(topic.getMyTopic())){
                 entryTopics.put(topic.getMyTopic(), topic.getMyColor());
@@ -121,7 +121,7 @@ public class Journal {
 
     private int addEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException {
         int id = new JournalDBAPI(myUserID).addToEntryInfo(entry);
-        updateEntryTopic(entry.getMyTopicsObj(), id);
+        updateEntryTopic(entry.getMyTopics(), id);
         myEntryMap.put(id, entry);
         myEntries.add(entry);
         return id;
@@ -129,7 +129,7 @@ public class Journal {
 
     private void modifyEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         entry.updateModification();
-        updateEntryTopic(entry.getMyTopicsObj(), entryID);
+        updateEntryTopic(entry.getMyTopics(), entryID);
         String oldCreation = myEntryMap.get(entryID).getMyCreated();
         myEntryMap.put(entryID, entry);
 
