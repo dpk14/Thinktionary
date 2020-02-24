@@ -37,7 +37,6 @@ public class Journal {
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry
         myEntryMap = JournalDBParser.parseEntryMap(entryTable, entryTopic);
         List<Map<String, Object>> topicTable = journalDBAPI.loadTopicBankTable();
-        System.out.println(topicTable.size());
         myTopics = JournalDBParser.parseTopics(topicTable);
         myEntries = JournalDBParser.parseEntries(myEntryMap);
         myUserID = userID;

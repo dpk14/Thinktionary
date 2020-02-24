@@ -80,7 +80,9 @@ public class SQLQuery {
     }
 
     public static String getLoadTableByParameter(String tableName) {
-        return String.format(LOAD_TABLE_BY_PARAMETER, tableName);
+        String str = String.format(LOAD_TABLE_BY_PARAMETER, tableName);
+        System.out.println(str);
+        return str;
     }
 
     public static String getUser() {
