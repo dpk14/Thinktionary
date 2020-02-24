@@ -41,6 +41,17 @@ public class RESTJournal {
         }
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity logout(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+        try {
+            Journal journal = new LoginAPI().login(username, password);
+            mySessionManager.removeUser(journal.getUserID());
+            return ResponseEntity.ok(journal.getUserID());
+        } catch (InvalidLoginException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        }
+    }
+
     @PutMapping(value="/")
     public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
