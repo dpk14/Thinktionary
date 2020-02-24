@@ -49,8 +49,8 @@ public class JournalTest {
 
         assertTrue(e.getmyTitle().equals(title), "Title not properly stored when Entry created");
         assertTrue(e.getmyText().equals(text), "Text not properly stored when Entry created");
-        assertTrue(e.getMyCreatedasString().equals(now.toString()), "Created Date not properly stored when Entry created");
-        assertTrue(e.getMyModfiedasString().equals(now.toString()), "Modified Date not properly stored when Entry created");
+        assertTrue(e.getMyCreated().equals(now.toString()), "Created Date not properly stored when Entry created");
+        assertTrue(e.getMyModfied().equals(now.toString()), "Modified Date not properly stored when Entry created");
 
         //TODO: test other two tables
 

@@ -10,17 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.URI;
 
 @RestController
 public class RESTLogin {
 
     @GetMapping("/")
-    public ResponseEntity login(HttpServletRequest httpServletRequest,
+    public ResponseEntity login(HttpSession httpSession,
                                 @RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
             Journal journal = new LoginAPI().login(username, password);
-            httpServletRequest.getSession().setAttribute(RESTStrings.getJournalAttribute(), journal);
+            httpSession.setAttribute(RESTStrings.getJournalAttribute(), journal);
             return ResponseEntity.ok(journal);
         }
         catch(InvalidLoginException e){

@@ -51,7 +51,7 @@ public class JournalDBAPI extends RunDBAPI {
 
     public int createEntry(Entry entry) throws TopicBankAddException {
         int entryID = addToEntryInfo(entry);
-        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
+        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopics());
         return entryID;
     }
 
@@ -65,15 +65,15 @@ public class JournalDBAPI extends RunDBAPI {
     }
 
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopicsAsMap());
+        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopics());
 
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getEntryInfo());
         map.put(2, Integer.toString(myUserID));
         map.put(3, entry.getmyTitle());
         map.put(4, entry.getmyText());
-        map.put(5, entry.getMyCreatedasString());
-        map.put(6, entry.getMyModfiedasString());
+        map.put(5, entry.getMyCreated());
+        map.put(6, entry.getMyModfied());
         map.put(7, Integer.toString(entryID));
         try {
             DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
@@ -94,8 +94,8 @@ public class JournalDBAPI extends RunDBAPI {
         map.put(1, Integer.toString(myUserID));
         map.put(2, entry.getmyTitle());
         map.put(3, entry.getmyText());
-        map.put(4, entry.getMyCreatedasString());
-        map.put(5, entry.getMyModfiedasString());
+        map.put(4, entry.getMyCreated());
+        map.put(5, entry.getMyModfied());
         try {
             DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
             List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), myDBUrl, myDBUsername, myDBPassword);

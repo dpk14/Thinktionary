@@ -5,12 +5,15 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
+import Model.ErrorHandling.Exceptions.InvalidLoginException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -22,6 +25,9 @@ import java.util.List;
 public class RESTJournal {
 
     private static final String PROTECTED_PATH = "/{userID}";
+
+    @Autowired
+    SessionManager mySessionManager;
 
     @PutMapping(value="/")
     public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
@@ -41,10 +47,10 @@ public class RESTJournal {
     }
 
     @PostMapping(PROTECTED_PATH + "/entries")
-    public ResponseEntity createEntry(HttpServletRequest httpServletRequest,
+    public ResponseEntity createEntry(HttpSession httpSession,
                                               @PathVariable int userID, @RequestBody Entry entry) {
         try {
-            Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+            Journal journal = (Journal) httpSession.getAttribute(RESTStrings.getJournalAttribute());
             try {
                 int entryID = journal.createEntry(entry);
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -54,18 +60,20 @@ public class RESTJournal {
                 return ResponseEntity.created(uri).body(entry);
             }
             catch(Exception e){
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             }
         }
         catch(Exception e){
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(RESTStrings.getNoSessionException());
         }
         //add entryId when you get it
     }
 
     @PutMapping(PROTECTED_PATH + "/entries/{entryID}")
-    public ResponseEntity modifyEntry(HttpServletRequest httpServletRequest, @PathVariable int userID, @PathVariable int entryID, @RequestBody Entry entry) {
-        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+    public ResponseEntity modifyEntry(HttpSession httpSession, @PathVariable int userID, @PathVariable int entryID, @RequestBody Entry entry) {
+        Journal journal = (Journal) httpSession.getAttribute(RESTStrings.getJournalAttribute());
         try {
             journal.saveEntry(entryID, entry);
             return ResponseEntity.ok().build();
@@ -76,8 +84,8 @@ public class RESTJournal {
     }
 
     @DeleteMapping (PROTECTED_PATH + "/entries/{entryID}")
-    public ResponseEntity delete(HttpServletRequest httpServletRequest, @PathVariable int userID, @PathVariable int entryID) {
-        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+    public ResponseEntity delete(HttpSession httpSession, @PathVariable int userID, @PathVariable int entryID) {
+        Journal journal = (Journal) httpSession.getAttribute(RESTStrings.getJournalAttribute());
         try {
             journal.removeEntry(entryID);
             return ResponseEntity.noContent().build();
@@ -88,8 +96,8 @@ public class RESTJournal {
     }
 
     @RequestMapping (PROTECTED_PATH + "/entries/get")
-    public ResponseEntity get(HttpServletRequest httpServletRequest, @PathVariable int userID, @RequestBody Set<Topic> topics) {
-        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+    public ResponseEntity get(HttpSession httpSession, @PathVariable int userID, @RequestBody Set<Topic> topics) {
+        Journal journal = (Journal) httpSession.getAttribute(RESTStrings.getJournalAttribute());
         try {
             List<Entry> entries = journal.getTopicalEntries(topics);
             return ResponseEntity.ok(entries);
@@ -101,8 +109,8 @@ public class RESTJournal {
 
 
     @RequestMapping (PROTECTED_PATH + "/entries/getrand")
-    public ResponseEntity getRandom(HttpServletRequest httpServletRequest, @PathVariable int userID, @RequestBody Set<Topic> topics) {
-        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+    public ResponseEntity getRandom(HttpSession httpSession, @PathVariable int userID, @RequestBody Set<Topic> topics) {
+        Journal journal = (Journal) httpSession.getAttribute(RESTStrings.getJournalAttribute());
         try {
             Entry entry = journal.getRandomEntry(topics);
             return ResponseEntity.ok(entry);
@@ -115,8 +123,8 @@ public class RESTJournal {
     //testing:
 
     @RequestMapping (PROTECTED_PATH + "/entries/getEntry")
-    public ResponseEntity getEntry(HttpServletRequest httpServletRequest) {
-        Journal journal = (Journal) httpServletRequest.getSession().getAttribute(RESTStrings.getJournalAttribute());
+    public ResponseEntity getEntry(HttpSession httpSession) {
+        Journal journal = (Journal) httpSession.getAttribute(RESTStrings.getJournalAttribute());
         try {
             Set<Topic> topics = new HashSet<>();
             topics.add(new Topic("yorie", "blue"));

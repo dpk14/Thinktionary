@@ -23,14 +23,18 @@ public class Entry {
     Modifications to Entries must be done through Journal.
      */
 
-    public Entry(String title, String text, Set<Topic> topics){ //protected so only journals can instance entries
-        myCreated = LocalDateTime.now();
-        initialize(topics, title, text);
+    public Entry(){
+
     }
 
-    public Entry(String title, String text, LocalDateTime date, Set<Topic> topics){ //protected so only journals can instance entries
-        myCreated = date;
-        initialize(topics, title, text);
+    public Entry(String myTitle, String myText, Set<Topic> myTopics){ //protected so only journals can instance entries
+        myCreated = LocalDateTime.now();
+        initialize(myTopics, myTitle, myText);
+    }
+
+    public Entry(String myTitle, String myText, LocalDateTime myCreated, Set<Topic> myTopics){ //protected so only journals can instance entries
+        this.myCreated = myCreated;
+        initialize(myTopics, myTitle, myText);
     }
 
     private void initialize(Set<Topic> topics, String title, String text){
@@ -50,7 +54,7 @@ public class Entry {
     public static class EntryComparator implements Comparator<Entry> {
         @Override
         public int compare(Entry e1, Entry e2) {
-            return e1.getMyCreated().compareTo(e2.getMyCreated());
+            return e1.getMyCreatedDate().compareTo(e2.getMyCreatedDate());
         }
 
     }
@@ -62,18 +66,18 @@ public class Entry {
      */
 
     protected boolean youngerThan(Entry e2){
-        return getMyCreated().compareTo(e2.getMyCreated()) < 0;
+        return getMyCreatedDate().compareTo(e2.getMyCreatedDate()) < 0;
     }
 
     protected void updateModification(){
         myModified = LocalDateTime.now();
     }
 
-    protected Set<Topic> getMyTopics(){
+    protected Set<Topic> getMyTopicsObj(){
         return myTopics;
     }
 
-    protected LocalDateTime getMyCreated(){ return myCreated; }
+    protected LocalDateTime getMyCreatedDate(){ return myCreated; }
 
     /*
     ----------------------------
@@ -103,11 +107,11 @@ public class Entry {
 
     public String getmyText() { return myText.toString(); }
 
-    public String getMyCreatedasString(){ return myCreated.toString();}
+    public String getMyCreated(){ return myCreated.toString();}
 
-    public String getMyModfiedasString() {return myModified.toString();}
+    public String getMyModfied() {return myModified.toString();}
 
-    public Map<String, String> getMyTopicsAsMap(){
+    public Map<String, String> getMyTopics(){
         Map<String, String> topicToColor = new HashMap<>();
         for(Topic topic : myTopics){
             topicToColor.put(topic.getMyTopic(), topic.getMyColor());

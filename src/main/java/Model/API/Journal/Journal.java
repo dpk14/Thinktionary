@@ -49,12 +49,12 @@ public class Journal {
      */
 
     public int createEntry(Entry entry) throws TopicBankAddException {
-        updateTopicBank(entry.getMyTopics());
+        updateTopicBank(entry.getMyTopicsObj());
         return addEntry(entry);
     }
 
     public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        updateTopicBank(entry.getMyTopics());
+        updateTopicBank(entry.getMyTopicsObj());
         modifyEntry(entryID, entry);
     }
 
@@ -74,7 +74,7 @@ public class Journal {
         List<Entry> topicalEntries = new ArrayList<>();
         for(Entry entry : myEntries){
             Set<Topic> topicsCpy = new HashSet<>(topics);
-            if(containsAll(topicsCpy, entry.getMyTopics())) {
+            if(containsAll(topicsCpy, entry.getMyTopicsObj())) {
                 topicalEntries.add(entry);
             }
         }
@@ -117,10 +117,10 @@ public class Journal {
 
     private void modifyEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         entry.updateModification();
-        String oldCreation = myEntryMap.get(entryID).getMyCreatedasString();
+        String oldCreation = myEntryMap.get(entryID).getMyCreated();
         myEntryMap.put(entryID, entry);
 
-        if(!entry.getMyCreatedasString().equals(oldCreation)){ // if creation date has been modified, adjust order
+        if(!entry.getMyCreated().equals(oldCreation)){ // if creation date has been modified, adjust order
             reorder(entry);
         }
 
@@ -146,7 +146,7 @@ public class Journal {
     private class EntryComparator implements Comparator<Entry> {
         @Override
         public int compare(Entry e1, Entry e2) {
-            return Date.compare(e1.getMyCreated(), e2.getMyCreated());
+            return Date.compare(e1.getMyCreatedDate(), e2.getMyCreatedDate());
         }
 
     }
