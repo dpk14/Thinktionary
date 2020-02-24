@@ -100,7 +100,6 @@ public class Journal {
         for(Topic topic : topics){
             if(!entryTopics.containsKey(topic.getMyTopic())){
                 entryTopics.put(topic.getMyTopic(), topic.getMyColor());
-                System.out.println("updateEntryTopic");
                 new JournalDBAPI(myUserID).addToEntryTopic(entryID, myUserID, topic.getMyTopic(), topic.getMyColor());
             }
         }
@@ -108,22 +107,20 @@ public class Journal {
 
     private void updateTopicBank(Set<Topic> topics) throws TopicBankAddException {
         Map<String, Topic> topicsMap = new HashMap();
+        Map<String, String> topicToColor = new HashMap();
         for(Topic topic : topics){
             if(!myTopics.containsKey(topic.getMyTopic())) {
                 topicsMap.put(topic.getMyTopic(), topic);
+                topicToColor.put(topic.getMyTopic(), topic.getMyColor());
             }
+            myTopics.put(topic.getMyTopic(), topic);
         }
-        Map<String, String> topicToColor = new HashMap();
-        for(String key : topicsMap.keySet()){
-            myTopics.put(key, topicsMap.get(key));
-            topicToColor.put(key, topicsMap.get(key).getMyColor());
-        }
-        System.out.println(myTopics.size());
+        System.out.println("topic size : " + myTopics.size());
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 
     private int addEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException {
-        int id = new JournalDBAPI(myUserID).createEntry(entry);
+        int id = new JournalDBAPI(myUserID).addToEntryInfo(entry);
         updateEntryTopic(entry.getMyTopicsObj(), id);
         myEntryMap.put(id, entry);
         myEntries.add(entry);

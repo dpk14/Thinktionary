@@ -50,19 +50,7 @@ JournalDBAPI extends RunDBAPI {
 
     //Saving:
 
-    public int createEntry(Entry entry) throws TopicBankAddException {
-        int entryID = addToEntryInfo(entry);
-        addTopics(entryID, entry.getMyTopics());
-        return entryID;
-    }
-
-    public void addToTopicBank(Map<String, String> topicToColor) throws TopicBankAddException {
-        addTopics(myUserID, topicToColor);
-    }
-
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        addTopics(entryID, entry.getMyTopics());
-
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getEntryInfo());
         map.put(2, Integer.toString(myUserID));
@@ -85,7 +73,7 @@ JournalDBAPI extends RunDBAPI {
     ----------------------------
      */
 
-    private int addToEntryInfo(Entry entry) {
+    public int addToEntryInfo(Entry entry) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, Integer.toString(myUserID));
         map.put(2, entry.getmyTitle());
@@ -102,11 +90,11 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    private void addTopics(int ID, Map<String, String> topicToColor) throws TopicBankAddException {
+    public void addToTopicBank(Map<String, String> topicToColor) throws TopicBankAddException {
         for (String topic : topicToColor.keySet()) {
             Map<Integer, String> map = new HashMap<>();
             String color = topicToColor.get(topic);
-            map.put(1, Integer.toString(ID));
+            map.put(1, Integer.toString(myUserID));
             map.put(2, topic);
             map.put(3, color);
             try {
@@ -124,7 +112,6 @@ JournalDBAPI extends RunDBAPI {
             map.put(2, Integer.toString(userID));
             map.put(3, topic);
             map.put(4, color);
-            System.out.println("DB addtoentrytopic");
             try {
                 DBUtils.userAction(map, SQLQuery.addToEntryTopic(), myDBUrl, myDBUsername, myDBPassword);
             }
@@ -149,7 +136,6 @@ JournalDBAPI extends RunDBAPI {
             throw new CorruptDBError(e);
         }
     }
-
 
     public int getMyUserID() {
         return myUserID;
