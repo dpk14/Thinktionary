@@ -30,7 +30,7 @@ public class SQLQuery {
             ColumnInfo.getCOLOR() + ") " +
             "VALUES (?,?,?);";
 
-    private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM ? WHERE " + ColumnInfo.getUSERID() + " = ? " +
+    private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM %s WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getEntryId() + " = ?;";
 
     private static final String MODIFY_ENTRY_INFO = "UPDATE " + TableNames.getEntryInfo() + " SET " +
@@ -55,9 +55,10 @@ public class SQLQuery {
     private static final String TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name=?;";
     private static final String ADD_TO_ENTRY_TOPIC = "INSERT INTO %s " +
             "(" + ColumnInfo.getEntryId() + ", " +
+            ColumnInfo.getUSERID() + ", " +
             ColumnInfo.getTOPIC() + ", " +
             ColumnInfo.getCOLOR() + ") " +
-            "VALUES (?,?,?);";
+            "VALUES (?,?,?,?);";
 
     public static String addEntry() {
         return String.format(ADD_ENTRY, TableNames.getEntryInfo());
@@ -72,8 +73,8 @@ public class SQLQuery {
         return String.format(GET_ENTRY, TableNames.getEntryInfo());
     }
 
-    public static String remove() {
-        return REMOVE_GIVEN_USERID_ENTRY_ID;
+    public static String remove(String tableName) {
+        return String.format(REMOVE_GIVEN_USERID_ENTRY_ID, tableName);
     }
 
     public static String modifyEntryInfo() {

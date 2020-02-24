@@ -85,7 +85,7 @@ public class Date {
         hour = hour.length() == 1 ? "0" + hour : hour;
         String minute = Integer.toString(date.getMinute());
         minute = minute.length() == 1 ? "0" + minute : minute;
-        String second = Integer.toString(date.getMonthValue());
+        String second = Integer.toString(date.getSecond());
         second = second.length() == 1 ? "0" + second : second;
 
         return date.getYear() + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;

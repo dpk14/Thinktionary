@@ -60,11 +60,6 @@ JournalDBAPI extends RunDBAPI {
         addTopics(myUserID, topicToColor);
     }
 
-    public void removeEntry(int entryID) throws NoSuchEntryException {
-        removeEntry(entryID, TableNames.getEntryToTopic());
-        removeEntry(entryID, TableNames.getEntryInfo());
-    }
-
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         addTopics(entryID, entry.getMyTopics());
 
@@ -108,8 +103,8 @@ JournalDBAPI extends RunDBAPI {
     }
 
     private void addTopics(int ID, Map<String, String> topicToColor) throws TopicBankAddException {
-        Map<Integer, String> map = new HashMap<>();
         for (String topic : topicToColor.keySet()) {
+            Map<Integer, String> map = new HashMap<>();
             String color = topicToColor.get(topic);
             map.put(1, Integer.toString(ID));
             map.put(2, topic);
@@ -123,11 +118,13 @@ JournalDBAPI extends RunDBAPI {
             }
     }
 
-    public void addToEntryTopic(int entryID, String topic, String color) throws TopicBankAddException {
+    public void addToEntryTopic(int entryID, int userID, String topic, String color) throws TopicBankAddException {
         Map<Integer, String> map = new HashMap<>();
             map.put(1, Integer.toString(entryID));
-            map.put(2, topic);
-            map.put(3, color);
+            map.put(2, Integer.toString(userID));
+            map.put(3, topic);
+            map.put(4, color);
+            System.out.println("DB addtoentrytopic");
             try {
                 DBUtils.userAction(map, SQLQuery.addToEntryTopic(), myDBUrl, myDBUsername, myDBPassword);
             }
@@ -136,17 +133,17 @@ JournalDBAPI extends RunDBAPI {
             }
     }
 
-    private void removeEntry(int entryID, String tableName) throws NoSuchEntryException{
+    public void removeEntry(int entryID) throws NoSuchEntryException{
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        map.put(2, Integer.toString(myUserID));
-        map.put(3, Integer.toString(entryID));
+        map.put(1, Integer.toString(myUserID));
+        map.put(2, Integer.toString(entryID));
         try {
             List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(), myDBUrl, myDBUsername, myDBPassword);
             if(toBeRemoved.size() == 0){
                 throw new NoSuchEntryException(entryID);
             }
-            DBUtils.userAction(map, SQLQuery.remove(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.remove(TableNames.getEntryInfo()), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.remove(TableNames.getEntryToTopic()), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);

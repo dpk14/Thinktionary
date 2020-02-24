@@ -16,10 +16,10 @@ public class JournalDBParser {
         try {
             for (Map<String, Object> cols : entryTopic) {
                 Topic topic = new Topic((String) cols.get(ColumnInfo.getTOPIC()), (String) cols.get(ColumnInfo.getCOLOR()));
-                String entryID = (String) cols.get(ColumnInfo.getEntryId());
+                String entryID = Integer.toString ((int) cols.get(ColumnInfo.getEntryId()));
                 Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
                 topics.add(topic);
-                topicSets.put((String) cols.get(ColumnInfo.getEntryId()), topics);
+                topicSets.put(entryID, topics);
             }
             for (Map<String, Object> cols : entryMap) {
                 String id = Integer.toString((int)cols.get(ColumnInfo.getEntryId()));
