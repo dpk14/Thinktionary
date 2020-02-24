@@ -14,7 +14,8 @@ import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 import java.sql.*;
 import java.util.*;
 
-public class JournalDBAPI extends RunDBAPI {
+public class
+JournalDBAPI extends RunDBAPI {
 
     int myUserID;
 
@@ -51,12 +52,12 @@ public class JournalDBAPI extends RunDBAPI {
 
     public int createEntry(Entry entry) throws TopicBankAddException {
         int entryID = addToEntryInfo(entry);
-        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopics());
+        addTopics(entryID, entry.getMyTopics());
         return entryID;
     }
 
     public void addToTopicBank(Map<String, String> topicToColor) throws TopicBankAddException {
-        addTopics(TableNames.getUserTopic(), myUserID, topicToColor);
+        addTopics(myUserID, topicToColor);
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException {
@@ -65,7 +66,7 @@ public class JournalDBAPI extends RunDBAPI {
     }
 
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        addTopics(TableNames.getUserTopic(), entryID, entry.getMyTopics());
+        addTopics(entryID, entry.getMyTopics());
 
         Map<Integer, String> map = new HashMap<>();
         map.put(1, TableNames.getEntryInfo());
@@ -97,7 +98,7 @@ public class JournalDBAPI extends RunDBAPI {
         map.put(4, entry.getMyCreated());
         map.put(5, entry.getMyModfied());
         try {
-            DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
             List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), myDBUrl, myDBUsername, myDBPassword);
             return JournalDBParser.getEntryID(ent);
         }
@@ -106,14 +107,13 @@ public class JournalDBAPI extends RunDBAPI {
         }
     }
 
-    private void addTopics(String tableName, int ID, Map<String, String> topicToColor) throws TopicBankAddException {
+    private void addTopics(int ID, Map<String, String> topicToColor) throws TopicBankAddException {
         Map<Integer, String> map = new HashMap<>();
         for (String topic : topicToColor.keySet()) {
             String color = topicToColor.get(topic);
-            map.put(1, tableName);
-            map.put(2, Integer.toString(ID));
-            map.put(3, topic);
-            map.put(4, color);
+            map.put(1, Integer.toString(ID));
+            map.put(2, topic);
+            map.put(3, color);
             try {
                 DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
             }

@@ -37,6 +37,7 @@ public class Journal {
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry
         myEntryMap = JournalDBParser.parseEntryMap(entryTable, entryTopic);
         List<Map<String, Object>> topicTable = journalDBAPI.loadTopicBankTable();
+        System.out.println(topicTable.size());
         myTopics = JournalDBParser.parseTopics(topicTable);
         myEntries = JournalDBParser.parseEntries(myEntryMap);
         myUserID = userID;
@@ -95,14 +96,17 @@ public class Journal {
     private void updateTopicBank(Set<Topic> topics) throws TopicBankAddException {
         Map<String, Topic> topicsMap = new HashMap();
         for(Topic topic : topics){
-            topicsMap.put(topic.getMyTopic(), topic);
+            if(!myTopics.containsKey(topic.getMyTopic())) {
+                System.out.println("&A&ED");
+                topicsMap.put(topic.getMyTopic(), topic);
+            }
         }
-        topicsMap.keySet().removeAll(myTopics.keySet()); //looks for new topics, makes map with which to update topic bank in Data
         Map<String, String> topicToColor = new HashMap();
         for(String key : topicsMap.keySet()){
             myTopics.put(key, topicsMap.get(key));
             topicToColor.put(key, topicsMap.get(key).getMyColor());
         }
+        System.out.println(myTopics.size());
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 

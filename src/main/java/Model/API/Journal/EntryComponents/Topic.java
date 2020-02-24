@@ -16,4 +16,9 @@ public class Topic {
     public String getMyColor() {
         return myColor;
     }
+
+    @Override
+    public boolean equals(Object topic){
+        return myTopic.equals((Topic) topic);
+    }
 }

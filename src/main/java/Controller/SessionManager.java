@@ -3,11 +3,12 @@ package Controller;
 import Controller.Exceptions.NotLoggedInException;
 import Model.API.Journal.Journal;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Bean
+@Configuration
 public class SessionManager {
     Map<Integer, Journal> myUsers;
     public SessionManager(){

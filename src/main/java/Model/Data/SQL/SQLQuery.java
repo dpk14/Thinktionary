@@ -5,7 +5,7 @@ import java.util.Map;
 public class SQLQuery {
     private static final String LOAD_TABLE = "SELECT * FROM ?;";
     private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM %s WHERE ? = ?;";
-    private static final String GET_ENTRY = "SELECT * FROM " + TableNames.getEntryInfo() + " " +
+    private static final String GET_ENTRY = "SELECT * FROM %s " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getTITLE() + " = ? " +
             "AND " + ColumnInfo.getTEXT() + " = ? " +
@@ -16,18 +16,18 @@ public class SQLQuery {
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getEntryId() + " = ?;";
 
-    private static final String ADD_ENTRY = "INSERT INTO " + TableNames.getEntryInfo() + " " +
-            "(" + ColumnInfo.getUSERID() + "," +
-            "(" + ColumnInfo.getTITLE() + "," +
-            "(" + ColumnInfo.getTEXT() + "," +
-            "(" + ColumnInfo.getCREATED() + "," +
-            "(" + ColumnInfo.getMODIFIED() + ") " +
+    private static final String ADD_ENTRY = "INSERT INTO %s " +
+            "(" + ColumnInfo.getUSERID() + ", "
+            + ColumnInfo.getTITLE() + ", "
+            + ColumnInfo.getTEXT() + ", "
+            + ColumnInfo.getCREATED() + ", "
+            + ColumnInfo.getMODIFIED() + ") " +
             "VALUES (?,?,?,?,?);";
 
-    private static final String ADD_TOPIC = "INSERT INTO " + TableNames.getUserTopic() +
-            "(" + ColumnInfo.getUSERID() + "," +
-            "(" + ColumnInfo.getTOPIC() + "," +
-            "(" + ColumnInfo.getCOLOR() + ") " +
+    private static final String ADD_TOPIC = "INSERT INTO %s " +
+            "(" + ColumnInfo.getUSERID() + ", " +
+            ColumnInfo.getTOPIC() + ", " +
+            ColumnInfo.getCOLOR() + ") " +
             "VALUES (?,?,?);";
 
     private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM ? WHERE " + ColumnInfo.getUSERID() + " = ? " +
@@ -55,15 +55,16 @@ public class SQLQuery {
     private static final String TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name=?;";
 
     public static String addEntry() {
-        return ADD_ENTRY;
+        return String.format(ADD_ENTRY, TableNames.getEntryInfo());
     }
 
     public static String addTopic() {
-        return ADD_TOPIC;
+            System.out.println(ADD_TOPIC);
+            return String.format(ADD_TOPIC, TableNames.getUserTopic());
     }
 
     public static String getEntry() {
-        return GET_ENTRY;
+        return String.format(GET_ENTRY, TableNames.getEntryInfo());
     }
 
     public static String remove() {

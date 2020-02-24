@@ -6,7 +6,7 @@ public class CorruptDBError extends Error{
     public CorruptDBError(Exception e){
         System.out.println(CORRUPT_DATA_ERROR);
         System.out.println(e.toString());
-        System.out.println(e.getStackTrace());
+        e.printStackTrace();
     }
 
 }
