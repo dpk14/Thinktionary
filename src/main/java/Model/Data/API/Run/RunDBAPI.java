@@ -2,6 +2,7 @@ package Model.Data.API.Run;
 
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 
@@ -41,12 +42,14 @@ public abstract class RunDBAPI extends DBAPI {
 
     protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, String parameter) {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, parameterType);
-        map.put(2, parameter);
+        map.put(1, parameter);
         List<Map<String, Object>> ret = new ArrayList<>();
         try {
             System.out.println(tableName + " " +  parameterType + " " +  parameter);
-            return DBUtils.userQuery(map, SQLQuery.getLoadTableByParameter(tableName), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(DBUtils.userQuery(new HashMap<>(), "SELECT * FROM " + TableNames.getUserTopic() + " WHERE UserID = 1", myDBUrl, myDBUsername, myDBPassword).size());
+            ret = DBUtils.userQuery(map, SQLQuery.getLoadTableByParameter(tableName, parameterType), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(ret.size() + "OEJIUHDPIEUHDH");
+            return ret;
         } catch (SQLException e) {
             throw new CorruptDBError(e);
         }

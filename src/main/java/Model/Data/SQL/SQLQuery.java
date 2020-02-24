@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class SQLQuery {
     private static final String LOAD_TABLE = "SELECT * FROM ?;";
-    private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM %s WHERE ? = ?;";
+    private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM %s WHERE %s = ? ";
     private static final String GET_ENTRY = "SELECT * FROM %s " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getTITLE() + " = ? " +
@@ -79,8 +79,8 @@ public class SQLQuery {
         return LOAD_TABLE;
     }
 
-    public static String getLoadTableByParameter(String tableName) {
-        String str = String.format(LOAD_TABLE_BY_PARAMETER, tableName);
+    public static String getLoadTableByParameter(String tableName, String parameterType) {
+        String str = String.format(LOAD_TABLE_BY_PARAMETER, tableName, parameterType);
         System.out.println(str);
         return str;
     }
