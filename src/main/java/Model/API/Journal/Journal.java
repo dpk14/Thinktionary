@@ -51,12 +51,15 @@ public class Journal {
 
     public int createEntry(Entry entry) throws TopicBankAddException {
         updateTopicBank(entry.getMyTopicsObj());
-        return addEntry(entry);
+        int entryID = addEntry(entry);
+        updateEntryTopic(entry.getMyTopicsObj(), entryID);
+        return entryID;
     }
 
     public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         updateTopicBank(entry.getMyTopicsObj());
         modifyEntry(entryID, entry);
+        updateEntryTopic(entry.getMyTopicsObj(), entryID);
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException{
@@ -92,6 +95,16 @@ public class Journal {
     Helpers:
     ----------------------------
      */
+
+    private void updateEntryTopic(Set<Topic> topics, int entryID) throws TopicBankAddException {
+        Map<String, String> entryTopics = myEntryMap.get(entryID).getMyTopics();
+        for(Topic topic : topics){
+            if(!entryTopics.containsKey(topic.getMyTopic())){
+                entryTopics.put(topic.getMyTopic(), topic.getMyColor());
+                new JournalDBAPI(myUserID).addToEntryTopic(entryID, topic.getMyTopic(), topic.getMyColor());
+            }
+        }
+    }
 
     private void updateTopicBank(Set<Topic> topics) throws TopicBankAddException {
         Map<String, Topic> topicsMap = new HashMap();

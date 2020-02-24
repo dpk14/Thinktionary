@@ -123,6 +123,19 @@ JournalDBAPI extends RunDBAPI {
             }
     }
 
+    public void addToEntryTopic(int entryID, String topic, String color) throws TopicBankAddException {
+        Map<Integer, String> map = new HashMap<>();
+            map.put(1, Integer.toString(entryID));
+            map.put(2, topic);
+            map.put(3, color);
+            try {
+                DBUtils.userAction(map, SQLQuery.addToEntryTopic(), myDBUrl, myDBUsername, myDBPassword);
+            }
+            catch(SQLException e){
+                throw new TopicBankAddException(e.toString());
+            }
+    }
+
     private void removeEntry(int entryID, String tableName) throws NoSuchEntryException{
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);

@@ -53,6 +53,11 @@ public class SQLQuery {
     private static final String REMOVE_TABLE = "DROP TABLE ?;";
 
     private static final String TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name=?;";
+    private static final String ADD_TO_ENTRY_TOPIC = "INSERT INTO %s " +
+            "(" + ColumnInfo.getEntryId() + ", " +
+            ColumnInfo.getTOPIC() + ", " +
+            ColumnInfo.getCOLOR() + ") " +
+            "VALUES (?,?,?);";
 
     public static String addEntry() {
         return String.format(ADD_ENTRY, TableNames.getEntryInfo());
@@ -118,4 +123,7 @@ public class SQLQuery {
         return command;
     }
 
+    public static String addToEntryTopic() {
+        return String.format(ADD_TO_ENTRY_TOPIC, TableNames.getEntryToTopic());
+    }
 }
