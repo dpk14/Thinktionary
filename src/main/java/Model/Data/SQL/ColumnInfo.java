@@ -105,6 +105,7 @@ public class ColumnInfo {
     public static Map<String, String> getEntryTopicColumnMap(){
         Map<String, String> columnMap = new HashMap();
         columnMap.put(getEntryId(), getEntryIdType(false));
+        columnMap.put(getUSERID(), getUserIdType(false));
         columnMap.put(getTOPIC(), getTopicType());
         columnMap.put(getCOLOR(), getColorType());
         return columnMap;

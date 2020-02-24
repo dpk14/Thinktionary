@@ -76,4 +76,18 @@ public class Date {
     }
 
 
+    public static String LocalDateTimetoString(LocalDateTime date) {
+        String month = Integer.toString(date.getMonthValue());
+        month = month.length() == 1 ? "0" + month : month;
+        String day = Integer.toString(date.getDayOfMonth());
+        day = day.length() == 1 ? "0" + day : day;
+        String hour = Integer.toString(date.getHour());
+        hour = hour.length() == 1 ? "0" + hour : hour;
+        String minute = Integer.toString(date.getMinute());
+        minute = minute.length() == 1 ? "0" + minute : minute;
+        String second = Integer.toString(date.getMonthValue());
+        second = second.length() == 1 ? "0" + second : second;
+
+        return date.getYear() + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second;
+    }
 }

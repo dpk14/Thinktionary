@@ -107,9 +107,9 @@ public class Entry {
 
     public String getmyText() { return myText.toString(); }
 
-    public String getMyCreated(){ return myCreated.toString();}
+    public String getMyCreated(){ return Date.LocalDateTimetoString(myCreated);}
 
-    public String getMyModfied() {return myModified.toString();}
+    public String getMyModfied() {return Date.LocalDateTimetoString(myModified);}
 
     public Map<String, String> getMyTopics(){
         Map<String, String> topicToColor = new HashMap<>();

@@ -22,7 +22,7 @@ public class JournalDBParser {
                 topicSets.put((String) cols.get(ColumnInfo.getEntryId()), topics);
             }
             for (Map<String, Object> cols : entryMap) {
-                String id = (String) cols.get(ColumnInfo.getEntryId());
+                String id = Integer.toString((int)cols.get(ColumnInfo.getEntryId()));
                 Set<Topic> topics = topicSets.get(id);
                 String createdDate = (String) cols.get(ColumnInfo.getCREATED());
                 LocalDateTime created = Date.makeDate(createdDate);
