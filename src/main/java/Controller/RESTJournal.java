@@ -146,7 +146,7 @@ public class RESTJournal {
     }
 
 
-    @RequestMapping (PROTECTED_PATH + "/entries/getrand")
+    @RequestMapping (PROTECTED_PATH + "/entries/getRand")
     public ResponseEntity getRandom(@PathVariable int userID, @RequestBody Set<Topic> topics) {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
