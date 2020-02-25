@@ -99,7 +99,8 @@ public class RESTJournal {
                 journal.saveEntry(entryID, entry);
                 return ResponseEntity.ok().build();
             } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             }
         }
         catch(NotLoggedInException e){

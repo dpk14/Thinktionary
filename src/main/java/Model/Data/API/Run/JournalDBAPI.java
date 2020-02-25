@@ -52,13 +52,12 @@ JournalDBAPI extends RunDBAPI {
 
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         Map<Integer, String> map = new HashMap<>();
-        map.put(1, TableNames.getEntryInfo());
-        map.put(2, Integer.toString(myUserID));
-        map.put(3, entry.getmyTitle());
-        map.put(4, entry.getmyText());
-        map.put(5, entry.getMyCreated());
-        map.put(6, entry.getMyModfied());
-        map.put(7, Integer.toString(entryID));
+        map.put(1, Integer.toString(myUserID));
+        map.put(2, entry.getmyTitle());
+        map.put(3, entry.getmyText());
+        map.put(4, entry.getMyCreated());
+        map.put(5, entry.getMyModfied());
+        map.put(6, Integer.toString(entryID));
         try {
             DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
         }

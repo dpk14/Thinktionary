@@ -34,7 +34,7 @@ public class SQLQuery {
     private static final String REMOVE_GIVEN_USERID_ENTRY_ID = "DELETE FROM %s WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getEntryId() + " = ? ;";
 
-    private static final String MODIFY_ENTRY_INFO = "UPDATE " + TableNames.getEntryInfo() + " SET " +
+    private static final String MODIFY_ENTRY_INFO = "UPDATE %s SET " +
             ColumnInfo.getUSERID() + " = ?, " +
             ColumnInfo.getTITLE() + " = ?, " +
             ColumnInfo.getTEXT() + " = ?, " +
@@ -81,7 +81,7 @@ public class SQLQuery {
     }
 
     public static String modifyEntryInfo() {
-        return MODIFY_ENTRY_INFO;
+        return String.format(MODIFY_ENTRY_INFO, TableNames.getEntryInfo());
     }
 
     public static String loadTable() {
