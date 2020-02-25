@@ -107,7 +107,6 @@ public class Journal {
         return myUserID;
     }
 
-
     /*
     ----------------------------
     Helpers:
@@ -117,6 +116,7 @@ public class Journal {
     private void updateEntryTopic(int entryID, Set<Topic> topics) throws TopicBankAddException {
         Entry existingEntry = myEntryMap.getOrDefault(entryID, null);
         Map<String, String> entryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
+        System.out.println("entryTopic size " + entryTopics.size());
         for(Topic topic : topics){
             if(!entryTopics.containsKey(topic.getMyTopic())){
                 entryTopics.put(topic.getMyTopic(), topic.getMyColor());

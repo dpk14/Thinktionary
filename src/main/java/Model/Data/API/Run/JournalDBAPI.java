@@ -81,9 +81,17 @@ JournalDBAPI extends RunDBAPI {
         map.put(4, entry.getMyCreated());
         map.put(5, entry.getMyModfied());
         try {
-            DBUtils.userAction(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
-            List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.getEntry(), myDBUrl, myDBUsername, myDBPassword);
-            return JournalDBParser.getEntryID(ent);
+//            List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
+            Connection con = DBUtils.makeConnection(myDBUrl, myDBUsername, myDBPassword);
+            PreparedStatement pst = DBUtils.buildPreparedStatement(map, con, SQLQuery.addEntry());
+            pst.execute();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(SQLQuery.getLastInsertID());
+            List<Map<String, Object>> ret = DBUtils.map(rs);
+            DBUtils.close(pst);
+            DBUtils.close(rs);
+            DBUtils.close(con);
+            return JournalDBParser.getEntryID(ret);
         }
         catch(Exception e){
             throw new CorruptDBError(e);

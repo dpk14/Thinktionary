@@ -5,6 +5,7 @@ import java.util.Map;
 public class SQLQuery {
     private static final String LOAD_TABLE = "SELECT * FROM ?;";
     private static final String LOAD_TABLE_BY_PARAMETER = "SELECT * FROM %s WHERE %s = ? ";
+    private static final String GET_LAST_INSERT = "SELECT last_insert_rowid();";
     private static final String GET_ENTRY = "SELECT * FROM %s " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getTITLE() + " = ? " +
@@ -22,7 +23,7 @@ public class SQLQuery {
             + ColumnInfo.getTEXT() + ", "
             + ColumnInfo.getCREATED() + ", "
             + ColumnInfo.getMODIFIED() + ") " +
-            "VALUES (?,?,?,?,?);";
+            "VALUES (?,?,?,?,?); " + GET_LAST_INSERT;
 
     private static final String ADD_TOPIC = "INSERT INTO %s " +
             "(" + ColumnInfo.getUSERID() + ", " +
@@ -128,5 +129,9 @@ public class SQLQuery {
 
     public static String addToEntryTopic() {
         return String.format(ADD_TO_ENTRY_TOPIC, TableNames.getEntryToTopic());
+    }
+
+    public static String getLastInsertID() {
+        return GET_LAST_INSERT;
     }
 }
