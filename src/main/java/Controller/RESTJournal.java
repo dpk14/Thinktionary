@@ -129,7 +129,7 @@ public class RESTJournal {
 
     }
 
-    @RequestMapping (PROTECTED_PATH + "/entries/get")
+    @PostMapping (PROTECTED_PATH + "/entries/get")
     public ResponseEntity get(@PathVariable int userID, @RequestBody Set<Topic> topics) {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
@@ -137,7 +137,8 @@ public class RESTJournal {
                 List<Entry> entries = journal.getTopicalEntries(topics);
                 return ResponseEntity.ok(entries);
             } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             }
         }
         catch(NotLoggedInException e){

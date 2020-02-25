@@ -12,19 +12,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Entry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Entry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/EntryComponents/Topic.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/EntryComponents/Topic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal$EntryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal$EntryComparator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/JournalDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/JournalDBAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQuery.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQuery.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/Databases/SQLite/test1.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Topic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQuery.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +256,7 @@
       <workItem from="1581727414732" duration="6836000" />
       <workItem from="1582057746190" duration="40000" />
       <workItem from="1582224164786" duration="15672000" />
-      <workItem from="1582528830651" duration="20507000" />
+      <workItem from="1582528830651" duration="24774000" />
     </task>
     <servers />
   </component>

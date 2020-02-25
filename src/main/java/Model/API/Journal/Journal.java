@@ -75,8 +75,8 @@ public class Journal {
     public List<Entry> getTopicalEntries(Set<Topic> topics){
         List<Entry> topicalEntries = new ArrayList<>();
         for(Entry entry : myEntries){
-            Set<Topic> topicsCpy = new HashSet<>(topics);
-            if(containsAll(topicsCpy, entry.getMyTopics())) {
+            System.out.println(entry.getMyTopics()==null);
+            if(firstSubsetOfSecond(topics, entry.getMyTopics())) {
                 topicalEntries.add(entry);
             }
         }
@@ -151,9 +151,18 @@ public class Journal {
         myEntries.add(e);
     }
 
-    private boolean containsAll(Set<Topic> topics1, Set<Topic> topics2){
-        topics1.removeAll(topics2);
-        return topics1.size() == 0;
+    private boolean firstSubsetOfSecond(Set<Topic> first, Set<Topic> second){
+        for(Topic topic : first){
+            boolean contains = false;
+            for(Topic topic2 : second){
+                if (topic.getMyTopic().equals(topic2.getMyTopic())){
+                    contains = true;
+                    break;
+                }
+            }
+            if(contains == false) return false;
+        }
+        return true;
     }
 
     private class EntryComparator implements Comparator<Entry> {
