@@ -49,15 +49,27 @@ public class Journal {
     ----------------------------
      */
 
-    public int createEntry(Entry entry) throws TopicBankAddException {
+    public int createEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException{
         updateTopicBank(entry.getMyTopics());
-        int entryID = addEntry(entry);
+        int entryID = new JournalDBAPI(myUserID).addToEntryInfo(entry);
+        updateEntryTopic(entry.getMyTopics(), entryID);
+        myEntryMap.put(entryID, entry);
+        myEntries.add(entry);
         return entryID;
     }
 
     public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         updateTopicBank(entry.getMyTopics());
-        modifyEntry(entryID, entry);
+        entry.updateModification();
+        updateEntryTopic(entry.getMyTopics(), entryID);
+        String oldCreation = myEntryMap.get(entryID).getMyCreated();
+        myEntryMap.put(entryID, entry);
+
+        if(!entry.getMyCreated().equals(oldCreation)){ // if creation date has been modified, adjust order
+            reorder(entry);
+        }
+
+        new JournalDBAPI(myUserID).save(entryID, entry);
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException{
@@ -117,27 +129,6 @@ public class Journal {
         }
         System.out.println("topic size : " + myTopics.size());
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
-    }
-
-    private int addEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException {
-        int id = new JournalDBAPI(myUserID).addToEntryInfo(entry);
-        updateEntryTopic(entry.getMyTopics(), id);
-        myEntryMap.put(id, entry);
-        myEntries.add(entry);
-        return id;
-    }
-
-    private void modifyEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        entry.updateModification();
-        updateEntryTopic(entry.getMyTopics(), entryID);
-        String oldCreation = myEntryMap.get(entryID).getMyCreated();
-        myEntryMap.put(entryID, entry);
-
-        if(!entry.getMyCreated().equals(oldCreation)){ // if creation date has been modified, adjust order
-            reorder(entry);
-        }
-
-        new JournalDBAPI(myUserID).save(entryID, entry);
     }
 
     private void reorder(Entry e){
