@@ -14,19 +14,19 @@ public class JournalDBParser {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
         try {
-            for (Map<String, Object> cols : entryTopic) {
-                Topic topic = new Topic((String) cols.get(ColumnInfo.getTOPIC()), (String) cols.get(ColumnInfo.getCOLOR()));
-                String entryID = Integer.toString ((int) cols.get(ColumnInfo.getEntryId()));
+            for (Map<String, Object> row : entryTopic) {
+                Topic topic = new Topic((String) row.get(ColumnInfo.getTOPIC()), (String) row.get(ColumnInfo.getCOLOR()));
+                String entryID = Integer.toString ((int) row.get(ColumnInfo.getEntryId()));
                 Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
                 topics.add(topic);
                 topicSets.put(entryID, topics);
             }
-            for (Map<String, Object> cols : entryMap) {
-                String id = Integer.toString((int)cols.get(ColumnInfo.getEntryId()));
+            for (Map<String, Object> row : entryMap) {
+                String id = Integer.toString((int)row.get(ColumnInfo.getEntryId()));
                 Set<Topic> topics = topicSets.get(id);
-                String createdDate = (String) cols.get(ColumnInfo.getCREATED());
+                String createdDate = (String) row.get(ColumnInfo.getCREATED());
                 LocalDateTime created = Date.makeDate(createdDate);
-                Entry entry = new Entry((String) cols.get(ColumnInfo.getTITLE()), (String) cols.get(ColumnInfo.getTEXT()), created, topics);
+                Entry entry = new Entry((String) row.get(ColumnInfo.getTITLE()), (String) row.get(ColumnInfo.getTEXT()), created, topics);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
             }
