@@ -117,7 +117,27 @@ public class RESTJournal {
                 journal.removeEntry(entryID);
                 return ResponseEntity.ok(entryID);
             } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            }
+        }
+        catch(NotLoggedInException e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        }
+
+    }
+
+    @DeleteMapping (PROTECTED_PATH + "/topics/remove")
+    public ResponseEntity deleteTopic(@PathVariable int userID, @RequestParam(value="name") String topicName) {
+        try {
+            Journal journal = mySessionManager.getSessionInfo(userID);
+            try {
+                journal.removeTopic(topicName);
+                return ResponseEntity.ok(topicName);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             }
         }
         catch(NotLoggedInException e){

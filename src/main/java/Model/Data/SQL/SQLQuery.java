@@ -1,5 +1,7 @@
 package Model.Data.SQL;
 
+import sun.tools.jconsole.Tab;
+
 import java.util.Map;
 
 public class SQLQuery {
@@ -16,6 +18,10 @@ public class SQLQuery {
     private static final String GET_BY_ENTRY_ID = "SELECT * FROM %s " +
             "WHERE " + ColumnInfo.getUSERID() + " = ? " +
             "AND " + ColumnInfo.getEntryId() + " = ?;";
+
+    private static final String GET_ENTRY_BY_TOPIC = "SELECT * FROM %s " +
+            "WHERE " + ColumnInfo.getUSERID() + " = ? " +
+            "AND " + ColumnInfo.getTOPIC() + " = ?;";
 
     private static final String ADD_ENTRY = "INSERT INTO %s " +
             "(" + ColumnInfo.getUSERID() + ", "
@@ -60,6 +66,9 @@ public class SQLQuery {
             ColumnInfo.getTOPIC() + ", " +
             ColumnInfo.getCOLOR() + ") " +
             "VALUES (?,?,?,?);";
+
+    private static final String REMOVE_TOPIC = "DELETE FROM " + TableNames.getUserTopic() +
+        " WHERE " + ColumnInfo.getUSERID() + " = ? " + "AND " + ColumnInfo.getTOPIC() + " = ? ;";
 
     public static String addEntry() {
         return String.format(ADD_ENTRY, TableNames.getEntryInfo());
@@ -133,5 +142,13 @@ public class SQLQuery {
 
     public static String getLastInsertID() {
         return GET_LAST_INSERT;
+    }
+
+    public static String getEntryByTopic() {
+        return String.format(GET_ENTRY_BY_TOPIC, TableNames.getEntryToTopic());
+    }
+
+    public static String removeTopic() {
+        return REMOVE_TOPIC;
     }
 }

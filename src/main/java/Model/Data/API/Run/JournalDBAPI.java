@@ -9,7 +9,9 @@ import Model.API.Journal.JournalDBParser;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
+import Model.ErrorHandling.Exceptions.EntryByTopicException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
+import Model.ErrorHandling.Exceptions.RemoveTopicException;
 
 import java.sql.*;
 import java.util.*;
@@ -48,7 +50,31 @@ JournalDBAPI extends RunDBAPI {
         return loadTableByParamater(TableNames.getUserTopic(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
     }
 
-    //Saving:
+    //Communicators:
+
+    public boolean usesTopic(String topicName) throws EntryByTopicException {
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, Integer.toString(myUserID));
+        map.put(2, topicName);
+        try {
+            List<Map<String, Object>> entries = DBUtils.userQuery(map, SQLQuery.getEntryByTopic(), myDBUrl, myDBUsername, myDBPassword);
+            return entries.size() > 0;
+        }
+        catch(SQLException e){
+            throw new EntryByTopicException(e);
+        }
+    }
+
+    public void removeTopic(String topicName){
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, Integer.toString(myUserID));
+        map.put(2, topicName);
+        try {
+            DBUtils.userAction(map, SQLQuery.removeTopic(), myDBUrl, myDBUsername, myDBPassword);
+        } catch (SQLException e) {
+            throw new RemoveTopicException(e);
+        }
+    }
 
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         Map<Integer, String> map = new HashMap<>();
@@ -66,12 +92,6 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    /*
-    ----------------------------
-    Private Helpers:
-    ----------------------------
-     */
-
     public int addToEntryInfo(Entry entry) {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, Integer.toString(myUserID));
@@ -80,7 +100,6 @@ JournalDBAPI extends RunDBAPI {
         map.put(4, entry.getMyCreated());
         map.put(5, entry.getMyModfied());
         try {
-//            List<Map<String, Object>> ent = DBUtils.userQuery(map, SQLQuery.addEntry(), myDBUrl, myDBUsername, myDBPassword);
             Connection con = DBUtils.makeConnection(myDBUrl, myDBUsername, myDBPassword);
             PreparedStatement pst = DBUtils.buildPreparedStatement(map, con, SQLQuery.addEntry());
             pst.execute();

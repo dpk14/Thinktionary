@@ -1,4 +1,4 @@
-package Model.Data.Exceptions;
+package Model.ErrorHandling.Exceptions;
 
 import java.io.IOException;
 

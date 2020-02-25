@@ -5,6 +5,7 @@ import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
+import Model.ErrorHandling.Exceptions.EntryByTopicException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 
 import java.util.*;
@@ -102,6 +103,14 @@ public class Journal {
         }
         return topicalEntries;
     }
+
+    public void removeTopic(String topicName) throws NoSuchTopicException, EntryByTopicException {
+        JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
+        if(!journalDBAPI.usesTopic(topicName)){
+            journalDBAPI.removeTopic(topicName);
+        }
+    }
+
 
     public int getUserID() {
         return myUserID;

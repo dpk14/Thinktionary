@@ -2,12 +2,11 @@ package Model.Utils.PropertyUtils;
 
 import Controller.Application;
 import Controller.Exceptions.ModeParseError;
-import Model.Data.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.Utils.PathUtils.PathManager;
 
 import java.io.*;
 import java.util.Properties;
-import java.util.Set;
 
 public class PropertyManager {
 
