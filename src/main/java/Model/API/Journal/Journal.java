@@ -52,24 +52,32 @@ public class Journal {
     public int createEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException{
         updateTopicBank(entry.getMyTopics());
         int entryID = new JournalDBAPI(myUserID).addToEntryInfo(entry);
-        updateEntryTopic(entry.getMyTopics(), entryID);
+        updateEntryTopic(entryID, entry.getMyTopics());
         myEntryMap.put(entryID, entry);
         myEntries.add(entry);
         return entryID;
     }
 
-    public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        updateTopicBank(entry.getMyTopics());
+    public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException, NoSuchEntryException {
+        Set<Topic> newTopics = entry.getMyTopics();
+        updateTopicBank(newTopics);
         entry.updateModification();
-        updateEntryTopic(entry.getMyTopics(), entryID);
-        String oldCreation = myEntryMap.get(entryID).getMyCreated();
-        myEntryMap.put(entryID, entry);
+        try {
+            Entry existingEntry = myEntryMap.get(entryID);
+            updateEntryTopic(entryID, newTopics);
+            String oldCreation = existingEntry.getMyCreated();
+            myEntryMap.put(entryID, entry);
 
-        if(!entry.getMyCreated().equals(oldCreation)){ // if creation date has been modified, adjust order
-            reorder(entry);
+            if(!entry.getMyCreated().equals(oldCreation)){ // if creation date has been modified, adjust order
+                reorder(entry);
+            }
+
+            new JournalDBAPI(myUserID).save(entryID, entry);
+        }
+        catch(NullPointerException e){
+            throw new NoSuchEntryException(entryID);
         }
 
-        new JournalDBAPI(myUserID).save(entryID, entry);
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException{
@@ -106,9 +114,9 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateEntryTopic(Set<Topic> topics, int entryID) throws TopicBankAddException {
-        Entry entry = myEntryMap.get(entryID);
-        Map<String, String> entryTopics = entry == null? new HashMap<>() : entry.myTopicsAsMap();
+    private void updateEntryTopic(int entryID, Set<Topic> topics) throws TopicBankAddException {
+        Entry existingEntry = myEntryMap.getOrDefault(entryID, null);
+        Map<String, String> entryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
         for(Topic topic : topics){
             if(!entryTopics.containsKey(topic.getMyTopic())){
                 entryTopics.put(topic.getMyTopic(), topic.getMyColor());
@@ -127,7 +135,6 @@ public class Journal {
             }
             myTopics.put(topic.getMyTopic(), topic);
         }
-        System.out.println("topic size : " + myTopics.size());
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 
