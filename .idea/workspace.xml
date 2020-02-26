@@ -2,10 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/DBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/DBException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/ModifyEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/ModifyEntryException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/TopicBankAddException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/TopicBankAddException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTStrings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/EntryComponents/Date.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/JournalDBParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginDBParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/DBAPI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/ColumnInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/TableNames.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Errors/CorruptDBError.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/AccountExistsException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDBDateException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDateFormatException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidDayException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidHourException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMinuteException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidMonthException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/DateExceptions/InvalidSecondException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/EntryByTopicException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/InvalidLoginException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/NoSuchEntryException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/NoTopicException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/RemoveTopicException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/DBNames.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/DBUrls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/PathManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PropertyUtils/PropertyKeys.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PropertyUtils/PropertyManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +275,7 @@
       <workItem from="1581727414732" duration="6836000" />
       <workItem from="1582057746190" duration="40000" />
       <workItem from="1582224164786" duration="15672000" />
-      <workItem from="1582528830651" duration="52503000" />
+      <workItem from="1582528830651" duration="53193000" />
     </task>
     <servers />
   </component>

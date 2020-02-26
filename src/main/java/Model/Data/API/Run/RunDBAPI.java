@@ -1,6 +1,9 @@
 package Model.Data.API.Run;
 
 import Model.Data.API.DBAPI;
+import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.QueryObjects.Condition;
+import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
@@ -30,25 +33,19 @@ public abstract class RunDBAPI extends DBAPI {
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        List<Map<String, Object>> ret = new ArrayList<>();
         try {
-            return DBUtils.userQuery(map, SQLQueryBuilder.loadTable(), myDBUrl, myDBUsername, myDBPassword);
+            return DBUtils.userQuery(SQLQueryBuilder.select(tableName, new ArrayList<>()), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new CorruptDBError(e);
         }
     }
 
     protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, String parameter) {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, parameter);
-        List<Map<String, Object>> ret = new ArrayList<>();
+        List<Condition > conditions = new ArrayList<>();
+        conditions.add(new Equals(parameterType, parameter));
+
         try {
-            System.out.println(tableName + " " +  parameterType + " " +  parameter);
-            System.out.println(DBUtils.userQuery(new HashMap<>(), "SELECT * FROM " + TableNames.getUserTopic() + " WHERE UserID = 1", myDBUrl, myDBUsername, myDBPassword).size());
-            ret = DBUtils.userQuery(map, SQLQueryBuilder.getLoadTableByParameter(tableName, parameterType), myDBUrl, myDBUsername, myDBPassword);
-            System.out.println(ret.size() + "OEJIUHDPIEUHDH");
+            List<Map<String, Object>> ret = DBUtils.userQuery(SQLQueryBuilder.select(tableName, conditions), myDBUrl, myDBUsername, myDBPassword);
             return ret;
         } catch (SQLException e) {
             throw new CorruptDBError(e);
