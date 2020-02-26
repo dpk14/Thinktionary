@@ -140,7 +140,7 @@ public class Journal {
         for(Topic topic : topics){
             if(!newExisting.containsKey(topic.getMyTopic())){
                 newExisting.put(topic.getMyTopic(), topic.getMyColor());
-                journalDBAPI.addToEntryTopic(entryID, myUserID, topic.getMyTopic(), topic.getMyColor());
+                journalDBAPI.addToEntryTopic(entryID, topic.getMyTopic(), topic.getMyColor());
             }
         }
         existingEntryTopics.clear();
