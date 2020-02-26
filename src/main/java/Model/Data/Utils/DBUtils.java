@@ -81,16 +81,6 @@ public class DBUtils {
         return pst;
     }
 
-    public static void userAction(Map<Integer, String> fillers, String command, String url,
-                           String user, String password) throws SQLException{
-
-        Connection con = DBUtils.makeConnection(url, user, password);
-        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, command);
-        pst.execute();
-        DBUtils.close(pst);
-        DBUtils.close(con);
-    }
-
     public static void userAction(String command, String url,
                                   String user, String password) throws SQLException{
 
@@ -101,19 +91,6 @@ public class DBUtils {
         DBUtils.close(con);
     }
 
-    public static List<Map<String, Object>> userQuery(Map<Integer, String> fillers, String query, String url,
-                                                String user, String password) throws SQLException{
-
-        Connection con = DBUtils.makeConnection(url, user, password);
-        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, query);
-        ResultSet rs = pst.executeQuery();
-        List<Map<String, Object>> ret = DBUtils.map(rs);
-        DBUtils.close(pst);
-        DBUtils.close(rs);
-        DBUtils.close(con);
-        return ret;
-    }
-
     public static List<Map<String, Object>> userQuery(String query, String url,
                                                       String user, String password) throws SQLException{
 
@@ -122,6 +99,31 @@ public class DBUtils {
         ResultSet rs = st.executeQuery(query);
         List<Map<String, Object>> ret = DBUtils.map(rs);
         DBUtils.close(st);
+        DBUtils.close(rs);
+        DBUtils.close(con);
+        return ret;
+    }
+
+    @Deprecated
+    public static void userAction(Map<Integer, String> fillers, String command, String url,
+                                  String user, String password) throws SQLException{
+
+        Connection con = DBUtils.makeConnection(url, user, password);
+        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, command);
+        pst.execute();
+        DBUtils.close(pst);
+        DBUtils.close(con);
+    }
+
+    @Deprecated
+    public static List<Map<String, Object>> userQuery(Map<Integer, String> fillers, String query, String url,
+                                                      String user, String password) throws SQLException{
+
+        Connection con = DBUtils.makeConnection(url, user, password);
+        PreparedStatement pst = DBUtils.buildPreparedStatement(fillers, con, query);
+        ResultSet rs = pst.executeQuery();
+        List<Map<String, Object>> ret = DBUtils.map(rs);
+        DBUtils.close(pst);
         DBUtils.close(rs);
         DBUtils.close(con);
         return ret;
