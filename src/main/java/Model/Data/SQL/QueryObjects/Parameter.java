@@ -1,10 +1,10 @@
 package Model.Data.SQL.QueryObjects;
 
-public abstract class Parameter {
+public class Parameter {
     String myParamName;
     String myValue;
 
-    Parameter(String parameter, String value){
+    public Parameter(String parameter, String value){
         myParamName = parameter;
         myValue = value;
     }

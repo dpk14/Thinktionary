@@ -2,6 +2,9 @@ package Model.Data.API.Run;
 
 import Model.API.Journal.Entry;
 import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.QueryObjects.Condition;
+import Model.Data.SQL.QueryObjects.Equals;
+import Model.Data.SQL.QueryObjects.Parameter;
 import Model.Data.Utils.DBUtils;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
@@ -53,11 +56,11 @@ JournalDBAPI extends RunDBAPI {
     //Communicators:
 
     public boolean usesTopic(String topicName) throws EntryByTopicException {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, Integer.toString(myUserID));
-        map.put(2, topicName);
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
         try {
-            List<Map<String, Object>> entries = DBUtils.userQuery(map, SQLQueryBuilder.getEntryByTopic(), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> entries = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
             return entries.size() > 0;
         }
         catch(SQLException e){
@@ -66,38 +69,41 @@ JournalDBAPI extends RunDBAPI {
     }
 
     public void removeTopicFromBank(String topicName) throws RemoveTopicException {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, Integer.toString(myUserID));
-        map.put(2, topicName);
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
         try {
-            DBUtils.userAction(map, SQLQueryBuilder.removeTopicFromBank(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new RemoveTopicException(e);
         }
     }
 
     public void removeTopicFromEntry(int entryID, String topicName) throws RemoveTopicException {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, Integer.toString(myUserID));
-        map.put(2, Integer.toString(entryID));
-        map.put(3, topicName);
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        conditions.add(new Equals(ColumnInfo.getEntryId(), Integer.toString(entryID)));
+        conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
         try {
-            DBUtils.userAction(map, SQLQueryBuilder.removeTopicFromEntry(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new RemoveTopicException(e);
         }
     }
 
     public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, Integer.toString(myUserID));
-        map.put(2, entry.getmyTitle());
-        map.put(3, entry.getmyText());
-        map.put(4, entry.getMyCreated());
-        map.put(5, entry.getMyModfied());
-        map.put(6, Integer.toString(entryID));
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(new Parameter(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        parameters.add(new Parameter(ColumnInfo.getTITLE(), entry.getmyTitle()));
+        parameters.add(new Parameter(ColumnInfo.getTEXT(), entry.getmyText()));
+        parameters.add(new Parameter(ColumnInfo.getCREATED(), entry.getMyCreated()));
+        parameters.add(new Parameter(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
+
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getEntryId(), Integer.toString(entryID)));
+
         try {
-            DBUtils.userAction(map, SQLQueryBuilder.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(SQLQueryBuilder.modify(TableNames.getEntryInfo(), parameters, conditions), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new ModifyEntryException(e.toString());
@@ -105,22 +111,16 @@ JournalDBAPI extends RunDBAPI {
     }
 
     public int addToEntryInfo(Entry entry) {
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, Integer.toString(myUserID));
-        map.put(2, entry.getmyTitle());
-        map.put(3, entry.getmyText());
-        map.put(4, entry.getMyCreated());
-        map.put(5, entry.getMyModfied());
-        try {
-            Connection con = DBUtils.makeConnection(myDBUrl, myDBUsername, myDBPassword);
-            PreparedStatement pst = DBUtils.buildPreparedStatement(map, con, SQLQueryBuilder.addEntry());
-            pst.execute();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(SQLQueryBuilder.getLastInsertID());
-            List<Map<String, Object>> ret = DBUtils.map(rs);
-            DBUtils.close(pst);
-            DBUtils.close(rs);
-            DBUtils.close(con);
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(new Parameter(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        parameters.add(new Parameter(ColumnInfo.getTITLE(), entry.getmyTitle()));
+        parameters.add(new Parameter(ColumnInfo.getTEXT(), entry.getmyText()));
+        parameters.add(new Parameter(ColumnInfo.getCREATED(), entry.getMyCreated()));
+        parameters.add(new Parameter(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
+
+        String query = SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters) + " " + SQLQueryBuilder.getLastInsertID();
+        try{
+            List<Map<String, Object>> ret = DBUtils.userQuery(query, myDBUrl, myDBUsername, myDBPassword);
             return JournalDBParser.getEntryID(ret);
         }
         catch(Exception e){
@@ -178,4 +178,6 @@ JournalDBAPI extends RunDBAPI {
     public int getMyUserID() {
         return myUserID;
     }
+}
+
 }

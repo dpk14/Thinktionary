@@ -1,9 +1,8 @@
 package Model.Data.SQL;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Parameter;
-import com.sun.tools.javac.util.List;
-
 import java.util.Map;
+import java.util.List;
 
 public class SQLQueryBuilder {
     private static final String REMOVE = " DELETE FROM ";
@@ -36,12 +35,34 @@ public class SQLQueryBuilder {
         return command;
     }
 
+    public static String insert(String tableName, List<Parameter> parameters) {
+        String header = INSERT + tableName;
+        String paramsString = " (";
+        String valsString = " VALUES (";
+
+        for(Parameter param : parameters){
+            paramsString += param.getMyParamName();
+            valsString += param.getMyValue();
+            if(!param.equals(parameters.get(parameters.size()-1))) {
+                paramsString+=", ";
+                valsString+=", ";
+            }
+            else {
+                paramsString+=")";
+                valsString+=")";
+            }
+        }
+
+        String statement = header + paramsString + valsString + ";";
+        return statement;
+    }
+
     public static String modify(String tableName, List<Parameter> parameters, List<Condition> conditions){
         String header = MODIFY + tableName + " SET ";
         String paramsString = "";
         for(Parameter param : parameters){
             paramsString += param.getMyParamName() + " = " + param.getMyValue();
-            if(!param.equals(parameters.last())) {
+            if(!param.equals(parameters.get(parameters.size()-1))) {
                 paramsString+=",";
             }
             paramsString+=" ";
@@ -58,12 +79,14 @@ public class SQLQueryBuilder {
         return conditionalQuery(REMOVE, tableName, conditions);
     }
 
-    public static String conditionalQuery(String action, String from, List<Condition> condition){
+    //Helpers:
+
+    private static String conditionalQuery(String action, String from, List<Condition> condition){
         String query = action + from + buildConditional(condition) + ";";
         return query;
     }
 
-    public static String buildConditional(List<Condition> conditions) {
+    private static String buildConditional(List<Condition> conditions) {
         String conditional = " ";
         for (int i = 0; i < conditions.size(); i++) {
             String header = " AND ";
@@ -71,28 +94,6 @@ public class SQLQueryBuilder {
             conditional += header + conditions.get(i).toString();
         }
         return conditional;
-    }
-
-    public static String insert(String tableName, List<Parameter> parameters) {
-        String header = INSERT + tableName;
-        String paramsString = " (";
-        String valsString = " VALUES (";
-
-        for(Parameter param : parameters){
-            paramsString += param.getMyParamName();
-            valsString += param.getMyValue();
-            if(!param.equals(parameters.last())) {
-                paramsString+=", ";
-                valsString+=", ";
-            }
-            else {
-                paramsString+=")";
-                valsString+=")";
-            }
-        }
-
-        String statement = header + paramsString + valsString + ";";
-        return statement;
     }
 
 }
