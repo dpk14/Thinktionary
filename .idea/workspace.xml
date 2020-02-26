@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Parameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Parameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/DBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/DBException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/ModifyEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/ModifyEntryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/TopicBankAddException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/TopicBankAddException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,7 +244,7 @@
       <workItem from="1581727414732" duration="6836000" />
       <workItem from="1582057746190" duration="40000" />
       <workItem from="1582224164786" duration="15672000" />
-      <workItem from="1582528830651" duration="51433000" />
+      <workItem from="1582528830651" duration="52503000" />
     </task>
     <servers />
   </component>
