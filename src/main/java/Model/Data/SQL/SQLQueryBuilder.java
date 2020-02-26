@@ -55,6 +55,7 @@ public class SQLQueryBuilder {
         }
 
         String statement = header + paramsString + valsString + ";";
+        System.out.println(statement);
         return statement;
     }
 
@@ -69,6 +70,7 @@ public class SQLQueryBuilder {
             paramsString+=" ";
         }
         String query = header + paramsString + buildConditional(conditions) + ";";
+        System.out.println(query);
         return query;
     }
 
@@ -84,6 +86,7 @@ public class SQLQueryBuilder {
 
     private static String conditionalQuery(String action, String from, List<Condition> condition){
         String query = action + from + buildConditional(condition) + ";";
+        System.out.println(query);
         return query;
     }
 

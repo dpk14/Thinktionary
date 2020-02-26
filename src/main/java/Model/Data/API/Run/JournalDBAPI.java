@@ -13,6 +13,7 @@ import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 import Model.ErrorHandling.Exceptions.RemoveTopicException;
 
@@ -22,13 +23,13 @@ import java.util.*;
 public class
 JournalDBAPI extends RunDBAPI {
 
-    int myUserID;
+    Integer myUserID;
 
-    public JournalDBAPI(){
-
+    public JournalDBAPI() throws LoadPropertiesException {
+        super();
     }
 
-    public JournalDBAPI(int userID){
+    public JournalDBAPI(int userID) throws LoadPropertiesException {
         super();
         myUserID = userID;
     }
@@ -57,7 +58,7 @@ JournalDBAPI extends RunDBAPI {
 
     public boolean usesTopic(String topicName) throws EntryByTopicException {
         List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
         try {
             List<Map<String, Object>> entries = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
@@ -70,7 +71,7 @@ JournalDBAPI extends RunDBAPI {
 
     public void removeTopicFromBank(String topicName) throws RemoveTopicException {
         List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
         try {
             DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
@@ -79,10 +80,10 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    public void removeTopicFromEntry(int entryID, String topicName) throws RemoveTopicException {
+    public void removeTopicFromEntry(Integer entryID, String topicName) throws RemoveTopicException {
         List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
-        conditions.add(new Equals(ColumnInfo.getEntryId(), Integer.toString(entryID)));
+        conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
+        conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
         try {
             DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
@@ -91,16 +92,16 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    public void save(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
+    public void save(Integer entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
         List<Parameter> parameters = new ArrayList<>();
-        parameters.add(new Parameter(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
         parameters.add(new Parameter(ColumnInfo.getTITLE(), entry.getmyTitle()));
         parameters.add(new Parameter(ColumnInfo.getTEXT(), entry.getmyText()));
         parameters.add(new Parameter(ColumnInfo.getCREATED(), entry.getMyCreated()));
         parameters.add(new Parameter(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
 
         List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getEntryId(), Integer.toString(entryID)));
+        conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
 
         try {
             DBUtils.userAction(SQLQueryBuilder.modify(TableNames.getEntryInfo(), parameters, conditions), myDBUrl, myDBUsername, myDBPassword);
@@ -112,7 +113,7 @@ JournalDBAPI extends RunDBAPI {
 
     public int addToEntryInfo(Entry entry) {
         List<Parameter> parameters = new ArrayList<>();
-        parameters.add(new Parameter(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+        parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
         parameters.add(new Parameter(ColumnInfo.getTITLE(), entry.getmyTitle()));
         parameters.add(new Parameter(ColumnInfo.getTEXT(), entry.getmyText()));
         parameters.add(new Parameter(ColumnInfo.getCREATED(), entry.getMyCreated()));
@@ -131,7 +132,7 @@ JournalDBAPI extends RunDBAPI {
     public void addToTopicBank(Map<String, String> topicToColor) throws TopicBankAddException {
         for (String topic : topicToColor.keySet()) {
             List<Parameter> parameters = new ArrayList<>();
-            parameters.add(new Parameter(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
+            parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
             parameters.add(new Parameter(ColumnInfo.getTOPIC(), topic));
             parameters.add(new Parameter(ColumnInfo.getCOLOR(), topicToColor.get(topic)));
 
@@ -144,10 +145,10 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    public void addToEntryTopic(int entryID, String topic, String color) throws TopicBankAddException {
+    public void addToEntryTopic(Integer entryID, String topic, String color) throws TopicBankAddException {
         List<Parameter> parameters = new ArrayList<>();
-        parameters.add(new Parameter(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
-        parameters.add(new Parameter(ColumnInfo.getEntryId(), Integer.toString(entryID)));
+        parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
+        parameters.add(new Parameter(ColumnInfo.getEntryId(), entryID));
         parameters.add(new Parameter(ColumnInfo.getTOPIC(), topic));
         parameters.add(new Parameter(ColumnInfo.getCOLOR(), color));
 
@@ -159,10 +160,10 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    public void removeEntry(int entryID) throws NoSuchEntryException{
+    public void removeEntry(Integer entryID) throws NoSuchEntryException{
         List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getUSERID(), Integer.toString(myUserID)));
-        conditions.add(new Equals(ColumnInfo.getEntryId(), Integer.toString(entryID)));
+        conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
+        conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
 
         try {
             List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);

@@ -5,9 +5,12 @@ public abstract class Condition {
     String myValue;
     String myComparator;
 
-    Condition(String parameter, String value, String comparator){
+    Condition(String parameter, Object value, String comparator){
         myParamName = parameter;
-        myValue = value;
+        if (value instanceof String){
+            myValue = "'" + value + "'";
+        }
+        else myValue = value.toString();
         myComparator = comparator;
     }
 

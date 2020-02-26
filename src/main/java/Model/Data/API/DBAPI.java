@@ -14,8 +14,7 @@ public abstract class DBAPI {
     protected String myDBRelFilename;
     protected String myDBAbsFilename;
 
-    public DBAPI(){
-        try {
+    public DBAPI() throws LoadPropertiesException {
             String dbUsername = PropertyManager.getDBUsername();
             myDBUsername = dbUsername == null ? DB_USERNAME_DEFAULT : dbUsername;
             String dbPassword = PropertyManager.getDBPwd();
@@ -28,9 +27,5 @@ public abstract class DBAPI {
             myDBAbsFilename = dbAbsFilename == null ? PathManager.getDBAbsPathFromRel(dbRelFilename) : dbAbsFilename;
 
             myDBUrl = PropertyManager.getDBUrl();
-        }
-        catch(LoadPropertiesException e){
-            e.printStackTrace();
-        }
     }
 }

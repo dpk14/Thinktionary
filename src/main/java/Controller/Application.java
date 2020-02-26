@@ -4,6 +4,7 @@ import Controller.Exceptions.ArgumentFormatError;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
 import Model.Utils.PropertyUtils.PropertyManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LoadPropertiesException, CreateTableException {
         try{
             setProperties(args);
         }

@@ -8,6 +8,7 @@ import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public abstract class RunDBAPI extends DBAPI {
 
      */
 
-    public RunDBAPI(){
+    public RunDBAPI() throws LoadPropertiesException {
         super();
     }
 

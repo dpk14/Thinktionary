@@ -4,9 +4,12 @@ public class Parameter {
     String myParamName;
     String myValue;
 
-    public Parameter(String parameter, String value){
+    public Parameter(String parameter, Object value){
         myParamName = parameter;
-        myValue = value;
+        if (value instanceof String){
+            myValue = "'" + value + "'";
+        }
+        else myValue = value.toString();
     }
 
     public String getMyParamName() {

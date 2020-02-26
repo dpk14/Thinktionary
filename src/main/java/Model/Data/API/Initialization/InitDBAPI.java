@@ -5,6 +5,9 @@ import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
+import Model.ErrorHandling.Exceptions.TableExceptions.RemoveTableException;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,11 +19,11 @@ import java.util.Map;
 
 public abstract class InitDBAPI extends DBAPI {
 
-    public InitDBAPI(){
+    public InitDBAPI() throws LoadPropertiesException {
         super();
     }
 
-    public String initialize(){
+    public String initialize() throws CreateTableException {
         if(!DBexists(myDBAbsFilename)){
             createDatabase(myDBAbsFilename);
         }
@@ -43,11 +46,11 @@ public abstract class InitDBAPI extends DBAPI {
         }
     }
 
-    public abstract void createTablesIfNull();
+    public abstract void createTablesIfNull() throws CreateTableException;
 
-    public abstract void clearTables();
+    public abstract void clearTables() throws RemoveTableException;
 
-    protected void createTablesHelper(List<String> tableNames) {
+    protected void createTablesHelper(List<String> tableNames) throws CreateTableException {
         for (String table : tableNames) {
             if(!tableExists(table)) {
                 Map<String, String> colNamesToType = ColumnInfo.getColumnMap(table);
@@ -56,39 +59,29 @@ public abstract class InitDBAPI extends DBAPI {
         }
     }
 
-    protected void clearTablesHelper(List<String> tableNames) {
+    protected void clearTablesHelper(List<String> tableNames) throws RemoveTableException {
         for (String table : tableNames) {
             removeTable(table);
         }
     }
 
-    private void createTable(String tableName, Map<String, String> columnMap) {
-        String action = SQLQueryBuilder.createTable(tableName, columnMap);
+    private void createTable(String tableName, Map<String, String> columnMap) throws CreateTableException {
         try {
             DBUtils.userAction(SQLQueryBuilder.createTable(tableName, columnMap), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
-            tryCatchUserAction(action);
+            throw new CreateTableException(e);
         }
     }
 
-    private void removeTable(String tableName){
+    private void removeTable(String tableName) throws RemoveTableException {
         try {
             DBUtils.userAction(SQLQueryBuilder.removeTable(tableName), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e) {
+            throw new RemoveTableException(e);
         }
         }
 
-
-    private void tryCatchUserAction(String action){
-        try {
-            DBUtils.userAction(action, myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch(SQLException e){
-            System.out.println(e.toString());
-            System.out.println(e.getStackTrace());
-        }
-    }
 
     protected boolean tableExists(String tableName){
         Map<Integer, String> map = new HashMap<>();

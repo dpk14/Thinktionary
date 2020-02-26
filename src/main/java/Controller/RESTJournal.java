@@ -8,6 +8,7 @@ import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class RESTJournal {
             mySessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
         } catch (InvalidLoginException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
     }
 
@@ -44,8 +45,11 @@ public class RESTJournal {
             Journal journal = new LoginAPI().login(username, password);
             mySessionManager.removeUser(journal.getUserID());
             return ResponseEntity.ok(journal.getUserID());
-        } catch (InvalidLoginException e) {
+        } catch (LoadPropertiesException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
+        }
+        catch (InvalidLoginException e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
     }
 
@@ -61,6 +65,9 @@ public class RESTJournal {
             return ResponseEntity.created(uri).body(userId);
         }
         catch(AccountExistsException e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        }
+        catch(LoadPropertiesException e){
             System.out.print(e.toString());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }

@@ -6,6 +6,7 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 import Model.ErrorHandling.Exceptions.RemoveTopicException;
 
@@ -33,7 +34,7 @@ public class Journal {
         myUserID = userID;
     }
 
-    public Journal(int userID){
+    public Journal(int userID) throws LoadPropertiesException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry'
@@ -51,7 +52,7 @@ public class Journal {
     ----------------------------
      */
 
-    public int createEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException, RemoveTopicException {
+    public int createEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException, RemoveTopicException, LoadPropertiesException {
         updateTopicBank(entry.getMyTopics());
         int entryID = new JournalDBAPI(myUserID).addToEntryInfo(entry);
         updateEntryTopic(entryID, entry.getMyTopics());
@@ -60,7 +61,7 @@ public class Journal {
         return entryID;
     }
 
-    public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException, NoSuchEntryException {
+    public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException, NoSuchEntryException, LoadPropertiesException {
         Set<Topic> newTopics = entry.getMyTopics();
         updateTopicBank(newTopics);
         entry.updateModification();
@@ -82,7 +83,7 @@ public class Journal {
 
     }
 
-    public void removeEntry(int entryID) throws NoSuchEntryException{
+    public void removeEntry(int entryID) throws NoSuchEntryException, LoadPropertiesException {
         new JournalDBAPI(myUserID).removeEntry(entryID);
         myEntries.remove(myEntryMap.get(entryID));
         myEntryMap.remove(entryID);
@@ -105,7 +106,7 @@ public class Journal {
         return topicalEntries;
     }
 
-    public void removeUnusedTopicFromBank(String topicName) throws EntryByTopicException, RemoveTopicException {
+    public void removeUnusedTopicFromBank(String topicName) throws EntryByTopicException, RemoveTopicException, LoadPropertiesException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         if(!journalDBAPI.usesTopic(topicName)){
             journalDBAPI.removeTopicFromBank(topicName);
@@ -123,7 +124,7 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateEntryTopic(int entryID, Set<Topic> topics) throws TopicBankAddException, RemoveTopicException {
+    private void updateEntryTopic(int entryID, Set<Topic> topics) throws TopicBankAddException, RemoveTopicException, LoadPropertiesException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         Entry existingEntry = myEntryMap.getOrDefault(entryID, null);
         Map<String, String> existingEntryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
@@ -150,7 +151,7 @@ public class Journal {
         }
     }
 
-    private void updateTopicBank(Set<Topic> topics) throws TopicBankAddException {
+    private void updateTopicBank(Set<Topic> topics) throws TopicBankAddException, LoadPropertiesException {
         Map<String, Topic> topicsMap = new HashMap();
         Map<String, String> topicToColor = new HashMap();
         for(Topic topic : topics){

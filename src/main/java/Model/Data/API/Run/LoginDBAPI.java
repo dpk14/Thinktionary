@@ -10,6 +10,7 @@ import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 public class LoginDBAPI extends RunDBAPI {
 
-    public LoginDBAPI(){super();}
+    public LoginDBAPI() throws LoadPropertiesException {super();}
 
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
         List<Condition> conditions = new ArrayList<>();
