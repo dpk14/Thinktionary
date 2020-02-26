@@ -3,7 +3,7 @@ package Model.Data.API.Run;
 import Model.API.Journal.Entry;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.Utils.DBUtils;
-import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.API.Journal.JournalDBParser;
 import Model.ErrorHandling.Errors.CorruptDBError;
@@ -57,7 +57,7 @@ JournalDBAPI extends RunDBAPI {
         map.put(1, Integer.toString(myUserID));
         map.put(2, topicName);
         try {
-            List<Map<String, Object>> entries = DBUtils.userQuery(map, SQLQuery.getEntryByTopic(), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> entries = DBUtils.userQuery(map, SQLQueryBuilder.getEntryByTopic(), myDBUrl, myDBUsername, myDBPassword);
             return entries.size() > 0;
         }
         catch(SQLException e){
@@ -70,7 +70,7 @@ JournalDBAPI extends RunDBAPI {
         map.put(1, Integer.toString(myUserID));
         map.put(2, topicName);
         try {
-            DBUtils.userAction(map, SQLQuery.removeTopicFromBank(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQueryBuilder.removeTopicFromBank(), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new RemoveTopicException(e);
         }
@@ -82,7 +82,7 @@ JournalDBAPI extends RunDBAPI {
         map.put(2, Integer.toString(entryID));
         map.put(3, topicName);
         try {
-            DBUtils.userAction(map, SQLQuery.removeTopicFromEntry(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQueryBuilder.removeTopicFromEntry(), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new RemoveTopicException(e);
         }
@@ -97,7 +97,7 @@ JournalDBAPI extends RunDBAPI {
         map.put(5, entry.getMyModfied());
         map.put(6, Integer.toString(entryID));
         try {
-            DBUtils.userAction(map, SQLQuery.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQueryBuilder.modifyEntryInfo(), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new ModifyEntryException(e.toString());
@@ -113,10 +113,10 @@ JournalDBAPI extends RunDBAPI {
         map.put(5, entry.getMyModfied());
         try {
             Connection con = DBUtils.makeConnection(myDBUrl, myDBUsername, myDBPassword);
-            PreparedStatement pst = DBUtils.buildPreparedStatement(map, con, SQLQuery.addEntry());
+            PreparedStatement pst = DBUtils.buildPreparedStatement(map, con, SQLQueryBuilder.addEntry());
             pst.execute();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(SQLQuery.getLastInsertID());
+            ResultSet rs = st.executeQuery(SQLQueryBuilder.getLastInsertID());
             List<Map<String, Object>> ret = DBUtils.map(rs);
             DBUtils.close(pst);
             DBUtils.close(rs);
@@ -136,7 +136,7 @@ JournalDBAPI extends RunDBAPI {
             map.put(2, topic);
             map.put(3, color);
             try {
-                DBUtils.userAction(map, SQLQuery.addTopic(), myDBUrl, myDBUsername, myDBPassword);
+                DBUtils.userAction(map, SQLQueryBuilder.addTopic(), myDBUrl, myDBUsername, myDBPassword);
             }
             catch(SQLException e){
                 throw new TopicBankAddException(e.toString());
@@ -151,7 +151,7 @@ JournalDBAPI extends RunDBAPI {
             map.put(3, topic);
             map.put(4, color);
             try {
-                DBUtils.userAction(map, SQLQuery.addToEntryTopic(), myDBUrl, myDBUsername, myDBPassword);
+                DBUtils.userAction(map, SQLQueryBuilder.addToEntryTopic(), myDBUrl, myDBUsername, myDBPassword);
             }
             catch(SQLException e){
                 throw new TopicBankAddException(e.toString());
@@ -163,12 +163,12 @@ JournalDBAPI extends RunDBAPI {
         map.put(1, Integer.toString(myUserID));
         map.put(2, Integer.toString(entryID));
         try {
-            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQuery.getByEntryID(TableNames.getEntryInfo()), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(map, SQLQueryBuilder.getByEntryID(TableNames.getEntryInfo()), myDBUrl, myDBUsername, myDBPassword);
             if(toBeRemoved.size() == 0){
                 throw new NoSuchEntryException(entryID);
             }
-            DBUtils.userAction(map, SQLQuery.remove(TableNames.getEntryInfo()), myDBUrl, myDBUsername, myDBPassword);
-            DBUtils.userAction(map, SQLQuery.remove(TableNames.getEntryToTopic()), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQueryBuilder.remove(TableNames.getEntryInfo()), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQueryBuilder.remove(TableNames.getEntryToTopic()), myDBUrl, myDBUsername, myDBPassword);
         }
         catch(SQLException e){
             throw new CorruptDBError(e);

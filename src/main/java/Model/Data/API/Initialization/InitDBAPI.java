@@ -2,7 +2,7 @@ package Model.Data.API.Initialization;
 
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
-import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 
@@ -63,7 +63,7 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     private void createTable(String tableName, Map<String, String> columnMap){
-        String action = SQLQuery.createTable(tableName, columnMap);
+        String action = SQLQueryBuilder.createTable(tableName, columnMap);
         System.out.println(action);
         tryCatchUserAction(action);
     }
@@ -71,7 +71,7 @@ public abstract class InitDBAPI extends DBAPI {
     private void removeTable(String tableName){
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
-        String action = SQLQuery.removeTable();
+        String action = SQLQueryBuilder.removeTable();
         tryCatchUserAction(action);
     }
 
@@ -90,7 +90,7 @@ public abstract class InitDBAPI extends DBAPI {
         map.put(1, tableName);
         List<Map<String, Object>> ret = new ArrayList<>();
         try {
-            ret = DBUtils.userQuery(map, SQLQuery.tableExists(), myDBUrl, myDBUsername, myDBPassword);
+            ret = DBUtils.userQuery(map, SQLQueryBuilder.tableExists(), myDBUrl, myDBUsername, myDBPassword);
             return ret.size() != 0;
         } catch (SQLException e) {
             throw new CorruptDBError(e);

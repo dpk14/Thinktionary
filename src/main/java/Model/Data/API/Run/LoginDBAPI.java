@@ -1,15 +1,13 @@
 package Model.Data.API.Run;
 
-import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.InvalidLoginException;
 
-import javax.management.Query;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +21,7 @@ public class LoginDBAPI extends RunDBAPI {
         map.put(1, userName);
         map.put(2, passWord);
         try {
-            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> userInfo = DBUtils.userQuery(map, SQLQueryBuilder.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 1){
                 throw new InvalidLoginException();
             }
@@ -40,13 +38,13 @@ public class LoginDBAPI extends RunDBAPI {
         map.put(2, passWord);
         List<Map<String, Object>> userInfo;
         try {
-            System.out.println(SQLQuery.getUser());
-            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(SQLQueryBuilder.getUser());
+            userInfo = DBUtils.userQuery(map, SQLQueryBuilder.getUser(), myDBUrl, myDBUsername, myDBPassword);
             if(userInfo.size() != 0) {
                 throw new AccountExistsException();
             }
-            DBUtils.userAction(map, SQLQuery.addUser(), myDBUrl, myDBUsername, myDBPassword);
-            userInfo = DBUtils.userQuery(map, SQLQuery.getUser(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQueryBuilder.addUser(), myDBUrl, myDBUsername, myDBPassword);
+            userInfo = DBUtils.userQuery(map, SQLQueryBuilder.getUser(), myDBUrl, myDBUsername, myDBPassword);
             return userInfo;
         }
         catch(SQLException e){

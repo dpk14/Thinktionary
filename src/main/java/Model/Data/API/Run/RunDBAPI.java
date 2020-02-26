@@ -1,7 +1,7 @@
 package Model.Data.API.Run;
 
 import Model.Data.API.DBAPI;
-import Model.Data.SQL.SQLQuery;
+import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
@@ -34,7 +34,7 @@ public abstract class RunDBAPI extends DBAPI {
         map.put(1, tableName);
         List<Map<String, Object>> ret = new ArrayList<>();
         try {
-            return DBUtils.userQuery(map, SQLQuery.loadTable(), myDBUrl, myDBUsername, myDBPassword);
+            return DBUtils.userQuery(map, SQLQueryBuilder.loadTable(), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new CorruptDBError(e);
         }
@@ -47,7 +47,7 @@ public abstract class RunDBAPI extends DBAPI {
         try {
             System.out.println(tableName + " " +  parameterType + " " +  parameter);
             System.out.println(DBUtils.userQuery(new HashMap<>(), "SELECT * FROM " + TableNames.getUserTopic() + " WHERE UserID = 1", myDBUrl, myDBUsername, myDBPassword).size());
-            ret = DBUtils.userQuery(map, SQLQuery.getLoadTableByParameter(tableName, parameterType), myDBUrl, myDBUsername, myDBPassword);
+            ret = DBUtils.userQuery(map, SQLQueryBuilder.getLoadTableByParameter(tableName, parameterType), myDBUrl, myDBUsername, myDBPassword);
             System.out.println(ret.size() + "OEJIUHDPIEUHDH");
             return ret;
         } catch (SQLException e) {

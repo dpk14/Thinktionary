@@ -5,7 +5,7 @@ import com.sun.tools.javac.util.List;
 
 import java.util.Map;
 
-public class SQLQuery {
+public class SQLQueryBuilder {
     private static final String REMOVE = " DELETE FROM ";
     private static final String SELECT_ALL = " SELECT * FROM ";
     private static final String INSERT = " INSERT INTO ";
