@@ -181,5 +181,3 @@ JournalDBAPI extends RunDBAPI {
         return myUserID;
     }
 }
-
-}
