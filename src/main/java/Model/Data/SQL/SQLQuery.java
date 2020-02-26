@@ -1,7 +1,4 @@
 package Model.Data.SQL;
-
-import sun.tools.jconsole.Tab;
-
 import java.util.Map;
 
 public class SQLQuery {
@@ -67,8 +64,14 @@ public class SQLQuery {
             ColumnInfo.getCOLOR() + ") " +
             "VALUES (?,?,?,?);";
 
-    private static final String REMOVE_TOPIC = "DELETE FROM " + TableNames.getUserTopic() +
+    private static final String REMOVE_TOPIC_FROM_BANK = "DELETE FROM " + TableNames.getUserTopic() +
         " WHERE " + ColumnInfo.getUSERID() + " = ? " + "AND " + ColumnInfo.getTOPIC() + " = ? ;";
+
+    private static final String REMOVE_TOPIC_FROM_ENTRY = "DELETE FROM " + TableNames.getEntryToTopic() +
+            " WHERE " + ColumnInfo.getUSERID() + " = ? " +
+            "AND " + ColumnInfo.getEntryId() + " = ? " +
+            "AND " + ColumnInfo.getTOPIC() + " = ? ";
+
 
     public static String addEntry() {
         return String.format(ADD_ENTRY, TableNames.getEntryInfo());
@@ -148,7 +151,11 @@ public class SQLQuery {
         return String.format(GET_ENTRY_BY_TOPIC, TableNames.getEntryToTopic());
     }
 
-    public static String removeTopic() {
-        return REMOVE_TOPIC;
+    public static String removeTopicFromBank() {
+        return REMOVE_TOPIC_FROM_BANK;
+    }
+
+    public static String removeTopicFromEntry() {
+        return REMOVE_TOPIC_FROM_ENTRY;
     }
 }

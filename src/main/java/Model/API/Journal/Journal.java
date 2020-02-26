@@ -7,6 +7,7 @@ import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
 import Model.ErrorHandling.Exceptions.EntryByTopicException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
+import Model.ErrorHandling.Exceptions.RemoveTopicException;
 
 import java.util.*;
 
@@ -50,7 +51,7 @@ public class Journal {
     ----------------------------
      */
 
-    public int createEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException{
+    public int createEntry(Entry entry) throws IndexOutOfBoundsException, ClassCastException, TopicBankAddException, RemoveTopicException {
         updateTopicBank(entry.getMyTopics());
         int entryID = new JournalDBAPI(myUserID).addToEntryInfo(entry);
         updateEntryTopic(entryID, entry.getMyTopics());
@@ -75,7 +76,7 @@ public class Journal {
 
             new JournalDBAPI(myUserID).save(entryID, entry);
         }
-        catch(NullPointerException e){
+        catch(RemoveTopicException e){
             throw new NoSuchEntryException(entryID);
         }
 
@@ -104,10 +105,10 @@ public class Journal {
         return topicalEntries;
     }
 
-    public void removeTopic(String topicName) throws NoSuchTopicException, EntryByTopicException {
+    public void removeUnusedTopicFromBank(String topicName) throws EntryByTopicException, RemoveTopicException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         if(!journalDBAPI.usesTopic(topicName)){
-            journalDBAPI.removeTopic(topicName);
+            journalDBAPI.removeTopicFromBank(topicName);
         }
     }
 
@@ -122,15 +123,30 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateEntryTopic(int entryID, Set<Topic> topics) throws TopicBankAddException {
+    private void updateEntryTopic(int entryID, Set<Topic> topics) throws TopicBankAddException, RemoveTopicException {
+        JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         Entry existingEntry = myEntryMap.getOrDefault(entryID, null);
-        Map<String, String> entryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
-        System.out.println("entryTopic size " + entryTopics.size());
+        Map<String, String> existingEntryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
+        Set<String> newTopics = new HashSet<>();
         for(Topic topic : topics){
-            if(!entryTopics.containsKey(topic.getMyTopic())){
-                entryTopics.put(topic.getMyTopic(), topic.getMyColor());
-                new JournalDBAPI(myUserID).addToEntryTopic(entryID, myUserID, topic.getMyTopic(), topic.getMyColor());
+            newTopics.add(topic.getMyTopic());
+        }
+        HashMap<String, String> newExisting = new HashMap<>();
+        for(String existingTopic : existingEntryTopics.keySet()) {
+            if (!newTopics.contains(existingTopic)) {
+                journalDBAPI.removeTopicFromEntry(entryID, existingTopic);
+            } else newExisting.put(existingTopic, existingEntryTopics.get(existingTopic));
+        }
+        for(Topic topic : topics){
+            if(!newExisting.containsKey(topic.getMyTopic())){
+                newExisting.put(topic.getMyTopic(), topic.getMyColor());
+                journalDBAPI.addToEntryTopic(entryID, myUserID, topic.getMyTopic(), topic.getMyColor());
             }
+        }
+        existingEntryTopics.clear();
+        for(String newExistingTop : newExisting.keySet()){
+            System.out.println(newExistingTop);
+            existingEntryTopics.put(newExistingTop, newExisting.get(newExistingTop));
         }
     }
 

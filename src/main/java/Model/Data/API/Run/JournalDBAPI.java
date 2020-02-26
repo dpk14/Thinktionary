@@ -65,12 +65,24 @@ JournalDBAPI extends RunDBAPI {
         }
     }
 
-    public void removeTopic(String topicName){
+    public void removeTopicFromBank(String topicName) throws RemoveTopicException {
         Map<Integer, String> map = new HashMap<>();
         map.put(1, Integer.toString(myUserID));
         map.put(2, topicName);
         try {
-            DBUtils.userAction(map, SQLQuery.removeTopic(), myDBUrl, myDBUsername, myDBPassword);
+            DBUtils.userAction(map, SQLQuery.removeTopicFromBank(), myDBUrl, myDBUsername, myDBPassword);
+        } catch (SQLException e) {
+            throw new RemoveTopicException(e);
+        }
+    }
+
+    public void removeTopicFromEntry(int entryID, String topicName) throws RemoveTopicException {
+        Map<Integer, String> map = new HashMap<>();
+        map.put(1, Integer.toString(myUserID));
+        map.put(2, Integer.toString(entryID));
+        map.put(3, topicName);
+        try {
+            DBUtils.userAction(map, SQLQuery.removeTopicFromEntry(), myDBUrl, myDBUsername, myDBPassword);
         } catch (SQLException e) {
             throw new RemoveTopicException(e);
         }

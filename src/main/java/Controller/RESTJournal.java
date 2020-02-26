@@ -1,6 +1,7 @@
 package Controller;
 
 import Controller.Exceptions.NotLoggedInException;
+import Controller.Exceptions.Utils.ExceptionUtils;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
@@ -27,14 +28,13 @@ public class RESTJournal {
     SessionManager mySessionManager;
 
     @GetMapping("/login")
-    public ResponseEntity login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) throws Exception {
         try {
             Journal journal = new LoginAPI().login(username, password);
             mySessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
         } catch (InvalidLoginException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
@@ -45,7 +45,7 @@ public class RESTJournal {
             mySessionManager.removeUser(journal.getUserID());
             return ResponseEntity.ok(journal.getUserID());
         } catch (InvalidLoginException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
@@ -62,7 +62,7 @@ public class RESTJournal {
         }
         catch(AccountExistsException e){
             System.out.print(e.toString());
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
@@ -81,12 +81,12 @@ public class RESTJournal {
             }
             catch(Exception e){
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
         //add entryId when you get it
     }
@@ -100,12 +100,12 @@ public class RESTJournal {
                 return ResponseEntity.ok().build();
             } catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
@@ -118,12 +118,12 @@ public class RESTJournal {
                 return ResponseEntity.ok(entryID);
             } catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
 
     }
@@ -133,16 +133,16 @@ public class RESTJournal {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
             try {
-                journal.removeTopic(topicName);
+                journal.removeUnusedTopicFromBank(topicName);
                 return ResponseEntity.ok(topicName);
             } catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
 
     }
@@ -156,12 +156,12 @@ public class RESTJournal {
                 return ResponseEntity.ok(entries);
             } catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e);
             }
         }
         catch(NotLoggedInException e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e);
         }
 
     }
@@ -175,12 +175,12 @@ public class RESTJournal {
                 Entry entry = journal.getRandomEntry(topics);
                 return ResponseEntity.ok(entry);
             } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
@@ -196,7 +196,7 @@ public class RESTJournal {
             return ResponseEntity.ok(entry);
         }
         catch(Exception e){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + " " + e.getStackTrace().toString());
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
