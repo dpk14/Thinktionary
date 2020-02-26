@@ -62,18 +62,23 @@ public abstract class InitDBAPI extends DBAPI {
         }
     }
 
-    private void createTable(String tableName, Map<String, String> columnMap){
+    private void createTable(String tableName, Map<String, String> columnMap) {
         String action = SQLQueryBuilder.createTable(tableName, columnMap);
-        System.out.println(action);
-        tryCatchUserAction(action);
+        try {
+            DBUtils.userAction(SQLQueryBuilder.createTable(tableName, columnMap), myDBUrl, myDBUsername, myDBPassword);
+        } catch (SQLException e) {
+            tryCatchUserAction(action);
+        }
     }
 
     private void removeTable(String tableName){
-        Map<Integer, String> map = new HashMap<>();
-        map.put(1, tableName);
-        String action = SQLQueryBuilder.removeTable();
-        tryCatchUserAction(action);
-    }
+        try {
+            DBUtils.userAction(SQLQueryBuilder.removeTable(tableName), myDBUrl, myDBUsername, myDBPassword);
+        }
+        catch(SQLException e) {
+        }
+        }
+
 
     private void tryCatchUserAction(String action){
         try {

@@ -9,12 +9,13 @@ public class SQLQueryBuilder {
     private static final String SELECT_ALL = " SELECT * FROM ";
     private static final String INSERT = " INSERT INTO ";
     private static final String MODIFY = "  UPDATE ";
-
     private static final String GET_LAST_INSERT = "SELECT last_insert_rowid();";
-
     private static final String TABLE_EXISTS = "SELECT name FROM sqlite_master WHERE type='table' AND name=?;";
+    private static final String REMOVE_TABLE = "DROP TABLE %s;";
 
     public static final String tableExists() {return TABLE_EXISTS;}
+
+    public static final String removeTable(String tableName) {return String.format(REMOVE_TABLE, tableName);}
 
     public static String getLastInsertID() {
         return GET_LAST_INSERT;
