@@ -1,6 +1,11 @@
 package Model.Data.Utils;
 
+import Model.Data.SQL.QueryObjects.CommandTypes.Action;
+import Model.Data.SQL.QueryObjects.CommandTypes.Command;
+import Model.Data.SQL.QueryObjects.CommandTypes.Query;
+
 import javax.sound.midi.SysexMessage;
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,6 +107,36 @@ public class DBUtils {
         DBUtils.close(rs);
         DBUtils.close(con);
         return ret;
+    }
+
+    public static List<List<Map<String, Object>>> executeCommandList(List<Command> commands, String url,
+                                                                     String user, String password) throws SQLException{
+        List<List<Map<String, Object>>> returnMaps = new ArrayList<>();
+        Connection con = DBUtils.makeConnection(url, user, password);
+        List<ResultSet> rsList = new ArrayList();
+        List<Statement> stList = new ArrayList<>();
+        for(Command command : commands) {
+            Statement st = con.createStatement();
+            if(command instanceof Query){
+                ResultSet rs = st.executeQuery(command.getMyCommand());
+                List<Map<String, Object>> ret = DBUtils.map(rs);
+                returnMaps.add(ret);
+                stList.add(st);
+                rsList.add(rs);
+            }
+            else {
+                st.execute(command.getMyCommand());
+                stList.add(st);
+            }
+        }
+        for(Statement st : stList){
+            DBUtils.close(st);
+        }
+        for(ResultSet rs : rsList){
+            DBUtils.close(rs);
+        }
+        DBUtils.close(con);
+        return returnMaps;
     }
 
     @Deprecated

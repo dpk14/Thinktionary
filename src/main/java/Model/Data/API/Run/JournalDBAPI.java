@@ -2,6 +2,9 @@ package Model.Data.API.Run;
 
 import Model.API.Journal.Entry;
 import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.QueryObjects.CommandTypes.Action;
+import Model.Data.SQL.QueryObjects.CommandTypes.Command;
+import Model.Data.SQL.QueryObjects.CommandTypes.Query;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
@@ -43,15 +46,15 @@ JournalDBAPI extends RunDBAPI {
     //Loading:
 
     public List<Map<String, Object>> loadEntryTable() {
-        return loadTableByParamater(TableNames.getEntryInfo(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
+        return loadTableByParamater(TableNames.getEntryInfo(), ColumnInfo.getUSERID(), myUserID);
     }
 
     public List<Map<String, Object>> loadEntryTopicsTable() {
-        return loadTableByParamater(TableNames.getEntryToTopic(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
+        return loadTableByParamater(TableNames.getEntryToTopic(), ColumnInfo.getUSERID(), myUserID);
     }
 
     public List<Map<String, Object>> loadTopicBankTable() {
-        return loadTableByParamater(TableNames.getUserTopic(), ColumnInfo.getUSERID(), Integer.toString(myUserID));
+        return loadTableByParamater(TableNames.getUserTopic(), ColumnInfo.getUSERID(), myUserID);
     }
 
     //Communicators:
@@ -119,10 +122,19 @@ JournalDBAPI extends RunDBAPI {
         parameters.add(new Parameter(ColumnInfo.getCREATED(), entry.getMyCreated()));
         parameters.add(new Parameter(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
 
-        String query = SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters) + " " + SQLQueryBuilder.getLastInsertID();
         try{
-            List<Map<String, Object>> ret = DBUtils.userQuery(query, myDBUrl, myDBUsername, myDBPassword);
+            Connection con = DBUtils.makeConnection(myDBUrl, myDBUsername, myDBPassword);
+            Statement st1 = con.createStatement();
+            st1.execute(SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters));
+            Statement st2 = con.createStatement();
+            ResultSet rs = st2.executeQuery(SQLQueryBuilder.getLastInsertID());
+            List<Map<String, Object>> ret = DBUtils.map(rs);
+            DBUtils.close(st1);
+            DBUtils.close(st2);
+            DBUtils.close(rs);
+            DBUtils.close(con);
             return JournalDBParser.getEntryID(ret);
+
         }
         catch(Exception e){
             throw new CorruptDBError(e);

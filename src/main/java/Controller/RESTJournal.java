@@ -6,8 +6,11 @@ import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.ErrorHandling.Exceptions.AccountExistsException;
-import Model.ErrorHandling.Exceptions.InvalidLoginException;
+import Model.ErrorHandling.Exceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.RemoveTopicException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,7 +71,6 @@ public class RESTJournal {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
         catch(LoadPropertiesException e){
-            System.out.print(e.toString());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
@@ -142,14 +144,14 @@ public class RESTJournal {
             try {
                 journal.removeUnusedTopicFromBank(topicName);
                 return ResponseEntity.ok(topicName);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (CannotDeleteTopicException e) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            } catch (Exception e){
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
 
     }
@@ -163,12 +165,11 @@ public class RESTJournal {
                 return ResponseEntity.ok(entries);
             } catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             }
         }
         catch(NotLoggedInException e){
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e);
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
 
     }

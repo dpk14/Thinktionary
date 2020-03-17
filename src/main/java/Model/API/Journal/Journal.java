@@ -3,12 +3,10 @@ package Model.API.Journal;
 import Model.Data.API.Run.JournalDBAPI;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
+import Model.ErrorHandling.Exceptions.*;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
-import Model.ErrorHandling.Exceptions.EntryByTopicException;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.RemoveTopicException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 
 import java.util.*;
 
@@ -106,10 +104,13 @@ public class Journal {
         return topicalEntries;
     }
 
-    public void removeUnusedTopicFromBank(String topicName) throws EntryByTopicException, RemoveTopicException, LoadPropertiesException {
+    public void removeUnusedTopicFromBank(String topicName) throws EntryByTopicException, RemoveTopicException, LoadPropertiesException, CannotDeleteTopicException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         if(!journalDBAPI.usesTopic(topicName)){
             journalDBAPI.removeTopicFromBank(topicName);
+        }
+        else{
+            throw new CannotDeleteTopicException(topicName);
         }
     }
 

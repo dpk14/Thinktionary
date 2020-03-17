@@ -1,4 +1,13 @@
-package Model.Data.SQL.QueryObjects;
+package Model.Data.SQL.QueryObjects.CommandTypes;
 
-public class Command {
+public abstract class Command {
+    String myCommand;
+
+    public Command(String command){
+        myCommand = command;
+    }
+
+    public String getMyCommand() {
+        return myCommand;
+    }
 }

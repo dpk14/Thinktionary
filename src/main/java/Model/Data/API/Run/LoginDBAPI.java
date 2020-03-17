@@ -8,8 +8,8 @@ import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.AccountExistsException;
-import Model.ErrorHandling.Exceptions.InvalidLoginException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 
 import java.sql.SQLException;

@@ -41,7 +41,7 @@ public abstract class RunDBAPI extends DBAPI {
         }
     }
 
-    protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, String parameter) {
+    protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, Object parameter) {
         List<Condition > conditions = new ArrayList<>();
         conditions.add(new Equals(parameterType, parameter));
 

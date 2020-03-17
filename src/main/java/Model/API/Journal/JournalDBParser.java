@@ -66,7 +66,6 @@ public class JournalDBParser {
     }
 
     public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
-        System.out.println(ent.get(0));
         String str = ent.get(0).toString().split("=")[1];
         return Integer.parseInt(str.substring(0, str.length()-1));
     }
