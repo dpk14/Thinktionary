@@ -27,6 +27,7 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
+        System.out.println(File.separator + myDBRelFilename);
         if(!DBexists(myDBRelFilename)){
             if(programIsJAR()){
                 throw new EmptyDatabaseError();
@@ -37,8 +38,9 @@ public abstract class InitDBAPI extends DBAPI {
         return myDBRelFilename.toString();
     }
 
-    private boolean DBexists(String dbFilename){
-        InputStream is = InitDBAPI.class.getClassLoader().getResourceAsStream(File.separator + dbFilename);
+    private boolean DBexists(String dbRelFilename){
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream(dbRelFilename);
         return is != null;
     }
 
