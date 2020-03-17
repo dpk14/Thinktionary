@@ -40,7 +40,7 @@ public abstract class InitDBAPI extends DBAPI {
 
     private boolean DBexists(String dbRelFilename){
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("\\" + dbRelFilename);
+        InputStream is = classloader.getResourceAsStream("/" + dbRelFilename);
         return is != null;
     }
 
