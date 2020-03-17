@@ -30,17 +30,16 @@ public class Application {
     }
 
     private static void setProperties(String[] args) throws LoadPropertiesException {
-        if(args.length == 0) {
-            PropertyManager.setDBUsername(DEFAULT_DBUSERNAME);
-            PropertyManager.setDBPassword(DEFAULT_DBPASSWORD);
-            PropertyManager.setDBFilename(DEFAULT_DBFILE);
-        }
-        else {
+        if(args.length > 0){
+            System.out.println("Running in cmd line mode: \n");
             PropertyManager.setDBUsername(args[0]);
             PropertyManager.setDBPassword(args[1]);
             PropertyManager.setDBFilename(args[2]);
+            //PropertyManager.setURL();s
         }
-        PropertyManager.setURL();
+        else{
+            System.out.println("Running in JAR mode: \n");
+        }
     }
 
 }

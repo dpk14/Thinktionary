@@ -19,19 +19,27 @@ public class PathManager {
     }
 
     public static String getDBRelPath(String name){
-        return DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
+        String path = DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
+        System.out.println("db Relative Path: " + path);
+        return path;
     }
 
     public static String getDBAbsPath(String name){
-        return getResourcePath() + DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
+        String path = getResourcePath() + DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
+        System.out.println("db Abs Path: " + path);
+        return path;
     }
 
     public static String getDBAbsPathFromRel(String relPath){
-        return getResourcePath() + "\\" + relPath;
+        String path =  getResourcePath() + "\\" + relPath;
+        System.out.println("db Abs Path: " + path);
+        return path;
     }
 
     public static String getDBUrl(String path){
-        return DBUrls.getURL(DBNames.getSQLITE(), path);
+        String path2 = DBUrls.getURL(DBNames.getSQLITE(), path);
+        System.out.println("db url: " + path2);
+        return path2;
     }
 
     //Default getters

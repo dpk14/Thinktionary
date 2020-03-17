@@ -27,6 +27,7 @@ public class PropertyManager {
         setProperty(PropertyKeys.getAbsFilenameProp(), absPath);
     }
 
+    @Deprecated
     public static void setURL() throws LoadPropertiesException {
         String absPath = getAbsFilename();
         setProperty(PropertyKeys.getURLProp(), PathManager.getDBUrl(absPath));
@@ -44,7 +45,8 @@ public class PropertyManager {
         return prop.getProperty(PropertyKeys.getPwdProp());
     }
 
-    public static String getAbsFilename() throws LoadPropertiesException {
+    @Deprecated
+    public static String getAbsFilenameFromProps() throws LoadPropertiesException {
         Properties prop = loadProperties();
         return prop.getProperty(PropertyKeys.getAbsFilenameProp());
     }
@@ -54,7 +56,16 @@ public class PropertyManager {
         return prop.getProperty(PropertyKeys.getRelFilenameProp());
     }
 
+    public static String getAbsFilename() throws LoadPropertiesException {
+        return PathManager.getDBAbsPathFromRel(getRelFilename());
+    }
+
     public static String getDBUrl() throws LoadPropertiesException {
+        return PathManager.getDBUrl(getAbsFilename());
+    }
+
+    @Deprecated
+    public static String getDBUrlFromProps() throws LoadPropertiesException {
         Properties prop = loadProperties();
         return prop.getProperty(PropertyKeys.getURLProp());
     }
@@ -75,7 +86,7 @@ public class PropertyManager {
 
     public static void setProperty(String key, String value) {
         String path = PropertyManager.class.getResource(PropertyKeys.getDbPropertiesName()).getPath();
-        System.out.println(path);
+        System.out.println("properties path: " + path);
         try {
             File dp_properties = new File(path);
             OutputStream output = new FileOutputStream(dp_properties, true);
