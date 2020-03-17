@@ -27,7 +27,7 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
-        System.out.println(File.separator + myDBRelFilename);
+        System.out.println(myDBRelFilename);
         if(!DBexists(myDBRelFilename)){
             if(programIsJAR()){
                 throw new EmptyDatabaseError();
