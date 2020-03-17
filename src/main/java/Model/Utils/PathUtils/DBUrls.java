@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DBUrls {
-    private static final String SQLITE = "jdbc:sqlite:";
+    private static final String SQLITE = "jdbc:sqlite::resource:";
 
     private static String getConnectKey(String dbName){
         Map<String, String> nameToConnectKey = new HashMap<>();

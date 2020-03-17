@@ -23,14 +23,9 @@ public class PropertyManager {
     public static void setDBFilename(String value) {
         String relPath = PathManager.getDBRelPath(value);
         String absPath = PathManager.getDBAbsPath(value);
-        setProperty(PropertyKeys.getRelFilenameProp(), relPath);
-        setProperty(PropertyKeys.getAbsFilenameProp(), absPath);
-    }
-
-    @Deprecated
-    public static void setURL() throws LoadPropertiesException {
-        String absPath = getAbsFilename();
-        setProperty(PropertyKeys.getURLProp(), PathManager.getDBUrl(absPath));
+        setProperty(PropertyKeys.getFilenameProp(), value);
+        setProperty(PropertyKeys.getRelFilepathProp(), relPath);
+        setProperty(PropertyKeys.getAbsFilepathProp(), absPath);
     }
 
     //Getters
@@ -45,23 +40,20 @@ public class PropertyManager {
         return prop.getProperty(PropertyKeys.getPwdProp());
     }
 
-    @Deprecated
-    public static String getAbsFilenameFromProps() throws LoadPropertiesException {
-        Properties prop = loadProperties();
-        return prop.getProperty(PropertyKeys.getAbsFilenameProp());
-    }
 
     public static String getRelFilename() throws LoadPropertiesException {
         Properties prop = loadProperties();
-        return prop.getProperty(PropertyKeys.getRelFilenameProp());
+        return prop.getProperty(PropertyKeys.getRelFilepathProp());
     }
 
-    public static String getAbsFilename() throws LoadPropertiesException {
-        return PathManager.getDBAbsPathFromRel(getRelFilename());
+    public static String getAbsPathname(){
+        return PathManager.
     }
 
     public static String getDBUrl() throws LoadPropertiesException {
-        return PathManager.getDBUrl(getAbsFilename());
+        Properties prop = loadProperties();
+        String fileName = prop.getProperty(PropertyKeys.getFilenameProp());
+        return PathManager.getDBUrl(fileName);
     }
 
     @Deprecated

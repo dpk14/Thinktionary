@@ -30,17 +30,18 @@ public class PathManager {
         return path;
     }
 
+    public static String getDBUrl(String dbName){
+        String path2 = DBUrls.getURL(DBNames.getSQLITE(), dbName);
+        System.out.println("db url: " + path2);
+        return path2;
+    }
+
     public static String getDBAbsPathFromRel(String relPath){
         String path =  getResourcePath() + "\\" + relPath;
         System.out.println("db Abs Path: " + path);
         return path;
     }
 
-    public static String getDBUrl(String path){
-        String path2 = DBUrls.getURL(DBNames.getSQLITE(), path);
-        System.out.println("db url: " + path2);
-        return path2;
-    }
 
     //Default getters
 
