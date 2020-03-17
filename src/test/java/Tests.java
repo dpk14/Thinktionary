@@ -3,9 +3,9 @@ import Model.API.Login.LoginAPI;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.Data.API.Run.LoginDBAPI;
-import Model.Utils.PathUtils.PathManager;
-import Model.Utils.PathUtils.DBNames;
-import Model.Utils.PathUtils.DBUrls;
+import Model.ConfigUtils.PathUtils.PathManager;
+import Model.ConfigUtils.PathUtils.DBNames;
+import Model.ConfigUtils.PathUtils.DBUrls;
 import org.junit.jupiter.api.Test;
 
 public class Tests {

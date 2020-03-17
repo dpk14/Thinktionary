@@ -6,7 +6,7 @@ import Model.Data.API.Initialization.LoginDBInit;
 import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
-import Model.Utils.PropertyUtils.PropertyManager;
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -36,7 +36,7 @@ public class Application {
             PropertyManager.setDBUsername(args[0]);
             PropertyManager.setDBPassword(args[1]);
             PropertyManager.setDBFilename(args[2]);
-            PropertyManager.setJarMode(true);
+            PropertyManager.setJarMode(false);
             //PropertyManager.setURL();
         }
         else{

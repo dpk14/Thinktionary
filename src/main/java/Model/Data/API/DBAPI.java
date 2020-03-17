@@ -1,8 +1,8 @@
 package Model.Data.API;
 
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.Utils.PathUtils.PathManager;
-import Model.Utils.PropertyUtils.PropertyManager;
+import Model.ConfigUtils.PathUtils.PathManager;
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
 
 public abstract class DBAPI {
 

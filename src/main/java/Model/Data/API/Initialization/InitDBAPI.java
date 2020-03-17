@@ -9,7 +9,7 @@ import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
 import Model.ErrorHandling.Exceptions.TableExceptions.RemoveTableException;
-import Model.Utils.PropertyUtils.PropertyManager;
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
 
 import java.io.File;
 import java.io.IOException;

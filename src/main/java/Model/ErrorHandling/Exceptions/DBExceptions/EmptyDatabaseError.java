@@ -3,7 +3,7 @@ package Model.ErrorHandling.Exceptions.DBExceptions;
 import java.sql.SQLException;
 
 public class EmptyDatabaseError extends Throwable {
-    final String MESSAGE = "Entries could not be properly sorted by topic";
+    final String MESSAGE = "Database does not exist";
 
     @Override
     public String toString() {
