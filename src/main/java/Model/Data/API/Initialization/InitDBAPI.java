@@ -27,14 +27,14 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
-        if(!DBexists(myDBAbsFilename)){
+        if(!DBexists(myDBRelFilename)){
             if(programIsJAR()){
                 throw new EmptyDatabaseError();
             }
             createDatabase(myDBAbsFilename);
         }
         createTablesIfNull();
-        return myDBAbsFilename.toString();
+        return myDBRelFilename.toString();
     }
 
     private boolean DBexists(String dbFilename){
@@ -86,8 +86,7 @@ public abstract class InitDBAPI extends DBAPI {
         catch(SQLException e) {
             throw new RemoveTableException(e);
         }
-        }
-
+    }
 
     protected boolean tableExists(String tableName){
         Map<Integer, String> map = new HashMap<>();

@@ -2,35 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileContent/fileContent.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/DBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/DBAPI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/DBNames.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/DBUrls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PathUtils/PathManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PropertyUtils/PropertyKeys.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Utils/PropertyUtils/PropertyManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/Databases/SQLite/test1.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/Databases/SQLite/test1.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/PathManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/EmptyDatabaseError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/EmptyDatabaseError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/DBNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/DBUrls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/PathManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PropertyUtils/PropertyKeys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PropertyUtils/PropertyManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +257,7 @@
       <workItem from="1584323016451" duration="589000" />
       <workItem from="1584400599003" duration="7818000" />
       <workItem from="1584456673596" duration="468000" />
-      <workItem from="1584457754439" duration="9634000" />
+      <workItem from="1584457754439" duration="11647000" />
     </task>
     <servers />
   </component>

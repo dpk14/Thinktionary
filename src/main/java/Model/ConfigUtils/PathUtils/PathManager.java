@@ -19,13 +19,13 @@ public class PathManager {
     }
 
     public static String getDBRelPath(String name){
-        String path = DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
+        String path = DATABASES_ROOT + File.separator + DBNames.getSQLITE() + File.separator + name;
         //System.out.println("db Relative Path: " + path);
         return path;
     }
 
     public static String getDBAbsPath(String name){
-        String path = getResourcePath() + DATABASES_ROOT + "\\" + DBNames.getSQLITE() + "\\" + name;
+        String path = getResourcePath() + DATABASES_ROOT + File.separator + DBNames.getSQLITE() + File.separator + name;
         //System.out.println("db Abs Path: " + path);
         return path;
     }
@@ -37,9 +37,14 @@ public class PathManager {
     }
 
     public static String getDBAbsPathFromRel(String relPath){
-        String path =  getResourcePath() + "\\" + relPath;
+        try {
+            return getResourcePath() + File.separator + relPath;
+        }
+        catch(IllegalArgumentException e){
+            System.out.println("WARNING: absolute path not valid in JAR file");
+            return null;
+        }
         //System.out.println("db Abs Path: " + path);
-        return path;
     }
 
 
@@ -67,7 +72,7 @@ public class PathManager {
         return file.getAbsolutePath();
     }
 
-    private static String getResourcePath() {
+    private static String getResourcePath() throws IllegalArgumentException{
         URL url = PathManager.class.getClassLoader().getResource("EMPTY.txt");
         try {
             return new File(url.toURI()).getAbsolutePath().split("EMPTY.txt")[0];
