@@ -38,7 +38,7 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     private boolean DBexists(String dbFilename){
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream(dbFilename);
+        InputStream is = InitDBAPI.class.getClassLoader().getResourceAsStream(File.separator + dbFilename);
         return is != null;
     }
 
