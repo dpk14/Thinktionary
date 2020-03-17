@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="Thinktionary.main" target="1.8" />
       <module name="Thinktionary.test" target="1.8" />
+      <module name="ThinktionaryModel.main" target="1.8" />
+      <module name="ThinktionaryModel.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

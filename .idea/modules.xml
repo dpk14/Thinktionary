@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Thinktionary.iml" filepath="$PROJECT_DIR$/Thinktionary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Thinktionary.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Thinktionary.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Thinktionary.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Thinktionary.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThinktionaryModel.iml" filepath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThinktionaryModel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThinktionaryModel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.test.iml" />
     </modules>
   </component>
 </project>
