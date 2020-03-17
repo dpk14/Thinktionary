@@ -28,7 +28,16 @@ public class PropertyManager {
         setProperty(PropertyKeys.getAbsFilepathProp(), absPath);
     }
 
+    public static void setJarMode(boolean b) {
+        setProperty(PropertyKeys.getJarModeProp(), Boolean.toString(b));
+    }
+
     //Getters
+
+    public static boolean getJarMode() throws LoadPropertiesException {
+        Properties prop = loadProperties();
+        return Boolean.parseBoolean(prop.getProperty(PropertyKeys.getJarModeProp()));
+    }
 
     public static String getDBUsername() throws LoadPropertiesException {
         Properties prop = loadProperties();
@@ -41,13 +50,13 @@ public class PropertyManager {
     }
 
 
-    public static String getRelFilename() throws LoadPropertiesException {
+    public static String getRelFilepath() throws LoadPropertiesException {
         Properties prop = loadProperties();
         return prop.getProperty(PropertyKeys.getRelFilepathProp());
     }
 
-    public static String getAbsPathname(){
-        return PathManager.
+    public static String getAbsFilepath() throws LoadPropertiesException {
+        return PathManager.getDBAbsPathFromRel(getRelFilepath());
     }
 
     public static String getDBUrl() throws LoadPropertiesException {

@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/DBExceptions/EmptyDatabaseError.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/DBUrls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PathUtils/PathManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyKeys.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Utils/PropertyUtils/PropertyManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
@@ -95,6 +97,13 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.notifications" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
+      <recent name="C:\Users\dpk14\Thinktionary\src" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="src.main.java.BackEnd.API.Journal" />
       <recent name="src.main.java.BackEnd.API.Login" />
@@ -102,22 +111,15 @@
       <recent name="src.main.javaa" />
       <recent name="src.main.java" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="Model.API.Journal" />
       <recent name="Model.Data.API.Initialization" />
+      <recent name="Model.API.Journal" />
       <recent name="Model.Data.API.Run" />
       <recent name="Controller" />
       <recent name="Model.Data.API" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
-      <recent name="C:\Users\dpk14\Thinktionary\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
@@ -252,7 +254,7 @@
       <workItem from="1584323016451" duration="589000" />
       <workItem from="1584400599003" duration="7818000" />
       <workItem from="1584456673596" duration="468000" />
-      <workItem from="1584457754439" duration="6681000" />
+      <workItem from="1584457754439" duration="8996000" />
     </task>
     <servers />
   </component>
@@ -345,7 +347,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Controller/Application.java</url>
-          <line>35</line>
+          <line>36</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

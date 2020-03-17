@@ -3,6 +3,7 @@ package Controller;
 import Controller.Exceptions.ArgumentFormatError;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
+import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
 import Model.Utils.PropertyUtils.PropertyManager;
@@ -16,7 +17,7 @@ public class Application {
     private static String DEFAULT_DBPASSWORD = "1qazxsw23edcvfr4";
     private static String DEFAULT_DBFILE = "main.db";
 
-    public static void main(String[] args) throws LoadPropertiesException, CreateTableException {
+    public static void main(String[] args) throws LoadPropertiesException, CreateTableException, EmptyDatabaseError {
         try{
             setProperties(args);
         }
@@ -35,7 +36,8 @@ public class Application {
             PropertyManager.setDBUsername(args[0]);
             PropertyManager.setDBPassword(args[1]);
             PropertyManager.setDBFilename(args[2]);
-            //PropertyManager.setURL();s
+            PropertyManager.setJarMode(true);
+            //PropertyManager.setURL();
         }
         else{
             System.out.println("Running in JAR mode: \n");

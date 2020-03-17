@@ -20,10 +20,10 @@ public abstract class DBAPI {
             String dbPassword = PropertyManager.getDBPwd();
             myDBPassword = dbPassword == null ? DB_PASSWORD_DEFAULT : dbPassword;
 
-            String dbRelFilename = PropertyManager.getRelFilename();
+            String dbRelFilename = PropertyManager.getRelFilepath();
             myDBRelFilename = dbRelFilename == null ? PathManager.getDBRelPath(PathManager.getDefaultTestName()) : dbRelFilename;
 
-            String dbAbsFilename = PropertyManager.getAbsFilename();
+            String dbAbsFilename = PropertyManager.getAbsFilepath();
             myDBAbsFilename = dbAbsFilename == null ? PathManager.getDBAbsPathFromRel(dbRelFilename) : dbAbsFilename;
 
             myDBUrl = PropertyManager.getDBUrl();

@@ -5,12 +5,15 @@ import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
+import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
 import Model.ErrorHandling.Exceptions.TableExceptions.RemoveTableException;
+import Model.Utils.PropertyUtils.PropertyManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,17 +26,20 @@ public abstract class InitDBAPI extends DBAPI {
         super();
     }
 
-    public String initialize() throws CreateTableException {
+    public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
         if(!DBexists(myDBAbsFilename)){
+            if(programIsJAR()){
+                throw new EmptyDatabaseError();
+            }
             createDatabase(myDBAbsFilename);
         }
         createTablesIfNull();
         return myDBAbsFilename.toString();
     }
 
-    private boolean DBexists(String dBFilename){
-        File file = new File(dBFilename);
-        return file.exists();
+    private boolean DBexists(String dbFilename){
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream(dbFilename);
+        return is != null;
     }
 
     private void createDatabase(String url){
@@ -95,5 +101,8 @@ public abstract class InitDBAPI extends DBAPI {
         }
     }
 
+    protected boolean programIsJAR() throws LoadPropertiesException {
+        return PropertyManager.getJarMode();
+    };
 }
 
