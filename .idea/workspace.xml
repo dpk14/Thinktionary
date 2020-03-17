@@ -2,44 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/CannotDeleteTopicException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal$EntryComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal$EntryComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/JournalDBParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/JournalDBParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQueryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQueryBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/Utils/DBUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/Utils/DBUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/AccountExistsException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ErrorHandling/Exceptions/InvalidLoginException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/CommandTypes/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/CommandTypes/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/CommandTypes/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/CommandTypes/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/CommandTypes/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/CommandTypes/Query.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/AccountExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/AccountExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/InvalidLoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/InvalidLoginException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +245,7 @@
       <workItem from="1582528830651" duration="63263000" />
       <workItem from="1582928433815" duration="3090000" />
       <workItem from="1584323016451" duration="589000" />
-      <workItem from="1584400599003" duration="6036000" />
+      <workItem from="1584400599003" duration="6961000" />
     </task>
     <servers />
   </component>
