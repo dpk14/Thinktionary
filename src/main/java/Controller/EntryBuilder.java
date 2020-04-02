@@ -16,10 +16,12 @@ public class EntryBuilder {
         myEntry = new Entry(myTitle, myText, myTopics);
     }
 
+    /*
     @JsonCreator
     public EntryBuilder(@JsonProperty("myCreated") LocalDateTime myCreated, @JsonProperty("myTitle") String myTitle, @JsonProperty("myText") String myText, @JsonProperty("myTopics") Set<Topic> myTopics){ //protected so only journals can instance entries
         myEntry = new Entry(myTitle, myText, myCreated, myTopics);
     }
+     */
 
     public Entry getMyEntry() {
         return myEntry;
