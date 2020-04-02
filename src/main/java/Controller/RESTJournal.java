@@ -49,7 +49,7 @@ public class RESTJournal {
             mySessionManager.removeUser(journal.getUserID());
             return ResponseEntity.ok(journal.getUserID());
         } catch (LoadPropertiesException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
         }
         catch (InvalidLoginException e){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -71,7 +71,7 @@ public class RESTJournal {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
         catch(LoadPropertiesException e){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
 
@@ -109,7 +109,7 @@ public class RESTJournal {
                 return ResponseEntity.ok().build();
             } catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
