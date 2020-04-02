@@ -23,7 +23,7 @@ public class Entry {
     Modifications to Entries must be done through Journal.
      */
 
-    private Entry(){
+    public Entry(){
 
     }
 

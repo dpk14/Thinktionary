@@ -4,6 +4,7 @@ import Controller.Exceptions.NotLoggedInException;
 import Controller.Exceptions.Utils.ExceptionUtils;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
+import Model.API.Journal.EntryWithID;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.ErrorHandling.Exceptions.EntryByTopicException;
@@ -82,11 +83,12 @@ public class RESTJournal {
             Journal journal = mySessionManager.getSessionInfo(userID);
             try {
                 int entryID = journal.createEntry(entry);
+                EntryWithID entryWithID = new EntryWithID(entry, entryID);
                 URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                         .path("/{entryID}")
                         .buildAndExpand(entryID)
                         .toUri();
-                return ResponseEntity.created(uri).body(entry);
+                return ResponseEntity.created(uri).body(entryWithID);
             }
             catch(Exception e){
                 e.printStackTrace();
