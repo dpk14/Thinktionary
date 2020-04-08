@@ -8,6 +8,7 @@ import Model.API.Journal.EntryWithID;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.ErrorHandling.Exceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 import Model.ErrorHandling.Exceptions.RemoveTopicException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
@@ -109,7 +110,11 @@ public class RESTJournal {
             try {
                 journal.saveEntry(entryID, entry);
                 return ResponseEntity.ok().build();
-            } catch (Exception e) {
+            }
+            catch (NoSuchEntryException e){
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+            }
+            catch (Exception e) {
                 e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
             }
