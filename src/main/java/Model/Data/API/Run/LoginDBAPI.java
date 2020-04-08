@@ -21,7 +21,7 @@ public class LoginDBAPI extends RunDBAPI {
 
     public LoginDBAPI() throws LoadPropertiesException {super();}
 
-    public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
+    public static List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
         conditions.add(new Equals(ColumnInfo.getPASSWORD(), passWord));
@@ -37,7 +37,7 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
-    public List<Map<String, Object>> createUser(String userName, String passWord) throws AccountExistsException {
+    public static List<Map<String, Object>> createUser(String userName, String passWord) throws AccountExistsException {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
         conditions.add(new Equals(ColumnInfo.getPASSWORD(), passWord));
@@ -61,7 +61,7 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
-    public List<Map<String, Object>> loadUserInfoTable() {
+    public static List<Map<String, Object>> loadUserInfoTable() {
         List<Map<String, Object>> table = loadTable(TableNames.getUserInfo());
         try {
             return table;

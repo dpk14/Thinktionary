@@ -15,6 +15,8 @@ public class Journal {
     Map<Integer, Entry> myEntryMap;
     Map<String, Topic> myTopics;
     int myUserID;
+    String myUsername;
+    String myPassword;
     /*
     Sorter and manager of Entries; has full access privileges on Entries
      */
@@ -25,14 +27,16 @@ public class Journal {
 
     }
 
-    public Journal(List<Entry> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID){
+    public Journal(List<Entry> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID, String username, String password){
         myEntries = entries;
         myEntryMap = entryMap;
         myTopics = topics;
         myUserID = userID;
+        myUsername = username;
+        myPassword = password;
     }
 
-    public Journal(int userID) throws LoadPropertiesException {
+    public Journal(int userID, String username, String password) throws LoadPropertiesException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry'
@@ -41,7 +45,8 @@ public class Journal {
         myTopics = JournalDBParser.parseTopics(topicTable);
         myEntries = JournalDBParser.parseEntries(myEntryMap);
         myUserID = userID;
-
+        myUsername = username;
+        myPassword = password;
     }
 
     /*
@@ -214,6 +219,14 @@ public class Journal {
 
     public int getMyUserID() {
         return myUserID;
+    }
+
+    public String getMyUsername(){
+        return myUsername;
+    }
+
+    public String getMyPassword(){
+        return myPassword;
     }
 
 }

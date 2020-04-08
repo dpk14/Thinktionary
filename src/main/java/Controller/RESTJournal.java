@@ -36,7 +36,7 @@ public class RESTJournal {
     @GetMapping("/login")
     public ResponseEntity login(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) throws Exception {
         try {
-            Journal journal = new LoginAPI().login(username, password);
+            Journal journal = LoginAPI.login(username, password);
             mySessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
         } catch (InvalidLoginException e) {
@@ -47,7 +47,7 @@ public class RESTJournal {
     @GetMapping("/logout")
     public ResponseEntity logout(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
-            Journal journal = new LoginAPI().login(username, password);
+            Journal journal = LoginAPI.login(username, password);
             mySessionManager.removeUser(journal.getUserID());
             return ResponseEntity.ok(journal.getUserID());
         } catch (LoadPropertiesException e) {
@@ -61,7 +61,7 @@ public class RESTJournal {
     @PutMapping(value="/")
     public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
-            int userId = new LoginAPI().makeAccount(username, password);
+            int userId = LoginAPI.makeAccount(username, password);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{userID}")
                     .buildAndExpand(userId)
