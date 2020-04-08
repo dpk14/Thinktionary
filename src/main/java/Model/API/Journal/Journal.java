@@ -62,23 +62,22 @@ public class Journal {
     public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException, NoSuchEntryException, LoadPropertiesException {
         Set<Topic> newTopics = entry.getMyTopics();
         updateTopicBank(newTopics);
-        entry.updateModification();
-        try {
             Entry existingEntry = myEntryMap.get(entryID);
-            updateEntryTopic(entryID, newTopics);
-            String oldCreation = existingEntry.getMyCreated();
-            myEntryMap.put(entryID, entry);
+            if(existingEntry == null) throw new NoSuchEntryException(entryID);
+            entry.setMyCreated(existingEntry.getMyCreatedDate());
+            entry.updateModification();
+            try {
+                updateEntryTopic(entryID, newTopics);
+                String oldCreation = existingEntry.getMyCreated();
+                myEntryMap.put(entryID, entry);
+                if (!entry.getMyCreated().equals(oldCreation)) { // if creation date has been modified, adjust order
+                    reorder(entry);
+                }
 
-            if(!entry.getMyCreated().equals(oldCreation)){ // if creation date has been modified, adjust order
-                reorder(entry);
+                new JournalDBAPI(myUserID).save(entryID, entry);
+            } catch (RemoveTopicException e) {
+                throw new NoSuchEntryException(entryID);
             }
-
-            new JournalDBAPI(myUserID).save(entryID, entry);
-        }
-        catch(RemoveTopicException e){
-            throw new NoSuchEntryException(entryID);
-        }
-
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException, LoadPropertiesException {
