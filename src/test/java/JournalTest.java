@@ -4,6 +4,7 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
 import Model.API.Journal.JournalDBParser;
 import Model.Data.API.Run.JournalDBAPI;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class JournalTest {
 
-    protected static void test(Journal journal, int userID){
+    protected static void test(Journal journal, int userID) throws LoadPropertiesException {
         CreateEntryTest(journal, userID);
         /*TODO:
         journalAPI.getRandomEntry();
@@ -28,7 +29,7 @@ public class JournalTest {
     }
 
     @Test
-    private static void CreateEntryTest(Journal journalAPI, int userID){
+    private static void CreateEntryTest(Journal journalAPI, int userID) throws LoadPropertiesException {
         Set<Topic> set = new HashSet();
         set.add(new Topic("Confidence", "Blue"));
         set.add(new Topic("Motivation", "Green"));

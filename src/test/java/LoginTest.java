@@ -2,6 +2,7 @@ import Model.API.Login.LoginAPI;
 import Model.API.Login.LoginDBParser;
 import Model.API.Login.User;
 import Model.Data.API.Run.LoginDBAPI;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
 import org.junit.jupiter.api.*;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LoginTest {
 
-    protected static void test(LoginAPI loginAPI){
+    protected static void test(LoginAPI loginAPI) throws LoadPropertiesException {
         String username = "dpk14";
         String password = "10gg40w716";
         CreateAccountTest(username, password, loginAPI);
@@ -23,7 +24,7 @@ public class LoginTest {
 
     }
 
-    protected static void test(LoginDBAPI loginDBAPI) {
+    protected static void test(LoginDBAPI loginDBAPI) throws LoadPropertiesException {
         String username = "dpk14";
         String password = "10gg40w716";
         CreateAccountTest(username, password);
@@ -34,7 +35,7 @@ public class LoginTest {
     //API Tests
 
     @Test
-    private static void CreateAccountTest(String username, String password, LoginAPI loginAPI){
+    private static void CreateAccountTest(String username, String password, LoginAPI loginAPI) throws LoadPropertiesException {
         try {
             loginAPI.makeAccount(username, password);
         }
@@ -63,7 +64,7 @@ public class LoginTest {
     //DB API Tests
 
     @Test
-    private static void CreateAccountTest(String username, String password){
+    private static void CreateAccountTest(String username, String password) throws LoadPropertiesException {
         try {
             new LoginDBAPI().createUser(username, password);
         }
