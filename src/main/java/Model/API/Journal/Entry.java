@@ -73,10 +73,6 @@ public class Entry {
         myModified = LocalDateTime.now();
     }
 
-    protected Set<Topic> getMyTopics(){
-        return myTopics;
-    }
-
     protected LocalDateTime getMyCreatedDate(){ return myCreated; }
 
     /*
@@ -110,6 +106,10 @@ public class Entry {
     public String getMyCreated(){ return Date.LocalDateTimetoString(myCreated);}
 
     public String getMyModfied() {return Date.LocalDateTimetoString(myModified);}
+
+    public Set<Topic> getMyTopics(){
+        return myTopics;
+    }
 
     public Map<String, String> myTopicsAsMap(){
         Map<String, String> topicToColor = new HashMap<>();
