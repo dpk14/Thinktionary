@@ -59,7 +59,7 @@ public class Journal {
         return entryID;
     }
 
-    public void saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException, NoSuchEntryException, LoadPropertiesException {
+    public Entry saveEntry(int entryID, Entry entry) throws TopicBankAddException, ModifyEntryException, NoSuchEntryException, LoadPropertiesException {
         Set<Topic> newTopics = entry.getMyTopics();
         updateTopicBank(newTopics);
             Entry existingEntry = myEntryMap.get(entryID);
@@ -78,6 +78,7 @@ public class Journal {
             } catch (RemoveTopicException e) {
                 throw new NoSuchEntryException(entryID);
             }
+        return entry;
     }
 
     public void removeEntry(int entryID) throws NoSuchEntryException, LoadPropertiesException {

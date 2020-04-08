@@ -108,8 +108,9 @@ public class RESTJournal {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
             try {
-                journal.saveEntry(entryID, entry);
-                return ResponseEntity.ok().build();
+                Entry savedEntry = journal.saveEntry(entryID, entry);
+                EntryWithID savedEntryWithID = new EntryWithID(savedEntry, entryID);
+                return ResponseEntity.ok().body(savedEntryWithID);
             }
             catch (NoSuchEntryException e){
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
