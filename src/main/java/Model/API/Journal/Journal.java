@@ -11,7 +11,7 @@ import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicExcep
 import java.util.*;
 
 public class Journal {
-    List<Entry> myEntries;
+    List<EntryWithID> myEntries;
     Map<Integer, Entry> myEntryMap;
     Map<String, Topic> myTopics;
     int myUserID;
@@ -27,7 +27,7 @@ public class Journal {
 
     }
 
-    public Journal(List<Entry> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID, String username, String password){
+    public Journal(List<EntryWithID> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID, String username, String password){
         myEntries = entries;
         myEntryMap = entryMap;
         myTopics = topics;
@@ -60,7 +60,7 @@ public class Journal {
         int entryID = new JournalDBAPI(myUserID).addToEntryInfo(entry);
         updateEntryTopic(entryID, entry.getMyTopics());
         myEntryMap.put(entryID, entry);
-        myEntries.add(entry);
+        myEntries.add(new EntryWithID(entry, entryID));
         return entryID;
     }
 
@@ -76,7 +76,7 @@ public class Journal {
                 String oldCreation = existingEntry.getMyCreated();
                 myEntryMap.put(entryID, entry);
                 if (!entry.getMyCreated().equals(oldCreation)) { // if creation date has been modified, adjust order
-                    reorder(entry);
+                    //reorder(entry);
                 }
 
                 new JournalDBAPI(myUserID).save(entryID, entry);
@@ -170,6 +170,7 @@ public class Journal {
         new JournalDBAPI(myUserID).addToTopicBank(topicToColor); //updates Data topics
     }
 
+    /*
     private void reorder(Entry e){
         myEntries.remove(e);
         for(int i = 0; i<myEntries.size(); i++){
@@ -180,6 +181,7 @@ public class Journal {
         }
         myEntries.add(e);
     }
+    */
 
     private boolean firstSubsetOfSecond(Set<Topic> first, Set<Topic> second){
         for(Topic topic : first){
@@ -205,7 +207,7 @@ public class Journal {
 
     //Getters:
 
-    public List<Entry> getMyEntries() {
+    public List<EntryWithID> getMyEntries() {
         return myEntries;
     }
 

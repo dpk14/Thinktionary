@@ -37,10 +37,10 @@ public class JournalDBParser {
         }
     }
 
-    public static List<Entry> parseEntries(Map<Integer, Entry> entryMap) {
-        List<Entry> ret = new ArrayList<>();
+    public static List<EntryWithID> parseEntries(Map<Integer, Entry> entryMap) {
+        List<EntryWithID> ret = new ArrayList<>();
         for (int id : entryMap.keySet()) {
-            ret.add(entryMap.get(id));
+            ret.add(new EntryWithID(entryMap.get(id), id));
         }
         Collections.sort(ret, new Entry.EntryComparator());
         return ret;
