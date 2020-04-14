@@ -73,12 +73,13 @@ public class Journal {
             entry.updateModification();
             try {
                 updateEntryTopic(entryID, newTopics);
-                String oldCreation = existingEntry.getMyCreated();
+                //String oldCreation = existingEntry.getMyCreated();
                 myEntryMap.put(entryID, entry);
+                /*
                 if (!entry.getMyCreated().equals(oldCreation)) { // if creation date has been modified, adjust order
                     //reorder(entry);
                 }
-
+                */
                 new JournalDBAPI(myUserID).save(entryID, entry);
             } catch (RemoveTopicException e) {
                 throw new NoSuchEntryException(entryID);
