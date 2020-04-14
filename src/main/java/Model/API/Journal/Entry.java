@@ -105,6 +105,10 @@ public class Entry {
         myCreated = date;
     }
 
+    protected void setMyModified(LocalDateTime date) {
+        myModified = date;
+    }
+
     //Getters:
 
     public String getmyTitle() { return String.valueOf(myTitle); }
