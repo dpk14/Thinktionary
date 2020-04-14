@@ -28,18 +28,25 @@ public class Entry {
     }
 
     public Entry(String myTitle, String myText, Set<Topic> myTopics){ //protected so only journals can instance entries
-        myCreated = LocalDateTime.now();
+        this.myCreated = LocalDateTime.now();
+        this.myModified = this.myCreated;
         initialize(myTopics, myTitle, myText);
     }
 
     public Entry(String myTitle, String myText, LocalDateTime myCreated, Set<Topic> myTopics){ //protected so only journals can instance entries
         this.myCreated = myCreated;
+        this.myModified = myCreated;
+        initialize(myTopics, myTitle, myText);
+    }
+
+    public Entry(String myTitle, String myText, LocalDateTime myCreated, LocalDateTime myModified, Set<Topic> myTopics){ //protected so only journals can instance entries
+        this.myCreated = myCreated;
+        this.myModified = myModified;
         initialize(myTopics, myTitle, myText);
     }
 
     private void initialize(Set<Topic> topics, String title, String text){
         myTopics = topics;
-        myModified = myCreated;
         myText = text;
         myTitle = title;
     }
@@ -75,6 +82,7 @@ public class Entry {
 
     protected LocalDateTime getMyCreatedDate(){ return myCreated; }
 
+    protected LocalDateTime getMyModifiedDate() {return myModified; }
     /*
     ----------------------------
     Protected Setters (Used by internal src.main.java.Model methods):

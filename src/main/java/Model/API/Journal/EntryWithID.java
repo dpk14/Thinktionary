@@ -24,7 +24,7 @@ public class EntryWithID extends Entry{
     }
 
     public EntryWithID(Entry entry, int id){
-        super(entry.getmyTitle(), entry.getmyText(), entry.getMyCreatedDate(), entry.getMyTopics());
+        super(entry.getmyTitle(), entry.getmyText(), entry.getMyCreatedDate(), entry.getMyModifiedDate(), entry.getMyTopics());
                 myID = id;
     }
 
