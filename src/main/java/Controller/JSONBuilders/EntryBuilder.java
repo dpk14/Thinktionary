@@ -1,11 +1,10 @@
-package Controller;
+package Controller.JSONBuilders;
 
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 public class EntryBuilder {

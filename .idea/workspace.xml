@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/JSONBuilders/EntryBuilderWithDates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/EntryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/JSONBuilders/EntryBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryWithID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryWithID.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +263,7 @@
       <workItem from="1584457754439" duration="20504000" />
       <workItem from="1584573525866" duration="37326000" />
       <workItem from="1585781510559" duration="11145000" />
-      <workItem from="1586314614405" duration="20072000" />
+      <workItem from="1586314614405" duration="20915000" />
     </task>
     <servers />
   </component>

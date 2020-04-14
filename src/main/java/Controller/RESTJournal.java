@@ -2,6 +2,8 @@ package Controller;
 
 import Controller.Exceptions.NotLoggedInException;
 import Controller.Exceptions.Utils.ExceptionUtils;
+import Controller.JSONBuilders.EntryBuilder;
+import Controller.JSONBuilders.EntryBuilderWithDates;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.EntryWithID;
@@ -101,11 +103,11 @@ public class RESTJournal {
     }
 
     @PutMapping(PROTECTED_PATH + "/entries/{entryID}")
-    public ResponseEntity modifyEntry(@PathVariable int userID, @PathVariable int entryID, @RequestBody Entry entry) {
+    public ResponseEntity modifyEntry(@PathVariable int userID, @PathVariable int entryID, @RequestBody EntryBuilderWithDates entryBuilder) {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
             try {
-                Entry savedEntry = journal.saveEntry(entryID, entry);
+                Entry savedEntry = journal.saveEntry(entryID, entryBuilder.getMyEntry());
                 EntryWithID savedEntryWithID = new EntryWithID(savedEntry, entryID);
                 return ResponseEntity.ok().body(savedEntryWithID);
             }
