@@ -92,12 +92,10 @@ public class RESTJournal {
                 return ResponseEntity.created(uri).body(entryWithID);
             }
             catch(Exception e){
-                e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
             }
         }
         catch(NotLoggedInException e){
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
         //add entryId when you get it
@@ -113,11 +111,11 @@ public class RESTJournal {
                 return ResponseEntity.ok().body(savedEntryWithID);
             }
             catch (NoSuchEntryException e){
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + ": " + e.getStackTrace().toString());
             }
             catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.toString());
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.toString()  + ": " + e.getStackTrace().toString());
             }
         }
         catch(NotLoggedInException e){

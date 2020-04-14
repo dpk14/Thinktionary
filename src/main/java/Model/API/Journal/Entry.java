@@ -35,7 +35,7 @@ public class Entry {
 
     public Entry(String myTitle, String myText, LocalDateTime myCreated, Set<Topic> myTopics){ //protected so only journals can instance entries
         this.myCreated = myCreated;
-        this.myModified = myCreated;
+        this.myModified = this.myCreated;
         initialize(myTopics, myTitle, myText);
     }
 
