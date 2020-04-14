@@ -69,7 +69,7 @@ public class Journal {
         updateTopicBank(newTopics);
             Entry existingEntry = myEntryMap.get(entryID);
             if(existingEntry == null) throw new NoSuchEntryException(entryID);
-            //entry.setMyCreated(existingEntry.getMyCreatedDate());
+            entry.setMyCreated(existingEntry.getMyCreatedDate());
             entry.updateModification();
             try {
                 updateEntryTopic(entryID, newTopics);

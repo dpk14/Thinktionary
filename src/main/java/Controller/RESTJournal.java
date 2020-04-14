@@ -3,7 +3,6 @@ package Controller;
 import Controller.Exceptions.NotLoggedInException;
 import Controller.Exceptions.Utils.ExceptionUtils;
 import Controller.JSONBuilders.EntryBuilder;
-import Controller.JSONBuilders.EntryBuilderWithDates;
 import Model.API.Journal.Entry;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.EntryWithID;
@@ -103,7 +102,7 @@ public class RESTJournal {
     }
 
     @PutMapping(PROTECTED_PATH + "/entries/{entryID}")
-    public ResponseEntity modifyEntry(@PathVariable int userID, @PathVariable int entryID, @RequestBody EntryBuilderWithDates entryBuilder) {
+    public ResponseEntity modifyEntry(@PathVariable int userID, @PathVariable int entryID, @RequestBody EntryBuilder entryBuilder) {
         try {
             Journal journal = mySessionManager.getSessionInfo(userID);
             try {
