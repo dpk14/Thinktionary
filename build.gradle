@@ -5,6 +5,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
         classpath("org.xerial:sqlite-jdbc:3.7.2")
+        classpath("org.apache.commons:commons-lang3:3.10")
         //classpath("com.fasterxml.jackson.core:jackson-core")
         //classpath("com.fasterxml.jackson.core:jackson-databind")
         //classpath("com.fasterxml.jackson.core:jackson-annotations")
@@ -34,6 +35,7 @@ dependencies {
             [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.4'],
             [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'],
             [group:'org.xerial', name:'sqlite-jdbc', version:'3.8.11.2'],
+            [group:'org.apache.commons', name: 'commons-lang3', version:'3.10'],
             "org.springframework.boot:spring-boot-starter-web")
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

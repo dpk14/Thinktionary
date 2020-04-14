@@ -7,23 +7,22 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.EntryWithID;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.ErrorHandling.Exceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.RemoveTopicException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/users")
@@ -114,12 +113,10 @@ public class RESTJournal {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString() + ": " + e.getStackTrace().toString());
             }
             catch (Exception e) {
-                e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.toString()  + ": " + e.getStackTrace().toString());
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
             }
         }
         catch(NotLoggedInException e){
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.exceptionToJSON(e));
         }
     }

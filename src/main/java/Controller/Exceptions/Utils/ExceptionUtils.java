@@ -1,7 +1,7 @@
 package Controller.Exceptions.Utils;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class ExceptionUtils {
     public static String exceptionToJSON(Exception e){
@@ -14,4 +14,14 @@ public class ExceptionUtils {
         }
         return "Exception";
     }
+
+    public static String stackTraceToString(Exception e) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        e.printStackTrace(pw);
+        String sStackTrace = sw.toString();
+        return sStackTrace;
+    }
+
 }
+

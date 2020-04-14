@@ -3,13 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Exceptions/Utils/ExceptionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Exceptions/Utils/ExceptionUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Thinktionary$Main.ic" NAME="Main Coverage Results" MODIFIED="1578024233603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -60,6 +64,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1WzVQrbGSBsUyZclat8ot7vEwLb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -86,10 +97,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -252,7 +263,7 @@
       <workItem from="1584457754439" duration="20504000" />
       <workItem from="1584573525866" duration="37326000" />
       <workItem from="1585781510559" duration="11145000" />
-      <workItem from="1586314614405" duration="17751000" />
+      <workItem from="1586314614405" duration="19533000" />
     </task>
     <servers />
   </component>
@@ -288,10 +299,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1582747824648" />
-    <state x="488" y="146" key="FileChooserDialogImpl" timestamp="1585846158366">
+    <state x="488" y="146" key="FileChooserDialogImpl" timestamp="1586896074898">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="146" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585846158366" />
+    <state x="488" y="146" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586896074898" />
     <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.813@0.0.1536.813" timestamp="1580842193084" />
     <state x="549" y="165" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584474294912" />
     <state width="1493" height="289" key="GridCell.Tab.0.bottom" timestamp="1581905000646">
@@ -330,15 +341,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="745" height="290" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1580365175345" />
-    <state x="277" y="56" key="SettingsEditor" timestamp="1584473706448">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="246" y="0" key="SettingsEditor" timestamp="1586896348966">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="246" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586896348966" />
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584473706448" />
     <state x="414" y="210" key="com.intellij.ide.util.TipDialog" timestamp="1585781510141">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="414" y="210" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585781510141" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1584573526029" />
+    <state x="470" y="258" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1586896111861">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="470" y="258" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1586896111861" />
     <state x="425" y="186" key="run.anything.popup" timestamp="1582759264827">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -360,92 +376,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring (Thinktionary)|Spring</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>groovy-2.5.6</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring|Thinktionary</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
