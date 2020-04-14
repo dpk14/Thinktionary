@@ -117,7 +117,7 @@ public class RESTJournal {
             }
             catch (Exception e) {
                 e.printStackTrace();
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.toString());
             }
         }
         catch(NotLoggedInException e){
