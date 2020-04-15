@@ -26,7 +26,9 @@ public class JournalDBParser {
                 Set<Topic> topics = topicSets.get(id);
                 String createdDate = (String) row.get(ColumnInfo.getCREATED());
                 LocalDateTime created = Date.makeDate(createdDate);
-                Entry entry = new Entry((String) row.get(ColumnInfo.getTITLE()), (String) row.get(ColumnInfo.getTEXT()), created, topics);
+                String modifiedDate = (String) row.get(ColumnInfo.getMODIFIED());
+                LocalDateTime modified = Date.makeDate(modifiedDate);
+                Entry entry = new Entry((String) row.get(ColumnInfo.getTITLE()), (String) row.get(ColumnInfo.getTEXT()), created, modified, topics);
                 int ID = Integer.parseInt(id);
                 ret.put(ID, entry);
             }

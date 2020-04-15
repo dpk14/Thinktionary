@@ -1,18 +1,15 @@
 package Model.Data.API.Run;
 
 import Model.Data.API.DBAPI;
-import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.SQLQueryBuilder;
-import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +44,7 @@ public abstract class RunDBAPI extends DBAPI {
 
         try {
             List<Map<String, Object>> ret = DBUtils.userQuery(SQLQueryBuilder.select(tableName, conditions), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(ret);
             return ret;
         } catch (SQLException e) {
             throw new CorruptDBError(e);

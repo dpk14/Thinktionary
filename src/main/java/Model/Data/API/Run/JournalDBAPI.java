@@ -1,17 +1,14 @@
 package Model.Data.API.Run;
 
 import Model.API.Journal.Entry;
+import Model.API.Journal.JournalDBParser;
 import Model.Data.SQL.ColumnInfo;
-import Model.Data.SQL.QueryObjects.CommandTypes.Action;
-import Model.Data.SQL.QueryObjects.CommandTypes.Command;
-import Model.Data.SQL.QueryObjects.CommandTypes.Query;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
-import Model.Data.Utils.DBUtils;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
-import Model.API.Journal.JournalDBParser;
+import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
 import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
@@ -20,8 +17,13 @@ import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
 import Model.ErrorHandling.Exceptions.RemoveTopicException;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class
 JournalDBAPI extends RunDBAPI {
