@@ -2,7 +2,6 @@ package Model.API.Journal;
 
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
-import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDateTime;
 import java.util.Comparator;
@@ -61,7 +60,7 @@ public class Entry {
     public static class EntryComparator implements Comparator<Entry> {
         @Override
         public int compare(Entry e1, Entry e2) {
-            return e1.getMyCreatedDate().compareTo(e2.getMyCreatedDate());
+            return e1.getMyModifiedDate().compareTo(e2.getMyModifiedDate());
         }
 
     }
@@ -73,7 +72,7 @@ public class Entry {
      */
 
     protected boolean youngerThan(Entry e2){
-        return getMyCreatedDate().compareTo(e2.getMyCreatedDate()) < 0;
+        return getMyModifiedDate().compareTo(e2.getMyModifiedDate()) < 0;
     }
 
     protected void updateModification(){
