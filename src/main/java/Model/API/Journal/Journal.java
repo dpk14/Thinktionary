@@ -102,7 +102,6 @@ public class Journal {
     public List<Entry> getTopicalEntries(Set<Topic> topics){
         List<Entry> topicalEntries = new ArrayList<>();
         for(Entry entry : myEntries){
-            System.out.println(entry.getMyTopics()==null);
             if(firstSubsetOfSecond(topics, entry.getMyTopics())) {
                 topicalEntries.add(entry);
             }

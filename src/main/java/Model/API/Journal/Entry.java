@@ -4,10 +4,7 @@ import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Entry {
     private String myTitle;
@@ -45,7 +42,7 @@ public class Entry {
     }
 
     private void initialize(Set<Topic> topics, String title, String text){
-        myTopics = topics;
+        myTopics = myTopics == null ? new HashSet<>() : topics;
         myText = text;
         myTitle = title;
     }
