@@ -42,7 +42,7 @@ public class Entry {
     }
 
     private void initialize(Set<Topic> topics, String title, String text){
-        myTopics = myTopics == null ? new HashSet<>() : topics;
+        myTopics = topics == null ? new HashSet<>() : topics;
         myText = text;
         myTitle = title;
     }
