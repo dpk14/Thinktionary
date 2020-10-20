@@ -34,7 +34,9 @@ public class LoginAPI {
         return new Journal(userID, username, password);
     }
 
-    public static int makeAccount(String username, String password, String email) throws UserErrorException, LoadPropertiesException { //second exception has two inheritances, password exists and username exists
+    public static int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException, LoadPropertiesException { //second exception has two inheritances, password exists and username exists
+        LoginDBAPI loginDBAPI = new LoginDBAPI();
+        loginDBAPI.verifyConfirmationKey(verifyKey, email);
         List<Map<String, Object>> userInfo = new LoginDBAPI().createUser(username, password, email);
         return LoginDBParser.getUserID(userInfo);
     }

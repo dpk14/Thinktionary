@@ -9,10 +9,7 @@ import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.EmailExistsException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -75,9 +72,24 @@ public class LoginDBAPI extends RunDBAPI {
 
     public void removeEmailConfirmationKey(String email) {
         try {
-            List<Condition> parameters = new ArrayList<>();
-            parameters.add(new Equals(ColumnInfo.getEMAIL(), email));
-            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), parameters), myDBUrl, myDBUsername, myDBPassword);
+            List<Condition> conditions = new ArrayList<>();
+            conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
+            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions), myDBUrl, myDBUsername, myDBPassword);
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void verifyConfirmationKey(String key, String email) throws UserErrorException {
+        try {
+            List<Condition> conditions = new ArrayList<>();
+            conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
+            conditions.add(new Equals(ColumnInfo.CONF_KEY, key));
+            List<Map<String, Object>> userInfo = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEmailConfirmation(), conditions), myDBUrl, myDBUsername, myDBPassword);
+            if (userInfo.size() != 1) {
+                throw new InvalidConfirmationKeyException();
+            }
         }
         catch (SQLException e) {
             throw new RuntimeException(e);

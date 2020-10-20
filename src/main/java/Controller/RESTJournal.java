@@ -60,16 +60,30 @@ public class RESTJournal {
 
     @PutMapping(value="/")
     public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password,
-                                      @RequestParam(value="email") String email) {
+                                      @RequestParam(value="email") String email, @RequestParam(value="key") String verifyKey) {
         try {
-            LoginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, password, email);
-            int userId = LoginAPI.makeAccount(username, password, email);
+            int userId = LoginAPI.makeAccount(username, password, email, verifyKey);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{userID}")
                     .buildAndExpand(userId)
                     .toUri();
 
             return ResponseEntity.created(uri).body(userId);
+        }
+        catch(UserErrorException e){
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        }
+        catch(LoadPropertiesException e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        }
+    }
+
+    @GetMapping(value="/verify")
+    public ResponseEntity verifyAccountInfo(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password,
+                                      @RequestParam(value="email") String email) {
+        try {
+            LoginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, password, email);
+            return ResponseEntity.ok().build();
         }
         catch(UserErrorException e){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
