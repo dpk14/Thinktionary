@@ -14,75 +14,75 @@ public class ColumnInfo {
     private static final String MODIFIED = "Modified";
     private static final String USERNAME = "Username";
     private static final String PASSWORD = "Password";
+    private static final String EMAIL = "Email";
+    public static final String CONF_KEY = "ConfKey";
 
-    private static final String TOPIC_TYPE = "text";
-    private static final String COLOR_TYPE = "text";
-    private static final String ENTRY_ID_TYPE = "INTEGER";
-    private static final String USER_ID_TYPE = "INTEGER";
-    private static final String TITLE_TYPE = "text";
     private static final String TEXT_TYPE = "text";
-    private static final String CREATED_TYPE = "text";
-    private static final String MODIFIED_TYPE = "text";
-    private static final String USERNAME_TYPE = "text";
-    private static final String PASSWORD_TYPE = "text";
+    private static final String INTEGER_TYPE = "INTEGER";
 
     private static final String PRIMARY_KEY_LABEL = " PRIMARY KEY";
 
 
     public static String getCOLOR() {
-        return String.valueOf(COLOR);
+        return COLOR;
     }
 
     public static String getEntryId() {
-        return String.valueOf(ENTRY_ID);
+        return ENTRY_ID;
     }
 
     public static String getTOPIC() {
-        return String.valueOf(TOPIC);
+        return TOPIC;
     }
 
     public static String getTITLE() {
-        return String.valueOf(TITLE);
+        return TITLE;
     }
 
     public static String getTEXT() {
-        return String.valueOf(TEXT);
+        return TEXT;
     }
 
     public static String getMODIFIED() {
-        return String.valueOf(MODIFIED);
+        return MODIFIED;
     }
 
-    public static String getCREATED() {return String.valueOf(CREATED);}
+    public static String getCREATED() {return CREATED;}
 
-    public static String getUSERID() { return String.valueOf(USER_ID);}
+    public static String getUSERID() { return USER_ID;}
 
-    public static String getUSERNAME() {return String.valueOf(USERNAME);}
+    public static String getUSERNAME() {return USERNAME;}
 
-    public static String getPASSWORD() { return String.valueOf(PASSWORD);}
+    public static String getPASSWORD() { return PASSWORD;}
+
+    public static String getEMAIL() {
+        return EMAIL;
+    }
+
+    public static String getEmailType() { return TEXT_TYPE; }
 
     public static String getColorType() {
-        return COLOR_TYPE;
+        return TEXT_TYPE;
     }
 
     public static String getCreatedType() {
-        return CREATED_TYPE;
+        return TEXT_TYPE;
     }
 
     public static String getEntryIdType(boolean primaryKey) {
-        return String.valueOf(ENTRY_ID_TYPE) + (primaryKey ? PRIMARY_KEY_LABEL : "");
+        return INTEGER_TYPE + (primaryKey ? PRIMARY_KEY_LABEL : "");
     }
 
     public static String getUserIdType(boolean primaryKey) {
-        return String.valueOf(USER_ID_TYPE) + (primaryKey ? PRIMARY_KEY_LABEL : "");
+        return INTEGER_TYPE + (primaryKey ? PRIMARY_KEY_LABEL : "");
     }
 
     public static String getModifiedType() {
-        return MODIFIED_TYPE;
+        return TEXT_TYPE;
     }
 
     public static String getPasswordType() {
-        return PASSWORD_TYPE;
+        return TEXT_TYPE;
     }
 
     public static String getTextType() {
@@ -90,15 +90,15 @@ public class ColumnInfo {
     }
 
     public static String getTitleType() {
-        return TITLE_TYPE;
+        return TEXT_TYPE;
     }
 
     public static String getTopicType() {
-        return TOPIC_TYPE;
+        return TEXT_TYPE;
     }
 
     public static String getUsernameType() {
-        return USERNAME_TYPE;
+        return TEXT_TYPE;
     }
 
 
@@ -150,5 +150,5 @@ public class ColumnInfo {
         tableToColumns.put(TableNames.getUserInfo(), columnToType);
         return tableToColumns.get(tableName);
     }
-
+    
 }

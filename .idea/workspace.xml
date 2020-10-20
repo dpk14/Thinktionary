@@ -2,9 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_amazonaws_aws_java_sdk_core_1_11_883.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_amazonaws_aws_java_sdk_ses_1_11_883.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_amazonaws_jmespath_java_1_11_883.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_dataformat_jackson_dataformat_cbor_2_10_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_codec_commons_codec_1_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_activation_activation_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_mail_mail_1_5_0_b01.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__joda_time_joda_time_2_10_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_lang3_3_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__software_amazon_ion_ion_java_1_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/EmailExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/InvalidEmailException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ThinktionaryModel.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/TableNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/TableNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/AccountExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/AccountExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/InvalidLoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/InvalidLoginException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,14 +116,14 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580151939290" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/src/main/resources" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Downloads/aws-java-sdk-ses-1.11.883-javadoc.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -262,7 +286,14 @@
       <workItem from="1584457754439" duration="20504000" />
       <workItem from="1584573525866" duration="37326000" />
       <workItem from="1585781510559" duration="11145000" />
-      <workItem from="1586314614405" duration="32942000" />
+      <workItem from="1586314614405" duration="34181000" />
+      <workItem from="1591982862003" duration="1200000" />
+      <workItem from="1592150636607" duration="8692000" />
+      <workItem from="1595090143368" duration="15370000" />
+      <workItem from="1595335587526" duration="2810000" />
+      <workItem from="1600202905455" duration="2668000" />
+      <workItem from="1603231932353" duration="7000" />
+      <workItem from="1603231963394" duration="3622000" />
     </task>
     <servers />
   </component>
@@ -270,100 +301,47 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="341" y="0" width="697" height="728" key="#Application" timestamp="1586384211534">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1603234814182">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="341" y="0" width="697" height="728" key="#Application/0.0.1366.728@0.0.1366.728" timestamp="1586384211534" />
-    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581728628256">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1603234814182" />
+    <state x="545" y="247" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1595173016345">
+      <screen x="0" y="0" width="1638" height="882" />
     </state>
-    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1581728628256" />
-    <state x="536" y="216" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580359183547">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="545" y="247" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1638.882@0.0.1638.882" timestamp="1595173016345" />
+    <state x="93" y="93" width="1453" height="696" key="DiffContextDialog" timestamp="1595163543012">
+      <screen x="0" y="0" width="1638" height="882" />
     </state>
-    <state x="536" y="216" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1580359183547" />
-    <state x="538" y="114" key="#com.intellij.ide.util.MemberChooser" timestamp="1582765366109">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="93" y="93" width="1453" height="696" key="DiffContextDialog/0.0.1638.882@0.0.1638.882" timestamp="1595163543012" />
+    <state x="731" y="223" key="FileChooserDialogImpl" timestamp="1603233041094">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="538" y="114" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1582765366109" />
-    <state x="464" y="339" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1584461072170">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="585" y="177" key="FileChooserDialogImpl/0.0.1638.882@0.0.1638.882" timestamp="1595337525471" />
+    <state x="731" y="223" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1603233041094" />
+    <state x="413" y="196" width="1038" height="726" key="SettingsEditor" timestamp="1603233097590">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="464" y="339" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1584461072170" />
-    <state x="566" y="273" width="408" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582760914556">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="330" y="156" width="1038" height="726" key="SettingsEditor/0.0.1638.882@0.0.1638.882" timestamp="1595387546556" />
+    <state x="413" y="196" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1603233097590" />
+    <state x="620" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1603232009527">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="566" y="273" width="408" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1582760914556" />
-    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582747824648">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="496" y="255" key="com.intellij.ide.util.TipDialog/0.0.1638.882@0.0.1638.882" timestamp="1595335672794" />
+    <state x="620" y="321" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603232009527" />
+    <state x="325" y="79" key="new project wizard" timestamp="1600202982738">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="499" y="160" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1582747824648" />
-    <state x="488" y="146" key="FileChooserDialogImpl" timestamp="1586896074898">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="260" y="63" key="new project wizard/0.0.1638.882@0.0.1638.882" timestamp="1595337452114" />
+    <state x="325" y="79" key="new project wizard/0.0.2048.1112@0.0.2048.1112" timestamp="1600202982738" />
+    <state x="477" y="201" key="run.anything.popup" timestamp="1595337011773">
+      <screen x="0" y="0" width="1638" height="882" />
     </state>
-    <state x="488" y="146" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586896074898" />
-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.813@0.0.1536.813" timestamp="1580842193084" />
-    <state x="549" y="165" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584474294912" />
-    <state width="1493" height="289" key="GridCell.Tab.0.bottom" timestamp="1581905000646">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="477" y="201" key="run.anything.popup/0.0.1638.882@0.0.1638.882" timestamp="1595337011773" />
+    <state x="882" y="769" width="841" height="855" key="search.everywhere.popup" timestamp="1603234820428">
+      <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="1493" height="285" key="GridCell.Tab.0.bottom/0.0.1536.813@0.0.1536.813" timestamp="1580691196606" />
-    <state width="1493" height="289" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581905000646" />
-    <state width="1493" height="289" key="GridCell.Tab.0.center" timestamp="1581905000646">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="285" key="GridCell.Tab.0.center/0.0.1536.813@0.0.1536.813" timestamp="1580691196606" />
-    <state width="1493" height="289" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581905000646" />
-    <state width="1493" height="289" key="GridCell.Tab.0.left" timestamp="1581905000646">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="285" key="GridCell.Tab.0.left/0.0.1536.813@0.0.1536.813" timestamp="1580691196605" />
-    <state width="1493" height="289" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581905000646" />
-    <state width="1493" height="289" key="GridCell.Tab.0.right" timestamp="1581905000646">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="285" key="GridCell.Tab.0.right/0.0.1536.813@0.0.1536.813" timestamp="1580691196606" />
-    <state width="1493" height="289" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581905000646" />
-    <state width="745" height="290" key="GridCell.Tab.1.bottom" timestamp="1580365175345">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="745" height="290" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580365175345" />
-    <state width="745" height="290" key="GridCell.Tab.1.center" timestamp="1580365175345">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="745" height="290" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1580365175345" />
-    <state width="745" height="290" key="GridCell.Tab.1.left" timestamp="1580365175345">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="745" height="290" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1580365175345" />
-    <state width="745" height="290" key="GridCell.Tab.1.right" timestamp="1580365175345">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="745" height="290" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1580365175345" />
-    <state x="246" y="0" key="SettingsEditor" timestamp="1586896348966">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="246" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586896348966" />
-    <state x="277" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1584473706448" />
-    <state x="414" y="210" key="com.intellij.ide.util.TipDialog" timestamp="1585781510141">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="414" y="210" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1585781510141" />
-    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1584573526029" />
-    <state x="470" y="258" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1586896111861">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="470" y="258" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.728@0.0.1366.728" timestamp="1586896111861" />
-    <state x="425" y="186" key="run.anything.popup" timestamp="1582759264827">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="184" key="run.anything.popup/0.0.1536.813@0.0.1536.813" timestamp="1580838515216" />
-    <state x="425" y="186" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1582759264827" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1582644606424">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="143" width="672" height="669" key="search.everywhere.popup/0.0.1536.813@0.0.1536.813" timestamp="1580691300444" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582644606424" />
+    <state x="482" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1638.882@0.0.1638.882" timestamp="1595173605258" />
+    <state x="882" y="769" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603234820428" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

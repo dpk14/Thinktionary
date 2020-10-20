@@ -8,9 +8,11 @@ import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.EmailExistsException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
-    public List<Map<String, Object>> createUser(String userName, String passWord) throws AccountExistsException {
+    public List<Map<String, Object>> createUser(String userName, String passWord, String email) throws UserErrorException {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
         conditions.add(new Equals(ColumnInfo.getPASSWORD(), passWord));
@@ -48,15 +50,58 @@ public class LoginDBAPI extends RunDBAPI {
 
         List<Map<String, Object>> userInfo;
         try {
-            userInfo = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);
-            if(userInfo.size() != 0) {
-                throw new AccountExistsException();
-            }
+            throwExceptionIfUserInfoExists(userName, passWord, email);
             DBUtils.userAction(SQLQueryBuilder.insert(TableNames.getUserInfo(), parameters), myDBUrl, myDBUsername, myDBPassword);
             userInfo = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);
             return userInfo;
         }
         catch(SQLException e){
+            throw new CorruptDBError(e);
+        }
+    }
+
+    public void storeEmailConfirmationKey(String email, String key) {
+        try {
+            List<Parameter> parameters = new ArrayList<>();
+            parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
+            parameters.add(new Parameter(ColumnInfo.CONF_KEY, key));
+
+            DBUtils.userAction(SQLQueryBuilder.insert(TableNames.getEmailConfirmation(), parameters), myDBUrl, myDBUsername, myDBPassword);
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void removeEmailConfirmationKey(String email) {
+        try {
+            List<Condition> parameters = new ArrayList<>();
+            parameters.add(new Equals(ColumnInfo.getEMAIL(), email));
+            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), parameters), myDBUrl, myDBUsername, myDBPassword);
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void throwExceptionIfUserInfoExists(String userName, String password, String email) throws UserErrorException {
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
+        conditions.add(new Equals(ColumnInfo.getPASSWORD(), password));
+        throwExceptionIfExists(conditions, new AccountExistsException());
+        conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
+        throwExceptionIfExists(conditions, new EmailExistsException());
+    }
+
+    private void throwExceptionIfExists(List<Condition> conditions, UserErrorException exceptionToThrow) throws UserErrorException {
+        try {
+            List<Map<String, Object>> userInfo = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);
+            if (userInfo.size() != 0) {
+                throw exceptionToThrow;
+            }
+        }
+        catch (SQLException e) {
             throw new CorruptDBError(e);
         }
     }
@@ -70,5 +115,4 @@ public class LoginDBAPI extends RunDBAPI {
             throw new CorruptDBError(e);
         }
     }
-
 }

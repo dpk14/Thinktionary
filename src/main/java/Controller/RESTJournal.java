@@ -10,9 +10,9 @@ import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
 import Model.ErrorHandling.Exceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,9 +59,11 @@ public class RESTJournal {
     }
 
     @PutMapping(value="/")
-    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password,
+                                      @RequestParam(value="email") String email) {
         try {
-            int userId = LoginAPI.makeAccount(username, password);
+            LoginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, password, email);
+            int userId = LoginAPI.makeAccount(username, password, email);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{userID}")
                     .buildAndExpand(userId)
@@ -69,13 +71,15 @@ public class RESTJournal {
 
             return ResponseEntity.created(uri).body(userId);
         }
-        catch(AccountExistsException e){
+        catch(UserErrorException e){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
         catch(LoadPropertiesException e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
         }
     }
+
+    @PutMapping
 
     @PostMapping(value=PROTECTED_PATH + "/entries", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {

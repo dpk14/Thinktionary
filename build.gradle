@@ -36,6 +36,8 @@ dependencies {
             [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.4'],
             [group:'org.xerial', name:'sqlite-jdbc', version:'3.8.11.2'],
             [group:'org.apache.commons', name: 'commons-lang3', version:'3.10'],
+            [group:'javax.mail', name: 'mail', version: '1.5.0-b01'],
+            [group: 'com.amazonaws', name: 'aws-java-sdk-ses', version: '1.11.883'],
             "org.springframework.boot:spring-boot-starter-web")
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }

@@ -8,20 +8,25 @@ public class TableNames {
     private static final String ENTRY_TOPIC = "EntryTopic";
     private static final String USER_TOPIC = "UserTopic";
     private static final String USER_INFO = "UserInfo";
+    private static final String EMAIL_CONFIRMATION = "EmailConfirmation";
 
     public static String getUserTopic() {
-        return String.valueOf(USER_TOPIC);
+        return USER_TOPIC;
     }
 
     public static String getEntryInfo()  {
-        return String.valueOf(ENTRY_INFO);
+        return ENTRY_INFO;
     }
 
     public static String getEntryToTopic()  {
-        return String.valueOf(ENTRY_TOPIC);
+        return ENTRY_TOPIC;
     }
 
-    public static String getUserInfo() { return String.valueOf(USER_INFO); }
+    public static String getUserInfo() { return USER_INFO; }
+
+    public static String getEmailConfirmation() {
+        return EMAIL_CONFIRMATION;
+    }
 
     public static List<String> getTableNames() {
         List<String> ret = new ArrayList();
@@ -45,4 +50,5 @@ public class TableNames {
         tableNames.add(TableNames.getUserInfo());
         return tableNames;
     }
+
 }
