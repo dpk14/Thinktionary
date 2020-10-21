@@ -70,10 +70,10 @@ public class RESTJournal {
 
             return ResponseEntity.created(uri).body(userId);
         }
-        catch(UserErrorException e){
+        catch (UserErrorException e){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
-        catch(LoadPropertiesException e){
+        catch (LoadPropertiesException e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
         }
     }
@@ -83,12 +83,12 @@ public class RESTJournal {
                                       @RequestParam(value="email") String email) {
         try {
             LoginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, password, email);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok(email);
         }
-        catch(UserErrorException e){
+        catch (UserErrorException e){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
-        catch(LoadPropertiesException e){
+        catch (LoadPropertiesException e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
         }
     }
