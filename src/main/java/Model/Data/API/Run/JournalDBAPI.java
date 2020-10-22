@@ -17,6 +17,7 @@ import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
 
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +31,7 @@ JournalDBAPI extends RunDBAPI {
 
     Integer myUserID;
 
-    public JournalDBAPI() throws LoadPropertiesException {
+    public JournalDBAPI() throws LoadPropertiesException, URISyntaxException {
         super();
     }
 

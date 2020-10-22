@@ -1,5 +1,6 @@
 package Model.Data.API.Initialization;
 
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
@@ -9,7 +10,6 @@ import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabas
 import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
-import Model.ConfigUtils.PropertyUtils.PropertyManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.Map;
 
 public abstract class InitDBAPI extends DBAPI {
 
-    public InitDBAPI() throws LoadPropertiesException {
+    public InitDBAPI() {
         super();
     }
 

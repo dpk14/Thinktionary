@@ -1,12 +1,11 @@
 package Controller;
 
-import Controller.Exceptions.ArgumentFormatError;
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabaseError;
 import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
-import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,18 +13,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
     public static void main(String[] args) throws LoadPropertiesException, CreateTableException, EmptyDatabaseError {
-        try{
-            setProperties(args);
-        }
-        catch(LoadPropertiesException e){
-            throw new ArgumentFormatError();
-        }
+        setProperties(args);
         new LoginDBInit().initialize();
         new JournalDBInit().initialize();
         SpringApplication.run(Application.class, args);
     }
 
-    private static void setProperties(String[] args) throws LoadPropertiesException {
+    private static void setProperties(String[] args) {
         if (args.length > 0){
             System.out.println("Running in cmd line mode: \n");
             PropertyManager.setDBUsername(args[0]);
