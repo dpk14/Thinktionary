@@ -13,16 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    private static String DEFAULT_DBUSERNAME = "dpk14";
-    private static String DEFAULT_DBPASSWORD = "1qazxsw23edcvfr4";
-    private static String DEFAULT_DBFILE = "main.db";
-
     public static void main(String[] args) throws LoadPropertiesException, CreateTableException, EmptyDatabaseError {
         try{
             setProperties(args);
         }
         catch(LoadPropertiesException e){
-            e.printStackTrace();
             throw new ArgumentFormatError();
         }
         new LoginDBInit().initialize();
@@ -42,8 +37,8 @@ public class Application {
         else{
             System.out.println("Running in JAR mode: \n");
         }
-        System.setProperty("aws.accessKeyId", "AKIAJCCOSBW2T772JNLQ");
-        System.setProperty("aws.secretKey", "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");
+        System.setProperty("aws.accessKeyId", "AKIAIYYEPEPS4B52J7KA");
+        System.setProperty("aws.secretKey", "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");
     }
 
 }
