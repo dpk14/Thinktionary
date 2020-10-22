@@ -5,10 +5,10 @@ import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
-import Model.ErrorHandling.Exceptions.TableExceptions.RemoveTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabaseError;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 import Model.ConfigUtils.PropertyUtils.PropertyManager;
 
 import java.io.File;
@@ -28,14 +28,14 @@ public abstract class InitDBAPI extends DBAPI {
 
     public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
         System.out.println(myDBRelFilename);
-        if(!DBexists(myDBRelFilename)){
+        if (!DBexists(myDBRelFilename)) {
             if(programIsJAR()){
                 throw new EmptyDatabaseError();
             }
             createDatabase(myDBAbsFilename);
         }
         createTablesIfNull();
-        return myDBRelFilename.toString();
+        return myDBRelFilename;
     }
 
     private boolean DBexists(String dbRelFilename){
@@ -45,6 +45,7 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     private void createDatabase(String url){
+        System.out.println(url);
         File file = new File(url);
         try {
             file.createNewFile();

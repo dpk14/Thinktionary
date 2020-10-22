@@ -6,7 +6,7 @@ import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

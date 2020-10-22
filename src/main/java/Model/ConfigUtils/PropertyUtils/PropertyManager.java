@@ -2,7 +2,7 @@ package Model.ConfigUtils.PropertyUtils;
 
 import Controller.Application;
 import Controller.Exceptions.ModeParseError;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ConfigUtils.PathUtils.PathManager;
 
 import java.io.*;

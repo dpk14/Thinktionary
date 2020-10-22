@@ -1,15 +1,13 @@
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
 import Model.Data.API.Run.LoginDBAPI;
-import Model.ConfigUtils.PathUtils.PathManager;
 import Model.ConfigUtils.PathUtils.DBNames;
 import Model.ConfigUtils.PathUtils.DBUrls;
-import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
-import Model.ErrorHandling.Exceptions.TableExceptions.RemoveTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabaseError;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 import org.junit.jupiter.api.Test;
 
 public class Tests {

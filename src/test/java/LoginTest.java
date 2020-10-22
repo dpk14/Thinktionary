@@ -2,7 +2,7 @@ import Model.API.Login.LoginAPI;
 import Model.API.Login.LoginDBParser;
 import Model.API.Login.User;
 import Model.Data.API.Run.LoginDBAPI;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.AccountExistsException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
 import org.junit.jupiter.api.*;

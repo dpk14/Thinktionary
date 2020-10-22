@@ -48,6 +48,7 @@ public class TableNames {
     public static List<String> getLoginTableNames() {
         List<String> tableNames = new ArrayList();
         tableNames.add(TableNames.getUserInfo());
+        tableNames.add(TableNames.getEmailConfirmation());
         return tableNames;
     }
 

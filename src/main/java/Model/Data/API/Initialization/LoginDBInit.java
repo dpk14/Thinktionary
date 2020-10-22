@@ -1,9 +1,9 @@
 package Model.Data.API.Initialization;
 
 import Model.Data.SQL.TableNames;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
-import Model.ErrorHandling.Exceptions.TableExceptions.RemoveTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
 public class LoginDBInit extends InitDBAPI {
 

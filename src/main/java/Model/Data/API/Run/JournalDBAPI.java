@@ -10,12 +10,12 @@ import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
-import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
-import Model.ErrorHandling.Exceptions.EntryByTopicException;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.RemoveTopicException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.ModifyEntryException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.TopicBankAddException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

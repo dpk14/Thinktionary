@@ -1,6 +1,6 @@
 package Model.Data.API;
 
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ConfigUtils.PathUtils.PathManager;
 import Model.ConfigUtils.PropertyUtils.PropertyManager;
 

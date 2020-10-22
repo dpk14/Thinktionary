@@ -135,8 +135,17 @@ public class ColumnInfo {
         columnMap.put(getUSERID(), getUserIdType(true));
         columnMap.put(getUSERNAME(), getUsernameType());
         columnMap.put(getPASSWORD(), getPasswordType());
+        columnMap.put(EMAIL, TEXT_TYPE);
         return columnMap;
     }
+
+    public static Map<String, String> getEmailVerifyColumnMap(){
+        Map<String, String> columnMap = new HashMap();
+        columnMap.put(EMAIL, TEXT_TYPE);
+        columnMap.put(CONF_KEY, INTEGER_TYPE);
+        return columnMap;
+    }
+
 
     public static Map<String, String> getColumnMap(String tableName){
         Map<String, Map<String, String>> tableToColumns = new HashMap();
@@ -148,6 +157,8 @@ public class ColumnInfo {
         tableToColumns.put(TableNames.getEntryToTopic(), columnToType);
         columnToType = getUserInfoColumnMap();
         tableToColumns.put(TableNames.getUserInfo(), columnToType);
+        columnToType = getEmailVerifyColumnMap();
+        tableToColumns.put(TableNames.getEmailConfirmation(), columnToType);
         return tableToColumns.get(tableName);
     }
     

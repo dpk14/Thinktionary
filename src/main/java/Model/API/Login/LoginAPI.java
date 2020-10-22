@@ -2,10 +2,11 @@ package Model.API.Login;
 
 import Model.API.Journal.Journal;
 import Model.Data.API.Run.LoginDBAPI;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidEmailException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.EmailDeliveryFailure;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
@@ -15,18 +16,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import static sun.security.x509.X509CertInfo.SUBJECT;
-
 public class LoginAPI {
 
     private static final String FROM = "thinktionary.app@gmail.com";
-    private static String HTMLBODY = "<h1>Amazon SES test (AWS SDK for Java)</h1>"
-            + "<p>This email was sent with <a href='https://aws.amazon.com/ses/'>"
-            + "Amazon SES</a> using the <a href='https://aws.amazon.com/sdk-for-java/'>"
-            + "AWS SDK for Java</a>";
+    private static String SUBJECT = "Register for Thinktionary";
+    private static String HTMLBODY = "<p>Hello %s,</p>"
+            + "<p>We're stoked to have you onboard!</p> "
+            + "<p>You're almost there. Just enter the verification key %s to start journaling!</p>"
+            + "<p>All the Best,<br>Thinktionary.app</p>";
 
-    static final String TEXTBODY = "This email was sent through Amazon SES "
-            + "using the AWS SDK for Java.";
+    private static String TEXTBODY = ">Hello %s,\n"
+            + "We're pleased to have you onboard! Just enter the verification key %s to start journaling!\n"
+            + "Best,\nThe Thinktionary Team";
 
     public static Journal login(String username, String password) throws InvalidLoginException, LoadPropertiesException {
         List<Map<String, Object>> userInfo = new LoginDBAPI().login(username, password);
@@ -45,13 +46,13 @@ public class LoginAPI {
         LoginDBAPI loginDBAPI = new LoginDBAPI();
         loginDBAPI.throwExceptionIfUserInfoExists(username, password, email);
         int emailKey = generateEmailConfirmationKey();
-        loginDBAPI.storeEmailConfirmationKey(email, email);
+        loginDBAPI.storeEmailConfirmationKey(email, emailKey);
         try {
-            sendEmail(email, emailKey);
+            sendEmail(email, emailKey, username);
         }
         catch (Exception e) {
             loginDBAPI.removeEmailConfirmationKey(email);
-            throw new InvalidEmailException();
+            throw new EmailDeliveryFailure(e);
         }
     }
 
@@ -70,19 +71,21 @@ public class LoginAPI {
         return 100000 + rnd.nextInt(900000);
     }
 
-    private static void sendEmail(String to, int emailKey) {
+    private static void sendEmail(String to, int emailKey, String username) {
         AmazonSimpleEmailService client =
                 AmazonSimpleEmailServiceClientBuilder.standard()
-                        .withRegion(Regions.US_EAST_1).build();
+                        .withRegion(Regions.US_EAST_1)
+                        .withCredentials(new DefaultAWSCredentialsProviderChain())
+                        .build();
         SendEmailRequest request = new SendEmailRequest()
                 .withDestination(
                         new Destination().withToAddresses(to))
                 .withMessage(new Message()
                         .withBody(new Body()
                                 .withHtml(new Content()
-                                        .withCharset("UTF-8").withData(HTMLBODY))
+                                        .withCharset("UTF-8").withData(String.format(HTMLBODY, username, emailKey)))
                                 .withText(new Content()
-                                        .withCharset("UTF-8").withData(Integer.toString(emailKey))))
+                                        .withCharset("UTF-8").withData(TEXTBODY)))
                         .withSubject(new Content()
                                 .withCharset("UTF-8").withData(SUBJECT)))
                 .withSource(FROM);

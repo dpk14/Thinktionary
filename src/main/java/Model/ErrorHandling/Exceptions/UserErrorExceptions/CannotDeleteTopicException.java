@@ -1,6 +1,6 @@
 package Model.ErrorHandling.Exceptions.UserErrorExceptions;
 
-public class CannotDeleteTopicException extends Exception {
+public class CannotDeleteTopicException extends UserErrorException {
     private final String MESSAGE = "Topic cannot be deleted from the bank; it's used by other entries!";
     String myTopic;
     public CannotDeleteTopicException(String topicName) {

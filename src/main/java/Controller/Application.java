@@ -3,9 +3,9 @@ package Controller;
 import Controller.Exceptions.ArgumentFormatError;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
-import Model.ErrorHandling.Exceptions.DBExceptions.EmptyDatabaseError;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.TableExceptions.CreateTableException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabaseError;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,7 +31,7 @@ public class Application {
     }
 
     private static void setProperties(String[] args) throws LoadPropertiesException {
-        if(args.length > 0){
+        if (args.length > 0){
             System.out.println("Running in cmd line mode: \n");
             PropertyManager.setDBUsername(args[0]);
             PropertyManager.setDBPassword(args[1]);
@@ -42,6 +42,8 @@ public class Application {
         else{
             System.out.println("Running in JAR mode: \n");
         }
+        System.setProperty("aws.accessKeyId", "AKIAJCCOSBW2T772JNLQ");
+        System.setProperty("aws.secretKey", "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");
     }
 
 }

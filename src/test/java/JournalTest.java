@@ -4,7 +4,7 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.Journal;
 import Model.API.Journal.JournalDBParser;
 import Model.Data.API.Run.JournalDBAPI;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

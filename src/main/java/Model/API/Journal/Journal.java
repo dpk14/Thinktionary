@@ -3,9 +3,12 @@ package Model.API.Journal;
 import Model.Data.API.Run.JournalDBAPI;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
-import Model.ErrorHandling.Exceptions.*;
-import Model.ErrorHandling.Exceptions.DBExceptions.ModifyEntryException;
-import Model.ErrorHandling.Exceptions.DBExceptions.TopicBankAddException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.ModifyEntryException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.TopicBankAddException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.EntryByTopicException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 
 import java.util.*;

@@ -8,7 +8,7 @@ import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.LoadPropertiesException;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
 
 import java.sql.SQLException;
@@ -57,7 +57,7 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
-    public void storeEmailConfirmationKey(String email, String key) {
+    public void storeEmailConfirmationKey(String email, int key) {
         try {
             List<Parameter> parameters = new ArrayList<>();
             parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
@@ -85,8 +85,9 @@ public class LoginDBAPI extends RunDBAPI {
         try {
             List<Condition> conditions = new ArrayList<>();
             conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
-            conditions.add(new Equals(ColumnInfo.CONF_KEY, key));
+            conditions.add(new Equals(ColumnInfo.CONF_KEY, Integer.parseInt(key)));
             List<Map<String, Object>> userInfo = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEmailConfirmation(), conditions), myDBUrl, myDBUsername, myDBPassword);
+            System.out.println(userInfo);
             if (userInfo.size() != 1) {
                 throw new InvalidConfirmationKeyException();
             }
@@ -99,7 +100,6 @@ public class LoginDBAPI extends RunDBAPI {
     public void throwExceptionIfUserInfoExists(String userName, String password, String email) throws UserErrorException {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
-        conditions.add(new Equals(ColumnInfo.getPASSWORD(), password));
         throwExceptionIfExists(conditions, new AccountExistsException());
         conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
