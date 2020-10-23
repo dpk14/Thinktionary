@@ -87,7 +87,7 @@ public class LoginDBAPI extends RunDBAPI {
             }
         }
         try {
-            sleep(300);
+            sleep(1100);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
