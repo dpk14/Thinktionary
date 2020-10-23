@@ -23,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDateTime;
@@ -90,12 +91,14 @@ public class RESTJournal {
                     .path("/{userID}")
                     .buildAndExpand(userId)
                     .toUri();
-
+            System.out.println(uri.toURL());
             return ResponseEntity.created(uri).body(userId);
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -103,12 +106,15 @@ public class RESTJournal {
     public ResponseEntity verifyAccountInfo(@RequestParam(value = "user") String username,
                                             @RequestParam(value = "email") String email) {
         try {
+            System.out.println(ServletUriComponentsBuilder.fromCurrentRequest().build().toUri().toURL());
             this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
     }
 
