@@ -18,11 +18,12 @@ public class LoginDBAPI extends RunDBAPI {
     public static final int CONF_KEY_EXPIRY_MS = 86405000;
 
     Map<String, ConfKeyExpiryThread> emailConfExpiryThreads;
+    Map<String, Object> emailConfExpiryLocks;
 
     public LoginDBAPI() {
         super();
         this.emailConfExpiryThreads = new HashMap<>();
-        retrieveExistingConfKeyExpiryThreads();
+        retrieveExistingConfKeyExpiryThreadsAndLocks();
     }
 
     class ConfKeyExpiryThread implements Runnable
@@ -53,14 +54,11 @@ public class LoginDBAPI extends RunDBAPI {
             }
         }
 
-        public synchronized void expireOldKeyAndSetNewWhenDone(int newConfirmationKey) {
+        public void setNewConfirmationKey(int newConfirmationKey) {
             this.replacementPending = true;
             this.replacementConfKey = newConfirmationKey;
         }
 
-        public Object getDayLock() {
-            return dayLock;
-        }
     }
 
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
@@ -96,9 +94,7 @@ public class LoginDBAPI extends RunDBAPI {
 
     public void storeEmailConfirmationKey(String email, int key) {
         if (tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
-            ConfKeyExpiryThread confKeyExpiryThread = this.emailConfExpiryThreads.get(email);
-            confKeyExpiryThread.expireOldKeyAndSetNewWhenDone(key);
-            confKeyExpiryThread.getDayLock().notify();
+            expireOldKeyAndSetNewWhenDone(email, key);
             // ^ if a confirmation key already exists, tell the thread expiring it to hurry up,
             // then replace with the new value when it's done
         } else { //otherwise, insert the key as usual
@@ -112,6 +108,15 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
+    private void expireOldKeyAndSetNewWhenDone(String email, int newKey) {
+        ConfKeyExpiryThread confKeyExpiryThread = this.emailConfExpiryThreads.get(email);
+        Object lock = this.emailConfExpiryLocks.get(email);
+        confKeyExpiryThread.setNewConfirmationKey(newKey);
+        synchronized (lock) {
+            lock.notify();
+        }
+    }
+
     public void removeEmailConfirmationKey(String email) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
@@ -119,6 +124,7 @@ public class LoginDBAPI extends RunDBAPI {
         userAction(query);
         if (this.emailConfExpiryThreads.containsKey(email)) {
             this.emailConfExpiryThreads.remove(email);
+            this.emailConfExpiryLocks.remove(email);
         }
     }
 
@@ -155,10 +161,11 @@ public class LoginDBAPI extends RunDBAPI {
         threadRunner.start();
 
         emailConfExpiryThreads.put(email, confKeyExpiryThread);
+        emailConfExpiryLocks.put(email, dayLock);
         return confKeyExpiryThread;
     }
 
-    private void retrieveExistingConfKeyExpiryThreads() {
+    private void retrieveExistingConfKeyExpiryThreadsAndLocks() {
         List<Map<String, Object>> keys = loadTable(TableNames.getEmailConfirmation());
         for (Map<String, Object> key : keys) {
             String email = key.get(ColumnInfo.getEMAIL()).toString();
