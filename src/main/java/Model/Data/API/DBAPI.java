@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class DBAPI {
 
+    private static final int MAX_TRIES = 3;
     protected String myDBUrl;
     protected String myDBUsername;
     protected String myDBPassword;
@@ -90,19 +91,26 @@ public class DBAPI {
     }
 
     protected void userAction(String command) {
-        try {
-            Connection con = makeConnection();
-            Statement st = con.createStatement();
+        for (int tries = 0; tries < MAX_TRIES; tries++) {
             try {
-                st.execute(command);
-                close(st);
-                close(con);
-            } catch (SQLException e) {
-                throw new RuntimeException(String.format("The query %s failed", command), e);
+                try {
+                    Connection con = makeConnection();
+                    Statement st = con.createStatement();
+                    try {
+                        st.execute(command);
+                        close(st);
+                        close(con);
+                        return;
+                    } catch (SQLException e) {
+                        throw new RuntimeException(String.format("The query %s failed", command), e);
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException("Could not connect to db", e);
+                }
+            } catch (RuntimeException e) {
+                throw e;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not connect to db", e);
-        }
+        } throw new RuntimeException();
     }
 
     protected void userActionThrowsException(String command) throws QueryFailedException {
@@ -123,42 +131,54 @@ public class DBAPI {
     }
 
     public List<Map<String, Object>> userQuery(String query) {
-        try {
-            Connection con = makeConnection();
-            Statement st = con.createStatement();
+        for (int tries = 0; tries < MAX_TRIES; tries++) {
             try {
-                ResultSet rs = st.executeQuery(query);
-                List<Map<String, Object>> ret = map(rs);
-                close(st);
-                close(rs);
-                close(con);
-                return ret;
-            } catch (SQLException e) {
-                throw new RuntimeException(String.format("The query %s failed", query), e);
+                try {
+                    Connection con = makeConnection();
+                    Statement st = con.createStatement();
+                    try {
+                        ResultSet rs = st.executeQuery(query);
+                        List<Map<String, Object>> ret = map(rs);
+                        close(st);
+                        close(rs);
+                        close(con);
+                        return ret;
+                    } catch (SQLException e) {
+                        throw new RuntimeException(String.format("The query %s failed", query), e);
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException("Could not connect to db", e);
+                }
+            } catch (RuntimeException e) {
+                throw e;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not connect to db", e);
-        }
+        } throw new RuntimeException();
     }
 
     public List<Map<String, Object>> userQueryThrowsException(String query) throws QueryFailedException {
-        try {
-            Connection con = makeConnection();
-            Statement st = con.createStatement();
+        for (int tries = 0; tries < MAX_TRIES; tries++) {
             try {
-                ResultSet rs = st.executeQuery(query);
-                List<Map<String, Object>> ret = map(rs);
-                close(st);
-                close(rs);
-                close(con);
-                return ret;
-            } catch (SQLException e) {
-                System.out.println("The query %s failed due to a user error");
-                throw new QueryFailedException();
+                try {
+                    Connection con = makeConnection();
+                    Statement st = con.createStatement();
+                    try {
+                        ResultSet rs = st.executeQuery(query);
+                        List<Map<String, Object>> ret = map(rs);
+                        close(st);
+                        close(rs);
+                        close(con);
+                        return ret;
+                    } catch (SQLException e) {
+                        System.out.println("The query %s failed");
+                        throw new QueryFailedException();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException("Could not connect to db", e);
+                }
+            } catch (Exception e) {
+                throw e;
             }
-        } catch (SQLException e) {
-            throw new RuntimeException("Could not connect to db", e);
-        }
+        } throw new RuntimeException();
     }
 
 }
