@@ -73,6 +73,7 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
         String query = SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions);
+        System.out.println("before");
         queryConfirmationTable(email, query, false);
         if (this.emailExpiryLocks.containsKey(email)) {
             this.emailExpiryLocks.remove(email);
@@ -88,6 +89,7 @@ public class LoginDBAPI extends RunDBAPI {
         }
         try {
             sleep(1100);
+            System.out.println("after");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
