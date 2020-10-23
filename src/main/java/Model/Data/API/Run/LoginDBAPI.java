@@ -59,7 +59,7 @@ public class LoginDBAPI extends RunDBAPI {
     public void storeEmailConfirmationKey(String email, int key) {
         if (tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
             removeEmailConfirmationKey(email);
-            emailExpiryThreads.get(email).notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
+            this.emailExpiryThreads.get(email).notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
         }
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
@@ -73,6 +73,9 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
         userAction(SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions));
+        if (this.emailExpiryThreads.containsKey(email)) {
+            this.emailExpiryThreads.remove(email);
+        }
     }
 
     public void verifyConfirmationKey(String key, String email) throws UserErrorException {
@@ -108,13 +111,18 @@ public class LoginDBAPI extends RunDBAPI {
             public void run()
             {
                 try {
-                    wait(CONF_KEY_EXPIRY_MS);
+                    waitADay();
                     removeEmailConfirmationKey(email);
                 } catch (InterruptedException e) {
                     System.out.println(String.format("Confirmation key for %s has been removed", email));
                 }
             }
+
+            private synchronized void waitADay() throws InterruptedException {
+                wait(CONF_KEY_EXPIRY_MS);
+            }
         }
+
         Thread confKeyExpiryThread = new Thread(new ConfKeyExpiryThread());
         confKeyExpiryThread.start();
         emailExpiryThreads.put(email, confKeyExpiryThread);
