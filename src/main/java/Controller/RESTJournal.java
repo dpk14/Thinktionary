@@ -104,7 +104,7 @@ public class RESTJournal {
                                             @RequestParam(value = "email") String email) {
         try {
             this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
-            return ResponseEntity.ok(String.format("''", email));
+            return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         } catch (RuntimeException e) {
