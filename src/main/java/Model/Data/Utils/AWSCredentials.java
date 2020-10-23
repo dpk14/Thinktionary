@@ -11,6 +11,8 @@ public class AWSCredentials {
     public AWSCredentials (String awsAccessKey, String awsSecretKey) {
         this.awsAccessKey = awsAccessKey;
         this.awsSecretKey = awsSecretKey;
+        System.out.println(awsAccessKey);
+        System.out.println(awsSecretKey);
     }
 
     public void apply() {
