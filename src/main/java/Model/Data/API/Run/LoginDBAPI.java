@@ -52,7 +52,7 @@ public class LoginDBAPI extends RunDBAPI {
             userInfo = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);
             return userInfo;
         }
-        catch(SQLException e){
+        catch (SQLException e) {
             throw new CorruptDBError(e);
         }
     }
