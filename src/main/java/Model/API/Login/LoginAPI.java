@@ -28,7 +28,7 @@ public class LoginAPI {
     private static String SUBJECT = "Register for Thinktionary";
     private static String HTMLBODY = "<p>Hello %s,</p>"
             + "<p>We're stoked to have you onboard!</p> "
-            + "<p>You're almost there. Just enter the verification key %s to start journaling!</p>"
+            + "<p>You're almost there. Just enter your 24 hour verification key %s to start journaling!</p>"
             + "<p>All the Best,<br>Thinktionary.app</p>";
 
     private static String TEXTBODY = ">Hello %s,\n"

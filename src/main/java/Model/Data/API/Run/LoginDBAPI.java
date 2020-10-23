@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class LoginDBAPI extends RunDBAPI {
 
-    public static final int CONF_KEY_EXPIRY_MS = 5000;
+    public static final int CONF_KEY_EXPIRY_MS = 20000;
 
     Map<String, Object> emailExpiryLocks;
 
@@ -23,6 +23,7 @@ public class LoginDBAPI extends RunDBAPI {
         super();
         this.emailExpiryLocks = new HashMap<>();
         retrieveExistingConfKeyExpiryThreads();
+        System.out.println(emailExpiryLocks);
     }
 
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
@@ -117,8 +118,9 @@ public class LoginDBAPI extends RunDBAPI {
                 try {
                     this.dayLock.wait(CONF_KEY_EXPIRY_MS);
                     removeEmailConfirmationKey(email);
-                } catch (InterruptedException e) {
                     System.out.println(String.format("Confirmation key for %s has been removed", email));
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }
