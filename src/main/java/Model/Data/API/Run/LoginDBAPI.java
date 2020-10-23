@@ -74,13 +74,13 @@ public class LoginDBAPI extends RunDBAPI {
     }
 
     public List<Map<String, Object>> createUser(String userName, String passWord, String email) throws UserErrorException {
-        List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
-        conditions.add(new Equals(ColumnInfo.getPASSWORD(), passWord));
-        conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
-
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getUSERNAME(), userName));
+        parameters.add(new Parameter(ColumnInfo.getPASSWORD(), passWord));
+        parameters.add(new Parameter(ColumnInfo.getEMAIL(), passWord));
+
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
 
         List<Map<String, Object>> userInfo;
         if (tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), userName)) {
