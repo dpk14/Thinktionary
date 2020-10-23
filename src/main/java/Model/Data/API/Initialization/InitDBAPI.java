@@ -11,7 +11,6 @@ import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTab
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,9 +65,8 @@ public abstract class InitDBAPI extends DBAPI {
     protected boolean tableExists(String tableName){
         Map<Integer, String> map = new HashMap<>();
         map.put(1, tableName);
-        List<Map<String, Object>> ret = new ArrayList<>();
         try {
-            ret = DBUtils.userQuery(map, SQLQueryBuilder.tableExists(), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> ret = DBUtils.userQuery(map, SQLQueryBuilder.tableExists(), myDBUrl, myDBUsername, myDBPassword);
             return ret.size() != 0;
         } catch (SQLException e) {
             throw new CorruptDBError(e);

@@ -17,7 +17,7 @@ public abstract class DBAPI {
 
             myDBUsername = dbUri.getUserInfo().split(":")[0];
             myDBPassword = dbUri.getUserInfo().split(":")[1];
-            myDBUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+            myDBUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
         }
         catch (URISyntaxException e) {
             throw new RuntimeException(e);
