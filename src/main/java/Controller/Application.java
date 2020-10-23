@@ -10,12 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.sql.SQLException;
 
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) throws CreateTableException, URISyntaxException, SQLException {
+    public static void main (String[] args) throws CreateTableException, URISyntaxException {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];

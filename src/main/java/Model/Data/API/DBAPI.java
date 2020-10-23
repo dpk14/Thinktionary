@@ -25,7 +25,7 @@ public class DBAPI {
         myDBUrl = PropertyManager.getDBUrl();
     }
 
-    public AWSCredentials getAccessKeys() throws SQLException {
+    public AWSCredentials getAccessKeys() {
         List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.AWS_ACCESS_KEYS, new ArrayList<>()));
         Map<String, Object> keyMap = ret.get(0);
         System.out.println(keyMap);

@@ -78,6 +78,8 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
         List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
+        System.out.println("YU");
+        System.out.println(userInfo);
         return userInfo.size() != 0;
     }
 
