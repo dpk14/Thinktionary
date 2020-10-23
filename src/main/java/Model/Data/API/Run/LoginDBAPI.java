@@ -70,7 +70,7 @@ public class LoginDBAPI extends RunDBAPI {
     public void removeEmailConfirmationKey(String email) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
-        String query = SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions));
+        String query = SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions);
         queryConfirmationTable(email, query, false);
         if (this.emailExpiryLocks.containsKey(email)) {
             this.emailExpiryLocks.remove(email);
