@@ -32,7 +32,7 @@ public class LoginDBAPI extends RunDBAPI {
         private int replacementConfKey;
         private String email;
 
-        public ConfKeyExpiryThread( String email, Object dayLock) {
+        public ConfKeyExpiryThread(String email, Object dayLock) {
             this.dayLock = dayLock;
             this.replacementPending = false;
             this.email = email;
@@ -56,7 +56,10 @@ public class LoginDBAPI extends RunDBAPI {
         public synchronized void expireOldKeyAndSetNewWhenDone(int newConfirmationKey) {
             this.replacementPending = true;
             this.replacementConfKey = newConfirmationKey;
-            this.dayLock.notify();
+        }
+
+        public Object getDayLock() {
+            return dayLock;
         }
     }
 
@@ -95,6 +98,7 @@ public class LoginDBAPI extends RunDBAPI {
         if (tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
             ConfKeyExpiryThread confKeyExpiryThread = this.emailConfExpiryThreads.get(email);
             confKeyExpiryThread.expireOldKeyAndSetNewWhenDone(key);
+            confKeyExpiryThread.getDayLock().notify();
             // ^ if a confirmation key already exists, tell the thread expiring it to hurry up,
             // then replace with the new value when it's done
         } else { //otherwise, insert the key as usual
