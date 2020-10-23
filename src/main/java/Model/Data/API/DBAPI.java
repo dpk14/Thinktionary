@@ -98,7 +98,7 @@ public class DBAPI {
                 close(st);
                 close(con);
             } catch (SQLException e) {
-                throw new RuntimeException(String.format("The query %s failed", st), e);
+                throw new RuntimeException(String.format("The query %s failed", command), e);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Could not connect to db", e);
@@ -134,7 +134,7 @@ public class DBAPI {
                 close(con);
                 return ret;
             } catch (SQLException e) {
-                throw new RuntimeException(String.format("The query %s failed", st), e);
+                throw new RuntimeException(String.format("The query %s failed", query), e);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Could not connect to db", e);
