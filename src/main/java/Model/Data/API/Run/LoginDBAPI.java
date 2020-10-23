@@ -116,9 +116,11 @@ public class LoginDBAPI extends RunDBAPI {
             public void run()
             {
                 try {
-                    this.dayLock.wait(CONF_KEY_EXPIRY_MS);
-                    removeEmailConfirmationKey(email);
-                    System.out.println(String.format("Confirmation key for %s has been removed", email));
+                    synchronized (this.dayLock) {
+                        this.dayLock.wait(CONF_KEY_EXPIRY_MS);
+                        removeEmailConfirmationKey(email);
+                        System.out.println(String.format("Confirmation key for %s has been removed", email));
+                    }
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
