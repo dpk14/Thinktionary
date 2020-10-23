@@ -25,7 +25,7 @@ public class ColumnInfo {
     private static final String AUTO_INCREMENT_TYPE = "SERIAL";
 
     private static final String PRIMARY_KEY_LABEL = " PRIMARY KEY NOT NULL";
-    private static final String NON_NULL_LABEL = " NON NULL";
+    private static final String NON_NULL_LABEL = " NOT NULL";
 
 
     public static String getCOLOR() {
