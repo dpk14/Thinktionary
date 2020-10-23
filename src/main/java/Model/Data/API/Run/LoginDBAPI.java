@@ -124,8 +124,6 @@ public class LoginDBAPI extends RunDBAPI {
     private void retrieveExistingConfKeyExpiryThreads() {
         List<Map<String, Object>> keys = loadTable(TableNames.getEmailConfirmation());
         for (Map<String, Object> key : keys) {
-            System.out.println(key);
-            System.out.println(ColumnInfo.getEMAIL());
             String email = key.get(ColumnInfo.getEMAIL()).toString();
             startAndStoreConfKeyExpiryThread(email);
         }

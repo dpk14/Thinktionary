@@ -4,20 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ColumnInfo {
-    private static final String TOPIC = "Topic";
-    private static final String COLOR = "Color";
-    private static final String ENTRY_ID = "EntryID";
-    private static final String USER_ID = "UserID";
-    private static final String TITLE = "Title";
-    private static final String TEXT = "Text";
-    private static final String CREATED = "Created";
-    private static final String MODIFIED = "Modified";
-    private static final String USERNAME = "Username";
-    private static final String PASSWORD = "Password";
+    private static final String TOPIC = "topic";
+    private static final String COLOR = "color";
+    private static final String ENTRY_ID = "entryid";
+    private static final String USER_ID = "userid";
+    private static final String TITLE = "title";
+    private static final String TEXT = "text";
+    private static final String CREATED = "created";
+    private static final String MODIFIED = "modified";
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
     public static final String AWS_ACCESS_KEY = "awsaccesskey";
     public static final String AWS_SECRET_KEY = "awssecretkey";
-    private static final String EMAIL = "Email";
-    public static final String CONF_KEY = "ConfKey";
+    private static final String EMAIL = "email";
+    public static final String CONF_KEY = "confkey";
 
     private static final String TEXT_TYPE = "TEXT NOT NULL";
     private static final String EMAIL_FOR_CONF_KEY_TYPE = "TEXT PRIMARY KEY";
