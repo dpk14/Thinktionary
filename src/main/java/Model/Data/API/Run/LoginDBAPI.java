@@ -18,11 +18,9 @@ public class LoginDBAPI extends RunDBAPI {
     public static final int CONF_KEY_EXPIRY_MS = 20000;
 
     Map<String, Object> emailExpiryLocks;
-    Object confKeyDBLock;
 
     public LoginDBAPI() {
         super();
-        this.confKeyDBLock = new Object();
         this.emailExpiryLocks = new HashMap<>();
         retrieveExistingConfKeyExpiryThreads();
         System.out.println(emailExpiryLocks);
@@ -60,31 +58,33 @@ public class LoginDBAPI extends RunDBAPI {
     }
 
     public void storeEmailConfirmationKey(String email, int key) {
-        synchronized (this.confKeyDBLock) {
-            if (tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
-                Object lock = this.emailExpiryLocks.get(email);
-                synchronized (lock) {
-                    lock.notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
-                }
-            }
-            List<Parameter> parameters = new ArrayList<>();
-            parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
-            parameters.add(new Parameter(ColumnInfo.CONF_KEY, key));
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
+        parameters.add(new Parameter(ColumnInfo.CONF_KEY, key));
 
-            userAction(SQLQueryBuilder.insert(TableNames.getEmailConfirmation(), parameters));
-            startConfKeyExpiryThreadAndStoreLock(email);
-        }
+        String query = SQLQueryBuilder.insert(TableNames.getEmailConfirmation(), parameters);
+        queryConfirmationTable(email, query, true);
+        startConfKeyExpiryThreadAndStoreLock(email);
     }
 
     public void removeEmailConfirmationKey(String email) {
-        synchronized (this.confKeyDBLock) {
-            List<Condition> conditions = new ArrayList<>();
-            conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
-            userAction(SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions));
-            if (this.emailExpiryLocks.containsKey(email)) {
-                this.emailExpiryLocks.remove(email);
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
+        String query = SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions));
+        queryConfirmationTable(email, query, false);
+        if (this.emailExpiryLocks.containsKey(email)) {
+            this.emailExpiryLocks.remove(email);
+        }
+    }
+
+    private synchronized void queryConfirmationTable(String email, String query, boolean insert) {
+        if (insert && tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
+            Object lock = this.emailExpiryLocks.get(email);
+            synchronized (lock) {
+                lock.notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
             }
         }
+        userAction(query);
     }
 
     public void verifyConfirmationKey(String key, String email) throws UserErrorException {
