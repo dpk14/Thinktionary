@@ -44,7 +44,6 @@ public abstract class RunDBAPI extends DBAPI {
 
         try {
             List<Map<String, Object>> ret = DBUtils.userQuery(SQLQueryBuilder.select(tableName, conditions), myDBUrl, myDBUsername, myDBPassword);
-            System.out.println(ret);
             return ret;
         } catch (SQLException e) {
             throw new CorruptDBError(e);

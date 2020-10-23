@@ -15,13 +15,12 @@ import java.util.Map;
 
 public abstract class InitDBAPI extends DBAPI {
 
-    public InitDBAPI() {
+    public InitDBAPI() throws LoadPropertiesException {
         super();
     }
 
-    public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
+    public void initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
         createTablesIfNull();
-        return myDBRelFilename;
     }
 
     public abstract void createTablesIfNull() throws CreateTableException;

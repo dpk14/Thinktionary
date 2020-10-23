@@ -1,9 +1,7 @@
 package Model.ConfigUtils.PropertyUtils;
 
 import Controller.Application;
-import Controller.Exceptions.ModeParseError;
 import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
-import Model.ConfigUtils.PathUtils.PathManager;
 
 import java.io.*;
 import java.util.Properties;
@@ -20,24 +18,11 @@ public class PropertyManager {
         setProperty(PropertyKeys.getPwdProp(), value);
     }
 
-    public static void setDBFilename(String value) {
-        String relPath = PathManager.getDBRelPath(value);
-        String absPath = PathManager.getDBAbsPath(value);
-        setProperty(PropertyKeys.getFilenameProp(), value);
-        setProperty(PropertyKeys.getRelFilepathProp(), relPath);
-        setProperty(PropertyKeys.getAbsFilepathProp(), absPath);
-    }
-
-    public static void setJarMode(boolean b) {
-        setProperty(PropertyKeys.getJarModeProp(), Boolean.toString(b));
+    public static void setURL(String value) {
+        setProperty(PropertyKeys.getURLProp(), value);
     }
 
     //Getters
-
-    public static boolean getJarMode() throws LoadPropertiesException {
-        Properties prop = loadProperties();
-        return Boolean.parseBoolean(prop.getProperty(PropertyKeys.getJarModeProp()));
-    }
 
     public static String getDBUsername() throws LoadPropertiesException {
         Properties prop = loadProperties();
@@ -49,20 +34,9 @@ public class PropertyManager {
         return prop.getProperty(PropertyKeys.getPwdProp());
     }
 
-
-    public static String getRelFilepath() throws LoadPropertiesException {
-        Properties prop = loadProperties();
-        return prop.getProperty(PropertyKeys.getRelFilepathProp());
-    }
-
-    public static String getAbsFilepath() throws LoadPropertiesException {
-        return PathManager.getDBAbsPathFromRel(getRelFilepath());
-    }
-
     public static String getDBUrl() throws LoadPropertiesException {
         Properties prop = loadProperties();
-        String fileName = prop.getProperty(PropertyKeys.getRelFilepathProp());
-        return PathManager.getDBUrl(fileName);
+        return prop.getProperty(PropertyKeys.getURLProp());
     }
 
     @Deprecated
@@ -107,15 +81,6 @@ public class PropertyManager {
         catch(FileNotFoundException e){
             System.out.println("Properties filepath incorrect");
             e.printStackTrace();
-        }
-    }
-
-    private static boolean testModeParser(String mode) throws ModeParseError {
-        String modeLower = mode.toLowerCase();
-        if(modeLower.equals("true")) return true;
-        else if (modeLower.equals("false")) return false;
-        else{
-            throw new ModeParseError();
         }
     }
 

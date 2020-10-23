@@ -1,26 +1,34 @@
 package Model.Data.API;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
+import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.SQLQueryBuilder;
+import Model.Data.SQL.TableNames;
+import Model.Data.Utils.AWSCredentials;
+import Model.Data.Utils.DBUtils;
+import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 
-public abstract class DBAPI {
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class DBAPI {
 
     protected String myDBUrl;
     protected String myDBUsername;
     protected String myDBPassword;
-    protected String myDBRelFilename;
-    protected String myDBAbsFilename;
 
-    public DBAPI() {
-        try {
-            URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
-            myDBUsername = dbUri.getUserInfo().split(":")[0];
-            myDBPassword = dbUri.getUserInfo().split(":")[1];
-            myDBUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-        }
-        catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+    public DBAPI() throws LoadPropertiesException {
+        myDBUsername = PropertyManager.getDBUsername();
+        myDBPassword = PropertyManager.getDBPwd();
+        myDBUrl = PropertyManager.getDBUrl();
     }
+
+    public AWSCredentials getAccessKeys() throws SQLException {
+        List<Map<String, Object>> ret = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.AWS_ACCESS_KEYS, new ArrayList<>()), myDBUrl, myDBUsername, myDBPassword);
+        Map<String, Object> keyMap = ret.get(0);
+        return new AWSCredentials(keyMap.get(ColumnInfo.AWS_ACCESS_KEY).toString(), keyMap.get(ColumnInfo.AWS_SECRET_KEY).toString());
+    }
+
 }

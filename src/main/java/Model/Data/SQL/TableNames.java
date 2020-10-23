@@ -9,6 +9,7 @@ public class TableNames {
     private static final String USER_TOPIC = "UserTopic";
     private static final String USER_INFO = "UserInfo";
     private static final String EMAIL_CONFIRMATION = "EmailConfirmation";
+    public static final String AWS_ACCESS_KEYS = "awskeys";
 
     public static String getUserTopic() {
         return USER_TOPIC;
