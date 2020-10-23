@@ -4,8 +4,6 @@ import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.Utils.DBUtils;
-import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabaseError;
-import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
@@ -15,11 +13,11 @@ import java.util.Map;
 
 public abstract class InitDBAPI extends DBAPI {
 
-    public InitDBAPI() throws LoadPropertiesException {
+    public InitDBAPI() {
         super();
     }
 
-    public void initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
+    public void initialize() throws CreateTableException {
         createTablesIfNull();
     }
 

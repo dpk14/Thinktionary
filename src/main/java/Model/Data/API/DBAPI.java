@@ -6,7 +6,6 @@ import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.Utils.AWSCredentials;
 import Model.Data.Utils.DBUtils;
-import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class DBAPI {
     protected String myDBUsername;
     protected String myDBPassword;
 
-    public DBAPI() throws LoadPropertiesException {
+    public DBAPI() {
         myDBUsername = PropertyManager.getDBUsername();
         myDBPassword = PropertyManager.getDBPwd();
         myDBUrl = PropertyManager.getDBUrl();

@@ -4,8 +4,6 @@ import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import Model.Data.API.DBAPI;
 import Model.Data.API.Initialization.JournalDBInit;
 import Model.Data.API.Initialization.LoginDBInit;
-import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.EmptyDatabaseError;
-import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +15,7 @@ import java.sql.SQLException;
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) throws LoadPropertiesException, CreateTableException, EmptyDatabaseError, URISyntaxException, SQLException {
+    public static void main(String[] args) throws CreateTableException, URISyntaxException, SQLException {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
         String username = dbUri.getUserInfo().split(":")[0];
         String password = dbUri.getUserInfo().split(":")[1];
