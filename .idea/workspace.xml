@@ -2,12 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Controller/RESTJournal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Entry.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Entry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/EntryComponents/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/EntryComponents/Date.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/Journal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/JournalDBParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Journal/JournalDBParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginDBParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/API/Login/LoginDBParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ConfigUtils/PathUtils/PathManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/ConfigUtils/PathUtils/PathManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/ConfigUtils/PropertyUtils/PropertyManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/ConfigUtils/PropertyUtils/PropertyManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/DBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/DBAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/InitDBAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/JournalDBInit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/JournalDBInit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/LoginDBInit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Initialization/LoginDBInit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/JournalDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/JournalDBAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/LoginDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/LoginDBAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/RunDBAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/API/Run/RunDBAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/ColumnInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/ColumnInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/QueryObjects/Condition.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/QueryObjects/Condition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/QueryObjects/Parameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/QueryObjects/Parameter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQueryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQueryBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQueryOld.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/SQL/SQLQueryOld.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Data/Utils/DBUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Data/Utils/DBUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/JournalTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/JournalTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/LoginTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/Tests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/JournalDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/JournalDBInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/LoginDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/LoginDBInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/JournalTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +314,7 @@
       <workItem from="1603231932353" duration="7000" />
       <workItem from="1603231963394" duration="15272000" />
       <workItem from="1603398576644" duration="6331000" />
-      <workItem from="1603410122476" duration="493000" />
+      <workItem from="1603410122476" duration="830000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,5 @@
 package Model.Data.API.Initialization;
 
-import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
@@ -11,9 +10,6 @@ import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,32 +23,8 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     public String initialize() throws CreateTableException, EmptyDatabaseError, LoadPropertiesException {
-        System.out.println(myDBRelFilename);
-        if (!DBexists(myDBRelFilename)) {
-            if(programIsJAR()){
-                throw new EmptyDatabaseError();
-            }
-            createDatabase(myDBAbsFilename);
-        }
         createTablesIfNull();
         return myDBRelFilename;
-    }
-
-    private boolean DBexists(String dbRelFilename){
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        InputStream is = classloader.getResourceAsStream("/" + dbRelFilename);
-        return is != null;
-    }
-
-    private void createDatabase(String url){
-        System.out.println(url);
-        File file = new File(url);
-        try {
-            file.createNewFile();
-        }
-        catch(IOException e){
-            System.out.println(e.getStackTrace());
-        }
     }
 
     public abstract void createTablesIfNull() throws CreateTableException;
@@ -103,8 +75,5 @@ public abstract class InitDBAPI extends DBAPI {
         }
     }
 
-    protected boolean programIsJAR() throws LoadPropertiesException {
-        return PropertyManager.getJarMode();
-    };
 }
 
