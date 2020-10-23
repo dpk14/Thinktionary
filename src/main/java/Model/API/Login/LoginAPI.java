@@ -2,6 +2,8 @@ package Model.API.Login;
 
 import Model.API.Journal.Journal;
 import Model.Data.API.Run.LoginDBAPI;
+import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.TableNames;
 import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
@@ -16,6 +18,12 @@ import java.util.Random;
 
 public class LoginAPI {
 
+    LoginDBAPI loginDBAPI;
+
+    public LoginAPI(LoginDBAPI loginDBAPI) {
+        this.loginDBAPI = loginDBAPI;
+    }
+
     private static final String FROM = "thinktionary.app@gmail.com";
     private static String SUBJECT = "Register for Thinktionary";
     private static String HTMLBODY = "<p>Hello %s,</p>"
@@ -27,33 +35,31 @@ public class LoginAPI {
             + "We're pleased to have you onboard! Just enter the verification key %s to start journaling!\n"
             + "Best,\nThe Thinktionary Team";
 
-    public static Journal login(String username, String password) throws InvalidLoginException {
-        List<Map<String, Object>> userInfo = new LoginDBAPI().login(username, password);
+    public Journal login(String username, String password) throws InvalidLoginException {
+        List<Map<String, Object>> userInfo = this.loginDBAPI.login(username, password);
         int userID = LoginDBParser.getUserID(userInfo);
         return new Journal(userID, username, password);
     }
 
-    public static int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException { //second exception has two inheritances, password exists and username exists
-        LoginDBAPI loginDBAPI = new LoginDBAPI();
-        loginDBAPI.verifyConfirmationKey(verifyKey, email);
+    public int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
+        this.loginDBAPI.verifyConfirmationKey(verifyKey, email);
         List<Map<String, Object>> userInfo = new LoginDBAPI().createUser(username, password, email);
         return LoginDBParser.getUserID(userInfo);
     }
 
-    public static void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists
-        LoginDBAPI loginDBAPI = new LoginDBAPI();
-        if (loginDBAPI.usernameExists(username)) {
+    public void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists
+        if (this.loginDBAPI.tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), username)) {
             throw new AccountExistsException();
-        } else if (loginDBAPI.emailExists(email)) {
+        } else if (this.loginDBAPI.tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getEMAIL(), email)) {
             throw new EmailExistsException();
         }
         int emailKey = generateEmailConfirmationKey();
-        loginDBAPI.storeEmailConfirmationKey(email, emailKey);
+        this.loginDBAPI.storeEmailConfirmationKey(email, emailKey);
         try {
             sendEmail(email, emailKey, username);
         }
         catch (Exception e) {
-            loginDBAPI.removeEmailConfirmationKey(email);
+            this.loginDBAPI.removeEmailConfirmationKey(email);
             throw new EmailDeliveryFailure(e);
         }
     }

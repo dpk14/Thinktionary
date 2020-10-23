@@ -4,7 +4,7 @@ import Model.ConfigUtils.PropertyUtils.PropertyManager;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
-import Model.Data.Utils.AWSCredentials;
+import Model.Data.AWSCredentials;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.QueryFailedException;
 
 import java.sql.*;

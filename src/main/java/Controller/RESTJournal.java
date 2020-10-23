@@ -8,6 +8,11 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.EntryWithID;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
+import Model.ConfigUtils.PropertyUtils.PropertyManager;
+import Model.Data.API.DBAPI;
+import Model.Data.API.Initialization.JournalDBInitAPI;
+import Model.Data.API.Initialization.LoginDBInitAPI;
+import Model.Data.API.Run.LoginDBAPI;
 import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
@@ -19,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
@@ -29,14 +35,31 @@ import java.util.Set;
 public class RESTJournal {
 
     private static final String PROTECTED_PATH = "/{userID}";
+
+    SessionManager sessionManager;
+    LoginAPI loginAPI;
+
     @Autowired
-    SessionManager mySessionManager;
+    public RESTJournal() throws URISyntaxException {
+        this.sessionManager = new SessionManager();
+        URI dbUri = new URI(System.getenv("DATABASE_URL"));
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+        PropertyManager.setDBUsername(username);
+        PropertyManager.setDBPassword(password);
+        PropertyManager.setURL(url);
+        new DBAPI().getAccessKeys().apply();
+        new LoginDBInitAPI().createTablesIfDoNotExist();
+        new JournalDBInitAPI().createTablesIfDoNotExist();
+        this.loginAPI = new LoginAPI(new LoginDBAPI());
+    }
 
     @GetMapping("/login")
     public ResponseEntity login(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password) {
         try {
-            Journal journal = LoginAPI.login(username, password);
-            mySessionManager.addUser(journal.getUserID(), journal);
+            Journal journal = this.loginAPI.login(username, password);
+            this.sessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
         } catch (InvalidLoginException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -48,8 +71,8 @@ public class RESTJournal {
     @GetMapping("/logout")
     public ResponseEntity logout(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password) {
         try {
-            Journal journal = LoginAPI.login(username, password);
-            mySessionManager.removeUser(journal.getUserID());
+            Journal journal = this.loginAPI.login(username, password);
+            this.sessionManager.removeUser(journal.getUserID());
             return ResponseEntity.ok(journal.getUserID());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
@@ -62,7 +85,7 @@ public class RESTJournal {
     public ResponseEntity makeAccount(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password,
                                       @RequestParam(value = "email") String email, @RequestParam(value = "key") String verifyKey) {
         try {
-            int userId = LoginAPI.makeAccount(username, password, email, verifyKey);
+            int userId = this.loginAPI.makeAccount(username, password, email, verifyKey);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{userID}")
                     .buildAndExpand(userId)
@@ -80,7 +103,7 @@ public class RESTJournal {
     public ResponseEntity verifyAccountInfo(@RequestParam(value = "user") String username,
                                             @RequestParam(value = "email") String email) {
         try {
-            LoginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
+            this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
             return ResponseEntity.ok(email);
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -95,7 +118,7 @@ public class RESTJournal {
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {
         Entry entry = entryBuilder.getMyEntry();
         try {
-            Journal journal = mySessionManager.getSessionInfo(userID);
+            Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
                 int entryID = journal.createEntry(entry);
                 EntryWithID entryWithID = new EntryWithID(entry, entryID);
@@ -116,7 +139,7 @@ public class RESTJournal {
     @PutMapping(PROTECTED_PATH + "/entries/{entryID}")
     public ResponseEntity modifyEntry(@PathVariable int userID, @PathVariable int entryID, @RequestBody EntryBuilder entryBuilder) {
         try {
-            Journal journal = mySessionManager.getSessionInfo(userID);
+            Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
                 Entry savedEntry = journal.saveEntry(entryID, entryBuilder.getMyEntry());
                 EntryWithID savedEntryWithID = new EntryWithID(savedEntry, entryID);
@@ -134,7 +157,7 @@ public class RESTJournal {
     @DeleteMapping(PROTECTED_PATH + "/entries/{entryID}/remove")
     public ResponseEntity delete(@PathVariable int userID, @PathVariable int entryID) {
         try {
-            Journal journal = mySessionManager.getSessionInfo(userID);
+            Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
                 journal.removeEntry(entryID);
                 return ResponseEntity.ok(entryID);
@@ -150,7 +173,7 @@ public class RESTJournal {
     @DeleteMapping(PROTECTED_PATH + "/topics/remove")
     public ResponseEntity deleteTopic(@PathVariable int userID, @RequestParam(value = "name") String topicName) {
         try {
-            Journal journal = mySessionManager.getSessionInfo(userID);
+            Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
                 journal.removeUnusedTopicFromBank(topicName);
                 return ResponseEntity.ok(topicName);
@@ -168,7 +191,7 @@ public class RESTJournal {
     @PostMapping(PROTECTED_PATH + "/entries/get")
     public ResponseEntity get(@PathVariable int userID, @RequestBody Set<Topic> topics) {
         try {
-            Journal journal = mySessionManager.getSessionInfo(userID);
+            Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
                 List<Entry> entries = journal.getTopicalEntries(topics);
                 return ResponseEntity.ok(entries);
@@ -185,7 +208,7 @@ public class RESTJournal {
     @RequestMapping(PROTECTED_PATH + "/entries/getRand")
     public ResponseEntity getRandom(@PathVariable int userID, @RequestBody Set<Topic> topics) {
         try {
-            Journal journal = mySessionManager.getSessionInfo(userID);
+            Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
                 Entry entry = journal.getRandomEntry(topics);
                 return ResponseEntity.ok(entry);

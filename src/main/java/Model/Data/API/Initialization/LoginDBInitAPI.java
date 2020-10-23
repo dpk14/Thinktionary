@@ -2,12 +2,12 @@ package Model.Data.API.Initialization;
 
 import Model.Data.SQL.TableNames;
 
-public class LoginDBInit extends InitDBAPI {
+public class LoginDBInitAPI extends InitDBAPI {
 
-    public LoginDBInit() {super();}
+    public LoginDBInitAPI() {super();}
 
     @Override
-    public void createTablesIfNull() {
+    public void createTablesIfDoNotExist() {
         createTablesHelper(TableNames.getLoginTableNames());
     }
 

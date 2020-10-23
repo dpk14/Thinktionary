@@ -4,8 +4,15 @@
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/JournalDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/JournalDBInitAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/LoginDBInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/LoginDBInitAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/AWSCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/AWSCredentials.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,19 +105,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
-      <recent name="C:\Users\dpk14\Thinktionary\src" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="src.main.java.BackEnd.API.Journal" />
       <recent name="src.main.java.BackEnd.API.Login" />
       <recent name="src.main.test.java" />
       <recent name="src.main.javaa" />
       <recent name="src.main.java" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model.Data.API.Initialization" />
@@ -119,8 +122,12 @@
       <recent name="Controller" />
       <recent name="Model.Data.API" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
+      <recent name="C:\Users\dpk14\Thinktionary\src" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application (1)">
@@ -282,7 +289,7 @@
       <workItem from="1603231932353" duration="7000" />
       <workItem from="1603231963394" duration="15272000" />
       <workItem from="1603398576644" duration="6331000" />
-      <workItem from="1603410122476" duration="23523000" />
+      <workItem from="1603410122476" duration="30326000" />
     </task>
     <servers />
   </component>
@@ -298,6 +305,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603245233306" />
+    <state x="820" y="416" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1603464305049">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="820" y="416" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2048.1112@0.0.2048.1112" timestamp="1603464305049" />
     <state x="754" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603451652659">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -358,7 +369,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Controller/Application.java</url>
-          <line>29</line>
+          <line>11</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="NONE" type="java-line">

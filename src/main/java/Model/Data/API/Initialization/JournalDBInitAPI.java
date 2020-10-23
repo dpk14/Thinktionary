@@ -2,12 +2,12 @@ package Model.Data.API.Initialization;
 
 import Model.Data.SQL.TableNames;
 
-public class JournalDBInit extends InitDBAPI {
+public class JournalDBInitAPI extends InitDBAPI {
 
-    public JournalDBInit() {super();}
+    public JournalDBInitAPI() {super();}
 
     @Override
-    public void createTablesIfNull() {
+    public void createTablesIfDoNotExist() {
         createTablesHelper(TableNames.getJournalTableNames());
     }
 

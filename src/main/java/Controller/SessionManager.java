@@ -2,7 +2,6 @@ package Controller;
 
 import Controller.Exceptions.NotLoggedInException;
 import Model.API.Journal.Journal;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
@@ -24,7 +23,7 @@ public class SessionManager {
     }
 
     public Journal getSessionInfo(int id) throws NotLoggedInException {
-        if(!myUsers.containsKey(id)) throw new NotLoggedInException();
+        if (!myUsers.containsKey(id)) throw new NotLoggedInException();
         return myUsers.get(id);
     }
 }

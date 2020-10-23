@@ -1,4 +1,4 @@
-package Model.Data.Utils;
+package Model.Data;
 
 public class AWSCredentials {
     private static final String ACCESS_SYSTEM_KEY = "aws.accessKeyId";

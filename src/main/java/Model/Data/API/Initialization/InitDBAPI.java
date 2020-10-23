@@ -15,11 +15,7 @@ public abstract class InitDBAPI extends DBAPI {
         super();
     }
 
-    public void initialize() throws CreateTableException {
-        createTablesIfNull();
-    }
-
-    public abstract void createTablesIfNull() throws CreateTableException;
+    public abstract void createTablesIfDoNotExist() throws CreateTableException;
 
     public abstract void clearTables() throws RemoveTableException;
 
