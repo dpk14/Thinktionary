@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Thread.sleep;
+
 public class LoginDBAPI extends RunDBAPI {
 
     public static final int CONF_KEY_EXPIRY_MS = 86400000;
@@ -83,6 +85,11 @@ public class LoginDBAPI extends RunDBAPI {
             synchronized (lock) {
                 lock.notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
             }
+        }
+        try {
+            sleep(300);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
         userAction(query);
     }
