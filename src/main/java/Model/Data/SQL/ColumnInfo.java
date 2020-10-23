@@ -14,8 +14,8 @@ public class ColumnInfo {
     private static final String MODIFIED = "Modified";
     private static final String USERNAME = "Username";
     private static final String PASSWORD = "Password";
-    public static final String AWS_ACCESS_KEY = "Awsaccesskey";
-    public static final String AWS_SECRET_KEY = "Awssecretkey";
+    public static final String AWS_ACCESS_KEY = "awsaccesskey";
+    public static final String AWS_SECRET_KEY = "awssecretkey";
     private static final String EMAIL = "Email";
     public static final String CONF_KEY = "ConfKey";
 

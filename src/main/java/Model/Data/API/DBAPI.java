@@ -28,6 +28,7 @@ public class DBAPI {
     public AWSCredentials getAccessKeys() throws SQLException {
         List<Map<String, Object>> ret = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.AWS_ACCESS_KEYS, new ArrayList<>()), myDBUrl, myDBUsername, myDBPassword);
         Map<String, Object> keyMap = ret.get(0);
+        System.out.println(keyMap);
         return new AWSCredentials(keyMap.get(ColumnInfo.AWS_ACCESS_KEY).toString(), keyMap.get(ColumnInfo.AWS_SECRET_KEY).toString());
     }
 
