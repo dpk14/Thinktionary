@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class LoginDBAPI extends RunDBAPI {
 
-    public static final int CONF_KEY_EXPIRY_MS = 20000;
+    public static final int CONF_KEY_EXPIRY_MS = 86400000;
 
     Map<String, Object> emailExpiryLocks;
 
