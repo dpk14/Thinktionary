@@ -22,8 +22,10 @@ public class ColumnInfo {
     private static final String TEXT_TYPE = "TEXT NOT NULL";
     private static final String EMAIL_FOR_CONF_KEY_TYPE = "TEXT PRIMARY KEY";
     private static final String INTEGER_TYPE = "INT";
+    private static final String AUTO_INCREMENT_TYPE = "SERIAL";
 
     private static final String PRIMARY_KEY_LABEL = " PRIMARY KEY NOT NULL";
+    private static final String NON_NULL_LABEL = " NON NULL";
 
 
     public static String getCOLOR() {
@@ -72,12 +74,12 @@ public class ColumnInfo {
         return TEXT_TYPE;
     }
 
-    public static String getEntryIdType(boolean primaryKey) {
-        return INTEGER_TYPE + (primaryKey ? PRIMARY_KEY_LABEL : "");
+    public static String getEntryIdType (boolean primaryKey) {
+        return primaryKey ? AUTO_INCREMENT_TYPE + PRIMARY_KEY_LABEL : INTEGER_TYPE + NON_NULL_LABEL;
     }
 
     public static String getUserIdType(boolean primaryKey) {
-        return INTEGER_TYPE + (primaryKey ? PRIMARY_KEY_LABEL : "");
+        return primaryKey ? AUTO_INCREMENT_TYPE + PRIMARY_KEY_LABEL : INTEGER_TYPE + NON_NULL_LABEL;
     }
 
     public static String getModifiedType() {
