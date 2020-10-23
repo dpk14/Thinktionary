@@ -112,8 +112,6 @@ public class RESTJournal {
         }
     }
 
-    @PutMapping
-
     @PostMapping(value = PROTECTED_PATH + "/entries", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {
         Entry entry = entryBuilder.getMyEntry();
