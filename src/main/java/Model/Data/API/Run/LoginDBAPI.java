@@ -59,7 +59,10 @@ public class LoginDBAPI extends RunDBAPI {
 
     public void storeEmailConfirmationKey(String email, int key) {
         if (tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
-            this.emailExpiryLocks.get(email).notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
+            Object lock = this.emailExpiryLocks.get(email);
+            synchronized (lock) {
+                lock.notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
+            }
         }
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
