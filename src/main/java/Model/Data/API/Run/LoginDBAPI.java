@@ -86,12 +86,12 @@ public class LoginDBAPI extends RunDBAPI {
             synchronized (lock) {
                 lock.notify(); // if a confirmation key already exists, remove lock and let it expire, replacing with new
             }
-        }
-        try {
-            sleep(1100);
-            System.out.println("after");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            try {
+                sleep(300);
+                System.out.println("after");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         userAction(query);
     }
