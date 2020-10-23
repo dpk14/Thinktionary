@@ -20,7 +20,7 @@ public class ColumnInfo {
     private static final String TEXT_TYPE = "TEXT NOT NULL";
     private static final String INTEGER_TYPE = "INT";
 
-    private static final String PRIMARY_KEY_LABEL = " PRIMARY KEY NOT NUL";
+    private static final String PRIMARY_KEY_LABEL = " PRIMARY KEY NOT NULL";
 
 
     public static String getCOLOR() {

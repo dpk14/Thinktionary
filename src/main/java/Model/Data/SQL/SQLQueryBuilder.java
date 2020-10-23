@@ -28,7 +28,7 @@ public class SQLQueryBuilder {
     }
 
     public static final String createTable(String tableName, Map<String, String> columnToType) {
-        String command = "CREATE TABLE [IF NOT EXISTS] " + tableName + "(";
+        String command = "CREATE TABLE IF NOT EXISTS " + tableName + "(";
         int count = 0;
         for (String columnName : columnToType.keySet()) {
             String type = columnToType.get(columnName);
