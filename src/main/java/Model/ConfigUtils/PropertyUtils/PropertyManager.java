@@ -62,25 +62,25 @@ public class PropertyManager {
     public static void setProperty(String key, String value) {
         String path = PropertyManager.class.getResource(PropertyKeys.getDbPropertiesName()).getPath();
         try {
-            File dp_properties = new File(path);
-            OutputStream output = new FileOutputStream(dp_properties, true);
-            try{
+            File db_properties = new File(path);
+            OutputStream output = new FileOutputStream(db_properties, true);
+            try {
                 Properties prop = new Properties();
-                for(Object existingKey: prop.keySet()){
+                for (Object existingKey: prop.keySet()){
                     System.out.println(existingKey);
                     prop.setProperty((String) existingKey, prop.getProperty((String) existingKey));
                 }
                 prop.setProperty(key, value);
                 prop.store(output, null);
             }
-            catch(IOException e){
+            catch (IOException e) {
                 System.out.println("Properties could not be properly set");
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
-        catch(FileNotFoundException e){
+        catch (FileNotFoundException e) {
             System.out.println("Properties filepath incorrect");
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
