@@ -146,8 +146,9 @@ public class LoginDBAPI extends RunDBAPI {
 
     private Object startConfKeyExpiryThreadAndStoreLock(String email) {
         Object dayLock = new Object();
-        Thread confKeyExpiryThread = new Thread(new ConfKeyExpiryThread(dayLock));
-        confKeyExpiryThread.start();
+        ConfKeyExpiryThread confKeyExpiryThread = new ConfKeyExpiryThread(email, dayLock);
+        Thread threadRunner = new Thread(confKeyExpiryThread);
+        threadRunner.start();
 
         emailConfExpiryThreads.put(email, confKeyExpiryThread);
         return confKeyExpiryThread;
