@@ -1,8 +1,9 @@
 package Model.Data.SQL;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Parameter;
-import java.util.Map;
+
 import java.util.List;
+import java.util.Map;
 
 public class SQLQueryBuilder {
     private static final String REMOVE = " DELETE FROM ";
@@ -10,7 +11,12 @@ public class SQLQueryBuilder {
     private static final String INSERT = " INSERT INTO ";
     private static final String MODIFY = "  UPDATE ";
     private static final String GET_LAST_INSERT = " SELECT last_insert_rowid();";
-    private static final String TABLE_EXISTS = " SELECT name FROM pg_catalog.pg_tables tablename=?;";
+    private static final String TABLE_EXISTS = " SELECT EXISTS " +
+            "(" +
+            "SELECT 1 " +
+            "FROM information_schema.tables " +
+            "WHERE table_name =? " +
+            ");";
     private static final String REMOVE_TABLE = " DROP TABLE %s;";
 
     public static final String tableExists() {return TABLE_EXISTS;}
@@ -22,7 +28,7 @@ public class SQLQueryBuilder {
     }
 
     public static final String createTable(String tableName, Map<String, String> columnToType) {
-        String command = "CREATE TABLE " + tableName + " (";
+        String command = "CREATE TABLE [IF NOT EXISTS] " + tableName + "(";
         int count = 0;
         for (String columnName : columnToType.keySet()) {
             String type = columnToType.get(columnName);
@@ -33,6 +39,7 @@ public class SQLQueryBuilder {
             }
         }
         command+=")";
+        System.out.println(command);
         return command;
     }
 
