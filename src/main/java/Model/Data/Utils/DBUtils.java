@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class DBUtils {
     public static Connection makeConnection(String url, String user, String password) throws SQLException {
-        //Class.forName(driver);
         if (user == null || password == null || user.trim().length() == 0 || password.trim().length() == 0) {
             return DriverManager.getConnection(url);
         } else {

@@ -20,6 +20,7 @@ public class ColumnInfo {
     public static final String CONF_KEY = "ConfKey";
 
     private static final String TEXT_TYPE = "TEXT NOT NULL";
+    private static final String EMAIL_FOR_CONF_KEY_TYPE = "TEXT PRIMARY KEY";
     private static final String INTEGER_TYPE = "INT";
 
     private static final String PRIMARY_KEY_LABEL = " PRIMARY KEY NOT NULL";
@@ -143,7 +144,7 @@ public class ColumnInfo {
 
     public static Map<String, String> getEmailVerifyColumnMap(){
         Map<String, String> columnMap = new HashMap();
-        columnMap.put(EMAIL, TEXT_TYPE);
+        columnMap.put(EMAIL, EMAIL_FOR_CONF_KEY_TYPE);
         columnMap.put(CONF_KEY, INTEGER_TYPE);
         return columnMap;
     }

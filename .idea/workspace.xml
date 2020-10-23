@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +93,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -278,7 +281,7 @@
       <workItem from="1603231932353" duration="7000" />
       <workItem from="1603231963394" duration="15272000" />
       <workItem from="1603398576644" duration="6331000" />
-      <workItem from="1603410122476" duration="14416000" />
+      <workItem from="1603410122476" duration="15380000" />
     </task>
     <servers />
   </component>
@@ -298,6 +301,10 @@
       <screen x="0" y="0" width="1638" height="882" />
     </state>
     <state x="545" y="247" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1638.882@0.0.1638.882" timestamp="1595173016345" />
+    <state x="771" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1603450015172">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="771" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112@0.0.2048.1112" timestamp="1603450015172" />
     <state x="93" y="93" width="1453" height="696" key="DiffContextDialog" timestamp="1595163543012">
       <screen x="0" y="0" width="1638" height="882" />
     </state>
@@ -335,11 +342,11 @@
     </state>
     <state x="477" y="201" key="run.anything.popup/0.0.1638.882@0.0.1638.882" timestamp="1595337011773" />
     <state x="596" y="253" key="run.anything.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603418225584" />
-    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603430460049">
+    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603450487078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="482" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1638.882@0.0.1638.882" timestamp="1595173605258" />
-    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603430460049" />
+    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603450487078" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
