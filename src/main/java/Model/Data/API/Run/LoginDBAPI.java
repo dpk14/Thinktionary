@@ -23,6 +23,7 @@ public class LoginDBAPI extends RunDBAPI {
     public LoginDBAPI() {
         super();
         this.emailConfExpiryThreads = new HashMap<>();
+        this.emailConfExpiryLocks = new HashMap<>();
         retrieveExistingConfKeyExpiryThreadsAndLocks();
     }
 
@@ -108,15 +109,6 @@ public class LoginDBAPI extends RunDBAPI {
         }
     }
 
-    private void expireOldKeyAndSetNewWhenDone(String email, int newKey) {
-        ConfKeyExpiryThread confKeyExpiryThread = this.emailConfExpiryThreads.get(email);
-        Object lock = this.emailConfExpiryLocks.get(email);
-        confKeyExpiryThread.setNewConfirmationKey(newKey);
-        synchronized (lock) {
-            lock.notify();
-        }
-    }
-
     public void removeEmailConfirmationKey(String email) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
@@ -151,6 +143,15 @@ public class LoginDBAPI extends RunDBAPI {
             return table;
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void expireOldKeyAndSetNewWhenDone(String email, int newKey) {
+        ConfKeyExpiryThread confKeyExpiryThread = this.emailConfExpiryThreads.get(email);
+        Object lock = this.emailConfExpiryLocks.get(email);
+        confKeyExpiryThread.setNewConfirmationKey(newKey);
+        synchronized (lock) {
+            lock.notify();
         }
     }
 
