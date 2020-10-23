@@ -4,9 +4,7 @@ import Model.Data.API.DBAPI;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.SQLQueryBuilder;
-import Model.ErrorHandling.Errors.CorruptDBError;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,23 +27,14 @@ public abstract class RunDBAPI extends DBAPI {
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {
-        try {
-            return userQuery(SQLQueryBuilder.select(tableName, new ArrayList<>()));
-        } catch (SQLException e) {
-            throw new CorruptDBError(e);
-        }
+        return userQuery(SQLQueryBuilder.select(tableName, new ArrayList<>()));
     }
 
     protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, Object parameter) {
-        List<Condition > conditions = new ArrayList<>();
+        List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(parameterType, parameter));
 
-        try {
-            List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(tableName, conditions));
-            return ret;
-        } catch (SQLException e) {
-            throw new CorruptDBError(e);
-        }
+        List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(tableName, conditions));
+        return ret;
     }
-
 }
