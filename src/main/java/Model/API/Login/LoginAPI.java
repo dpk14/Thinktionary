@@ -3,9 +3,7 @@ package Model.API.Login;
 import Model.API.Journal.Journal;
 import Model.Data.API.Run.LoginDBAPI;
 import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.EmailDeliveryFailure;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
+import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
@@ -29,22 +27,26 @@ public class LoginAPI {
             + "We're pleased to have you onboard! Just enter the verification key %s to start journaling!\n"
             + "Best,\nThe Thinktionary Team";
 
-    public static Journal login(String username, String password) throws InvalidLoginException, LoadPropertiesException {
+    public static Journal login(String username, String password) throws InvalidLoginException {
         List<Map<String, Object>> userInfo = new LoginDBAPI().login(username, password);
         int userID = LoginDBParser.getUserID(userInfo);
         return new Journal(userID, username, password);
     }
 
-    public static int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException, LoadPropertiesException { //second exception has two inheritances, password exists and username exists
+    public static int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException { //second exception has two inheritances, password exists and username exists
         LoginDBAPI loginDBAPI = new LoginDBAPI();
         loginDBAPI.verifyConfirmationKey(verifyKey, email);
         List<Map<String, Object>> userInfo = new LoginDBAPI().createUser(username, password, email);
         return LoginDBParser.getUserID(userInfo);
     }
 
-    public static void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String password, String email) throws UserErrorException, LoadPropertiesException { //second exception has two inheritances, password exists and username exists
+    public static void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists
         LoginDBAPI loginDBAPI = new LoginDBAPI();
-        loginDBAPI.throwExceptionIfUserInfoExists(username, password, email);
+        if (loginDBAPI.usernameExists(username)) {
+            throw new AccountExistsException();
+        } else if (loginDBAPI.emailExists(email)) {
+            throw new EmailExistsException();
+        }
         int emailKey = generateEmailConfirmationKey();
         loginDBAPI.storeEmailConfirmationKey(email, emailKey);
         try {

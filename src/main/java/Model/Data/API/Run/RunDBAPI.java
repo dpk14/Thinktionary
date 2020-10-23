@@ -4,9 +4,7 @@ import Model.Data.API.DBAPI;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.SQLQueryBuilder;
-import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,13 +24,13 @@ public abstract class RunDBAPI extends DBAPI {
 
      */
 
-    public RunDBAPI() throws LoadPropertiesException {
+    public RunDBAPI() {
         super();
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {
         try {
-            return DBUtils.userQuery(SQLQueryBuilder.select(tableName, new ArrayList<>()), myDBUrl, myDBUsername, myDBPassword);
+            return userQuery(SQLQueryBuilder.select(tableName, new ArrayList<>()));
         } catch (SQLException e) {
             throw new CorruptDBError(e);
         }
@@ -43,7 +41,7 @@ public abstract class RunDBAPI extends DBAPI {
         conditions.add(new Equals(parameterType, parameter));
 
         try {
-            List<Map<String, Object>> ret = DBUtils.userQuery(SQLQueryBuilder.select(tableName, conditions), myDBUrl, myDBUsername, myDBPassword);
+            List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(tableName, conditions));
             return ret;
         } catch (SQLException e) {
             throw new CorruptDBError(e);

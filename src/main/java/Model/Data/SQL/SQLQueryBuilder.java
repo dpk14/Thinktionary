@@ -19,13 +19,7 @@ public class SQLQueryBuilder {
             ");";
     private static final String REMOVE_TABLE = " DROP TABLE %s;";
 
-    public static final String tableExists() {return TABLE_EXISTS;}
-
     public static final String removeTable(String tableName) {return String.format(REMOVE_TABLE, tableName);}
-
-    public static String getLastInsertID() {
-        return GET_LAST_INSERT;
-    }
 
     public static final String createTable(String tableName, Map<String, String> columnToType) {
         String command = "CREATE TABLE IF NOT EXISTS " + tableName + "(";

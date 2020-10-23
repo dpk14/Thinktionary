@@ -8,20 +8,9 @@ import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
-import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Errors.CorruptDBError;
-import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.ModifyEntryException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.DBExceptions.TopicBankAddException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.EntryByTopicException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
 
-import java.net.URISyntaxException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +20,11 @@ JournalDBAPI extends RunDBAPI {
 
     Integer myUserID;
 
-    public JournalDBAPI() throws LoadPropertiesException, URISyntaxException {
+    public JournalDBAPI() {
         super();
     }
 
-    public JournalDBAPI(int userID) throws LoadPropertiesException {
+    public JournalDBAPI(int userID) {
         super();
         myUserID = userID;
     }
@@ -62,43 +51,30 @@ JournalDBAPI extends RunDBAPI {
 
     //Communicators:
 
-    public boolean usesTopic(String topicName) throws EntryByTopicException {
+    public boolean usesTopic(String topicName) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
-        try {
-            List<Map<String, Object>> entries = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
-            return entries.size() > 0;
-        }
-        catch(SQLException e){
-            throw new EntryByTopicException(e);
-        }
+        List<Map<String, Object>> entries = userQuery(SQLQueryBuilder.select(TableNames.getEntryToTopic(), conditions));
+        return entries.size() > 0;
     }
 
-    public void removeTopicFromBank(String topicName) throws RemoveTopicException {
+    public void removeTopicFromBank(String topicName) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
-        try {
-            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
-        } catch (SQLException e) {
-            throw new RemoveTopicException(e);
-        }
+        userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions));
     }
 
-    public void removeTopicFromEntry(Integer entryID, String topicName) throws RemoveTopicException {
+    public void removeTopicFromEntry(Integer entryID, String topicName) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
-        try {
-            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
-        } catch (SQLException e) {
-            throw new RemoveTopicException(e);
-        }
+        userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
     }
 
-    public void save(Integer entryID, Entry entry) throws TopicBankAddException, ModifyEntryException {
+    public void save(Integer entryID, Entry entry) {
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
         parameters.add(new Parameter(ColumnInfo.getTITLE(), entry.getmyTitle()));
@@ -109,12 +85,7 @@ JournalDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
 
-        try {
-            DBUtils.userAction(SQLQueryBuilder.modify(TableNames.getEntryInfo(), parameters, conditions), myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch(SQLException e){
-            throw new ModifyEntryException(e);
-        }
+        userAction(SQLQueryBuilder.modify(TableNames.getEntryInfo(), parameters, conditions));
     }
 
     public int addToEntryInfo(Entry entry) {
@@ -124,73 +95,55 @@ JournalDBAPI extends RunDBAPI {
         parameters.add(new Parameter(ColumnInfo.getTEXT(), entry.getmyText()));
         parameters.add(new Parameter(ColumnInfo.getCREATED(), entry.getMyCreated()));
         parameters.add(new Parameter(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
+        conditions.add(new Equals(ColumnInfo.getTITLE(), entry.getmyTitle()));
+        conditions.add(new Equals(ColumnInfo.getTEXT(), entry.getmyText()));
+        conditions.add(new Equals(ColumnInfo.getCREATED(), entry.getMyCreated()));
+        conditions.add(new Equals(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
 
-        try{
-            Connection con = DBUtils.makeConnection(myDBUrl, myDBUsername, myDBPassword);
-            Statement st1 = con.createStatement();
-            st1.execute(SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters));
-            Statement st2 = con.createStatement();
-            ResultSet rs = st2.executeQuery(SQLQueryBuilder.getLastInsertID());
-            List<Map<String, Object>> ret = DBUtils.map(rs);
-            DBUtils.close(st1);
-            DBUtils.close(st2);
-            DBUtils.close(rs);
-            DBUtils.close(con);
+        try {
+            userAction(SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters));
+            userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
+            List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
             return JournalDBParser.getEntryID(ret);
-
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             throw new CorruptDBError(e);
         }
     }
 
-    public void addToTopicBank(Map<String, String> topicToColor) throws TopicBankAddException {
+    public void addToTopicBank(Map<String, String> topicToColor) {
         for (String topic : topicToColor.keySet()) {
             List<Parameter> parameters = new ArrayList<>();
             parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
             parameters.add(new Parameter(ColumnInfo.getTOPIC(), topic));
             parameters.add(new Parameter(ColumnInfo.getCOLOR(), topicToColor.get(topic)));
 
-            try {
-                DBUtils.userAction(SQLQueryBuilder.insert(TableNames.getUserTopic(), parameters), myDBUrl, myDBUsername, myDBPassword);
-            }
-            catch(SQLException e){
-                throw new TopicBankAddException(e);
-            }
+            userAction(SQLQueryBuilder.insert(TableNames.getUserTopic(), parameters));
         }
     }
 
-    public void addToEntryTopic(Integer entryID, String topic, String color) throws TopicBankAddException {
+    public void addToEntryTopic(Integer entryID, String topic, String color) {
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getUSERID(), myUserID));
         parameters.add(new Parameter(ColumnInfo.getEntryId(), entryID));
         parameters.add(new Parameter(ColumnInfo.getTOPIC(), topic));
         parameters.add(new Parameter(ColumnInfo.getCOLOR(), color));
 
-        try {
-            DBUtils.userAction(SQLQueryBuilder.insert(TableNames.getEntryToTopic(), parameters), myDBUrl, myDBUsername, myDBPassword);
-        }
-        catch(SQLException e){
-            throw new TopicBankAddException(e);
-        }
+        userAction(SQLQueryBuilder.insert(TableNames.getEntryToTopic(), parameters));
     }
 
-    public void removeEntry(Integer entryID) throws NoSuchEntryException{
+    public void removeEntry(Integer entryID) throws NoSuchEntryException {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
 
-        try {
-            List<Map<String, Object>> toBeRemoved = DBUtils.userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);
-            if(toBeRemoved.size() == 0){
-                throw new NoSuchEntryException(entryID);
-            }
-            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEntryInfo(), conditions), myDBUrl, myDBUsername, myDBPassword);
-            DBUtils.userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions), myDBUrl, myDBUsername, myDBPassword);
+        List<Map<String, Object>> toBeRemoved = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
+        if (toBeRemoved.size() == 0) {
+            throw new NoSuchEntryException(entryID);
         }
-        catch(SQLException e){
-            throw new CorruptDBError(e);
-        }
+        userAction(SQLQueryBuilder.remove(TableNames.getEntryInfo(), conditions));
+        userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
     }
 
     public int getMyUserID() {

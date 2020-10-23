@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/QueryFailedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/RunDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/Utils/DBUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +291,7 @@
       <workItem from="1603231932353" duration="7000" />
       <workItem from="1603231963394" duration="15272000" />
       <workItem from="1603398576644" duration="6331000" />
-      <workItem from="1603410122476" duration="15380000" />
+      <workItem from="1603410122476" duration="22266000" />
     </task>
     <servers />
   </component>
@@ -289,14 +299,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1603424166943">
+    <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1603455288414">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1603424166943" />
+    <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1603455288414" />
     <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1603245233306">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603245233306" />
+    <state x="754" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603451652659">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="754" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603451652659" />
     <state x="545" y="247" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1595173016345">
       <screen x="0" y="0" width="1638" height="882" />
     </state>
@@ -319,34 +333,34 @@
     </state>
     <state x="330" y="156" width="1038" height="726" key="SettingsEditor/0.0.1638.882@0.0.1638.882" timestamp="1595387546556" />
     <state x="413" y="196" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1603410274738" />
-    <state x="92" y="92" width="1864" height="928" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603427446463">
+    <state x="92" y="92" width="1864" height="928" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603456713365">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="92" y="92" width="1864" height="928" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603427446463" />
+    <state x="92" y="92" width="1864" height="928" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603456713365" />
     <state x="620" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1603410139786">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="496" y="255" key="com.intellij.ide.util.TipDialog/0.0.1638.882@0.0.1638.882" timestamp="1595335672794" />
     <state x="620" y="321" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603410139786" />
-    <state x="720" y="154" width="607" height="804" key="find.popup" timestamp="1603412378113">
+    <state x="720" y="154" width="607" height="804" key="find.popup" timestamp="1603456386357">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="720" y="154" width="607" height="804" key="find.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603412378113" />
+    <state x="720" y="154" width="607" height="804" key="find.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603456386357" />
     <state x="325" y="79" key="new project wizard" timestamp="1600202982738">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="260" y="63" key="new project wizard/0.0.1638.882@0.0.1638.882" timestamp="1595337452114" />
     <state x="325" y="79" key="new project wizard/0.0.2048.1112@0.0.2048.1112" timestamp="1600202982738" />
-    <state x="596" y="253" key="run.anything.popup" timestamp="1603418225584">
+    <state x="596" y="253" key="run.anything.popup" timestamp="1603453374078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="477" y="201" key="run.anything.popup/0.0.1638.882@0.0.1638.882" timestamp="1595337011773" />
-    <state x="596" y="253" key="run.anything.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603418225584" />
-    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603450487078">
+    <state x="596" y="253" key="run.anything.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603453374078" />
+    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603451235750">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="482" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1638.882@0.0.1638.882" timestamp="1595173605258" />
-    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603450487078" />
+    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603451235750" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -355,6 +369,12 @@
           <url>file://$PROJECT_DIR$/src/main/java/Controller/Application.java</url>
           <line>30</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java</url>
+          <line>75</line>
+          <log-expression expression="            updateEntryTopic(entryID, newTopics);&#10;            //String oldCreation = existingEntry.getMyCreated();&#10;            myEntryMap.put(entryID, entry);&#10;" language="JAVA" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

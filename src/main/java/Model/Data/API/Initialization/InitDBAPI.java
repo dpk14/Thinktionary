@@ -3,7 +3,6 @@ package Model.Data.API.Initialization;
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
-import Model.Data.Utils.DBUtils;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
@@ -40,7 +39,7 @@ public abstract class InitDBAPI extends DBAPI {
 
     private void createTable(String tableName, Map<String, String> columnMap) throws CreateTableException {
         try {
-            DBUtils.userAction(SQLQueryBuilder.createTable(tableName, columnMap), myDBUrl, myDBUsername, myDBPassword);
+            userAction(SQLQueryBuilder.createTable(tableName, columnMap));
         } catch (SQLException e) {
             throw new CreateTableException(e);
         }
@@ -48,7 +47,7 @@ public abstract class InitDBAPI extends DBAPI {
 
     private void removeTable(String tableName) throws RemoveTableException {
         try {
-            DBUtils.userAction(SQLQueryBuilder.removeTable(tableName), myDBUrl, myDBUsername, myDBPassword);
+            userAction(SQLQueryBuilder.removeTable(tableName));
         }
         catch(SQLException e) {
             throw new RemoveTableException(e);
