@@ -99,6 +99,7 @@ public class RESTJournal {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
@@ -115,6 +116,7 @@ public class RESTJournal {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
