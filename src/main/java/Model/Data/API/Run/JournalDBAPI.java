@@ -108,7 +108,7 @@ JournalDBAPI extends RunDBAPI {
             List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
             return JournalDBParser.getEntryID(ret);
         } catch (Exception e) {
-            throw new CorruptDBError(e);
+            throw new RuntimeException(e);
         }
     }
 
