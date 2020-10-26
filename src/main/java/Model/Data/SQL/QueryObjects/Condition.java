@@ -8,7 +8,7 @@ public abstract class Condition {
     Condition(String parameter, Object value, String comparator){
         myParamName = parameter;
         if (value instanceof String) {
-            myValue = "$" + value + "$";
+            myValue = "$$" + value + "$$";
         }
         else myValue = value.toString();
         myComparator = comparator;
