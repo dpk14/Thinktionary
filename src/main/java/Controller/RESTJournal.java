@@ -112,9 +112,6 @@ public class RESTJournal {
     @PostMapping(value = PROTECTED_PATH + "/entries", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {
         Entry entry = entryBuilder.getMyEntry();
-        System.out.println(entry.getMyModfied());
-        System.out.println(entry.getMyCreated());
-        System.out.println(entry.toString());
         try {
             Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
