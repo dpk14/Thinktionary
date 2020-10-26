@@ -13,8 +13,6 @@ public class JournalDBParser {
     public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
-        System.out.println(entryMap);
-        System.out.println(entryTopic);
         try {
             for (Map<String, Object> row : entryTopic) {
                 Topic topic = new Topic((String) row.get(ColumnInfo.getTOPIC()), (String) row.get(ColumnInfo.getCOLOR()));
@@ -70,8 +68,11 @@ public class JournalDBParser {
     }
 
     public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
-        String str = ent.get(0).toString().split("=")[1];
-        return Integer.parseInt(str.substring(0, str.length()-1));
+        System.out.println(ent);
+        String row = ent.get(0).toString();
+        System.out.println(row);
+        String idAsString = row.split("=")[1];
+        return Integer.parseInt(idAsString);
     }
 
 
