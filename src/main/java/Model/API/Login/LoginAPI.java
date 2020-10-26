@@ -43,6 +43,12 @@ public class LoginAPI {
 
     public int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
         this.loginDBAPI.verifyConfirmationKey(verifyKey, email);
+        List<Map<String, Object>> userInfo = this.loginDBAPI.createUser(username, password, email);
+        return LoginDBParser.getUserID(userInfo);
+    }
+
+    @Deprecated
+    public int makeAccount(String username, String password, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
         List<Map<String, Object>> userInfo = new LoginDBAPI().createUser(username, password, email);
         return LoginDBParser.getUserID(userInfo);
     }

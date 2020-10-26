@@ -82,6 +82,23 @@ public class RESTJournal {
         }
     }
 
+    @GetMapping(value = "/verify")
+    public ResponseEntity verifyAccountInfo(@RequestParam(value = "user") String username,
+                                            @RequestParam(value = "email") String email) {
+        try {
+            System.out.println(ServletUriComponentsBuilder.fromCurrentRequest().build().toUri().toURL());
+            this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
+            return ResponseEntity.ok().build();
+        } catch (UserErrorException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     @PutMapping(value = "/")
     public ResponseEntity makeAccount(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password,
                                       @RequestParam(value = "email") String email, @RequestParam(value = "key") String verifyKey) {
@@ -103,22 +120,27 @@ public class RESTJournal {
         }
     }
 
-    @GetMapping(value = "/verify")
-    public ResponseEntity verifyAccountInfo(@RequestParam(value = "user") String username,
-                                            @RequestParam(value = "email") String email) {
+    /*
+    @Deprecated
+    @PutMapping(value="/")
+    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
         try {
-            System.out.println(ServletUriComponentsBuilder.fromCurrentRequest().build().toUri().toURL());
-            this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
-            return ResponseEntity.ok().build();
-        } catch (UserErrorException e) {
+            int userId = LoginAPI.makeAccount(username, password);
+            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                    .path("/{userID}")
+                    .buildAndExpand(userId)
+                    .toUri();
+
+            return ResponseEntity.created(uri).body(userId);
+        }
+        catch(AccountExistsException e){
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
+        }
+        catch(LoadPropertiesException e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
         }
     }
+     */
 
     @PostMapping(value = PROTECTED_PATH + "/entries", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {
