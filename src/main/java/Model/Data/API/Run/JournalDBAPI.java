@@ -8,7 +8,6 @@ import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
-import Model.ErrorHandling.Errors.CorruptDBError;
 import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
 
 import java.util.ArrayList;
@@ -102,14 +101,10 @@ JournalDBAPI extends RunDBAPI {
         conditions.add(new Equals(ColumnInfo.getCREATED(), entry.getMyCreated()));
         conditions.add(new Equals(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
 
-        try {
-            userAction(SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters));
-            userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
-            List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
-            return JournalDBParser.getEntryID(ret);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        userAction(SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters));
+        userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
+        List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
+        return JournalDBParser.getEntryID(ret);
     }
 
     public void addToTopicBank(Map<String, String> topicToColor) {

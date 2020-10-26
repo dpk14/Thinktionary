@@ -13,6 +13,8 @@ public class JournalDBParser {
     public static Map<Integer, Entry> parseEntryMap(List<Map<String, Object>> entryMap, List<Map<String, Object>> entryTopic) {
         Map<Integer, Entry> ret = new HashMap<>();
         Map<String, Set<Topic>> topicSets = new HashMap<>();
+        System.out.println(entryMap);
+        System.out.println(entryTopic);
         try {
             for (Map<String, Object> row : entryTopic) {
                 Topic topic = new Topic((String) row.get(ColumnInfo.getTOPIC()), (String) row.get(ColumnInfo.getCOLOR()));
