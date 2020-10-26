@@ -23,11 +23,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -86,16 +83,12 @@ public class RESTJournal {
     public ResponseEntity verifyAccountInfo(@RequestParam(value = "user") String username,
                                             @RequestParam(value = "email") String email) {
         try {
-            System.out.println(ServletUriComponentsBuilder.fromCurrentRequest().build().toUri().toURL());
             this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
         }
     }
 
@@ -108,43 +101,20 @@ public class RESTJournal {
                     .path("/{userID}")
                     .buildAndExpand(userId)
                     .toUri();
-            System.out.println(uri.toURL());
             return ResponseEntity.created(uri).body(userId);
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            return null;
         }
     }
-
-    /*
-    @Deprecated
-    @PutMapping(value="/")
-    public ResponseEntity makeAccount(@RequestParam(value="user") String username, @RequestParam(value = "pwd") String password) {
-        try {
-            int userId = LoginAPI.makeAccount(username, password);
-            URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                    .path("/{userID}")
-                    .buildAndExpand(userId)
-                    .toUri();
-
-            return ResponseEntity.created(uri).body(userId);
-        }
-        catch(AccountExistsException e){
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
-        }
-        catch(LoadPropertiesException e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.exceptionToJSON(e));
-        }
-    }
-     */
 
     @PostMapping(value = PROTECTED_PATH + "/entries", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {
         Entry entry = entryBuilder.getMyEntry();
+        System.out.println(entry.getMyModfied());
+        System.out.println(entry.getMyCreated());
+        System.out.println(entry.toString());
         try {
             Journal journal = this.sessionManager.getSessionInfo(userID);
             try {
@@ -247,21 +217,5 @@ public class RESTJournal {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
         }
     }
-
-    //testing:
-
-    @RequestMapping(PROTECTED_PATH + "/entries/getEntry")
-    public ResponseEntity getEntry() {
-        try {
-            Set<Topic> topics = new HashSet<>();
-            topics.add(new Topic("yorie", "blue"));
-            topics.add(new Topic("horie", "red"));
-            Entry entry = new Entry("yeet", "oh yeet that daddy", LocalDateTime.now(), topics);
-            return ResponseEntity.ok(entry);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.stackTraceToString(e));
-        }
-    }
-
 
 }
