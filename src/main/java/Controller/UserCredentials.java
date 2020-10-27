@@ -2,9 +2,11 @@ package Controller;
 
 import Utils.Security.Encryptor;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jdk.internal.joptsimple.internal.Strings;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserCredentials {
     private String username;
     private String pwd;
