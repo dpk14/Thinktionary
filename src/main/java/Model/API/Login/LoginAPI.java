@@ -64,8 +64,7 @@ public class LoginAPI {
         this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
             sendVerificationEmail(email, emailKey, username);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             this.loginDBAPI.removeEmailConfirmationKey(email);
             throw new EmailDeliveryFailure(e);
         }
