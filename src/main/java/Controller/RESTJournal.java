@@ -53,7 +53,7 @@ public class RESTJournal {
         this.loginAPI = new LoginAPI(new LoginDBAPI());
     }
 
-    @PostMapping("/login")
+    @PostMapping(value = "/login", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity login(@RequestBody UserCredentials credentials) {
         try {
             Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
@@ -66,7 +66,7 @@ public class RESTJournal {
         }
     }
 
-    @PostMapping("/logout")
+    @PostMapping(value = "/logout", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity logout(@RequestBody UserCredentials credentials) {
         try {
             Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
@@ -79,7 +79,7 @@ public class RESTJournal {
         }
     }
 
-    @PostMapping(value = "/verify")
+    @PostMapping(value = "/verify", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity verifyAccountInfo(@RequestBody UserCredentials credentials) {
         try {
             this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(credentials.getUsername(), credentials.getEmail());
@@ -91,7 +91,7 @@ public class RESTJournal {
         }
     }
 
-    @PutMapping(value = "/")
+    @PutMapping(value = "/", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity makeAccount(@RequestBody UserCredentials credentials) {
         try {
             int userId = this.loginAPI.makeAccount(credentials.getUsername(),
@@ -110,7 +110,7 @@ public class RESTJournal {
         }
     }
 
-    @PostMapping(value = "/forgotpwd")
+    @PostMapping(value = "/forgotpwd", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials) {
         try {
             this.loginAPI.verifyAccountExistsAndGenerateEmailConfirmation(credentials.getEmail(), credentials.getUsername());
@@ -122,7 +122,7 @@ public class RESTJournal {
         }
     }
 
-    @PostMapping(value = "/resetpwd")
+    @PostMapping(value = "/resetpwd", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity resetPassword(@RequestBody UserCredentials credentials) {
         try {
             this.loginAPI.resetPassword(credentials.getUsername(),
