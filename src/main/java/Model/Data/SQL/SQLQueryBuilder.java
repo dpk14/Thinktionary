@@ -9,6 +9,7 @@ public class SQLQueryBuilder {
     private static final String REMOVE = " DELETE FROM ";
     private static final String SELECT_ALL = " SELECT * FROM ";
     private static final String INSERT = " INSERT INTO ";
+    private static final String UPDATE = " UPDATE ";
     private static final String MODIFY = "  UPDATE ";
     private static final String GET_LAST_INSERT = " SELECT last_insert_rowid();";
     private static final String TABLE_EXISTS = " SELECT EXISTS " +

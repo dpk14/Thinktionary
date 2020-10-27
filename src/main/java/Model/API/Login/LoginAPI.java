@@ -4,7 +4,6 @@ import Model.API.Journal.Journal;
 import Model.Data.API.Run.LoginDBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.TableNames;
-import Model.ErrorHandling.Exceptions.ServerExceptions.LoadPropertiesException;
 import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
@@ -12,6 +11,7 @@ import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import com.amazonaws.services.simpleemail.model.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -25,15 +25,21 @@ public class LoginAPI {
     }
 
     private static final String FROM = "thinktionary.app@gmail.com";
-    private static String SUBJECT = "Register for Thinktionary";
-    private static String HTMLBODY = "<p>Hello %s,</p>"
+    private static String VERIFICATION_SUBJECT = "Register for Thinktionary";
+    private static String VERIFICATION_HTMLBODY = "<p>Hello %s,</p>"
             + "<p>We're stoked to have you onboard!</p> "
             + "<p>You're almost there. Just enter your 24 hour verification key %s to start journaling!</p>"
             + "<p>All the Best,<br>Thinktionary.app</p>";
 
-    private static String TEXTBODY = ">Hello %s,\n"
+    private static String VERIFICATION_TEXTBODY = ">Hello %s,\n"
             + "We're pleased to have you onboard! Just enter the verification key %s to start journaling!\n"
             + "Best,\nThe Thinktionary Team";
+
+    private static String PWD_RESET_SUBJECT = "Reset Password for Thinktionary";
+    private static String PWD_RESET_HTMLBODY = "<p>Hello %s,</p>"
+            + "<p>Yeah, those pesky passwords can be a nuisance to keep track of.</p> "
+            + "<p>Enter this 24 hour verification key %s along with your new password to get back to journaling!</p>"
+            + "<p>All the Best,<br>Thinktionary.app</p>";
 
     public Journal login(String username, String password) throws InvalidLoginException {
         List<Map<String, Object>> userInfo = this.loginDBAPI.login(username, password);
@@ -47,12 +53,6 @@ public class LoginAPI {
         return LoginDBParser.getUserID(userInfo);
     }
 
-    @Deprecated
-    public int makeAccount(String username, String password, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
-        List<Map<String, Object>> userInfo = new LoginDBAPI().createUser(username, password, email);
-        return LoginDBParser.getUserID(userInfo);
-    }
-
     public void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists
         if (this.loginDBAPI.tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), username)) {
             throw new AccountExistsException();
@@ -62,7 +62,7 @@ public class LoginAPI {
         int emailKey = generateEmailConfirmationKey();
         this.loginDBAPI.storeEmailConfirmationKey(email, emailKey);
         try {
-            sendEmail(email, emailKey, username);
+            sendVerificationEmail(email, emailKey, username);
         }
         catch (Exception e) {
             this.loginDBAPI.removeEmailConfirmationKey(email);
@@ -70,13 +70,28 @@ public class LoginAPI {
         }
     }
 
-    //Testing:
-
-    public static Map<Integer, User> loadUserInfoMap() throws LoadPropertiesException {
-        List<Map<String, Object>> userInfoTable = new LoginDBAPI().loadUserInfoTable();
-        return LoginDBParser.parseUserInfoMap(userInfoTable);
+    public void verifyAccountExistsAndGenerateEmailConfirmation(String email, String username) throws UserErrorException { //second exception has two inheritances, password exists and username exists
+        Map<String, String> colToVal = new HashMap<>();
+        colToVal.put(ColumnInfo.getEMAIL(), email);
+        colToVal.put(ColumnInfo.getUSERNAME(), username);
+        if (!this.loginDBAPI.tableEntryExists(TableNames.getUserInfo(), colToVal)) {
+            throw new AccountNotRegisteredException();
+        }
+        int emailKey = generateEmailConfirmationKey();
+        this.loginDBAPI.storeEmailConfirmationKey(email, emailKey);
+        try {
+            sendPWDResetEmail(email, emailKey, username);
+        }
+        catch (Exception e) {
+            this.loginDBAPI.removeEmailConfirmationKey(email);
+            throw new EmailDeliveryFailure(e);
+        }
     }
 
+    public void resetPassword(String username, String newPwd, String email, String verifyKey) throws UserErrorException {
+        this.loginDBAPI.verifyConfirmationKey(verifyKey, email);
+        this.loginDBAPI.changeUserInfo(username, ColumnInfo.getPASSWORD(), newPwd);
+    }
 
     //Helpers:
 
@@ -85,7 +100,15 @@ public class LoginAPI {
         return 100000 + rnd.nextInt(900000);
     }
 
-    private static void sendEmail(String to, int emailKey, String username) {
+    private static void sendVerificationEmail(String to, int emailKey, String username) {
+        sendEmail(to, emailKey, username, VERIFICATION_HTMLBODY, VERIFICATION_TEXTBODY, VERIFICATION_SUBJECT);
+    }
+
+    private static void sendPWDResetEmail(String to, int emailKey, String username) {
+        sendEmail(to, emailKey, username, PWD_RESET_HTMLBODY, PWD_RESET_HTMLBODY, PWD_RESET_SUBJECT);
+    }
+
+    private static void sendEmail(String to, int emailKey, String username, String htmlBody, String textBody, String subject) {
         AmazonSimpleEmailService client =
                 AmazonSimpleEmailServiceClientBuilder.standard()
                         .withRegion(Regions.US_EAST_1)
@@ -97,11 +120,11 @@ public class LoginAPI {
                 .withMessage(new Message()
                         .withBody(new Body()
                                 .withHtml(new Content()
-                                        .withCharset("UTF-8").withData(String.format(HTMLBODY, username, emailKey)))
+                                        .withCharset("UTF-8").withData(String.format(htmlBody, username, emailKey)))
                                 .withText(new Content()
-                                        .withCharset("UTF-8").withData(TEXTBODY)))
+                                        .withCharset("UTF-8").withData(textBody)))
                         .withSubject(new Content()
-                                .withCharset("UTF-8").withData(SUBJECT)))
+                                .withCharset("UTF-8").withData(subject)))
                 .withSource(FROM);
         client.sendEmail(request);
     }

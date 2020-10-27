@@ -59,7 +59,6 @@ public class LoginDBAPI extends RunDBAPI {
             this.replacementPending = true;
             this.replacementConfKey = newConfirmationKey;
         }
-
     }
 
     public List<Map<String, Object>> login(String userName, String passWord) throws InvalidLoginException {
@@ -137,13 +136,21 @@ public class LoginDBAPI extends RunDBAPI {
         return userInfo.size() > 0;
     }
 
-    public List<Map<String, Object>> loadUserInfoTable() {
-        List<Map<String, Object>> table = loadTable(TableNames.getUserInfo());
-        try {
-            return table;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public boolean tableEntryExists(String tableName, Map<String, String> colToVal) {
+        List<Condition> conditions = new ArrayList<>();
+        for (String col : colToVal.keySet()) {
+            conditions.add(new Equals(col, colToVal.get(col)));
         }
+        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(tableName, conditions));
+        return userInfo.size() > 0;
+    }
+
+    public void changeUserInfo(String username, String column, String newValue) {
+        List<Parameter> parameters = new ArrayList<>();
+        parameters.add(new Parameter(column, newValue));
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERNAME(), username));
+        userAction(SQLQueryBuilder.modify(TableNames.getUserInfo(), parameters, conditions));
     }
 
     private void expireOldKeyAndSetNewWhenDone(String email, int newKey) {
@@ -161,8 +168,8 @@ public class LoginDBAPI extends RunDBAPI {
         Thread threadRunner = new Thread(confKeyExpiryThread);
         threadRunner.start();
 
-        emailConfExpiryThreads.put(email, confKeyExpiryThread);
-        emailConfExpiryLocks.put(email, dayLock);
+        this.emailConfExpiryThreads.put(email, confKeyExpiryThread);
+        this.emailConfExpiryLocks.put(email, dayLock);
         return confKeyExpiryThread;
     }
 

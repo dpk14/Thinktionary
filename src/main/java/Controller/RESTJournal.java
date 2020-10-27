@@ -109,6 +109,31 @@ public class RESTJournal {
         }
     }
 
+    @GetMapping(value = "/forgotpwd")
+    public ResponseEntity sendConfKey(@RequestParam(value = "user") String username,  @RequestParam(value = "email") String email) {
+        try {
+            this.loginAPI.verifyAccountExistsAndGenerateEmailConfirmation(email, username);
+            return ResponseEntity.ok().build();
+        } catch (UserErrorException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        }
+    }
+
+    @GetMapping(value = "/resetpwd")
+    public ResponseEntity sendConfKey(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String newPwd,
+                                      @RequestParam(value = "email") String email, @RequestParam(value = "key") String verifyKey) {
+        try {
+            this.loginAPI.resetPassword(username, newPwd, email, verifyKey);
+            return ResponseEntity.ok().build();
+        } catch (UserErrorException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        }
+    }
+
     @PostMapping(value = PROTECTED_PATH + "/entries", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity createEntry(@PathVariable int userID, @RequestBody EntryBuilder entryBuilder) {
         Entry entry = entryBuilder.getMyEntry();
