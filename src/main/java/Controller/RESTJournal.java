@@ -53,7 +53,7 @@ public class RESTJournal {
         this.loginAPI = new LoginAPI(new LoginDBAPI());
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity login(@RequestBody UserCredentials credentials) {
         try {
             Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
@@ -66,7 +66,7 @@ public class RESTJournal {
         }
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public ResponseEntity logout(@RequestBody UserCredentials credentials) {
         try {
             Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
@@ -79,7 +79,7 @@ public class RESTJournal {
         }
     }
 
-    @GetMapping(value = "/verify")
+    @PostMapping(value = "/verify")
     public ResponseEntity verifyAccountInfo(@RequestBody UserCredentials credentials) {
         try {
             this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(credentials.getUsername(), credentials.getEmail());
@@ -110,7 +110,7 @@ public class RESTJournal {
         }
     }
 
-    @GetMapping(value = "/forgotpwd")
+    @PostMapping(value = "/forgotpwd")
     public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials) {
         try {
             this.loginAPI.verifyAccountExistsAndGenerateEmailConfirmation(credentials.getEmail(), credentials.getUsername());
@@ -122,7 +122,7 @@ public class RESTJournal {
         }
     }
 
-    @GetMapping(value = "/resetpwd")
+    @PostMapping(value = "/resetpwd")
     public ResponseEntity resetPassword(@RequestBody UserCredentials credentials) {
         try {
             this.loginAPI.resetPassword(credentials.getUsername(),
