@@ -141,7 +141,4 @@ JournalDBAPI extends RunDBAPI {
         userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
     }
 
-    public int getMyUserID() {
-        return myUserID;
-    }
 }
