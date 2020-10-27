@@ -3,6 +3,7 @@ package Controller;
 import Utils.Security.Encryptor;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jdk.internal.joptsimple.internal.Strings;
 
 public class UserCredentials {
     private String username;
@@ -16,9 +17,13 @@ public class UserCredentials {
                            @JsonProperty("email") String email,
                            @JsonProperty("confKey") String confKey) {
         this.username = username;
-        this.pwd = Encryptor.encryptMD5(pwd);
+        if (!Strings.isNullOrEmpty(pwd)) {
+            this.pwd = Encryptor.encryptMD5(pwd);
+        }
         this.email = email;
-        this.confKey = Encryptor.encryptMD5(confKey);
+        if (!Strings.isNullOrEmpty(confKey)) {
+            this.confKey = Encryptor.encryptMD5(confKey);
+        }
     }
 
     public String getEmail() {
