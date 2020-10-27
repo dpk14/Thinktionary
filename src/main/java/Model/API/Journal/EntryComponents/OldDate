@@ -1,6 +1,6 @@
 package Model.API.Journal.EntryComponents;
 
-import Model.ErrorHandling.Exceptions.ServerExceptions.DateExceptions.*;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.DateExceptions.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;

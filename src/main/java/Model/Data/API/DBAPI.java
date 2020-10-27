@@ -1,11 +1,11 @@
 package Model.Data.API;
 
-import Model.ConfigUtils.PropertyUtils.PropertyManager;
+import Utils.PropertyUtils.PropertyManager;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Model.Data.AWSCredentials;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.QueryFailedException;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.QueryFailedException;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -2,14 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/AccountNotRegisteredException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/UserCredentials.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Utils/Security/Encryptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/OldDate" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/EntryComponents/OldDate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/DBNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/PathUtils/DBNames.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/DBUrls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/PathUtils/DBUrls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PathUtils/PathManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/PathUtils/PathManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PropertyUtils/PropertyKeys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/PropertyUtils/PropertyKeys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ConfigUtils/PropertyUtils/PropertyManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/PropertyUtils/PropertyManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/DBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Initialization/InitDBAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/JournalDBAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/ColumnInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Errors/CorruptDBError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Errors/CorruptDBError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/DBException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/DBException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/EmptyDatabaseError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/EmptyDatabaseError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/ModifyEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/ModifyEntryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/TopicBankAddException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DBExceptions/TopicBankAddException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDBDateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDBDateException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDateException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDateFormatException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDateFormatException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDayException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidDayException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidHourException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidHourException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidMinuteException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidMinuteException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidMonthException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidMonthException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidSecondException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/DateExceptions/InvalidSecondException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/EntryByTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/EntryByTopicException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/LoadPropertiesException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/LoadPropertiesException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/NoSuchEntryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/NoSuchEntryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/NoTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/NoTopicException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/RemoveTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/RemoveTopicException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/ServerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/ServerException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/TableExceptions/CreateTableException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/TableExceptions/CreateTableException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/ServerExceptions/TableExceptions/RemoveTableException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/ServerExceptions/TableExceptions/RemoveTableException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/AccountExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/AccountExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/AccountNotRegisteredException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/AccountNotRegisteredException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/CannotDeleteTopicException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/CannotDeleteTopicException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/EmailDeliveryFailure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/EmailDeliveryFailure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/EmailExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/EmailExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/InvalidConfirmationKeyException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/InvalidConfirmationKeyException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/InvalidLoginException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/InvalidLoginException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/QueryFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/QueryFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/ErrorHandling/Exceptions/UserErrorExceptions/UserErrorException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,15 +143,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
+      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
+      <recent name="C:\Users\dpk14\Thinktionary\src" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="src.main.java.BackEnd.API.Journal" />
       <recent name="src.main.java.BackEnd.API.Login" />
       <recent name="src.main.test.java" />
       <recent name="src.main.javaa" />
       <recent name="src.main.java" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Model.Data.API.Initialization" />
@@ -119,12 +164,8 @@
       <recent name="Controller" />
       <recent name="Model.Data.API" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Drivers" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases\SQLite" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources\Databases" />
-      <recent name="C:\Users\dpk14\Thinktionary\src\main\resources" />
-      <recent name="C:\Users\dpk14\Thinktionary\src" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Application (1)">
@@ -165,19 +206,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="ThinktionaryModel.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="Controller.Application" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="Thinktionary" />
       <extension name="coverage">
@@ -189,6 +217,19 @@
       <option name="SPRING_BOOT_MAIN_CLASS" value="Controller.Application" />
       <option name="PROGRAM_PARAMETERS" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="ThinktionaryModel.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="Controller.Application" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -288,7 +329,8 @@
       <workItem from="1603398576644" duration="6331000" />
       <workItem from="1603410122476" duration="56053000" />
       <workItem from="1603738386805" duration="6851000" />
-      <workItem from="1603750121562" duration="4157000" />
+      <workItem from="1603750121562" duration="7873000" />
+      <workItem from="1603807617484" duration="3210000" />
     </task>
     <servers />
   </component>
@@ -296,18 +338,26 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="806" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603815020861">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="806" y="360" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1603815020861" />
     <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser" timestamp="1603756499956">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="829" y="266" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1603756499956" />
-    <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1603245233306">
+    <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1603815073103">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603245233306" />
+    <state x="611" y="482" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603815073103" />
     <state x="820" y="416" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1603464305049">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="820" y="416" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2048.1112@0.0.2048.1112" timestamp="1603464305049" />
+    <state x="520" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1603814207737">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="520" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603814207737" />
     <state x="754" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603451652659">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -320,10 +370,6 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="771" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112@0.0.2048.1112" timestamp="1603450015172" />
-    <state x="93" y="93" width="1453" height="696" key="DiffContextDialog" timestamp="1595163543012">
-      <screen x="0" y="0" width="1638" height="882" />
-    </state>
-    <state x="93" y="93" width="1453" height="696" key="DiffContextDialog/0.0.1638.882@0.0.1638.882" timestamp="1595163543012" />
     <state x="731" y="223" key="FileChooserDialogImpl" timestamp="1603233041094">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -338,11 +384,11 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="92" y="98" width="1864" height="939" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603739906384" />
-    <state x="620" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1603750154789">
+    <state x="620" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1603807618880">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="496" y="255" key="com.intellij.ide.util.TipDialog/0.0.1638.882@0.0.1638.882" timestamp="1595335672794" />
-    <state x="620" y="321" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603750154789" />
+    <state x="620" y="321" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603807618880" />
     <state x="720" y="154" width="607" height="804" key="find.popup" timestamp="1603495737400">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -357,11 +403,11 @@
     </state>
     <state x="477" y="201" key="run.anything.popup/0.0.1638.882@0.0.1638.882" timestamp="1595337011773" />
     <state x="596" y="253" key="run.anything.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603470909056" />
-    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603467260391">
+    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603815692603">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="482" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1638.882@0.0.1638.882" timestamp="1595173605258" />
-    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603467260391" />
+    <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603815692603" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -379,7 +425,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java</url>
-          <line>96</line>
+          <line>94</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
@@ -389,6 +435,12 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java</url>
+          <line>32</line>
+          <properties field="replacementPending" class="Model.Data.API.Run.LoginDBAPI.ConfKeyExpiryThread" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

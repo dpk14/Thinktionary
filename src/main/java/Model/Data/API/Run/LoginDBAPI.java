@@ -6,7 +6,7 @@ import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +31,7 @@ public class LoginDBAPI extends RunDBAPI {
     {
         private Object dayLock;
         private boolean replacementPending;
-        private int replacementConfKey;
+        private String replacementConfKey;
         private String email;
 
         public ConfKeyExpiryThread(String email, Object dayLock) {
@@ -55,7 +55,7 @@ public class LoginDBAPI extends RunDBAPI {
             }
         }
 
-        public void setNewConfirmationKey(int newConfirmationKey) {
+        public void setNewConfirmationKey(String newConfirmationKey) {
             this.replacementPending = true;
             this.replacementConfKey = newConfirmationKey;
         }
@@ -92,7 +92,7 @@ public class LoginDBAPI extends RunDBAPI {
         return userInfo;
     }
 
-    public void storeEmailConfirmationKey(String email, int key) {
+    public void storeEmailConfirmationKey(String email, String key) {
         if (tableEntryExists(TableNames.getEmailConfirmation(), ColumnInfo.getEMAIL(), email)) {
             expireOldKeyAndSetNewWhenDone(email, key);
             // ^ if a confirmation key already exists, tell the thread expiring it to hurry up,
@@ -122,7 +122,7 @@ public class LoginDBAPI extends RunDBAPI {
     public void verifyConfirmationKey(String key, String email) throws UserErrorException {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
-        conditions.add(new Equals(ColumnInfo.CONF_KEY, Integer.parseInt(key)));
+        conditions.add(new Equals(ColumnInfo.CONF_KEY, key));
         List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getEmailConfirmation(), conditions));
         if (userInfo.size() != 1) {
             throw new InvalidConfirmationKeyException();
@@ -153,7 +153,7 @@ public class LoginDBAPI extends RunDBAPI {
         userAction(SQLQueryBuilder.modify(TableNames.getUserInfo(), parameters, conditions));
     }
 
-    private void expireOldKeyAndSetNewWhenDone(String email, int newKey) {
+    private void expireOldKeyAndSetNewWhenDone(String email, String newKey) {
         ConfKeyExpiryThread confKeyExpiryThread = this.emailConfExpiryThreads.get(email);
         Object lock = this.emailConfExpiryLocks.get(email);
         confKeyExpiryThread.setNewConfirmationKey(newKey);

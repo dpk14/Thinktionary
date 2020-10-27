@@ -4,7 +4,8 @@ import Model.API.Journal.Journal;
 import Model.Data.API.Run.LoginDBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.TableNames;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.*;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.*;
+import Utils.Security.Encryptor;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
@@ -38,7 +39,7 @@ public class LoginAPI {
     private static String PWD_RESET_SUBJECT = "Reset Password for Thinktionary";
     private static String PWD_RESET_HTMLBODY = "<p>Hello %s,</p>"
             + "<p>Yeah, those pesky passwords can be a nuisance to keep track of.</p> "
-            + "<p>Enter this 24 hour verification key %s along with your new password to get back to journaling!</p>"
+            + "<p>Enter the 24 hour verification key %s along with your new password to get back to journaling!</p>"
             + "<p>All the Best,<br>Thinktionary.app</p>";
 
     public Journal login(String username, String password) throws InvalidLoginException {
@@ -60,7 +61,7 @@ public class LoginAPI {
             throw new EmailExistsException();
         }
         int emailKey = generateEmailConfirmationKey();
-        this.loginDBAPI.storeEmailConfirmationKey(email, emailKey);
+        this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
             sendVerificationEmail(email, emailKey, username);
         }
@@ -78,7 +79,7 @@ public class LoginAPI {
             throw new AccountNotRegisteredException();
         }
         int emailKey = generateEmailConfirmationKey();
-        this.loginDBAPI.storeEmailConfirmationKey(email, emailKey);
+        this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
             sendPWDResetEmail(email, emailKey, username);
         }

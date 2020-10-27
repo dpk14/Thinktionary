@@ -3,7 +3,7 @@ package Model.API.Journal;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.Data.SQL.ColumnInfo;
-import Model.ErrorHandling.Errors.CorruptDBError;
+import Utils.ErrorHandling.Errors.CorruptDBError;
 
 import java.time.LocalDateTime;
 import java.util.*;

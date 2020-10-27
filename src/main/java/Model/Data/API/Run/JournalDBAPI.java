@@ -8,7 +8,7 @@ import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
 import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
-import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
 
 import java.util.ArrayList;
 import java.util.List;

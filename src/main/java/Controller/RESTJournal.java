@@ -8,15 +8,15 @@ import Model.API.Journal.EntryComponents.Topic;
 import Model.API.Journal.EntryWithID;
 import Model.API.Journal.Journal;
 import Model.API.Login.LoginAPI;
-import Model.ConfigUtils.PropertyUtils.PropertyManager;
+import Utils.PropertyUtils.PropertyManager;
 import Model.Data.API.DBAPI;
 import Model.Data.API.Initialization.JournalDBInitAPI;
 import Model.Data.API.Initialization.LoginDBInitAPI;
 import Model.Data.API.Run.LoginDBAPI;
-import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.InvalidLoginException;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.UserErrorException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,9 +54,9 @@ public class RESTJournal {
     }
 
     @GetMapping("/login")
-    public ResponseEntity login(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity login(@RequestBody UserCredentials credentials) {
         try {
-            Journal journal = this.loginAPI.login(username, password);
+            Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
             this.sessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
         } catch (InvalidLoginException e) {
@@ -67,9 +67,9 @@ public class RESTJournal {
     }
 
     @GetMapping("/logout")
-    public ResponseEntity logout(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password) {
+    public ResponseEntity logout(@RequestBody UserCredentials credentials) {
         try {
-            Journal journal = this.loginAPI.login(username, password);
+            Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
             this.sessionManager.removeUser(journal.getUserID());
             return ResponseEntity.ok(journal.getUserID());
         } catch (RuntimeException e) {
@@ -80,10 +80,9 @@ public class RESTJournal {
     }
 
     @GetMapping(value = "/verify")
-    public ResponseEntity verifyAccountInfo(@RequestParam(value = "user") String username,
-                                            @RequestParam(value = "email") String email) {
+    public ResponseEntity verifyAccountInfo(@RequestBody UserCredentials credentials) {
         try {
-            this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(username, email);
+            this.loginAPI.verifyAccountDoesNotExistAndGenerateEmailConfirmation(credentials.getUsername(), credentials.getEmail());
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -93,10 +92,12 @@ public class RESTJournal {
     }
 
     @PutMapping(value = "/")
-    public ResponseEntity makeAccount(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String password,
-                                      @RequestParam(value = "email") String email, @RequestParam(value = "key") String verifyKey) {
+    public ResponseEntity makeAccount(@RequestBody UserCredentials credentials) {
         try {
-            int userId = this.loginAPI.makeAccount(username, password, email, verifyKey);
+            int userId = this.loginAPI.makeAccount(credentials.getUsername(),
+                    credentials.getPwd(),
+                    credentials.getEmail(),
+                    credentials.getConfKey());
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                     .path("/{userID}")
                     .buildAndExpand(userId)
@@ -110,9 +111,9 @@ public class RESTJournal {
     }
 
     @GetMapping(value = "/forgotpwd")
-    public ResponseEntity sendConfKey(@RequestParam(value = "user") String username,  @RequestParam(value = "email") String email) {
+    public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials) {
         try {
-            this.loginAPI.verifyAccountExistsAndGenerateEmailConfirmation(email, username);
+            this.loginAPI.verifyAccountExistsAndGenerateEmailConfirmation(credentials.getEmail(), credentials.getUsername());
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -122,10 +123,12 @@ public class RESTJournal {
     }
 
     @GetMapping(value = "/resetpwd")
-    public ResponseEntity sendConfKey(@RequestParam(value = "user") String username, @RequestParam(value = "pwd") String newPwd,
-                                      @RequestParam(value = "email") String email, @RequestParam(value = "key") String verifyKey) {
+    public ResponseEntity resetPassword(@RequestBody UserCredentials credentials) {
         try {
-            this.loginAPI.resetPassword(username, newPwd, email, verifyKey);
+            this.loginAPI.resetPassword(credentials.getUsername(),
+                    credentials.getPwd(),
+                    credentials.getEmail(),
+                    credentials.getConfKey());
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());

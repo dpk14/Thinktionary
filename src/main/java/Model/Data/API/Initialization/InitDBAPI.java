@@ -3,8 +3,8 @@ package Model.Data.API.Initialization;
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.SQLQueryBuilder;
-import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
 import java.util.List;
 import java.util.Map;

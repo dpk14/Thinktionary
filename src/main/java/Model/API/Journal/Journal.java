@@ -3,10 +3,10 @@ package Model.API.Journal;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.Data.API.Run.JournalDBAPI;
-import Model.ErrorHandling.Exceptions.ServerExceptions.EntryByTopicException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
-import Model.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
-import Model.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.EntryByTopicException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
+import Utils.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
+import Utils.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 
 import java.util.*;
 

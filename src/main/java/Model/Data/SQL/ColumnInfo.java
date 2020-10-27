@@ -147,7 +147,7 @@ public class ColumnInfo {
     public static Map<String, String> getEmailVerifyColumnMap(){
         Map<String, String> columnMap = new HashMap();
         columnMap.put(EMAIL, EMAIL_FOR_CONF_KEY_TYPE);
-        columnMap.put(CONF_KEY, INTEGER_TYPE);
+        columnMap.put(CONF_KEY, TEXT_TYPE);
         return columnMap;
     }
 
