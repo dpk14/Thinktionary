@@ -94,7 +94,13 @@ public class RESTJournal {
     @PutMapping(value = "/", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity makeAccount(@RequestBody UserCredentials credentials) {
         try {
-            int userId = this.loginAPI.makeAccount(credentials.getUsername(),
+            System.out.println(credentials.getUsername());
+            System.out.println(credentials.getPwd());
+            System.out.println(credentials.getEmail());
+            System.out.println(credentials.getConfKey());
+
+            int userId = this.loginAPI.makeAccount(
+                    credentials.getUsername(),
                     credentials.getPwd(),
                     credentials.getEmail(),
                     credentials.getConfKey());
