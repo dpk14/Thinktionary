@@ -19,6 +19,7 @@ public class UserCredentials {
                            @JsonProperty("confKey") String confKey) {
         this.username = username;
         if (pwd != null) {
+            System.out.println(pwd);
             this.pwd = Encryptor.encryptMD5(pwd);
         }
         this.email = email;
