@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.0.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +130,20 @@
       <recent name="C:\Users\dpk14\Thinktionary\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Application (1)">
+  <component name="RunManager" selected="Application.Encryptor">
+    <configuration name="Encryptor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Utils.Security.Encryptor" />
+      <module name="ThinktionaryModel.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Utils.Security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -220,14 +242,15 @@
       <item itemvalue="JUnit.Tests" />
       <item itemvalue="Spring Boot.Application" />
       <item itemvalue="Spring Boot.Application (1)" />
+      <item itemvalue="Application.Encryptor" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Encryptor" />
         <item itemvalue="Spring Boot.Application (1)" />
         <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Gradle.Tests" />
         <item itemvalue="Spring Boot.Application" />
-        <item itemvalue="JUnit.Tests" />
       </list>
     </recent_temporary>
   </component>
@@ -283,7 +306,7 @@
       <workItem from="1603410122476" duration="56053000" />
       <workItem from="1603738386805" duration="6851000" />
       <workItem from="1603750121562" duration="7873000" />
-      <workItem from="1603807617484" duration="16579000" />
+      <workItem from="1603807617484" duration="20243000" />
     </task>
     <servers />
   </component>
@@ -328,6 +351,22 @@
     </state>
     <state x="585" y="177" key="FileChooserDialogImpl/0.0.1638.882@0.0.1638.882" timestamp="1595337525471" />
     <state x="731" y="223" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1603233041094" />
+    <state width="1000" height="496" key="GridCell.Tab.0.bottom" timestamp="1603844731882">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1000" height="496" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1603844731882" />
+    <state width="1000" height="496" key="GridCell.Tab.0.center" timestamp="1603844731882">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1000" height="496" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1603844731882" />
+    <state width="1000" height="496" key="GridCell.Tab.0.left" timestamp="1603844731882">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1000" height="496" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1603844731882" />
+    <state width="1000" height="496" key="GridCell.Tab.0.right" timestamp="1603844731882">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="1000" height="496" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1603844731882" />
     <state x="413" y="196" width="1038" height="726" key="SettingsEditor" timestamp="1603410274738">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -346,11 +385,11 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="720" y="154" width="607" height="804" key="find.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603495737400" />
-    <state x="325" y="79" key="new project wizard" timestamp="1600202982738">
+    <state x="325" y="79" key="new project wizard" timestamp="1603842980065">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="260" y="63" key="new project wizard/0.0.1638.882@0.0.1638.882" timestamp="1595337452114" />
-    <state x="325" y="79" key="new project wizard/0.0.2048.1112@0.0.2048.1112" timestamp="1600202982738" />
+    <state x="325" y="79" key="new project wizard/0.0.2048.1112@0.0.2048.1112" timestamp="1603842980065" />
     <state x="596" y="253" key="run.anything.popup" timestamp="1603470909056">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

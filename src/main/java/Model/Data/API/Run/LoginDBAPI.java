@@ -76,7 +76,7 @@ public class LoginDBAPI extends RunDBAPI {
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getUSERNAME(), userName));
         parameters.add(new Parameter(ColumnInfo.getPASSWORD(), passWord));
-        parameters.add(new Parameter(ColumnInfo.getEMAIL(), passWord));
+        parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
 
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
