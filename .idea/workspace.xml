@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,16 +231,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Encryptor" />
       <item itemvalue="Gradle.Tests" />
       <item itemvalue="JUnit.Tests" />
       <item itemvalue="Spring Boot.Application" />
-      <item itemvalue="Spring Boot.Application (1)" />
-      <item itemvalue="Application.Encryptor" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Encryptor" />
-        <item itemvalue="Spring Boot.Application (1)" />
         <item itemvalue="Spring Boot.Application" />
         <item itemvalue="Gradle.Tests" />
         <item itemvalue="Spring Boot.Application" />
@@ -297,6 +298,8 @@
       <workItem from="1603738386805" duration="6851000" />
       <workItem from="1603750121562" duration="7873000" />
       <workItem from="1603807617484" duration="23743000" />
+      <workItem from="1603849676535" duration="1346000" />
+      <workItem from="1603852793928" duration="3904000" />
     </task>
     <servers />
   </component>
@@ -328,10 +331,6 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="754" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603451652659" />
-    <state x="545" y="247" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog" timestamp="1595173016345">
-      <screen x="0" y="0" width="1638" height="882" />
-    </state>
-    <state x="545" y="247" key="#com.intellij.util.ui.classpath.ChooseLibrariesDialog/0.0.1638.882@0.0.1638.882" timestamp="1595173016345" />
     <state x="771" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1603450015172">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -366,11 +365,11 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="92" y="98" width="1864" height="939" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603739906384" />
-    <state x="620" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1603807618880">
+    <state x="620" y="321" key="com.intellij.ide.util.TipDialog" timestamp="1603855311156">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="496" y="255" key="com.intellij.ide.util.TipDialog/0.0.1638.882@0.0.1638.882" timestamp="1595335672794" />
-    <state x="620" y="321" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603807618880" />
+    <state x="620" y="321" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1603855311156" />
     <state x="720" y="154" width="607" height="804" key="find.popup" timestamp="1603848701717">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -388,7 +387,6 @@
     <state x="734" y="338" width="841" height="855" key="search.everywhere.popup" timestamp="1603815692603">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="482" y="186" width="672" height="678" key="search.everywhere.popup/0.0.1638.882@0.0.1638.882" timestamp="1595173605258" />
     <state x="734" y="338" width="841" height="855" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1603815692603" />
   </component>
   <component name="XDebuggerManager">
@@ -401,13 +399,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="NONE" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Model/API/Journal/Journal.java</url>
-          <line>75</line>
+          <line>72</line>
           <log-expression expression="            updateEntryTopic(entryID, newTopics);&#10;            //String oldCreation = existingEntry.getMyCreated();&#10;            myEntryMap.put(entryID, entry);&#10;" language="JAVA" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java</url>
-          <line>96</line>
+          <line>94</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

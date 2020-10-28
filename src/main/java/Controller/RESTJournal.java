@@ -56,8 +56,6 @@ public class RESTJournal {
     @PostMapping(value = "/login", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity login(@RequestBody UserCredentials credentials) {
         try {
-            System.out.println(credentials.getUsername());
-            System.out.println(credentials.getPwd());
             Journal journal = this.loginAPI.login(credentials.getUsername(), credentials.getPwd());
             this.sessionManager.addUser(journal.getUserID(), journal);
             return ResponseEntity.ok(journal);
