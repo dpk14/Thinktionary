@@ -112,10 +112,10 @@ public class RESTJournal {
     }
 
     @DeleteMapping(value = PROTECTED_PATH)
-    public ResponseEntity deleteAccount(@PathVariable int userId) {
+    public ResponseEntity deleteAccount(@PathVariable int userID) {
         try {
-            int userID = this.loginAPI.deleteAccount(
-                    userId);
+            this.loginAPI.deleteAccount(
+                    userID);
             return ResponseEntity.ok().body(userID);
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
