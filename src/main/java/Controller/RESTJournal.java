@@ -157,8 +157,9 @@ public class RESTJournal {
     @PostMapping(value = "/resetemail", consumes = "application/json;charset=UTF-8;")
     public ResponseEntity resetEmail(@RequestBody UserCredentials credentials) {
         try {
-            this.loginAPI.resetEmail(credentials.getUsername(),
+            this.loginAPI.resetEmail(
                     credentials.getEmail(),
+                    credentials.getUsername(),
                     credentials.getConfKey());
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
