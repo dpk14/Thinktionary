@@ -11,7 +11,7 @@ public class LoginDBParser {
         return (int) userInfo.get(0).get(ColumnInfo.getUSERID());
     }
 
-    public static int getEmail(List<Map<String, Object>> userInfo) {
-        return (int) userInfo.get(0).get(ColumnInfo.getEMAIL());
+    public static String getEmail(List<Map<String, Object>> userInfo) {
+        return userInfo.get(0).get(ColumnInfo.getEMAIL()).toString();
     }
 }

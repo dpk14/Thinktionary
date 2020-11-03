@@ -45,7 +45,7 @@ public class LoginAPI {
     public Journal login(String username, String password) throws InvalidLoginException {
         List<Map<String, Object>> userInfo = this.loginDBAPI.login(username, password);
         int userID = LoginDBParser.getUserID(userInfo);
-        int email = LoginDBParser.getEmail(userInfo);
+        String email = LoginDBParser.getEmail(userInfo);
         return new Journal(userID, username, email);
     }
 
