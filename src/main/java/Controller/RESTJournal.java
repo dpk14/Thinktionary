@@ -111,7 +111,7 @@ public class RESTJournal {
         }
     }
 
-    @DeleteMapping(value = PROTECTED_PATH, consumes = "application/json;charset=UTF-8;")
+    @DeleteMapping(value = PROTECTED_PATH)
     public ResponseEntity deleteAccount(@PathVariable int userId) {
         try {
             int userID = this.loginAPI.deleteAccount(
