@@ -91,7 +91,7 @@ public class RESTJournal {
         }
     }
 
-    @PutMapping(value = "/", consumes = "application/json;charset=UTF-8;")
+    @PutMapping(consumes = "application/json;charset=UTF-8;")
     public ResponseEntity makeAccount(@RequestBody UserCredentials credentials) {
         try {
             int userId = this.loginAPI.makeAccount(
