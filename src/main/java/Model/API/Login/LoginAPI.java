@@ -45,7 +45,8 @@ public class LoginAPI {
     public Journal login(String username, String password) throws InvalidLoginException {
         List<Map<String, Object>> userInfo = this.loginDBAPI.login(username, password);
         int userID = LoginDBParser.getUserID(userInfo);
-        return new Journal(userID, username);
+        int email = LoginDBParser.getEmail(userInfo);
+        return new Journal(userID, username, email);
     }
 
     public int makeAccount(String username, String password, String email, String verifyKey) throws UserErrorException { //second exception has two inheritances, password exists and username exists;

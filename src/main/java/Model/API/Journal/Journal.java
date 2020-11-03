@@ -16,6 +16,7 @@ public class Journal {
     Map<String, Topic> myTopics;
     int myUserID;
     String myUsername;
+    String myEmail;
     /*
     Sorter and manager of Entries; has full access privileges on Entries
      */
@@ -26,15 +27,16 @@ public class Journal {
 
     }
 
-    public Journal(List<EntryWithID> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID, String username) {
+    public Journal(List<EntryWithID> entries, Map<Integer, Entry> entryMap, Map<String, Topic> topics, int userID, String username, String email) {
         myEntries = entries;
         myEntryMap = entryMap;
         myTopics = topics;
         myUserID = userID;
         myUsername = username;
+        myEmail = email;
     }
 
-    public Journal(int userID, String username) {
+    public Journal(int userID, String username, String email) {
         JournalDBAPI journalDBAPI = new JournalDBAPI(userID);
         List<Map<String, Object>> entryTopic = journalDBAPI.loadEntryTopicsTable();
         List<Map<String, Object>> entryTable = journalDBAPI.loadEntryTable(); //uses primary IDs and maps them to Entry'
@@ -44,6 +46,7 @@ public class Journal {
         myEntries = JournalDBParser.parseEntries(myEntryMap);
         myUserID = userID;
         myUsername = username;
+        myEmail = email;
     }
 
     /*
@@ -216,4 +219,7 @@ public class Journal {
         return myUsername;
     }
 
+    public String getMyEmail() {
+        return myEmail;
+    }
 }
