@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class LoginDBParser {
 
-    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+    public static int getUserID (List<Map<String, Object>> userInfo) throws ClassCastException{
         return (int) userInfo.get(0).get(ColumnInfo.getUSERID());
     }
 }

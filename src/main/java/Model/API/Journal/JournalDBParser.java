@@ -16,13 +16,13 @@ public class JournalDBParser {
         try {
             for (Map<String, Object> row : entryTopic) {
                 Topic topic = new Topic((String) row.get(ColumnInfo.getTOPIC()), (String) row.get(ColumnInfo.getCOLOR()));
-                String entryID = Integer.toString ((int) row.get(ColumnInfo.getEntryId()));
+                String entryID = Integer.toString((int) row.get(ColumnInfo.getEntryId()));
                 Set<Topic> topics = topicSets.getOrDefault(entryID, new HashSet<>());
                 topics.add(topic);
                 topicSets.put(entryID, topics);
             }
             for (Map<String, Object> row : entryMap) {
-                String id = Integer.toString((int)row.get(ColumnInfo.getEntryId()));
+                String id = Integer.toString((int) row.get(ColumnInfo.getEntryId()));
                 Set<Topic> topics = topicSets.get(id);
                 String createdDate = (String) row.get(ColumnInfo.getCREATED());
                 LocalDateTime created = Date.makeDate(createdDate);
@@ -33,8 +33,7 @@ public class JournalDBParser {
                 ret.put(ID, entry);
             }
             return ret;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new CorruptDBError(e);
         }
     }
@@ -48,26 +47,26 @@ public class JournalDBParser {
         return ret;
     }
 
-    public static Map<String, Topic> parseTopics(List<Map<String, Object>> topics) throws ClassCastException{
+    public static Map<String, Topic> parseTopics(List<Map<String, Object>> topics) throws ClassCastException {
         Map<String, String> topToCol = new HashMap();
         Map<String, Topic> ret = new HashMap();
-        for(Map<String, Object> cols : topics){
+        for (Map<String, Object> cols : topics) {
             String topicName = (String) cols.get(ColumnInfo.getTOPIC());
-            if(!topToCol.containsKey(topicName)){
+            if (!topToCol.containsKey(topicName)) {
                 topToCol.put(topicName, (String) cols.get(ColumnInfo.getCOLOR()));
             }
         }
-        for(String name : topToCol.keySet()){
+        for (String name : topToCol.keySet()) {
             ret.put(name, new Topic(name, topToCol.get(name)));
         }
         return ret;
     }
 
-    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException{
+    public static int getUserID(List<Map<String, Object>> userInfo) throws ClassCastException {
         return (int) userInfo.get(0).get(ColumnInfo.getUSERID());
     }
 
-    public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException{
+    public static int getEntryID(List<Map<String, Object>> ent) throws ClassCastException {
         String entryIdAsString = ent.get(0).get(ColumnInfo.getEntryId()).toString();
         return Integer.parseInt(entryIdAsString);
     }

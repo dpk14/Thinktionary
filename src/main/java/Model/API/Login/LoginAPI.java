@@ -54,6 +54,10 @@ public class LoginAPI {
         return LoginDBParser.getUserID(userInfo);
     }
 
+    public int deleteAccount(String username) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
+        return this.loginDBAPI.deleteUser(username);
+    }
+
     public void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists
         if (this.loginDBAPI.tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), username)) {
             throw new AccountExistsException();
@@ -70,13 +74,15 @@ public class LoginAPI {
         }
     }
 
-    public void verifyAccountExistsAndGenerateEmailConfirmation(String email, String username) throws UserErrorException { //second exception has two inheritances, password exists and username exists
+    public void verifyAccountExists(String username) throws UserErrorException { //second exception has two inheritances, password exists and username exists
         Map<String, String> colToVal = new HashMap<>();
-        colToVal.put(ColumnInfo.getEMAIL(), email);
         colToVal.put(ColumnInfo.getUSERNAME(), username);
         if (!this.loginDBAPI.tableEntryExists(TableNames.getUserInfo(), colToVal)) {
             throw new AccountNotRegisteredException();
         }
+    }
+
+    public void generateAndStoreEmailConfirmation(String email, String username) throws UserErrorException {
         int emailKey = generateEmailConfirmationKey();
         this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
@@ -86,6 +92,11 @@ public class LoginAPI {
             this.loginDBAPI.removeEmailConfirmationKey(email);
             throw new EmailDeliveryFailure(e);
         }
+    }
+
+    public void resetEmail(String email, String username, String verifyKey) throws UserErrorException {
+        this.loginDBAPI.verifyConfirmationKey(verifyKey, email);
+        this.loginDBAPI.changeUserInfo(username, ColumnInfo.getEMAIL(), email);
     }
 
     public void resetPassword(String username, String newPwd, String email, String verifyKey) throws UserErrorException {

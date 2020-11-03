@@ -111,10 +111,26 @@ public class RESTJournal {
         }
     }
 
-    @PostMapping(value = "/forgotpwd", consumes = "application/json;charset=UTF-8;")
-    public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials) {
+    @DeleteMapping(value = PROTECTED_PATH, consumes = "application/json;charset=UTF-8;")
+    public ResponseEntity deleteAccount(@RequestBody UserCredentials credentials) {
         try {
-            this.loginAPI.verifyAccountExistsAndGenerateEmailConfirmation(credentials.getEmail(), credentials.getUsername());
+            int userID = this.loginAPI.deleteAccount(
+                    credentials.getUsername());
+            return ResponseEntity.ok().body(userID);
+        } catch (UserErrorException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        }
+    }
+
+    @PostMapping(value = "/sendconfkey", consumes = "application/json;charset=UTF-8;")
+    public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials, @PathVariable boolean verify) {
+        try {
+            if (verify) {
+                this.loginAPI.verifyAccountExists(credentials.getUsername());
+            }
+            this.loginAPI.generateAndStoreEmailConfirmation(credentials.getEmail(), credentials.getUsername());
             return ResponseEntity.ok().build();
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -128,6 +144,20 @@ public class RESTJournal {
         try {
             this.loginAPI.resetPassword(credentials.getUsername(),
                     credentials.getPwd(),
+                    credentials.getEmail(),
+                    credentials.getConfKey());
+            return ResponseEntity.ok().build();
+        } catch (UserErrorException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+        }
+    }
+
+    @PostMapping(value = "/resetemail", consumes = "application/json;charset=UTF-8;")
+    public ResponseEntity resetEmail(@RequestBody UserCredentials credentials) {
+        try {
+            this.loginAPI.resetEmail(credentials.getUsername(),
                     credentials.getEmail(),
                     credentials.getConfKey());
             return ResponseEntity.ok().build();

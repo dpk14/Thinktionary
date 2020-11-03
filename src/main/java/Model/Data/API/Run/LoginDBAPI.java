@@ -1,5 +1,6 @@
 package Model.Data.API.Run;
 
+import Model.API.Login.LoginDBParser;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
@@ -73,6 +74,11 @@ public class LoginDBAPI extends RunDBAPI {
     }
 
     public List<Map<String, Object>> createUser(String userName, String passWord, String email) throws UserErrorException {
+        if (tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), userName)) {
+            throw new AccountExistsException();
+        } else if (tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getEMAIL(), email)) {
+            throw new EmailExistsException();
+        }
         List<Parameter> parameters = new ArrayList<>();
         parameters.add(new Parameter(ColumnInfo.getUSERNAME(), userName));
         parameters.add(new Parameter(ColumnInfo.getPASSWORD(), passWord));
@@ -81,15 +87,30 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
 
-        List<Map<String, Object>> userInfo;
-        if (tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), userName)) {
-            throw new AccountExistsException();
-        } else if (tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getEMAIL(), email)) {
-            throw new EmailExistsException();
-        }
         userAction(SQLQueryBuilder.insert(TableNames.getUserInfo(), parameters));
-        userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
+        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
         return userInfo;
+    }
+
+    public int deleteUser(String username) throws UserErrorException {
+        if (!tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), username)) {
+            throw new AccountNotRegisteredException();
+        }
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERNAME(), username));
+
+        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
+        int userID = LoginDBParser.getUserID(userInfo);
+
+        conditions = new ArrayList<>();
+        conditions.add(new Equals(ColumnInfo.getUSERID(), userID));
+
+        userAction(SQLQueryBuilder.remove(TableNames.getUserInfo(), conditions));
+        userAction(SQLQueryBuilder.remove(TableNames.getEntryInfo(), conditions));
+        userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions));
+        userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
+
+        return userID;
     }
 
     public void storeEmailConfirmationKey(String email, String key) {
