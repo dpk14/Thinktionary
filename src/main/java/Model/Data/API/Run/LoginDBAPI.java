@@ -1,6 +1,5 @@
 package Model.Data.API.Run;
 
-import Model.API.Login.LoginDBParser;
 import Model.Data.SQL.ColumnInfo;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
@@ -92,17 +91,12 @@ public class LoginDBAPI extends RunDBAPI {
         return userInfo;
     }
 
-    public int deleteUser(String username) throws UserErrorException {
-        if (!tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERNAME(), username)) {
+    public int deleteUser(int userID) throws UserErrorException {
+        if (!tableEntryExists(TableNames.getUserInfo(), ColumnInfo.getUSERID(), Integer.toString(userID))) {
             throw new AccountNotRegisteredException();
         }
+
         List<Condition> conditions = new ArrayList<>();
-        conditions.add(new Equals(ColumnInfo.getUSERNAME(), username));
-
-        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
-        int userID = LoginDBParser.getUserID(userInfo);
-
-        conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), userID));
 
         userAction(SQLQueryBuilder.remove(TableNames.getUserInfo(), conditions));

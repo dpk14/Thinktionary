@@ -4,9 +4,7 @@
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/RESTJournal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Journal/JournalDBParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/API/Login/LoginDBParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -303,7 +301,7 @@
       <workItem from="1603849676535" duration="1346000" />
       <workItem from="1603852793928" duration="7134000" />
       <workItem from="1604077769277" duration="1188000" />
-      <workItem from="1604329083579" duration="7779000" />
+      <workItem from="1604329083579" duration="8209000" />
     </task>
     <servers />
   </component>
@@ -339,10 +337,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="771" y="394" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2048.1112@0.0.2048.1112" timestamp="1603450015172" />
-    <state x="731" y="223" key="FileChooserDialogImpl" timestamp="1603233041094">
+    <state x="731" y="223" key="FileChooserDialogImpl" timestamp="1604366471461">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="731" y="223" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1603233041094" />
+    <state x="731" y="223" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1604366471461" />
     <state width="1000" height="496" key="GridCell.Tab.0.bottom" timestamp="1603849347081">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -417,7 +415,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/Model/Data/API/Run/LoginDBAPI.java</url>
-          <line>33</line>
+          <line>32</line>
           <properties field="replacementPending" class="Model.Data.API.Run.LoginDBAPI.ConfKeyExpiryThread" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>

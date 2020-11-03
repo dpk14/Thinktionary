@@ -54,8 +54,8 @@ public class LoginAPI {
         return LoginDBParser.getUserID(userInfo);
     }
 
-    public int deleteAccount(String username) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
-        return this.loginDBAPI.deleteUser(username);
+    public int deleteAccount(int userId) throws UserErrorException { //second exception has two inheritances, password exists and username exists;
+        return this.loginDBAPI.deleteUser(userId);
     }
 
     public void verifyAccountDoesNotExistAndGenerateEmailConfirmation(String username, String email) throws UserErrorException { //second exception has two inheritances, password exists and username exists

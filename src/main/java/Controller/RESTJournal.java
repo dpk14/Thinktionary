@@ -112,10 +112,10 @@ public class RESTJournal {
     }
 
     @DeleteMapping(value = PROTECTED_PATH, consumes = "application/json;charset=UTF-8;")
-    public ResponseEntity deleteAccount(@RequestBody UserCredentials credentials) {
+    public ResponseEntity deleteAccount(@PathVariable int userId) {
         try {
             int userID = this.loginAPI.deleteAccount(
-                    credentials.getUsername());
+                    userId);
             return ResponseEntity.ok().body(userID);
         } catch (UserErrorException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -125,7 +125,7 @@ public class RESTJournal {
     }
 
     @PostMapping(value = "/sendconfkey", consumes = "application/json;charset=UTF-8;")
-    public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials, @PathVariable boolean verify) {
+    public ResponseEntity sendConfKey(@RequestBody UserCredentials credentials, @RequestParam boolean verify) {
         try {
             if (verify) {
                 this.loginAPI.verifyAccountExists(credentials.getUsername());
