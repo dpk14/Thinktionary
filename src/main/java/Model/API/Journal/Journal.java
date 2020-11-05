@@ -109,8 +109,6 @@ public class Journal {
         if (!journalDBAPI.anyEntryUsesTopic(topicName)) {
             journalDBAPI.removeTopicFromBank(topicName);
             myTopics.remove(topicName);
-        } else {
-            throw new RuntimeException(new CannotDeleteTopicException(topicName));
         }
     }
 
