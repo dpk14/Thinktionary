@@ -50,7 +50,7 @@ JournalDBAPI extends RunDBAPI {
 
     //Communicators:
 
-    public boolean usesTopic(String topicName) {
+    public boolean anyEntryUsesTopic(String topicName) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));

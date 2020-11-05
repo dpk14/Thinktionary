@@ -106,8 +106,9 @@ public class Journal {
 
     private void removeUnusedTopicFromBank(String topicName) {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
-        if (!journalDBAPI.usesTopic(topicName)) {
+        if (!journalDBAPI.anyEntryUsesTopic(topicName)) {
             journalDBAPI.removeTopicFromBank(topicName);
+            myTopics.remove(topicName);
         } else {
             throw new RuntimeException(new CannotDeleteTopicException(topicName));
         }
@@ -124,7 +125,7 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateEntryTopic(int entryID, Set<Topic> topics) throws CannotDeleteTopicException {
+    private void updateEntryTopic(int entryID, Set<Topic> topics) {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         Entry existingEntry = myEntryMap.getOrDefault(entryID, null);
         Map<String, String> existingEntryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
@@ -132,7 +133,7 @@ public class Journal {
         for (Topic topic : topics) {
             newTopics.add(topic.getMyTopic());
         }
-        HashMap<String, String> newExisting = new HashMap<>();
+        Map<String, String> newExisting = new HashMap<>();
         for (String existingTopic : existingEntryTopics.keySet()) {
             if (!newTopics.contains(existingTopic)) {
                 journalDBAPI.removeTopicFromEntry(entryID, existingTopic);
