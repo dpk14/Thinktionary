@@ -21,6 +21,6 @@ public class Topic {
 
     @Override
     public boolean equals(Object topic){
-        return myTopic.equals((Topic) topic);
+        return myTopic.equals(((Topic) topic).getMyTopic());
     }
 }

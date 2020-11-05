@@ -3,9 +3,7 @@ package Model.API.Journal;
 import Model.API.Journal.EntryComponents.Date;
 import Model.API.Journal.EntryComponents.Topic;
 import Model.Data.API.Run.JournalDBAPI;
-import Utils.ErrorHandling.Exceptions.ServerExceptions.EntryByTopicException;
 import Utils.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
-import Utils.ErrorHandling.Exceptions.ServerExceptions.RemoveTopicException;
 import Utils.ErrorHandling.Exceptions.UserErrorExceptions.CannotDeleteTopicException;
 
 import java.util.*;
@@ -55,7 +53,7 @@ public class Journal {
     ----------------------------
      */
 
-    public int createEntry(Entry entry) {
+    public int createEntry(Entry entry) throws CannotDeleteTopicException {
         updateTopicBank(entry.getMyTopics());
         int entryID = new JournalDBAPI(myUserID).addToEntryInfo(entry);
         updateEntryTopic(entryID, entry.getMyTopics());
@@ -64,7 +62,7 @@ public class Journal {
         return entryID;
     }
 
-    public Entry saveEntry(int entryID, Entry entry) throws NoSuchEntryException {
+    public Entry saveEntry(int entryID, Entry entry) throws NoSuchEntryException, CannotDeleteTopicException {
         Set<Topic> newTopics = entry.getMyTopics();
         updateTopicBank(newTopics);
         Entry existingEntry = myEntryMap.get(entryID);
@@ -79,10 +77,15 @@ public class Journal {
         return entry;
     }
 
-    public void removeEntry(int entryID) throws NoSuchEntryException {
+    public void removeEntry(int entryID) throws NoSuchEntryException, CannotDeleteTopicException {
         new JournalDBAPI(myUserID).removeEntry(entryID);
+        Entry entry = myEntryMap.get(entryID);
         myEntries.remove(myEntryMap.get(entryID));
         myEntryMap.remove(entryID);
+        Set<Topic> topics = entry.getMyTopics();
+        for (Topic topic : topics) {
+            removeUnusedTopicFromBank(topic.getMyTopic());
+        }
     }
 
     public Entry getRandomEntry(Set<Topic> topics) throws IndexOutOfBoundsException {
@@ -94,7 +97,6 @@ public class Journal {
     public List<Entry> getTopicalEntries(Set<Topic> topics) {
         List<Entry> topicalEntries = new ArrayList<>();
         for (Entry entry : myEntries) {
-            System.out.println(entry.getMyTopics() == null);
             if (firstSubsetOfSecond(topics, entry.getMyTopics())) {
                 topicalEntries.add(entry);
             }
@@ -102,7 +104,7 @@ public class Journal {
         return topicalEntries;
     }
 
-    public void removeUnusedTopicFromBank(String topicName) throws EntryByTopicException, RemoveTopicException, CannotDeleteTopicException {
+    private void removeUnusedTopicFromBank(String topicName) throws CannotDeleteTopicException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         if (!journalDBAPI.usesTopic(topicName)) {
             journalDBAPI.removeTopicFromBank(topicName);
@@ -122,7 +124,7 @@ public class Journal {
     ----------------------------
      */
 
-    private void updateEntryTopic(int entryID, Set<Topic> topics) {
+    private void updateEntryTopic(int entryID, Set<Topic> topics) throws CannotDeleteTopicException {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         Entry existingEntry = myEntryMap.getOrDefault(entryID, null);
         Map<String, String> existingEntryTopics = existingEntry == null ? new HashMap<>() : existingEntry.myTopicsAsMap();
@@ -134,6 +136,7 @@ public class Journal {
         for (String existingTopic : existingEntryTopics.keySet()) {
             if (!newTopics.contains(existingTopic)) {
                 journalDBAPI.removeTopicFromEntry(entryID, existingTopic);
+                removeUnusedTopicFromBank(existingTopic);
             } else newExisting.put(existingTopic, existingEntryTopics.get(existingTopic));
         }
         for (Topic topic : topics) {
@@ -144,7 +147,6 @@ public class Journal {
         }
         existingEntryTopics.clear();
         for (String newExistingTop : newExisting.keySet()) {
-            System.out.println(newExistingTop);
             existingEntryTopics.put(newExistingTop, newExisting.get(newExistingTop));
         }
     }
