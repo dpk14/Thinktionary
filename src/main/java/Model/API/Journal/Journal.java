@@ -77,7 +77,7 @@ public class Journal {
         return entry;
     }
 
-    public void removeEntry(int entryID) throws NoSuchEntryException, CannotDeleteTopicException {
+    public void removeEntry(int entryID) throws NoSuchEntryException {
         new JournalDBAPI(myUserID).removeEntry(entryID);
         Entry entry = myEntryMap.get(entryID);
         myEntries.remove(myEntryMap.get(entryID));
@@ -104,12 +104,12 @@ public class Journal {
         return topicalEntries;
     }
 
-    private void removeUnusedTopicFromBank(String topicName) throws CannotDeleteTopicException {
+    private void removeUnusedTopicFromBank(String topicName) {
         JournalDBAPI journalDBAPI = new JournalDBAPI(myUserID);
         if (!journalDBAPI.usesTopic(topicName)) {
             journalDBAPI.removeTopicFromBank(topicName);
         } else {
-            throw new CannotDeleteTopicException(topicName);
+            throw new RuntimeException(new CannotDeleteTopicException(topicName));
         }
     }
 

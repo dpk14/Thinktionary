@@ -184,6 +184,8 @@ public class RESTJournal {
                 return ResponseEntity.created(uri).body(entryWithID);
             } catch (RuntimeException e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ExceptionUtils.stackTraceToString(e));
+            } catch (CannotDeleteTopicException e) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             }
         } catch (NotLoggedInException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
@@ -216,24 +218,6 @@ public class RESTJournal {
             try {
                 journal.removeEntry(entryID);
                 return ResponseEntity.ok(entryID);
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.stackTraceToString(e));
-            }
-        } catch (NotLoggedInException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
-        }
-
-    }
-
-    @DeleteMapping(PROTECTED_PATH + "/topics/remove")
-    public ResponseEntity deleteTopic(@PathVariable int userID, @RequestParam(value = "name") String topicName) {
-        try {
-            Journal journal = this.sessionManager.getSessionInfo(userID);
-            try {
-                journal.removeUnusedTopicFromBank(topicName);
-                return ResponseEntity.ok(topicName);
-            } catch (CannotDeleteTopicException e) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.toString());
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ExceptionUtils.stackTraceToString(e));
             }
