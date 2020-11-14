@@ -11,6 +11,10 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
 import com.amazonaws.services.simpleemail.model.*;
+import com.amazonaws.services.sns.AmazonSNS;
+import com.amazonaws.services.sns.AmazonSNSClient;
+import com.amazonaws.services.sns.model.PublishRequest;
+import com.amazonaws.services.sns.model.PublishResult;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +46,11 @@ public class LoginAPI {
             + "<p>Enter the 24 hour verification key %s along with your new password to get back to journaling!</p>"
             + "<p>All the Best,<br>Thinktionary.app</p>";
 
+    private static String PWD_RESET_TEXTBODY = "Hello %s,"
+            + "\nYeah, those pesky passwords can be a nuisance to keep track of. "
+            + "Enter the 24 hour verification key %s along with your new password to get back to journaling!"
+            + "\nAll the Best,\nThinktionary.app";
+
     public Journal login(String username, String password) throws InvalidLoginException {
         List<Map<String, Object>> userInfo = this.loginDBAPI.login(username, password);
         int userID = LoginDBParser.getUserID(userInfo);
@@ -68,7 +77,8 @@ public class LoginAPI {
         int emailKey = generateEmailConfirmationKey();
         this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
-            sendVerificationEmail(email, emailKey, username);
+            //sendVerificationEmail(email, emailKey, username);
+            sendVerificationText(email, emailKey, username);
         } catch (Exception e) {
             this.loginDBAPI.removeEmailConfirmationKey(email);
             throw new EmailDeliveryFailure(e);
@@ -87,7 +97,8 @@ public class LoginAPI {
         int emailKey = generateEmailConfirmationKey();
         this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
-            sendPWDResetEmail(email, emailKey, username);
+            //sendPWDResetEmail(email, emailKey, username);
+            sendPWDResetText(email, emailKey, username);
         }
         catch (Exception e) {
             this.loginDBAPI.removeEmailConfirmationKey(email);
@@ -120,6 +131,15 @@ public class LoginAPI {
         sendEmail(to, emailKey, username, PWD_RESET_HTMLBODY, PWD_RESET_HTMLBODY, PWD_RESET_SUBJECT);
     }
 
+    private static void sendVerificationText(String to, int emailKey, String username) {
+        sendText(to, emailKey, username, VERIFICATION_TEXTBODY);
+    }
+
+    private void sendPWDResetText(String to, int emailKey, String username) {
+        sendText(to, emailKey, username, PWD_RESET_TEXTBODY);
+    }
+
+
     private static void sendEmail(String to, int emailKey, String username, String htmlBody, String textBody, String subject) {
         AmazonSimpleEmailService client =
                 AmazonSimpleEmailServiceClientBuilder.standard()
@@ -140,5 +160,17 @@ public class LoginAPI {
                 .withSource(FROM);
         client.sendEmail(request);
     }
+
+    private static PublishResult sendText(String phoneNum, int emailKey, String username, String message) {
+        AmazonSNS snsClient = AmazonSNSClient.builder()
+                .withRegion(Regions.US_EAST_1)
+                .withCredentials(new DefaultAWSCredentialsProviderChain())
+                .build();
+
+        return snsClient.publish(new PublishRequest()
+                .withMessage(String.format(message, username, emailKey))
+                .withPhoneNumber(phoneNum));
+    }
+
 }
 
