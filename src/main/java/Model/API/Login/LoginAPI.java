@@ -77,8 +77,8 @@ public class LoginAPI {
         int emailKey = generateEmailConfirmationKey();
         this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
-            //sendVerificationEmail(email, emailKey, username);
-            sendVerificationText(email, emailKey, username);
+            sendVerificationEmail(email, emailKey, username);
+            //sendVerificationText(email, emailKey, username);
         } catch (Exception e) {
             this.loginDBAPI.removeEmailConfirmationKey(email);
             throw new EmailDeliveryFailure(e);
@@ -97,8 +97,8 @@ public class LoginAPI {
         int emailKey = generateEmailConfirmationKey();
         this.loginDBAPI.storeEmailConfirmationKey(email, Encryptor.encryptMD5(Integer.toString(emailKey)));
         try {
-            //sendPWDResetEmail(email, emailKey, username);
-            sendPWDResetText(email, emailKey, username);
+            sendPWDResetEmail(email, emailKey, username);
+            //sendPWDResetText(email, emailKey, username);
         }
         catch (Exception e) {
             this.loginDBAPI.removeEmailConfirmationKey(email);
