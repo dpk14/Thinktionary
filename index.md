@@ -41,3 +41,5 @@ First of all, don't panic! Make sure that tag is the only one you've selected, a
 If you have any additional questions, reach out to thinktionary.app@gmail.com and we'll get back to you as soon as possible.
 
 ### Privacy Policy
+
+See https://dpk14.github.io/ThinktionaryPrivacyPolicy/
