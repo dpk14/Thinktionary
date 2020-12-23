@@ -33,12 +33,12 @@ public class Insert extends Query {
     @Override
     public String getQueryString() {
         String header = INSERT + this.tableName;
-        String params = " (";
+        String params = "(";
         String values = " (";
 
         for(Parameter param : parameters){
             params += param.getMyParamName();
-            values += (param.getMyValue() instanceof String ? "'?'" : "?");
+            values += (param.getMyValue() instanceof String ? "?" : "?");
             if(!param.equals(parameters.get(parameters.size()-1))) {
                 params+=", ";
                 values+=", ";
