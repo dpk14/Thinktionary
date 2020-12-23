@@ -23,9 +23,8 @@ public class Modify extends Query {
     public PreparedStatement buildStatement(Connection con) throws SQLException {
         String query = getQueryString();
         PreparedStatement commandSt = con.prepareStatement(query);
-        commandSt.setString(1, tableName);
-        int index = 2;
-        for(Parameter param : parameters){
+        int index = 1;
+        for (Parameter param : parameters){
             commandSt.setString(index, param.getMyParamName());
             index++;
             commandSt.setString(index, param.getMyValue());
@@ -39,7 +38,7 @@ public class Modify extends Query {
 
     @Override
     public String getQueryString() {
-        String command = MODIFY + "? SET ";
+        String command = MODIFY + this.tableName + " SET ";
         for(Parameter param : parameters){
             command += "? = ?";
             if(!param.equals(parameters.get(parameters.size()-1))) {

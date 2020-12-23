@@ -20,9 +20,8 @@ public class Insert extends Query {
     public PreparedStatement buildStatement(Connection con) throws SQLException {
         String statement = getQueryString();
         PreparedStatement commandSt = con.prepareStatement(statement);
-        commandSt.setString(1, tableName);
 
-        int index = 2;
+        int index = 1;
         for(Parameter param : parameters){
             commandSt.setString(index, param.getMyParamName());
             index++;
@@ -37,7 +36,7 @@ public class Insert extends Query {
 
     @Override
     public String getQueryString() {
-        String header = INSERT + "?";
+        String header = INSERT + this.tableName + "?";
         String string = " (";
 
         for(Parameter param : parameters){

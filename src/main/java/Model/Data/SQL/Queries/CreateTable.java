@@ -18,8 +18,7 @@ public class CreateTable extends Query {
     public PreparedStatement buildStatement(Connection con) throws SQLException {
         String command = getQueryString();
         PreparedStatement commandSt = con.prepareStatement(command);
-        commandSt.setString(1, tableName);
-        int count = 2;
+        int count = 1;
         for (String columnName : columnToType.keySet()) {
             String type = columnToType.get(columnName);
             commandSt.setString(count, columnName);
@@ -32,7 +31,7 @@ public class CreateTable extends Query {
 
     @Override
     public String getQueryString() {
-        String command = "CREATE TABLE IF NOT EXISTS ? (";
+        String command = "CREATE TABLE IF NOT EXISTS " + this.tableName + "(";
         for (int count = 0; count < columnToType.keySet().size(); count++) {
             command += "? ? ";
             if (count!=columnToType.keySet().size()-1) {

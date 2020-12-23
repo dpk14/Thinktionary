@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/CreateTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/CreateTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Insert.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Modify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Modify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Query.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +315,7 @@
       <workItem from="1605315144637" duration="1744000" />
       <workItem from="1605317267307" duration="2138000" />
       <workItem from="1605319617855" duration="1644000" />
-      <workItem from="1608681069296" duration="8398000" />
+      <workItem from="1608681069296" duration="9439000" />
     </task>
     <servers />
   </component>
