@@ -96,14 +96,18 @@ public class DBAPI {
             try {
                 try {
                     Connection con = makeConnection();
-                    PreparedStatement preparedStatement = query.buildStatement(con);
                     try {
-                        preparedStatement.execute();
-                        close(preparedStatement);
-                        close(con);
-                        return;
+                        PreparedStatement preparedStatement = query.buildStatement(con);
+                        try {
+                            preparedStatement.execute();
+                            close(preparedStatement);
+                            close(con);
+                            return;
+                        } catch (SQLException e) {
+                            throw new RuntimeException(String.format("The query %s failed", query.getQueryString()), e);
+                        }
                     } catch (SQLException e) {
-                        throw new RuntimeException(String.format("The query %s failed", query.getQueryString()), e);
+                        throw new RuntimeException(String.format("The query %s could not be prepared", query.getQueryString()), e);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException("Could not connect to db", e);
@@ -136,16 +140,20 @@ public class DBAPI {
             try {
                 try {
                     Connection con = makeConnection();
-                    PreparedStatement st = query.buildStatement(con);
                     try {
-                        ResultSet rs = st.executeQuery();
-                        List<Map<String, Object>> ret = map(rs);
-                        close(st);
-                        close(rs);
-                        close(con);
-                        return ret;
+                        PreparedStatement st = query.buildStatement(con);
+                        try {
+                            ResultSet rs = st.executeQuery();
+                            List<Map<String, Object>> ret = map(rs);
+                            close(st);
+                            close(rs);
+                            close(con);
+                            return ret;
+                        } catch (SQLException e) {
+                            throw new RuntimeException(String.format("The query %s failed", query), e);
+                        }
                     } catch (SQLException e) {
-                        throw new RuntimeException(String.format("The query %s failed", query), e);
+                        throw new RuntimeException(String.format("The query %s could not be prepared", query.getQueryString()), e);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException("Could not connect to db", e);

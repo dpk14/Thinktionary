@@ -41,7 +41,8 @@ public abstract class Query {
     }
 
     protected static String getConditionalQueryString(String action, String from, List<Condition> condition) {
-        return action + from + buildConditional(condition) + ";";
+        String query = action + from + buildConditional(condition) + ";";
+        return query;
     }
 
     protected static String buildConditional(List<Condition> conditions) {
