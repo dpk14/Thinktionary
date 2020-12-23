@@ -1,11 +1,12 @@
 package Model.Data.API;
 
-import Utils.PropertyUtils.PropertyManager;
-import Model.Data.SQL.ColumnInfo;
-import Model.Data.SQL.SQLQueryBuilder;
-import Model.Data.SQL.TableNames;
 import Model.Data.AWSCredentials;
+import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.Queries.Query;
+import Model.Data.SQL.Queries.Select;
+import Model.Data.SQL.TableNames;
 import Utils.ErrorHandling.Exceptions.UserErrorExceptions.QueryFailedException;
+import Utils.PropertyUtils.PropertyManager;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class DBAPI {
     }
 
     public AWSCredentials getAccessKeys() {
-        List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.AWS_ACCESS_KEYS, new ArrayList<>()));
+        List<Map<String, Object>> ret = userQuery(new Select(TableNames.AWS_ACCESS_KEYS, new ArrayList<>()));
         Map<String, Object> keyMap = ret.get(0);
         System.out.println(keyMap);
         return new AWSCredentials(keyMap.get(ColumnInfo.AWS_ACCESS_KEY).toString(), keyMap.get(ColumnInfo.AWS_SECRET_KEY).toString());
@@ -90,19 +91,19 @@ public class DBAPI {
         return result;
     }
 
-    protected void userAction(String command) {
+    protected void userAction(Query query) {
         for (int tries = 0; tries < MAX_TRIES; tries++) {
             try {
                 try {
                     Connection con = makeConnection();
-                    Statement st = con.createStatement();
+                    PreparedStatement preparedStatement = query.buildStatement(con);
                     try {
-                        st.execute(command);
-                        close(st);
+                        preparedStatement.execute();
+                        close(preparedStatement);
                         close(con);
                         return;
                     } catch (SQLException e) {
-                        throw new RuntimeException(String.format("The query %s failed", command), e);
+                        throw new RuntimeException(String.format("The query %s failed", query.getQueryString()), e);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException("Could not connect to db", e);
@@ -130,14 +131,14 @@ public class DBAPI {
         }
     }
 
-    public List<Map<String, Object>> userQuery(String query) {
+    public List<Map<String, Object>> userQuery(Query query) {
         for (int tries = 0; tries < MAX_TRIES; tries++) {
             try {
                 try {
                     Connection con = makeConnection();
-                    Statement st = con.createStatement();
+                    PreparedStatement st = query.buildStatement(con);
                     try {
-                        ResultSet rs = st.executeQuery(query);
+                        ResultSet rs = st.executeQuery();
                         List<Map<String, Object>> ret = map(rs);
                         close(st);
                         close(rs);

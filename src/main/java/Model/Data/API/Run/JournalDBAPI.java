@@ -3,10 +3,13 @@ package Model.Data.API.Run;
 import Model.API.Journal.Entry;
 import Model.API.Journal.JournalDBParser;
 import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.Queries.Insert;
+import Model.Data.SQL.Queries.Modify;
+import Model.Data.SQL.Queries.Remove;
+import Model.Data.SQL.Queries.Select;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
-import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Utils.ErrorHandling.Exceptions.ServerExceptions.NoSuchEntryException;
 
@@ -54,7 +57,7 @@ JournalDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
-        List<Map<String, Object>> entries = userQuery(SQLQueryBuilder.select(TableNames.getEntryToTopic(), conditions));
+        List<Map<String, Object>> entries = userQuery(new Select(TableNames.getEntryToTopic(), conditions));
         return entries.size() > 0;
     }
 
@@ -62,7 +65,7 @@ JournalDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
-        userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions));
+        userAction(new Remove(TableNames.getUserTopic(), conditions));
     }
 
     public void removeTopicFromEntry(Integer entryID, String topicName) {
@@ -70,7 +73,7 @@ JournalDBAPI extends RunDBAPI {
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
         conditions.add(new Equals(ColumnInfo.getTOPIC(), topicName));
-        userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
+        userAction(new Remove(TableNames.getEntryToTopic(), conditions));
     }
 
     public void save(Integer entryID, Entry entry) {
@@ -84,7 +87,7 @@ JournalDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
 
-        userAction(SQLQueryBuilder.modify(TableNames.getEntryInfo(), parameters, conditions));
+        userAction(new Modify(TableNames.getEntryInfo(), parameters, conditions));
     }
 
     public int addToEntryInfo(Entry entry) {
@@ -101,9 +104,9 @@ JournalDBAPI extends RunDBAPI {
         conditions.add(new Equals(ColumnInfo.getCREATED(), entry.getMyCreated()));
         conditions.add(new Equals(ColumnInfo.getMODIFIED(), entry.getMyModfied()));
 
-        userAction(SQLQueryBuilder.insert(TableNames.getEntryInfo(), parameters));
-        userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
-        List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
+        userAction(new Insert(TableNames.getEntryInfo(), parameters));
+        userQuery(new Select(TableNames.getEntryInfo(), conditions));
+        List<Map<String, Object>> ret = userQuery(new Select(TableNames.getEntryInfo(), conditions));
         return JournalDBParser.getEntryID(ret);
     }
 
@@ -114,7 +117,7 @@ JournalDBAPI extends RunDBAPI {
             parameters.add(new Parameter(ColumnInfo.getTOPIC(), topic));
             parameters.add(new Parameter(ColumnInfo.getCOLOR(), topicToColor.get(topic)));
 
-            userAction(SQLQueryBuilder.insert(TableNames.getUserTopic(), parameters));
+            userAction(new Insert(TableNames.getUserTopic(), parameters));
         }
     }
 
@@ -125,7 +128,7 @@ JournalDBAPI extends RunDBAPI {
         parameters.add(new Parameter(ColumnInfo.getTOPIC(), topic));
         parameters.add(new Parameter(ColumnInfo.getCOLOR(), color));
 
-        userAction(SQLQueryBuilder.insert(TableNames.getEntryToTopic(), parameters));
+        userAction(new Insert(TableNames.getEntryToTopic(), parameters));
     }
 
     public void removeEntry(Integer entryID) throws NoSuchEntryException {
@@ -133,12 +136,12 @@ JournalDBAPI extends RunDBAPI {
         conditions.add(new Equals(ColumnInfo.getUSERID(), myUserID));
         conditions.add(new Equals(ColumnInfo.getEntryId(), entryID));
 
-        List<Map<String, Object>> toBeRemoved = userQuery(SQLQueryBuilder.select(TableNames.getEntryInfo(), conditions));
+        List<Map<String, Object>> toBeRemoved = userQuery(new Select(TableNames.getEntryInfo(), conditions));
         if (toBeRemoved.size() == 0) {
             throw new NoSuchEntryException(entryID);
         }
-        userAction(SQLQueryBuilder.remove(TableNames.getEntryInfo(), conditions));
-        userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
+        userAction(new Remove(TableNames.getEntryInfo(), conditions));
+        userAction(new Remove(TableNames.getEntryToTopic(), conditions));
     }
 
 }
