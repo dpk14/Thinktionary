@@ -20,9 +20,9 @@ public class Insert extends Query {
     public PreparedStatement buildStatement(Connection con) throws SQLException {
         String statement = getQueryString();
         PreparedStatement commandSt = con.prepareStatement(statement);
-        commandSt.setString(0, tableName);
+        commandSt.setString(1, tableName);
 
-        int index = 1;
+        int index = 2;
         for(Parameter param : parameters){
             commandSt.setString(index, param.getMyParamName());
             index++;

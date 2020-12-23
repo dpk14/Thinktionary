@@ -36,7 +36,7 @@ public abstract class Query {
     protected static PreparedStatement conditionalQuery(Connection con, String action, String from, List<Condition> condition) throws SQLException {
         String query = getConditionalQueryString(action, from, condition);
         PreparedStatement commandSt = con.prepareStatement(query);
-        fillConditional(0, commandSt, condition);
+        fillConditional(1, commandSt, condition);
         return commandSt;
     }
 

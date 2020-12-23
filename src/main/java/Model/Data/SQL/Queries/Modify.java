@@ -23,8 +23,8 @@ public class Modify extends Query {
     public PreparedStatement buildStatement(Connection con) throws SQLException {
         String query = getQueryString();
         PreparedStatement commandSt = con.prepareStatement(query);
-        commandSt.setString(0, tableName);
-        int index = 1;
+        commandSt.setString(1, tableName);
+        int index = 2;
         for(Parameter param : parameters){
             commandSt.setString(index, param.getMyParamName());
             index++;
