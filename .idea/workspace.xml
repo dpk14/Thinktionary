@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d22d4706-dc50-4be1-82b5-859c51e689a6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Condition.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +314,7 @@
       <workItem from="1605315144637" duration="1744000" />
       <workItem from="1605317267307" duration="2138000" />
       <workItem from="1605319617855" duration="1644000" />
-      <workItem from="1608681069296" duration="15553000" />
+      <workItem from="1608681069296" duration="16207000" />
     </task>
     <servers />
   </component>
@@ -400,10 +402,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="325" y="79" key="new project wizard/0.0.2048.1112@0.0.2048.1112" timestamp="1603842980065" />
-    <state x="559" y="237" key="run.anything.popup" timestamp="1608682060449">
+    <state x="559" y="237" key="run.anything.popup" timestamp="1608701853318">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608682060449" />
+    <state x="559" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608701853318" />
     <state x="596" y="253" key="run.anything.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1604367760254" />
     <state x="688" y="316" width="789" height="800" key="search.everywhere.popup" timestamp="1608688729096">
       <screen x="0" y="0" width="1920" height="1040" />
