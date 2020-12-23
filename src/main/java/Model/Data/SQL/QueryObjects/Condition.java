@@ -7,15 +7,16 @@ public abstract class Condition {
 
     Condition(String parameter, Object value, String comparator){
         myParamName = parameter;
-        if (value instanceof String) {
-            myValue = "$$" + value + "$$";
-        }
-        else myValue = value.toString();
+        myValue = value.toString();
         myComparator = comparator;
     }
 
     @Override
     public String toString(){
-        return " " + myParamName + " " + myComparator + " " + myValue + " ";
+        return " " + myParamName + " " + myComparator + " " +  (myValue instanceof String ? "$$?$$" : "?");
+    }
+
+    public String getMyValue() {
+        return myValue;
     }
 }

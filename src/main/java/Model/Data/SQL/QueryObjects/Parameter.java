@@ -6,10 +6,7 @@ public class Parameter {
 
     public Parameter(String parameter, Object value){
         myParamName = parameter;
-        if (value instanceof String){
-            myValue = "'" + value + "'";
-        }
-        else myValue = value.toString();
+        myValue = value.toString();
     }
 
     public String getMyParamName() {

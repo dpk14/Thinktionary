@@ -49,14 +49,15 @@ public abstract class Query {
         for (int i = 0; i < conditions.size(); i++) {
             String header = " AND ";
             if (i == 0) header = " WHERE ";
-            conditional += header + "?";
+            conditional += header + conditions.get(i).toString();
         }
         return conditional;
     }
 
     protected static PreparedStatement fillConditional(int index, PreparedStatement pst, List<Condition> conditions) throws SQLException {
         for (int i = 0; i < conditions.size(); i++) {
-            pst.setString(index, conditions.get(i).toString());
+            pst.setString(index, conditions.get(i).getMyValue());
+            index++;
         }
         return pst;
     }

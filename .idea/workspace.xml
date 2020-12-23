@@ -6,6 +6,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/CreateTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/CreateTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Insert.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Modify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Modify.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/Queries/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Condition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Parameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/QueryObjects/Parameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Data/SQL/SQLQueryBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +319,7 @@
       <workItem from="1605315144637" duration="1744000" />
       <workItem from="1605317267307" duration="2138000" />
       <workItem from="1605319617855" duration="1644000" />
-      <workItem from="1608681069296" duration="9439000" />
+      <workItem from="1608681069296" duration="13171000" />
     </task>
     <servers />
   </component>
@@ -384,10 +388,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="413" y="196" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1605317990303" />
-    <state x="86" y="92" width="1748" height="879" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608682810070">
+    <state x="86" y="92" width="1748" height="879" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1608691190439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="86" y="92" width="1748" height="879" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608682810070" />
+    <state x="86" y="92" width="1748" height="879" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608691190439" />
     <state x="92" y="98" width="1864" height="939" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1605317217406" />
     <state x="592" y="306" key="com.intellij.ide.util.TipDialog" timestamp="1608681070002">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -1,11 +1,7 @@
 package Model.Data.SQL;
-
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Parameter;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -27,101 +23,74 @@ public class SQLQueryBuilder {
 
     public static final String removeTable(String tableName) {return String.format(REMOVE_TABLE, tableName);}
 
-    public static final PreparedStatement createTable(Connection con, String tableName, Map<String, String> columnToType) throws SQLException {
-        String command = "CREATE TABLE IF NOT EXISTS ? (";
-        for (int count = 0; count < columnToType.keySet().size(); count++) {
-            command += "? ? ";
-            if (count!=columnToType.keySet().size()-1) {
+    public static final String createTable(String tableName, Map<String, String> columnToType) {
+        String command = "CREATE TABLE IF NOT EXISTS " + tableName + "(";
+        int count = 0;
+        for (String columnName : columnToType.keySet()) {
+            String type = columnToType.get(columnName);
+            command += columnName + " " + type + " ";
+            count++;
+            if (count!=columnToType.keySet().size()) {
                 command += ", ";
             }
         }
         command+=")";
-
-        PreparedStatement commandSt = con.prepareStatement(command);
-        commandSt.setString(0, tableName);
-        int count = 1;
-        for (String columnName : columnToType.keySet()) {
-            String type = columnToType.get(columnName);
-            commandSt.setString(count, columnName);
-            count++;
-            commandSt.setString(count, type);
-            count++;
-        }
-        return commandSt;
+        System.out.println(command);
+        return command;
     }
 
-    public static PreparedStatement insert(Connection con, String tableName, List<Parameter> parameters) throws SQLException {
-        String header = INSERT + "?";
-        String string = " (";
+    public static String insert(String tableName, List<Parameter> parameters) {
+        String header = INSERT + tableName;
+        String paramsString = " (";
+        String valsString = " VALUES (";
 
         for(Parameter param : parameters){
-            string += "?";
+            paramsString += param.getMyParamName();
+            valsString += param.getMyValue();
             if(!param.equals(parameters.get(parameters.size()-1))) {
-                string+=", ";
-            } else {
-                string+=")";
+                paramsString+=", ";
+                valsString+=", ";
+            }
+            else {
+                paramsString+=")";
+                valsString+=")";
             }
         }
 
-        String statement = header + string + " VALUES " + string + ";";
-        PreparedStatement commandSt = con.prepareStatement(statement);
-        commandSt.setString(0, tableName);
-
-        int index = 1;
-        for(Parameter param : parameters){
-            commandSt.setString(index, param.getMyParamName());
-            index++;
-        }
-        for(Parameter param : parameters){
-            commandSt.setString(index, param.getMyValue());
-            index++;
-        }
-
-        return commandSt;
+        String statement = header + paramsString + valsString + ";";
+        System.out.println(statement);
+        return statement;
     }
 
-    public static PreparedStatement modify(Connection con, String tableName, List<Parameter> parameters, List<Condition> conditions) throws SQLException {
-        String command = MODIFY + "? SET ";
+    public static String modify(String tableName, List<Parameter> parameters, List<Condition> conditions){
+        String header = MODIFY + tableName + " SET ";
+        String paramsString = "";
         for(Parameter param : parameters){
-            command += "? = ?";
+            paramsString += param.getMyParamName() + " = " + param.getMyValue();
             if(!param.equals(parameters.get(parameters.size()-1))) {
-                command+=",";
+                paramsString+=",";
             }
-            command+=" ";
+            paramsString+=" ";
         }
-
-        String query = command + buildConditional(conditions) + ";";
-
-        PreparedStatement commandSt = con.prepareStatement(query);
-        commandSt.setString(0, tableName);
-        int index = 1;
-        for(Parameter param : parameters){
-            commandSt.setString(index, param.getMyParamName());
-            index++;
-            commandSt.setString(index, param.getMyValue());
-            index++;
-        }
-
-        fillConditional(index, commandSt, conditions);
-
-        return commandSt;
+        String query = header + paramsString + buildConditional(conditions) + ";";
+        System.out.println(query);
+        return query;
     }
 
-    public static PreparedStatement select(Connection con, String tableName, List<Condition> conditions) throws SQLException {
-        return conditionalQuery(con, SELECT_ALL, tableName, conditions);
+    public static String select(String tableName, List<Condition> conditions) {
+        return conditionalQuery(SELECT_ALL, tableName, conditions);
     }
 
-    public static PreparedStatement remove(Connection con, String tableName, List<Condition> conditions) throws SQLException {
-        return conditionalQuery(con, REMOVE, tableName, conditions);
+    public static String remove(String tableName, List<Condition> conditions) {
+        return conditionalQuery(REMOVE, tableName, conditions);
     }
 
     //Helpers:
 
-    private static PreparedStatement conditionalQuery(Connection con, String action, String from, List<Condition> condition) throws SQLException {
+    private static String conditionalQuery(String action, String from, List<Condition> condition){
         String query = action + from + buildConditional(condition) + ";";
-        PreparedStatement commandSt = con.prepareStatement(query);
-        fillConditional(0, commandSt, condition);
-        return commandSt;
+        System.out.println(query);
+        return query;
     }
 
     private static String buildConditional(List<Condition> conditions) {
@@ -129,16 +98,9 @@ public class SQLQueryBuilder {
         for (int i = 0; i < conditions.size(); i++) {
             String header = " AND ";
             if (i == 0) header = " WHERE ";
-            conditional += header + "?";
+            conditional += header + conditions.get(i).toString();
         }
         return conditional;
-    }
-
-    private static PreparedStatement fillConditional(int index, PreparedStatement pst, List<Condition> conditions) throws SQLException {
-        for (int i = 0; i < conditions.size(); i++) {
-            pst.setString(index, conditions.get(i).toString());
-        }
-        return pst;
     }
 
 }

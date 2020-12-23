@@ -23,10 +23,6 @@ public class Insert extends Query {
 
         int index = 1;
         for(Parameter param : parameters){
-            commandSt.setString(index, param.getMyParamName());
-            index++;
-        }
-        for(Parameter param : parameters){
             commandSt.setString(index, param.getMyValue());
             index++;
         }
@@ -37,18 +33,22 @@ public class Insert extends Query {
     @Override
     public String getQueryString() {
         String header = INSERT + this.tableName + "?";
-        String string = " (";
+        String params = " (";
+        String values = " (";
 
         for(Parameter param : parameters){
-            string += "?";
+            params += param.getMyParamName();
+            values += (param.getMyValue() instanceof String ? "'?'" : "?");
             if(!param.equals(parameters.get(parameters.size()-1))) {
-                string+=", ";
+                params+=", ";
+                values+=", ";
             } else {
-                string+=")";
+                params+=")";
+                values+=")";
             }
         }
 
-        String statement = header + string + " VALUES " + string + ";";
+        String statement = header + params + " VALUES " + values + ";";
         return statement;
     }
 }
