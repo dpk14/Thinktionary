@@ -2,7 +2,8 @@ package Model.Data.API.Initialization;
 
 import Model.Data.API.DBAPI;
 import Model.Data.SQL.ColumnInfo;
-import Model.Data.SQL.SQLQueryBuilder;
+import Model.Data.SQL.Queries.CreateTable;
+import Model.Data.SQL.Queries.RemoveTable;
 import Utils.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.CreateTableException;
 import Utils.ErrorHandling.Exceptions.ServerExceptions.TableExceptions.RemoveTableException;
 
@@ -33,11 +34,11 @@ public abstract class InitDBAPI extends DBAPI {
     }
 
     private void createTable(String tableName, Map<String, String> columnMap) {
-        userAction(SQLQueryBuilder.createTable(tableName, columnMap));
+        userAction(new CreateTable(tableName, columnMap));
     }
 
     private void removeTable(String tableName) {
-        userAction(SQLQueryBuilder.removeTable(tableName));
+        userAction(new RemoveTable(tableName));
     }
 
 }

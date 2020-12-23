@@ -1,10 +1,13 @@
 package Model.Data.API.Run;
 
 import Model.Data.SQL.ColumnInfo;
+import Model.Data.SQL.Queries.Insert;
+import Model.Data.SQL.Queries.Modify;
+import Model.Data.SQL.Queries.Remove;
+import Model.Data.SQL.Queries.Select;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
 import Model.Data.SQL.QueryObjects.Parameter;
-import Model.Data.SQL.SQLQueryBuilder;
 import Model.Data.SQL.TableNames;
 import Utils.ErrorHandling.Exceptions.UserErrorExceptions.*;
 
@@ -65,7 +68,7 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
         conditions.add(new Equals(ColumnInfo.getPASSWORD(), passWord));
-        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
+        List<Map<String, Object>> userInfo = userQuery(new Select(TableNames.getUserInfo(), conditions));
         if (userInfo.size() != 1) {
             throw new InvalidLoginException();
         }
@@ -86,8 +89,8 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), userName));
 
-        userAction(SQLQueryBuilder.insert(TableNames.getUserInfo(), parameters));
-        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getUserInfo(), conditions));
+        userAction(new Insert(TableNames.getUserInfo(), parameters));
+        List<Map<String, Object>> userInfo = userQuery(new Select(TableNames.getUserInfo(), conditions));
         return userInfo;
     }
 
@@ -99,10 +102,10 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERID(), userID));
 
-        userAction(SQLQueryBuilder.remove(TableNames.getUserInfo(), conditions));
-        userAction(SQLQueryBuilder.remove(TableNames.getEntryInfo(), conditions));
-        userAction(SQLQueryBuilder.remove(TableNames.getUserTopic(), conditions));
-        userAction(SQLQueryBuilder.remove(TableNames.getEntryToTopic(), conditions));
+        userAction(new Remove(TableNames.getUserInfo(), conditions));
+        userAction(new Remove(TableNames.getEntryInfo(), conditions));
+        userAction(new Remove(TableNames.getUserTopic(), conditions));
+        userAction(new Remove(TableNames.getEntryToTopic(), conditions));
 
         return userID;
     }
@@ -117,8 +120,7 @@ public class LoginDBAPI extends RunDBAPI {
             parameters.add(new Parameter(ColumnInfo.getEMAIL(), email));
             parameters.add(new Parameter(ColumnInfo.CONF_KEY, key));
 
-            String query = SQLQueryBuilder.insert(TableNames.getEmailConfirmation(), parameters);
-            userAction(query);
+            userAction(new Insert(TableNames.getEmailConfirmation(), parameters));
             startConfKeyExpiryThreadAndStoreLock(email);
         }
     }
@@ -126,8 +128,7 @@ public class LoginDBAPI extends RunDBAPI {
     public void removeEmailConfirmationKey(String email) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
-        String query = SQLQueryBuilder.remove(TableNames.getEmailConfirmation(), conditions);
-        userAction(query);
+        userAction(new Remove(TableNames.getEmailConfirmation(), conditions));
         if (this.emailConfExpiryThreads.containsKey(email)) {
             this.emailConfExpiryThreads.remove(email);
             this.emailConfExpiryLocks.remove(email);
@@ -138,7 +139,7 @@ public class LoginDBAPI extends RunDBAPI {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getEMAIL(), email));
         conditions.add(new Equals(ColumnInfo.CONF_KEY, key));
-        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(TableNames.getEmailConfirmation(), conditions));
+        List<Map<String, Object>> userInfo = userQuery(new Select(TableNames.getEmailConfirmation(), conditions));
         if (userInfo.size() != 1) {
             throw new InvalidConfirmationKeyException();
         }
@@ -147,7 +148,7 @@ public class LoginDBAPI extends RunDBAPI {
     public boolean tableEntryExists(String tableName, String columnName, String value) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(columnName, value));
-        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(tableName, conditions));
+        List<Map<String, Object>> userInfo = userQuery(new Select(tableName, conditions));
         return userInfo.size() > 0;
     }
 
@@ -156,7 +157,7 @@ public class LoginDBAPI extends RunDBAPI {
         for (String col : colToVal.keySet()) {
             conditions.add(new Equals(col, colToVal.get(col)));
         }
-        List<Map<String, Object>> userInfo = userQuery(SQLQueryBuilder.select(tableName, conditions));
+        List<Map<String, Object>> userInfo = userQuery(new Select(tableName, conditions));
         return userInfo.size() > 0;
     }
 
@@ -165,7 +166,7 @@ public class LoginDBAPI extends RunDBAPI {
         parameters.add(new Parameter(column, newValue));
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(ColumnInfo.getUSERNAME(), username));
-        userAction(SQLQueryBuilder.modify(TableNames.getUserInfo(), parameters, conditions));
+        userAction(new Modify(TableNames.getUserInfo(), parameters, conditions));
     }
 
     private void expireOldKeyAndSetNewWhenDone(String email, String newKey) {

@@ -1,9 +1,9 @@
 package Model.Data.API.Run;
 
 import Model.Data.API.DBAPI;
+import Model.Data.SQL.Queries.Select;
 import Model.Data.SQL.QueryObjects.Condition;
 import Model.Data.SQL.QueryObjects.Equals;
-import Model.Data.SQL.SQLQueryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,14 +27,14 @@ public abstract class RunDBAPI extends DBAPI {
     }
 
     protected List<Map<String, Object>> loadTable(String tableName) {
-        return userQuery(SQLQueryBuilder.select(tableName, new ArrayList<>()));
+        return userQuery(new Select(tableName, new ArrayList<>()));
     }
 
     protected List<Map<String, Object>> loadTableByParamater(String tableName, String parameterType, Object parameter) {
         List<Condition> conditions = new ArrayList<>();
         conditions.add(new Equals(parameterType, parameter));
 
-        List<Map<String, Object>> ret = userQuery(SQLQueryBuilder.select(tableName, conditions));
+        List<Map<String, Object>> ret = userQuery(new Select(tableName, conditions));
         return ret;
     }
 }
