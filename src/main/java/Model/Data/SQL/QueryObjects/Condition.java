@@ -13,7 +13,7 @@ public abstract class Condition {
 
     @Override
     public String toString(){
-        return " " + myParamName + " " + myComparator + " " +  (myValue instanceof String ? "$$?$$" : "?");
+        return " " + myParamName + " " + myComparator + " ?";
     }
 
     public String getMyValue() {
