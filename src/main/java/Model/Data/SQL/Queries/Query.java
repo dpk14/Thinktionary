@@ -58,7 +58,7 @@ public abstract class Query {
     protected static PreparedStatement fillConditional(int index, PreparedStatement pst, List<Condition> conditions) throws SQLException {
         for (int i = 0; i < conditions.size(); i++) {
             if (conditions.get(i).getMyValue() instanceof Integer) {
-                pst.setInt(index, Integer.parseInt(conditions.get(i).getMyValue().toString());
+                pst.setInt(index, Integer.parseInt(conditions.get(i).getMyValue().toString()));
             } else {
                 pst.setString(index, conditions.get(i).getMyValue().toString());
             }
