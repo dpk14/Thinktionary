@@ -150,7 +150,7 @@ public class DBAPI {
                             close(con);
                             return ret;
                         } catch (SQLException e) {
-                            throw new RuntimeException(String.format("The query %s failed", query), e);
+                            throw new RuntimeException(String.format("The query %s failed", query.getQueryString()), e);
                         }
                     } catch (SQLException e) {
                         throw new RuntimeException(String.format("The query %s could not be prepared", query.getQueryString()), e);
