@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+@Deprecated
 public class SQLQueryBuilder {
     private static final String REMOVE = " DELETE FROM ";
     private static final String SELECT_ALL = " SELECT * FROM ";
