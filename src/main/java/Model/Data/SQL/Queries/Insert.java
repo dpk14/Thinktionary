@@ -38,7 +38,7 @@ public class Insert extends Query {
 
         for(Parameter param : parameters){
             params += param.getMyParamName();
-            values += (param.getMyValue() instanceof String ? "'?'" : "?");
+            values += "?";
             if(!param.equals(parameters.get(parameters.size()-1))) {
                 params+=", ";
                 values+=", ";
