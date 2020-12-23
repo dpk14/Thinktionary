@@ -57,13 +57,17 @@ public abstract class Query {
 
     protected static PreparedStatement fillConditional(int index, PreparedStatement pst, List<Condition> conditions) throws SQLException {
         for (int i = 0; i < conditions.size(); i++) {
-            try {
-                pst.setInt(index, Integer.parseInt(conditions.get(i).getMyValue().toString()));
-            } catch (NumberFormatException e) {
-                pst.setString(index, conditions.get(i).getMyValue().toString());
-            }
+            setParameter(pst, index, conditions.get(i).getMyValue());
             index++;
         }
         return pst;
+    }
+
+    protected static void setParameter(PreparedStatement pst, int index, Object value) throws SQLException {
+        try {
+            pst.setInt(index, Integer.parseInt(value.toString()));
+        } catch (NumberFormatException e) {
+            pst.setString(index, value.toString());
+        }
     }
 }

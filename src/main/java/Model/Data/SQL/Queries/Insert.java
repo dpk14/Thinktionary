@@ -23,7 +23,7 @@ public class Insert extends Query {
 
         int index = 1;
         for(Parameter param : parameters){
-            commandSt.setString(index, param.getMyValue());
+            setParameter(commandSt, index, param.getMyValue());
             index++;
         }
 
